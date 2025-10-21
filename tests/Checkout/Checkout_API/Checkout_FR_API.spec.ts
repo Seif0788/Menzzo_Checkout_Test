@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { clickElementByText, ClickRandomProduct, closeFloatingMenus, clickAddToCart } from '../../../helpers/utils';
+import { allure } from 'allure-playwright';
 
 test('Checkout_Fr_API', async ({ page }) => {
   // === 1️⃣ Go to homepage ===
