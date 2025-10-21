@@ -5,7 +5,8 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-
+permissions:
+  contents: write
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -34,7 +35,13 @@ jobs:
         with:
           name: playwright-report
           path: playwright-report
-
+      - name: Show repo files (diagnose)
+        run: |
+            echo "PWD: $(pwd)"
+            echo "Listing test dir"
+            ls -R tests || true
+            echo "Playwright will discover these tests:"
+            npx playwright test --list || true
   deploy:
     needs: test
     if: always()

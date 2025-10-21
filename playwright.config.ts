@@ -15,7 +15,7 @@ export default defineConfig({
       workers: 1,
       //retries: 1,
       use: {
-        headless: false,
+        headless: true,
         viewport: { width: 1280, height: 720 },
         ignoreHTTPSErrors: true,
         screenshot: 'only-on-failure',
@@ -64,6 +64,8 @@ export default defineConfig({
         video: 'retain-on-failure',
         trace: 'retain-on-failure',
       },
-    }
+    },
+    { name: 'api', testDir: './tests/Checkout/Checkout_API'},
+    { name: 'ui', testDir: './tests/Checkout/Checkout_fr' },
   ],
 });
