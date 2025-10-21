@@ -15,7 +15,7 @@ export default defineConfig({
       workers: 1,
       //retries: 1,
       use: {
-        headless: false,
+        headless: true,
         viewport: { width: 1280, height: 720 },
         ignoreHTTPSErrors: true,
         screenshot: 'only-on-failure',
