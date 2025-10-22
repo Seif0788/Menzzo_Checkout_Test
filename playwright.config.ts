@@ -64,6 +64,8 @@ export default defineConfig({
         video: 'retain-on-failure',
         trace: 'retain-on-failure',
       },
-    }
+    },
+    { name: 'api', testDir: './tests/Checkout/Checkout_API'},
+    { name: 'ui', testDir: './tests/Checkout/Checkout_fr' },
   ],
 });
