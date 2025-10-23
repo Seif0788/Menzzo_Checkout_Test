@@ -1,15 +1,20 @@
-name: Playwright Tests
+name: Playwright Tests with Allure
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, develop, Fix_playwright_github_actions ]
   pull_request:
     branches: [ main ]
+  schedule:
+    - cron: "0 * * * *"
+
 permissions:
   contents: write
+
 jobs:
   test:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -26,39 +31,105 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
-      - name: Run Playwright tests
-        run: npx playwright test --reporter=list --reporter=html
+      - name: Run Playwright tests with Allure reporter
+        run: npx playwright test --reporter=line,allure-playwright
 
-      - name: Upload HTML report as artifact
+      - name: Generate Allure report
+        run: npx allure generate ./allure-results --clean -o ./allure-report
+
+      - name: Upload Allure report as artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-report
-          path: playwright-report
-      - name: Show repo files (diagnose)
-        run: |
-            echo "PWD: $(pwd)"
-            echo "Listing test dir"
-            ls -R tests || true
-            echo "Playwright will discover these tests:"
-            npx playwright test --list || true
+          name: allure-report
+          path: allure-report
+
   deploy:
     needs: test
     if: always()
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Download report artifact
+      - name: Download Allure report artifact
         uses: actions/download-artifact@v4
         with:
-          name: playwright-report
-          path: ./playwright-report
+          name: allure-report
+          path: ./allure-report
+
+      - name: Cleanup old reports
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git clone --branch gh-pages https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} gh-pages
+          cd gh-pages
+          echo "Found folders:"
+          ls -1
+          # Keep only latest 30 runs, delete older
+          ls -1tr allure-run-* | head -n -30 | xargs -d '\n' rm -rf || true
+          cd ..
+        shell: bash
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+        uses: peaceiris/actions-gh-pages@v3.9.2
+
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./playwright-report
-          destination_dir: run-${{ github.run_number }}
+          publish_dir: ./allure-report
+          destination_dir: allure-run-${{ github.run_number }}
+
+  notify-success:
+    needs: [test, deploy]
+    if: success()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send success email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.SMTP_USERNAME }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          subject: "✅ Playwright Tests Passed - Run #${{ github.run_number }}"
+          to: seif.t.axelites@gmail.com
+          from: "GitHub Actions <${{ secrets.SMTP_USERNAME }}>"
+          body: |
+            🎉 All Playwright tests passed!
+
+            Workflow: **${{ github.workflow }}**
+            Run #: **${{ github.run_number }}**
+
+            🔗 Allure Report: 
+            https://<your-github-username>.github.io/<your-repo-name>/allure-run-${{ github.run_number }}/
+
+            🔗 Full run details: 
+            ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+  notify-failure:
+    needs: [test, deploy]
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send failure email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.SMTP_USERNAME }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          subject: "❌ Playwright Tests Failed - Run #${{ github.run_number }}"
+          to: seif.t.axelites@gmail.com
+          from: "GitHub Actions <${{ secrets.SMTP_USERNAME }}>"
+          body: |
+            ⚠️ Some tests failed!
+
+            Workflow: **${{ github.workflow }}**
+            Run #: **${{ github.run_number }}**
+
+            🔗 Allure Report (latest available):
+            https://<your-github-username>.github.io/<your-repo-name>/allure-run-${{ github.run_number }}/
+
+            🔗 Full run details: 
+            ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
