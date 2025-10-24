@@ -1,0 +1,230 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - img "Chargement en cours..." [ref=e3]
+  - generic [ref=e4]:
+    - banner [ref=e5]:
+      - generic [ref=e6]:
+        - text: 
+        - link "store logo" [ref=e7] [cursor=pointer]:
+          - /url: https://www.menzzo.fr/
+          - img "Menzzo.fr" [ref=e8] [cursor=pointer]
+    - main [ref=e9]:
+      - heading "Finaliser la commande" [level=1] [ref=e11]:
+        - generic [ref=e12]: Finaliser la commande
+      - generic [ref=e14]:
+        - generic [ref=e17] [cursor=pointer]:
+          - text: Vous avez déjà un compte ?
+          - strong [ref=e18] [cursor=pointer]:
+            - generic [ref=e19] [cursor=pointer]: Cliquez ici
+          - text: pour vous connecter
+          - strong [ref=e20] [cursor=pointer]:
+            - generic [ref=e21] [cursor=pointer]: ou créer un compte Menzzo
+        - generic [ref=e23]:
+          - generic [ref=e24]: Connectez-vous rapidement en utilisant votre compte Facebook ou Google
+          - generic [ref=e25]:
+            - link "Se connecter avec Google" [ref=e27] [cursor=pointer]:
+              - /url: https://www.menzzo.fr/amsociallogin/social/login/?type=google
+              - generic [ref=e29] [cursor=pointer]: Se connecter avec Google
+            - link "Se connecter avec Facebook" [ref=e31] [cursor=pointer]:
+              - /url: https://www.menzzo.fr/amsociallogin/social/login/?type=facebook
+              - generic [ref=e33] [cursor=pointer]: Se connecter avec Facebook
+        - generic [ref=e36]:
+          - generic [ref=e38]:
+            - generic [ref=e40]:
+              - generic [ref=e42]:
+                - generic [ref=e43]:
+                  - text: 
+                  - generic [ref=e44]:
+                    - generic [ref=e45] [cursor=pointer]: 
+                    - strong [ref=e46]: "1"
+                  - generic [ref=e47]: Adresse de livraison
+                - generic [ref=e48]:
+                  - group [ref=e50]:
+                    - generic [ref=e52]:
+                      - generic [ref=e53]:
+                        - generic [ref=e54]: Adresse email*
+                        - textbox "Adresse email*" [ref=e55]: seif@axelites.com
+                      - text: 
+                  - generic [ref=e57]:
+                    - generic [ref=e60]:
+                      - generic [ref=e61]:
+                        - generic [ref=e62]: Prénom
+                        - text: "*"
+                      - textbox "Prénom*" [ref=e63]: Seif
+                    - generic [ref=e66]:
+                      - generic [ref=e67]:
+                        - generic [ref=e68]: Nom
+                        - text: "*"
+                      - textbox "Nom*" [ref=e69]: Taj
+                    - group [ref=e70]:
+                      - generic [ref=e73]:
+                        - generic [ref=e74]:
+                          - generic [ref=e75]: Rue
+                          - text: "*"
+                        - textbox "Rue*" [ref=e76]: 10 Rue Exemple
+                        - text: 
+                    - generic [ref=e79]:
+                      - generic [ref=e80]:
+                        - generic [ref=e81]: Code postal
+                        - text: "*"
+                      - spinbutton "Code postal*" [ref=e82]: "75001"
+                    - generic [ref=e85]:
+                      - generic [ref=e86]:
+                        - generic [ref=e87]: Ville
+                        - text: "*"
+                      - textbox "Ville*" [ref=e88]: Paris
+                    - combobox "Pays" [ref=e90]:
+                      - option
+                      - option "Belgique"
+                      - option "France" [selected]
+                      - option "Luxembourg"
+                      - option "Monaco"
+                      - option "Royaume-Uni"
+                    - generic [ref=e92]:
+                      - generic [ref=e93]:
+                        - generic [ref=e94]:
+                          - generic [ref=e95]: Numéro de téléphone
+                          - text: "*"
+                        - spinbutton "Numéro de téléphone*" [ref=e96]: "123456"
+                      - text: 
+                    - generic [ref=e99]:
+                      - generic [ref=e101]: Société
+                      - textbox "Société" [ref=e102]
+                  - generic [ref=e104]: "*Champ obligatoire"
+                  - generic [ref=e105]:
+                    - checkbox "Mon adresse de facturation et de livraison sont les mêmes" [checked] [ref=e106]
+                    - generic [ref=e108] [cursor=pointer]: Mon adresse de facturation et de livraison sont les mêmes
+              - generic:  * * *  * * * 
+            - generic [ref=e110]:
+              - generic [ref=e111]:
+                - text: 
+                - generic [ref=e112]:
+                  - generic [ref=e113] [cursor=pointer]: 
+                  - strong [ref=e114]: "2"
+                - generic [ref=e115]: Modes de livraison
+              - generic [ref=e117]:
+                - generic [ref=e119] [cursor=pointer]: + d'infos sur les modes de livraison
+                - generic [ref=e120]:
+                  - generic [ref=e124]:
+                    - generic [ref=e126]:
+                      - img [ref=e128]
+                      - generic [ref=e129]:
+                        - strong [ref=e130]: Fauteuil Regina Tissu dossier à petits carreaux et assise uni Jaune moutarde
+                        - generic [ref=e131]:
+                          - strong [ref=e132]: "Qté :"
+                          - generic [ref=e133]: "1"
+                    - generic [ref=e134]:
+                      - list [ref=e135]:
+                        - listitem [ref=e136]:
+                          - text: "-"
+                          - strong [ref=e137]:
+                            - text: Livraison entre le
+                            - generic [ref=e138]: 25 octobre et 01 novembre
+                      - generic [ref=e139]:
+                        - generic [ref=e140]:
+                          - generic [ref=e142]:
+                            - radio "Livraison classique" [ref=e143] [cursor=pointer]
+                            - generic [ref=e144]: Livraison classique
+                          - strong [ref=e146]: 39€
+                        - generic [ref=e147]:
+                          - generic [ref=e149]:
+                            - radio "Livraison Étage" [checked] [ref=e150] [cursor=pointer]
+                            - generic [ref=e151]: Livraison Étage
+                          - strong [ref=e153]: 65€
+                        - generic [ref=e158]:
+                          - img [ref=e159]
+                          - generic [ref=e161]: Dans la pièce de votre choix
+                  - generic [ref=e163]:
+                    - generic [ref=e164]: "Total livraison :"
+                    - text: 
+                    - generic [ref=e165]: 65€
+            - generic [ref=e166]:
+              - generic [ref=e167]:
+                - text: 
+                - generic [ref=e168]:
+                  - generic [ref=e169] [cursor=pointer]: 
+                  - strong [ref=e170]: "3"
+                - generic [ref=e171]: Modes de paiement
+              - tabpanel [ref=e172]:
+                - group "Informations de paiement" [ref=e174]:
+                  - generic [ref=e176]: Informations de paiement
+                  - text: "*"
+                  - generic [ref=e179]:
+                    - generic [ref=e181]:
+                      - img "Image" [ref=e183]
+                      - radio [ref=e184]
+                      - generic [ref=e185] [cursor=pointer]: Paiement sécurisé par carte bancaire
+                    - generic [ref=e187]:
+                      - radio "Payez en 3 ou 4 fois" [ref=e190]
+                      - generic [ref=e192] [cursor=pointer]: Payez en 3 ou 4 fois
+                    - generic [ref=e195]:
+                      - img [ref=e197]
+                      - radio "A partir de 46,19 €/mois ou en 3, 6, 9 et 12 fois" [ref=e206]
+                      - generic [ref=e207]: A partir de 46,19 €/mois ou en 3, 6, 9 et 12 fois
+                    - generic [ref=e208]:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - img
+                          - generic:
+                            - radio "Paiements flexibles avec Klarna" [checked]
+                          - generic: Paiements flexibles avec Klarna
+          - generic [ref=e212]:
+            - generic [ref=e213]:
+              - generic [ref=e214]:
+                - text: 
+                - generic [ref=e215] [cursor=pointer]: 
+                - generic [ref=e216]: Récapitulatif de ma commande
+              - generic [ref=e217]:
+                - tablist [ref=e218]:
+                  - text: 
+                  - tabpanel [ref=e219]:
+                    - generic [ref=e220]:
+                      - generic [ref=e221]: Dans mon panier
+                      - table [ref=e222]:
+                        - rowgroup [ref=e223]:
+                          - 'row "Fauteuil Regina Tissu dossier à petits carreaux et assise uni Jaune moutarde Fauteuil Regina Tissu dossier à petits carreaux et assise uni Jaune moutarde Qté : 1 466,00 €" [ref=e224]':
+                            - cell "Fauteuil Regina Tissu dossier à petits carreaux et assise uni Jaune moutarde" [ref=e225]:
+                              - img "Fauteuil Regina Tissu dossier à petits carreaux et assise uni Jaune moutarde" [ref=e228]
+                            - 'cell "Fauteuil Regina Tissu dossier à petits carreaux et assise uni Jaune moutarde Qté : 1 466,00 €" [ref=e229]':
+                              - generic [ref=e230]:
+                                - link "Fauteuil Regina Tissu dossier à petits carreaux et assise uni Jaune moutarde" [ref=e234] [cursor=pointer]:
+                                  - /url: https://www.menzzo.fr/fauteuil-regina-tissu-dossier-a-petits-carreaux-et-assise-uni-jaune-moutarde.html
+                                  - strong [ref=e235] [cursor=pointer]: Fauteuil Regina Tissu dossier à petits carreaux et assise uni Jaune moutarde
+                                - generic [ref=e236]:
+                                  - generic [ref=e237]:
+                                    - generic [ref=e238]: Qté
+                                    - text: ":"
+                                  - generic [ref=e239]: "1"
+                              - generic [ref=e243]: 466,00 €
+                - table "Récapitulatif de ma commande" [ref=e244]:
+                  - rowgroup [ref=e245]:
+                    - row "Total des articles TTC 466,00 €" [ref=e246]:
+                      - rowheader "Total des articles TTC" [ref=e247]
+                      - cell "466,00 €" [ref=e248]:
+                        - generic [ref=e249]: 466,00 €
+                    - row "Livraison 65,00 €" [ref=e250]:
+                      - rowheader "Livraison" [ref=e251]:
+                        - generic [ref=e252]: Livraison
+                      - cell "65,00 €" [ref=e253]:
+                        - generic [ref=e254]: 65,00 €
+                    - row "Montant total à payer 531,00 € TTC" [ref=e255]:
+                      - rowheader "Montant total à payer" [ref=e256]:
+                        - strong [ref=e257]: Montant total à payer
+                      - cell "531,00 € TTC" [ref=e258]:
+                        - strong [ref=e259]:
+                          - generic [ref=e260]: 531,00 €
+                          - generic [ref=e261]: TTC
+            - generic [ref=e263]:
+              - generic [ref=e268]:
+                - checkbox [checked] [ref=e269]
+                - button "J'accepte les conditions générales de ventes. *" [ref=e271] [cursor=pointer]:
+                  - generic [ref=e272] [cursor=pointer]: J'accepte les conditions générales de ventes.
+                  - text: "*"
+              - button "Payer ma commande" [active] [ref=e275] [cursor=pointer]:
+                - generic [ref=e276] [cursor=pointer]: Payer ma commande
+    - button "Chat Menzzo" [ref=e277] [cursor=pointer]:
+      - img "Chat Menzzo"
+```
