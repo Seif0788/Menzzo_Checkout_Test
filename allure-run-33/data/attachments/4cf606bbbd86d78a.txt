@@ -1,0 +1,2 @@
+⚠️ Error during checkout readiness check: ❌ Not on the checkout page.
+⚠️ Language not provided. Defaulting to Italian (IT).
