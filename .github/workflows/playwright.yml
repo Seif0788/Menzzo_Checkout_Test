@@ -90,8 +90,9 @@ jobs:
         with:
           server_address: smtp.gmail.com
           server_port: 465
+          secure : true
           username: ${{ secrets.SMTP_USERNAME }}
-          password: ${{ secrets.SMTP_PASSWORD }}
+          password: ${{ secrets.Menzzo_Checkout }}
           subject: "✅ Playwright Tests Passed - Run #${{ github.run_number }}"
           to: seif.t.axelites@gmail.com
           from: "GitHub Actions <${{ secrets.SMTP_USERNAME }}>"
@@ -117,8 +118,9 @@ jobs:
         with:
           server_address: smtp.gmail.com
           server_port: 465
+          secure : true
           username: ${{ secrets.SMTP_USERNAME }}
-          password: ${{ secrets.SMTP_PASSWORD }}
+          password: ${{ secrets.Menzzo_Checkout }}
           subject: "❌ Playwright Tests Failed - Run #${{ github.run_number }}"
           to: seif.t.axelites@gmail.com
           from: "GitHub Actions <${{ secrets.SMTP_USERNAME }}>"
