@@ -103,7 +103,7 @@ jobs:
             Run #: **${{ github.run_number }}**
 
             🔗 Allure Report: 
-            https://<your-github-username>.github.io/<your-repo-name>/allure-run-${{ github.run_number }}/
+            https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/allure-run-${{ github.run_number }}/
 
             🔗 Full run details: 
             ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
@@ -131,7 +131,7 @@ jobs:
             Run #: **${{ github.run_number }}**
 
             🔗 Allure Report (latest available):
-            https://<your-github-username>.github.io/<your-repo-name>/allure-run-${{ github.run_number }}/
+            https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/allure-run-${{ github.run_number }}/
 
             🔗 Full run details: 
             ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
