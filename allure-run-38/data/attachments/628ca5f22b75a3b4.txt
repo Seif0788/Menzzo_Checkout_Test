@@ -1,0 +1,28 @@
+✅ Homepage loaded.
+✅ Cookies accepted.
+✅ Category selected.
+Clicked on random product [1]/20
+✅ Random product selected.
+⏳ Waiting for product page to load...
+✅ Product page loaded.
+🧺 Product added to cart.
+🚀 Proceeded to cart.
+🚀 Proceeded to onestepCheckout.
+clickElementByText: clicked in main page context: Conferma il tuo carrello
+✅ Navigation to checkout complete. Waiting for OneStepCheckout...
+✅ Checkout page detected.
+⏳ Waiting for OneStepCheckout to initialize...
+🔄 Current URL: https://www.menzzo.it/onestepcheckout/
+🔄 Retry 0: Checking for #checkout container visibility...
+✅ Checkout container is visible.
+🌍 Using language: IT
+Updated firstNameLocator: input[data-placeholder="Nome"]:visible
+Retrying visibility check for input[data-placeholder="Nome"]:visible. Visible: true
+Bounding box: {"x":34,"y":532.8125,"width":264.390625,"height":40}, Overlays count: 0
+✅ First name field is visible.
+Language: IT
+Using firstNameLocator: input[data-placeholder="Nome"]:visible
+✅ Automatically selected the single available delivery method for IT
+✅ Checkout performed successfully.
+⏳ Verifying navigation to payment method page...
+✅ Successfully navigated to payment method page.

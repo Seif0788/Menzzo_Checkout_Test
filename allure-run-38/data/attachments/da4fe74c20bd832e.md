@@ -1,0 +1,224 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - text: 
+      - link "store logo" [ref=e5] [cursor=pointer]:
+        - /url: https://www.menzzo.fr/
+        - img "Menzzo.fr" [ref=e6] [cursor=pointer]
+  - main [ref=e7]:
+    - heading "Finaliser la commande" [level=1] [ref=e9]:
+      - generic [ref=e10]: Finaliser la commande
+    - generic [ref=e12]:
+      - generic [ref=e15] [cursor=pointer]:
+        - text: Vous avez déjà un compte ?
+        - strong [ref=e16] [cursor=pointer]:
+          - generic [ref=e17] [cursor=pointer]: Cliquez ici
+        - text: pour vous connecter
+        - strong [ref=e18] [cursor=pointer]:
+          - generic [ref=e19] [cursor=pointer]: ou créer un compte Menzzo
+      - generic [ref=e21]:
+        - generic [ref=e22]: Connectez-vous rapidement en utilisant votre compte Facebook ou Google
+        - generic [ref=e23]:
+          - link "Se connecter avec Google" [ref=e25] [cursor=pointer]:
+            - /url: https://www.menzzo.fr/amsociallogin/social/login/?type=google
+            - generic [ref=e27] [cursor=pointer]: Se connecter avec Google
+          - link "Se connecter avec Facebook" [ref=e29] [cursor=pointer]:
+            - /url: https://www.menzzo.fr/amsociallogin/social/login/?type=facebook
+            - generic [ref=e31] [cursor=pointer]: Se connecter avec Facebook
+      - generic [ref=e34]:
+        - generic [ref=e36]:
+          - generic [ref=e38]:
+            - generic [ref=e40]:
+              - generic [ref=e41]:
+                - text: 
+                - generic [ref=e42]:
+                  - generic [ref=e43] [cursor=pointer]: 
+                  - strong [ref=e44]: "1"
+                - generic [ref=e45]: Adresse de livraison
+              - generic [ref=e46]:
+                - group [ref=e48]:
+                  - generic [ref=e50]:
+                    - generic [ref=e51]:
+                      - generic [ref=e52]: Adresse email*
+                      - textbox "Adresse email*" [ref=e53]
+                    - text: 
+                - generic [ref=e55]:
+                  - generic [ref=e58]:
+                    - generic [ref=e59]:
+                      - generic [ref=e60]: Prénom
+                      - text: "*"
+                    - textbox "Prénom*" [ref=e61]
+                  - generic [ref=e64]:
+                    - generic [ref=e65]:
+                      - generic [ref=e66]: Nom
+                      - text: "*"
+                    - textbox "Nom*" [ref=e67]
+                  - group [ref=e68]:
+                    - generic [ref=e71]:
+                      - generic [ref=e72]:
+                        - generic [ref=e73]: Rue
+                        - text: "*"
+                      - textbox "Rue*" [ref=e74]
+                      - text: 
+                  - generic [ref=e77]:
+                    - generic [ref=e78]:
+                      - generic [ref=e79]: Code postal
+                      - text: "*"
+                    - spinbutton "Code postal*" [ref=e80]
+                  - generic [ref=e83]:
+                    - generic [ref=e84]:
+                      - generic [ref=e85]: Ville
+                      - text: "*"
+                    - textbox "Ville*" [ref=e86]
+                  - combobox "Pays" [ref=e88]:
+                    - option
+                    - option "Belgique"
+                    - option "France" [selected]
+                    - option "Luxembourg"
+                    - option "Monaco"
+                    - option "Royaume-Uni"
+                  - generic [ref=e90]:
+                    - generic [ref=e91]:
+                      - generic [ref=e92]:
+                        - generic [ref=e93]: Numéro de téléphone
+                        - text: "*"
+                      - spinbutton "Numéro de téléphone*" [ref=e94]
+                    - text: 
+                  - generic [ref=e97]:
+                    - generic [ref=e99]: Société
+                    - textbox "Société" [ref=e100]
+                - generic [ref=e102]: "*Champ obligatoire"
+                - generic [ref=e103]:
+                  - checkbox "Mon adresse de facturation et de livraison sont les mêmes" [checked] [ref=e104]
+                  - generic [ref=e106] [cursor=pointer]: Mon adresse de facturation et de livraison sont les mêmes
+            - generic:  * * *  * * * 
+          - generic [ref=e108]:
+            - generic [ref=e109]:
+              - text: 
+              - generic [ref=e110]:
+                - generic [ref=e111] [cursor=pointer]: 
+                - strong [ref=e112]: "2"
+              - generic [ref=e113]: Modes de livraison
+            - generic [ref=e115]:
+              - generic [ref=e117] [cursor=pointer]: + d'infos sur les modes de livraison
+              - generic [ref=e118]:
+                - generic [ref=e122]:
+                  - generic [ref=e124]:
+                    - img [ref=e126]
+                    - generic [ref=e127]:
+                      - strong [ref=e128]: Canapé angle à droite convertible Lefkadao Bois massif Noir et Tissu Vert
+                      - generic [ref=e129]:
+                        - strong [ref=e130]: "Qté :"
+                        - generic [ref=e131]: "1"
+                  - generic [ref=e132]:
+                    - list [ref=e133]:
+                      - listitem [ref=e134]:
+                        - text: "-"
+                        - strong [ref=e135]:
+                          - text: Estimation de livraison entre le
+                          - generic [ref=e136]: 25/10 et le 01/11
+                    - generic [ref=e137]:
+                      - generic [ref=e138]:
+                        - generic [ref=e140]:
+                          - radio "Livraison classique" [checked] [ref=e141] [cursor=pointer]
+                          - generic [ref=e142]: Livraison classique
+                        - strong [ref=e144]: 50€
+                      - generic [ref=e149]:
+                        - img [ref=e150]
+                        - generic [ref=e152]: Au pied du camion
+                      - generic [ref=e153]:
+                        - generic [ref=e155]:
+                          - radio "Livraison Étage" [ref=e156] [cursor=pointer]
+                          - generic [ref=e157]: Livraison Étage
+                        - strong [ref=e159]: 89€
+                - generic [ref=e161]:
+                  - generic [ref=e162]: "Total livraison :"
+                  - text: 
+                  - generic [ref=e163]: 50€
+          - generic [ref=e164]:
+            - generic [ref=e165]:
+              - text: 
+              - generic [ref=e166]:
+                - generic [ref=e167] [cursor=pointer]: 
+                - strong [ref=e168]: "3"
+              - generic [ref=e169]: Modes de paiement
+            - tabpanel [ref=e170]:
+              - group "Informations de paiement" [ref=e172]:
+                - generic [ref=e174]: Informations de paiement
+                - text: "*"
+                - generic [ref=e177]:
+                  - generic [ref=e179]:
+                    - img "Image" [ref=e181]
+                    - radio [ref=e182]
+                    - generic [ref=e183] [cursor=pointer]: Paiement sécurisé par carte bancaire
+                  - generic [ref=e185]:
+                    - radio "Payez en 3 ou 4 fois" [ref=e188]
+                    - generic [ref=e190] [cursor=pointer]: Payez en 3 ou 4 fois
+                  - generic [ref=e193]:
+                    - img [ref=e195]
+                    - radio "A partir de 66,58 €/mois ou en 3, 6, 9 et 12 fois" [ref=e204]
+                    - generic [ref=e205]: A partir de 66,58 €/mois ou en 3, 6, 9 et 12 fois
+                  - generic [ref=e208]:
+                    - img [ref=e210]
+                    - radio "Paiements flexibles avec Klarna" [ref=e212]
+                    - generic [ref=e213]: Paiements flexibles avec Klarna
+        - generic [ref=e217]:
+          - generic [ref=e218]:
+            - generic [ref=e219]:
+              - text: 
+              - generic [ref=e220] [cursor=pointer]: 
+              - generic [ref=e221]: Récapitulatif de ma commande
+            - generic [ref=e222]:
+              - tablist [ref=e223]:
+                - text: 
+                - tabpanel [ref=e224]:
+                  - generic [ref=e225]:
+                    - generic [ref=e226]: Dans mon panier
+                    - table [ref=e227]:
+                      - rowgroup [ref=e228]:
+                        - 'row "Canapé angle à droite convertible Lefkadao Bois massif Noir et Tissu Vert Canapé angle à droite convertible Lefkadao Bois massif Noir et Tissu Vert Qté : 1 680,00 €" [ref=e229]':
+                          - cell "Canapé angle à droite convertible Lefkadao Bois massif Noir et Tissu Vert" [ref=e230]:
+                            - img "Canapé angle à droite convertible Lefkadao Bois massif Noir et Tissu Vert" [ref=e233]
+                          - 'cell "Canapé angle à droite convertible Lefkadao Bois massif Noir et Tissu Vert Qté : 1 680,00 €" [ref=e234]':
+                            - generic [ref=e235]:
+                              - link "Canapé angle à droite convertible Lefkadao Bois massif Noir et Tissu Vert" [ref=e239] [cursor=pointer]:
+                                - /url: https://www.menzzo.fr/canape-angle-a-droite-convertible-lefkadao-bois-massif-noir-et-tissu-vert.html
+                                - strong [ref=e240] [cursor=pointer]: Canapé angle à droite convertible Lefkadao Bois massif Noir et Tissu Vert
+                              - generic [ref=e241]:
+                                - generic [ref=e242]:
+                                  - generic [ref=e243]: Qté
+                                  - text: ":"
+                                - generic [ref=e244]: "1"
+                            - generic [ref=e248]: 680,00 €
+              - table "Récapitulatif de ma commande" [ref=e249]:
+                - rowgroup [ref=e250]:
+                  - row "Total des articles TTC 680,00 €" [ref=e251]:
+                    - rowheader "Total des articles TTC" [ref=e252]
+                    - cell "680,00 €" [ref=e253]:
+                      - generic [ref=e254]: 680,00 €
+                  - row "Livraison 50,00 €" [ref=e255]:
+                    - rowheader "Livraison" [ref=e256]:
+                      - generic [ref=e257]: Livraison
+                    - cell "50,00 €" [ref=e258]:
+                      - generic [ref=e259]: 50,00 €
+                  - row "Montant total à payer 730,00 € TTC" [ref=e260]:
+                    - rowheader "Montant total à payer" [ref=e261]:
+                      - strong [ref=e262]: Montant total à payer
+                    - cell "730,00 € TTC" [ref=e263]:
+                      - strong [ref=e264]:
+                        - generic [ref=e265]: 730,00 €
+                        - generic [ref=e266]: TTC
+          - generic [ref=e268]:
+            - generic [ref=e273]:
+              - checkbox [ref=e274]
+              - button "J'accepte les conditions générales de ventes. *" [ref=e276] [cursor=pointer]:
+                - generic [ref=e277] [cursor=pointer]: J'accepte les conditions générales de ventes.
+                - text: "*"
+            - button "Payer ma commande" [ref=e280] [cursor=pointer]:
+              - generic [ref=e281] [cursor=pointer]: Payer ma commande
+  - button "Chat Menzzo" [ref=e282] [cursor=pointer]:
+    - img "Chat Menzzo"
+```
