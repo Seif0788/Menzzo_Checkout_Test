@@ -1,0 +1,552 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - text: 
+      - link "store logo" [ref=e5] [cursor=pointer]:
+        - /url: https://www.menzzo.fr/
+        - img "Menzzo.fr" [ref=e7] [cursor=pointer]
+      - generic [ref=e8]:
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - search:
+                  - generic:
+                    - searchbox "Que cherchez-vous ?" [ref=e9]
+                    - generic [ref=e10]:
+                      - text: 
+                      - generic [ref=e11]: Rechercher
+                      - generic [ref=e12]: Rechercher
+                  - button "Search" [ref=e13] [cursor=pointer]:
+                    - text: 
+                    - generic [ref=e14] [cursor=pointer]: Rechercher
+      - generic [ref=e15]:
+        - list [ref=e16]:
+          - listitem [ref=e17]:
+            - link "Mes Favoris" [ref=e18] [cursor=pointer]:
+              - /url: https://www.menzzo.fr/wish-list/
+              - img [ref=e19] [cursor=pointer]
+              - generic [ref=e21] [cursor=pointer]: Mes Favoris
+          - listitem [ref=e22]:
+            - link "Blog" [ref=e23] [cursor=pointer]:
+              - /url: https://www.menzzo.fr/blog.html
+              - img [ref=e24] [cursor=pointer]
+              - generic [ref=e26] [cursor=pointer]: Blog
+          - listitem [ref=e27]:
+            - link "Showroom" [ref=e28] [cursor=pointer]:
+              - /url: https://www.menzzo.fr/showroom/
+              - img [ref=e29] [cursor=pointer]
+              - generic [ref=e31] [cursor=pointer]: Showroom
+          - listitem [ref=e32] [cursor=pointer]:
+            - generic [ref=e33] [cursor=pointer]:
+              - img [ref=e34] [cursor=pointer]
+              - generic [ref=e36] [cursor=pointer]: Contact
+          - listitem [ref=e37]:
+            - link "Me connecter" [ref=e38] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e39] [cursor=pointer]
+              - generic [ref=e41] [cursor=pointer]: Me connecter
+        - link "Mon panier Panier" [ref=e44] [cursor=pointer]:
+          - /url: https://www.menzzo.fr/checkout/cart/
+          - img [ref=e45] [cursor=pointer]
+          - generic [ref=e47] [cursor=pointer]: Mon panier
+          - generic [ref=e48] [cursor=pointer]: Panier
+  - tablist [ref=e50]:
+    - tabpanel [ref=e51]:
+      - navigation [ref=e52]:
+        - menu [ref=e53]:
+          - menuitem
+          - menuitem "Petits prix" [ref=e54] [cursor=pointer]:
+            - generic [ref=e55] [cursor=pointer]: Petits prix
+          - menuitem
+          - menuitem "Tables, tables Basses" [ref=e56] [cursor=pointer]:
+            - generic [ref=e57] [cursor=pointer]:
+              - generic [ref=e58] [cursor=pointer]: Tables,
+              - text: tables Basses
+          - menuitem
+          - menuitem "Chaises, tabourets" [ref=e59] [cursor=pointer]:
+            - generic [ref=e60] [cursor=pointer]:
+              - generic [ref=e61] [cursor=pointer]: Chaises,
+              - text: tabourets
+          - menuitem
+          - menuitem "Canapés, fauteuils" [ref=e62] [cursor=pointer]:
+            - generic [ref=e63] [cursor=pointer]:
+              - generic [ref=e64] [cursor=pointer]: Canapés,
+              - text: fauteuils
+          - menuitem
+          - menuitem "Lits, têtes de lit" [ref=e65] [cursor=pointer]:
+            - generic [ref=e66] [cursor=pointer]:
+              - generic [ref=e67] [cursor=pointer]: Lits,
+              - text: têtes de lit
+          - menuitem
+          - menuitem "Meubles, rangements" [ref=e68] [cursor=pointer]:
+            - generic [ref=e69] [cursor=pointer]:
+              - generic [ref=e70] [cursor=pointer]: Meubles,
+              - text: rangements
+          - menuitem
+          - menuitem "Déco" [ref=e71] [cursor=pointer]:
+            - generic [ref=e72] [cursor=pointer]: Déco
+          - menuitem
+          - menuitem "Déstockage" [ref=e73] [cursor=pointer]:
+            - generic [ref=e74] [cursor=pointer]: Déstockage
+  - list [ref=e76]:
+    - listitem [ref=e77]:
+      - link "Accueil" [ref=e78] [cursor=pointer]:
+        - /url: https://www.menzzo.fr/
+      - text: /
+    - listitem [ref=e79]:
+      - strong [ref=e80]: Grand canapé 3 places Chesterfield Velours Bleu
+  - main [ref=e81]:
+    - generic [ref=e83]:
+      - generic [ref=e85]:
+        - generic [ref=e87]:
+          - generic [ref=e88]:
+            - img [ref=e89]
+            - text: "Fin de l'offre dans :"
+          - generic [ref=e91]: 00j 06h 38min 28s
+        - generic [ref=e95]:
+          - text: Les petits prix sont de retour 🔥
+          - link "Je fonce !" [ref=e96] [cursor=pointer]:
+            - /url: /soldes-meubles-design-pas-cher.html
+      - generic [ref=e97]:
+        - generic [ref=e98]:
+          - link "Skip to the end of the images gallery" [ref=e99] [cursor=pointer]:
+            - /url: "#gallery-next-area"
+            - generic [ref=e100] [cursor=pointer]: Skip to the end of the images gallery
+          - button "Ajouter aux favoris" [ref=e103] [cursor=pointer]:
+            - img [ref=e104] [cursor=pointer]
+          - link "Skip to the beginning of the images gallery" [ref=e106] [cursor=pointer]:
+            - /url: "#gallery-prev-area"
+            - generic [ref=e107] [cursor=pointer]: Skip to the beginning of the images gallery
+          - generic [ref=e108]:
+            - generic [ref=e110]:
+              - img "Grand canapé 3 places Chesterfield Velours Bleu" [ref=e113]
+              - img [ref=e116]
+              - img [ref=e119]
+              - img [ref=e122]
+              - img [ref=e125]
+              - img [ref=e128]
+              - img [ref=e131]
+              - img [ref=e134]
+              - img [ref=e137]
+            - button "Next" [ref=e138] [cursor=pointer]:
+              - img [ref=e139] [cursor=pointer]
+          - generic [ref=e143]:
+            - img [ref=e146]
+            - img [ref=e149]
+            - img [ref=e152]
+            - img [ref=e155]
+            - img [ref=e158]
+            - img [ref=e161]
+            - img [ref=e164]
+            - img [ref=e167]
+            - img [ref=e170]
+        - generic [ref=e171]:
+          - heading "Grand canapé 3 places Chesterfield Velours Bleu" [level=1] [ref=e172]
+          - generic [ref=e173]:
+            - generic [ref=e175]: PETITS PRIX
+            - generic [ref=e176]:
+              - link "Ou payer en 3x 113,00€ SANS FRAIS" [ref=e177] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e178] [cursor=pointer]:
+                  - strong [ref=e179] [cursor=pointer]: Ou payer en
+                  - generic [ref=e180] [cursor=pointer]: 3x
+                - generic [ref=e182] [cursor=pointer]:
+                  - generic [ref=e183] [cursor=pointer]: 113,00€
+                  - strong [ref=e184] [cursor=pointer]: SANS FRAIS
+              - generic [ref=e185]:
+                - generic [ref=e186]: 339,00 €
+                - generic [ref=e187]:
+                  - text: Dont
+                  - strong [ref=e188]: 7,00 €
+                  - text: d’éco-part.
+          - generic [ref=e193]:
+            - combobox "Qté" [ref=e196]:
+              - option "1" [selected]
+              - option "2"
+              - option "3"
+              - option "4"
+              - option "5"
+              - option "6"
+              - option "7"
+              - option "8"
+              - option "9"
+              - option "10"
+            - button "Ajouter au panier" [ref=e198] [cursor=pointer]
+          - generic [ref=e199]:
+            - generic [ref=e200]:
+              - img [ref=e201]
+              - generic [ref=e204] [cursor=pointer]:
+                - strong [ref=e205] [cursor=pointer]:
+                  - strong [ref=e206] [cursor=pointer]: En stock
+                - img [ref=e207] [cursor=pointer]
+                - text: 
+            - generic [ref=e209] [cursor=pointer]:
+              - strong [ref=e210] [cursor=pointer]:
+                - text: Livraison entre le
+                - generic [ref=e211] [cursor=pointer]: 25 octobre et 01 novembre
+              - text: à partir de
+              - strong [ref=e212] [cursor=pointer]: 60,00 €
+              - generic [ref=e213] [cursor=pointer]: Autres modes de livraison >
+          - generic [ref=e214]:
+            - generic [ref=e215]:
+              - generic [ref=e216]:
+                - img [ref=e218]
+                - text: 15 jours pour changer d’avis
+              - generic [ref=e219]:
+                - img [ref=e221]
+                - text: Paiement 100% sécurisé
+            - generic [ref=e222]:
+              - text: Clients satisfaits
+              - generic [ref=e225] [cursor=pointer]: Voir tous les avis
+          - generic [ref=e226]:
+            - generic [ref=e227]:
+              - generic [ref=e228] [cursor=pointer]:
+                - text: Coloris
+                - generic [ref=e229] [cursor=pointer]: + d'infos
+              - generic [ref=e230]:
+                - link "Grand canapé 3 places Chesterfield Velours Vert" [ref=e231] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/grand-canape-3-places-chesterfield-velours-vert.html
+                  - img "Grand canapé 3 places Chesterfield Velours Vert" [ref=e233] [cursor=pointer]
+                - link "Grand canapé 3 places Chesterfield Vintage" [ref=e234] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/canape-chesterfield-3places-vintage.html
+                  - img "Grand canapé 3 places Chesterfield Vintage" [ref=e236] [cursor=pointer]
+                - link "Grand canapé 3 places Chesterfield Velours Taupe" [ref=e237] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/canape-chesterfield-velours-3pl-taupe.html
+                  - img "Grand canapé 3 places Chesterfield Velours Taupe" [ref=e239] [cursor=pointer]
+                - link "Grand canapé 3 places Chesterfield Velours Rouge" [ref=e240] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/canape-chesterfield-velours-3pl-rouge.html
+                  - img "Grand canapé 3 places Chesterfield Velours Rouge" [ref=e242] [cursor=pointer]
+                - link "Grand canapé 3 places Chesterfield Velours Noir" [ref=e243] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/canape-chesterfield-velours-3pl-noir.html
+                  - img "Grand canapé 3 places Chesterfield Velours Noir" [ref=e245] [cursor=pointer]
+                - link "Grand canapé 3 places Chesterfield Velours Argent" [ref=e246] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/grand-canape-3-places-chesterfield-velours-argent-823-823.html
+                  - img "Grand canapé 3 places Chesterfield Velours Argent" [ref=e248] [cursor=pointer]
+                - link "Grand canapé 3 places Chesterfield Rouge" [ref=e249] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/canape-chesterfield-3places-rouge.html
+                  - img "Grand canapé 3 places Chesterfield Rouge" [ref=e251] [cursor=pointer]
+                - link "Grand canapé 3 places Chesterfield Noir" [ref=e252] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/canape-chesterfield-3places-noir.html
+                  - img "Grand canapé 3 places Chesterfield Noir" [ref=e254] [cursor=pointer]
+                - link "Grand canapé 3 places Chesterfield Blanc" [ref=e255] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/canape-chesterfield-3places-blanc.html
+                  - img "Grand canapé 3 places Chesterfield Blanc" [ref=e257] [cursor=pointer]
+                - link "Grand canapé 3 places Chesterfield Velours Bleu" [ref=e258] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/grand-canape-3-places-chesterfield-velours-bleu.html
+                  - img "Grand canapé 3 places Chesterfield Velours Bleu" [ref=e260] [cursor=pointer]
+            - generic [ref=e261]:
+              - generic [ref=e262]: "Autre(s) format(s) :"
+              - generic [ref=e263]:
+                - link "2 places" [ref=e264] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/grand-canape-2-places-chesterfield-velours-bleu.html
+                - link "Fauteuil" [ref=e265] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/fauteuil-chesterfield-velours-bleu.html
+                - link "3 places" [ref=e266] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/grand-canape-3-places-chesterfield-velours-bleu.html
+      - generic [ref=e267]:
+        - heading "Vous avez une question ?" [level=3] [ref=e270]
+        - generic [ref=e271]:
+          - button "Quels sont les dimensions du canapé Chesterfield 3 places ?" [ref=e272] [cursor=pointer]:
+            - generic [ref=e273] [cursor=pointer]: Quels sont les dimensions du canapé Chesterfield 3 places ?
+          - button "Le revêtement en velours est-il facile à entretenir ?" [ref=e274] [cursor=pointer]:
+            - generic [ref=e275] [cursor=pointer]: Le revêtement en velours est-il facile à entretenir ?
+          - button "Est-ce que le canapé est disponible dans d'autres couleurs ?" [ref=e276] [cursor=pointer]:
+            - generic [ref=e277] [cursor=pointer]: Est-ce que le canapé est disponible dans d'autres couleurs ?
+          - button "Peut-on le monter soi-même ou nécessite-t-il un professionnel ?" [ref=e278] [cursor=pointer]:
+            - generic [ref=e279] [cursor=pointer]: Peut-on le monter soi-même ou nécessite-t-il un professionnel ?
+          - button "Poser une question" [ref=e280] [cursor=pointer]:
+            - generic [ref=e281] [cursor=pointer]: Poser une question
+      - tablist [ref=e283]:
+        - tab "Descriptifs" [expanded] [ref=e284]:
+          - link "Descriptifs" [ref=e285] [cursor=pointer]:
+            - /url: "#tab-description"
+        - tabpanel [ref=e286]:
+          - paragraph [ref=e289]:
+            - strong [ref=e290]:
+              - generic [ref=e291]:
+                - text: Le véritable canapé Chesterfield 3 places
+                - generic [ref=e292]: Coloris BLEU
+            - text: Le canapé 3 places Chesterfield original en velours !
+            - text: Le Chesterfield 3 places est un type de canapé réputé pour son allure cosy et élégante. Le canapé capitonné Chesterfield est d'origine anglaise, au style indémodable et intemporel. Ce modèle présente un éventail de plis au niveau de ses larges accoudoirs et un capitonnage confortable. Revêtement velours résistant et doux au toucher.
+        - tab "Informations complémentaires" [expanded] [ref=e293]:
+          - link "Informations complémentaires" [ref=e294] [cursor=pointer]:
+            - /url: "#tab-infos"
+        - tabpanel [ref=e295]:
+          - table "Plus d’information" [ref=e297]:
+            - rowgroup [ref=e298]:
+              - row "Couleur Bleu" [ref=e299]:
+                - rowheader "Couleur" [ref=e300]
+                - cell "Bleu" [ref=e301]
+              - row "Matière détail Velours " [ref=e302]:
+                - rowheader "Matière détail" [ref=e303]
+                - cell "Velours " [ref=e304]:
+                  - text: Velours
+                  - generic [ref=e305] [cursor=pointer]: 
+              - row "Nombre de places 3 places" [ref=e306]:
+                - rowheader "Nombre de places" [ref=e307]
+                - cell "3 places" [ref=e308]
+              - row "Forme du canapé Canapé droit" [ref=e309]:
+                - rowheader "Forme du canapé" [ref=e310]
+                - cell "Canapé droit" [ref=e311]
+              - row "Dimensions L209 x P82 x H72 cm" [ref=e312]:
+                - rowheader "Dimensions" [ref=e313]
+                - cell "L209 x P82 x H72 cm" [ref=e314]
+              - 'row "Dimensions colis Colis 1/1: 82.5 x 66 x 210 cm" [ref=e315]':
+                - rowheader "Dimensions colis" [ref=e316]
+                - 'cell "Colis 1/1: 82.5 x 66 x 210 cm" [ref=e317]': "Colis 1/1: 82.5 x 66 x 210 cm"
+              - row "Prix généralement constaté 819,00 €" [ref=e318]:
+                - rowheader "Prix généralement constaté" [ref=e319]
+                - cell "819,00 €" [ref=e320]:
+                  - generic [ref=e321]: 819,00 €
+        - tab "Infos pratiques" [expanded] [ref=e322]:
+          - link "Infos pratiques" [ref=e323] [cursor=pointer]:
+            - /url: "#tab-ino-practical"
+        - tabpanel [ref=e324]:
+          - list [ref=e325]:
+            - listitem [ref=e326] [cursor=pointer]:
+              - img [ref=e329] [cursor=pointer]
+      - generic [ref=e331]:
+        - generic [ref=e332]:
+          - img "menzzohome" [ref=e335]
+          - generic [ref=e337]: Partagez vos photos avec notre hashtag !
+        - generic [ref=e342]:
+          - generic [ref=e343]:
+            - generic [ref=e344]:
+              - link:
+                - /url: "#"
+                - img [ref=e345] [cursor=pointer]
+            - img "img" [ref=e350]
+          - generic [ref=e351]:
+            - generic [ref=e352]:
+              - link:
+                - /url: "#"
+                - img [ref=e353] [cursor=pointer]
+            - img "img" [ref=e358]
+      - heading "Vous aimerez aussi :" [level=3] [ref=e360]
+      - generic [ref=e365]:
+        - heading "Des clients satisfaits et qui le disent" [level=3] [ref=e366]:
+          - strong [ref=e367]: Des clients satisfaits
+          - text: et qui le disent
+        - paragraph [ref=e368]: Les avis présentés sur cette page constituent une sélection et ne reflètent pas l’intégralité des avis reçus.
+        - img [ref=e372]
+  - contentinfo [ref=e376]:
+    - generic [ref=e378]:
+      - generic [ref=e380]:
+        - generic [ref=e381]:
+          - generic [ref=e382]: Tous les codes promo
+          - generic [ref=e383]: En cliquant sur "Je m'inscris", j'accepte de recevoir la newsletter par email et j'accepte la politique de confidentialité de Menzzo.
+          - generic [ref=e386]:
+            - generic [ref=e389]:
+              - generic [ref=e390]: "Inscription à notre lettre d’information :"
+              - textbox "Inscription à notre lettre d’information :" [ref=e391]
+            - button "Je m'inscris !" [ref=e392] [cursor=pointer]
+            - generic [ref=e394]:
+              - checkbox "J'accepte la politique de confidentialité et je consens au traitement de mes données à des fins marketing par Menzzo" [ref=e395]
+              - text: J'accepte la
+              - link "politique de confidentialité" [ref=e396] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/rgpd
+              - text: et je consens au traitement de mes données à des fins marketing par Menzzo
+        - img "img" [ref=e398]
+      - generic [ref=e400]:
+        - generic [ref=e402]:
+          - generic [ref=e403]:
+            - img [ref=e404]
+            - heading "SERVICE CLIENT" [level=3] [ref=e406]
+            - paragraph [ref=e407]: Vous avez passé commande et souhaitez nous joindre ?
+          - generic [ref=e408]:
+            - generic [ref=e409]:
+              - heading "Un seul endroit pour répondre à toutes vos demandes" [level=4] [ref=e411]
+              - generic [ref=e413]:
+                - img [ref=e414]
+                - link "sav.menzzo.fr" [ref=e416] [cursor=pointer]:
+                  - /url: https://sav.menzzo.fr/
+              - paragraph [ref=e417]:
+                - text: Complétez le formulaire sur la plateforme
+                - link "sav.menzzo.fr" [ref=e418] [cursor=pointer]:
+                  - /url: https://sav.menzzo.fr/
+                - text: et accédez directement aux informations que vous recherchez concernant votre commande.
+              - paragraph [ref=e419]:
+                - text: Une réponse vous sera apportée
+                - generic [ref=e420]: en ligne
+                - text: ou vous aurez accès à un planning pour prendre un
+                - generic [ref=e421]: rdv téléphonique
+                - text: avec un de nos agents.
+            - generic [ref=e422]:
+              - heading "Foire Aux Questions" [level=4] [ref=e424]
+              - generic [ref=e426]:
+                - img [ref=e427]
+                - link "Consultez notre FAQ" [ref=e429] [cursor=pointer]:
+                  - /url: /faq
+              - paragraph [ref=e430]: Vos questions les plus courantes sont répertoriées dans notre FAQ pour que vous trouviez encore plus rapidement des réponses pertinentes à toutes vos interrogations.
+          - link "En savoir plus" [ref=e431] [cursor=pointer]:
+            - /url: /sav-menzzo-fr
+        - generic [ref=e433]:
+          - generic [ref=e434]:
+            - img [ref=e435]
+            - heading "Vendeurs conseil" [level=3] [ref=e437]
+            - paragraph [ref=e438]: Vous avez une question sur un produit ou un service ?
+          - generic [ref=e439]:
+            - generic [ref=e440]:
+              - heading "Contactez nos vendeurs conseil" [level=4] [ref=e442]
+              - generic [ref=e444]:
+                - img [ref=e445]
+                - generic [ref=e447]:
+                  - link "01 43 75 11 18" [ref=e448] [cursor=pointer]:
+                    - /url: tel:0143751118
+                  - text: "Du lundi au jeudi : 10h-17h"
+                  - text: "Vendredi : 10h-15h"
+            - generic [ref=e449]:
+              - heading "Outlet Menzzo" [level=4] [ref=e451]
+              - generic [ref=e453]:
+                - img [ref=e454]
+                - generic [ref=e456]:
+                  - text: 221 Rue Paul Vaillant Couturier
+                  - text: 94140 Alfortville
+                  - text: "Du lundi au jeudi : 9h30-15h"
+                  - generic [ref=e457]:
+                    - text: Fermeture exceptionnelle
+                    - text: Aucune à prévoir...
+              - paragraph [ref=e458]: Des articles juste déballés, retournés par les clients et soigneusement vérifiés, ou des fins de collection, fins de stock pour des coloris spécifiques... Nos meubles à prix cassé, c'est ça l'Outlet Menzzo !
+          - link "En savoir plus" [ref=e459] [cursor=pointer]:
+            - /url: /showroom/
+        - generic [ref=e461]:
+          - generic [ref=e462]:
+            - img [ref=e463]
+            - heading "PAIEMENT SÉCURISÉ" [level=3] [ref=e465]
+            - paragraph [ref=e466]: Achetez en toute sérénité grâce à nos différents modes de paiement en ligne.
+          - generic [ref=e467]:
+            - generic [ref=e468]:
+              - heading "Par carte bancaire :" [level=4] [ref=e470]
+              - generic [ref=e471]:
+                - img "cb" [ref=e473]
+                - img "visa" [ref=e475]
+                - img "master" [ref=e477]
+                - img "american-express" [ref=e479]
+              - paragraph [ref=e480]: Les paiements en ligne sont sécurisés par le système 3D Secure. Menzzo n’a pas accès et ne sauvegarde pas vos données de carte bancaire.
+            - generic [ref=e481]:
+              - heading "En plusieurs fois :" [level=4] [ref=e483]
+              - paragraph [ref=e488]:
+                - text: Divisez votre paiement en 3 versements égaux et sans frais ou en 6, 9 ou 12 fois. Simple et pratique.
+                - text: Un paiement par mois, immédiat et sans formalités.
+            - generic [ref=e489]:
+              - heading "Par virement :" [level=4] [ref=e491]
+              - paragraph [ref=e492]: Plus besoin de carte bancaire ! Payez vos achats en un clic grâce à votre appli bancaire. Aucune saisie d’IBAN nécessaire et sécurisé par votre banque sans coût supplémentaire.
+          - link "En savoir plus" [ref=e493] [cursor=pointer]:
+            - /url: /financement
+        - generic [ref=e495]:
+          - generic [ref=e496]:
+            - img [ref=e497]
+            - heading "Livraison" [level=3] [ref=e499]
+            - paragraph [ref=e500]: Les tarifs des livraisons sont indiqués sur chaque fiche produit.
+          - generic [ref=e501]:
+            - generic [ref=e502]:
+              - heading "Livraison classique" [level=4] [ref=e504]
+              - paragraph [ref=e507]:
+                - text: Vous êtes livrés au pied du camion.
+                - text: Selon le type d’article, le transporteur vous contacte par mail, SMS ou téléphone pour vous communiquer une date de livraison.
+            - generic [ref=e508]:
+              - heading "Livraison Étage" [level=4] [ref=e510]
+              - paragraph [ref=e513]:
+                - text: Vous êtes livrés dans la pièce de votre choix, même à l’étage.
+                - text: Les produits sont déballés et les cartons sont retirés par le livreur.
+                - text: Selon le type d’article, le transporteur vous contacte par mail, SMS ou téléphone pour vous communiquer une date de livraison.
+          - link "En savoir plus" [ref=e514] [cursor=pointer]:
+            - /url: /livraison
+      - generic [ref=e516]:
+        - generic [ref=e517]:
+          - heading "BESOIN D'AIDE?" [level=3] [ref=e518]
+          - list [ref=e519]:
+            - listitem [ref=e520]:
+              - link "Blog" [ref=e521] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/blog.html
+            - listitem [ref=e522]:
+              - link "Livraison" [ref=e523] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/livraison/
+            - listitem [ref=e524]:
+              - link "Politique de retour" [ref=e525] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/politique-de-retour/
+            - listitem [ref=e526]:
+              - link "Financement" [ref=e527] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/financement/
+            - listitem [ref=e528]:
+              - link "Service client" [ref=e529] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/sav-menzzo-fr/
+            - listitem [ref=e530]:
+              - link "Glossaire des matières" [ref=e531] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/materials/
+        - generic [ref=e532]:
+          - heading "MIEUX NOUS CONNAÎTRE" [level=3] [ref=e533]
+          - list [ref=e534]:
+            - listitem [ref=e535]:
+              - link "Outlet Menzzo" [ref=e536] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/showroom
+            - listitem [ref=e537]:
+              - link "À propos de menzzo" [ref=e538] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/a-propos-de-menzzo/
+            - listitem [ref=e539]:
+              - link "Conditions Générales de Vente" [ref=e540] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/conditions-generales-de-vente/
+            - listitem [ref=e541]:
+              - link "Données personnelles" [ref=e542] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/rgpd
+            - listitem [ref=e543]:
+              - link "Revue de presse" [ref=e544] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/revue-de-presse
+        - generic [ref=e545]:
+          - heading "RETROUVEZ-NOUS!" [level=3] [ref=e546]
+          - generic [ref=e547]:
+            - link "Facebook" [ref=e548] [cursor=pointer]:
+              - /url: http://www.facebook.com/MenzzoFrance
+              - img [ref=e549] [cursor=pointer]
+            - link "Instagram" [ref=e551] [cursor=pointer]:
+              - /url: https://www.instagram.com/menzzofr/
+              - img [ref=e552] [cursor=pointer]
+            - link "Pinterest" [ref=e554] [cursor=pointer]:
+              - /url: http://www.pinterest.com/menzzo
+              - img [ref=e555] [cursor=pointer]
+      - list [ref=e559]:
+        - listitem [ref=e560]
+        - listitem [ref=e562]
+        - listitem [ref=e564]
+        - listitem [ref=e566]
+        - listitem [ref=e568]:
+          - img "Monext" [ref=e570]
+        - listitem [ref=e571]
+        - listitem [ref=e573]:
+          - img "klarna" [ref=e575]
+        - listitem [ref=e576]:
+          - img "scalapay" [ref=e578]
+      - generic [ref=e579]:
+        - generic [ref=e580]: "Retrouvez Menzzo dans d'autres pays:"
+        - link "menzzo.fr" [ref=e581] [cursor=pointer]:
+          - /url: https://menzzo.fr
+          - img [ref=e582] [cursor=pointer]
+        - link "menzzo.de" [ref=e584] [cursor=pointer]:
+          - /url: https://menzzo.de
+          - img [ref=e585] [cursor=pointer]
+        - link "menzzo.it" [ref=e587] [cursor=pointer]:
+          - /url: https://menzzo.it
+          - img [ref=e588] [cursor=pointer]
+        - link "menzzo.nl" [ref=e590] [cursor=pointer]:
+          - /url: https://menzzo.nl
+          - img [ref=e591] [cursor=pointer]
+        - link "menzzo.at" [ref=e593] [cursor=pointer]:
+          - /url: https://menzzo.at
+          - img [ref=e594] [cursor=pointer]
+        - link "menzzo.be" [ref=e596] [cursor=pointer]:
+          - /url: https://menzzo.be
+          - img [ref=e597] [cursor=pointer]
+        - link "menzzo.es" [ref=e599] [cursor=pointer]:
+          - /url: https://www.menzzo.es/
+          - img [ref=e600] [cursor=pointer]
+        - link "menzzo.pt" [ref=e602] [cursor=pointer]:
+          - /url: https://www.menzzo.pt/
+          - img [ref=e603] [cursor=pointer]
+      - generic [ref=e605]: © 2025 Menzzo - Tous droits réservés
+  - button "Chat Menzzo" [ref=e606] [cursor=pointer]:
+    - img "Chat Menzzo"
+```
