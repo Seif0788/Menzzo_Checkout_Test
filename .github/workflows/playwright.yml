@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ main ]
   schedule:
-    - cron: "0 * * * *"
+    - cron: "0 * * * *" # hourly
 
 permissions:
   contents: write
@@ -16,6 +16,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # --- PRE-CLEANUP ---
+      - name: Free up disk space before running
+        run: |
+          echo "Initial disk usage:"
+          df -h
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf /usr/local/share/boost
+          sudo rm -rf /usr/local/lib/android
+          sudo apt-get clean
+          echo "Disk usage after cleanup:"
+          df -h
+
+      # --- NORMAL JOB FLOW ---
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -32,10 +46,12 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests with Allure reporter
-        run: npx playwright test --reporter=line,allure-playwright
+        run: |
+          npx playwright test --reporter=line,allure-playwright
 
       - name: Generate Allure report
-        run: npx allure generate ./allure-results --clean -o ./allure-report
+        run: |
+          npx allure generate ./allure-results --clean -o ./allure-report
 
       - name: Upload Allure report as artifact
         if: always()
@@ -43,6 +59,18 @@ jobs:
         with:
           name: allure-report
           path: allure-report
+          retention-days: 5 # keep it light
+
+      # --- POST-CLEANUP ---
+      - name: Cleanup workspace
+        if: always()
+        run: |
+          echo "Cleaning up workspace..."
+          rm -rf node_modules
+          rm -rf allure-results allure-report
+          du -h --max-depth=1 . | sort -hr
+          echo "Disk usage after cleanup:"
+          df -h
 
   deploy:
     needs: test
@@ -74,7 +102,6 @@ jobs:
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3.9.2
-
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./allure-report
@@ -90,7 +117,7 @@ jobs:
         with:
           server_address: smtp.gmail.com
           server_port: 465
-          secure : true
+          secure: true
           username: seif.t.axelites@gmail.com
           password: ${{ secrets.Menzzo_Checkout }}
           subject: "✅ Playwright Tests Passed - Run #${{ github.run_number }}"
@@ -118,7 +145,7 @@ jobs:
         with:
           server_address: smtp.gmail.com
           server_port: 465
-          secure : true
+          secure: true
           username: seif.t.axelites@gmail.com
           password: ${{ secrets.Menzzo_Checkout }}
           subject: "❌ Playwright Tests Failed - Run #${{ github.run_number }}"
