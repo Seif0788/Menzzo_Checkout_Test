@@ -47,7 +47,7 @@ jobs:
 
       - name: Run Playwright tests with Allure reporter
         run: |
-          npx playwright test --reporter=line,allure-playwright
+          npx playwright test --reporter=line,allure-playwright --verbose
 
       - name: Generate Allure report
         run: |
