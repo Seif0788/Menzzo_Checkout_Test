@@ -5,6 +5,11 @@ export default defineConfig({
   testMatch: /.*\.(spec|test)\.ts$/,
   timeout: 120000,
   reporter: [['list'], ['allure-playwright']],
+  use: {
+    trace: 'on-first-retry',
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
+  },
   fullyParallel: false,
 
   // == Projects: each runs in parallel ==

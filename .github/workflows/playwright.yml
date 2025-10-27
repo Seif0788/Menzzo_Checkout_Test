@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ main ]
   schedule:
-    - cron: "0 * * * *"
+    - cron: "0 * * * *" # hourly
 
 permissions:
   contents: write
@@ -16,6 +16,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # --- PRE-CLEANUP ---
+      - name: Free up disk space before running
+        run: |
+          echo "Initial disk usage:"
+          df -h
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf /usr/local/share/boost
+          sudo rm -rf /usr/local/lib/android
+          sudo apt-get clean
+          echo "Disk usage after cleanup:"
+          df -h
+
+      # --- NORMAL JOB FLOW ---
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -32,10 +46,17 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests with Allure reporter
-        run: npx playwright test --reporter=line,allure-playwright
+        run: |
+          npx playwright test --reporter=line,allure-playwright --verbose
 
       - name: Generate Allure report
-        run: npx allure generate ./allure-results --clean -o ./allure-report
+        run: |
+          npx allure generate ./allure-results --clean -o ./allure-report
+          
+      - name: Fix viewport meta in Allure report
+        run: |
+          echo "Injecting viewport meta tag into Allure report..."
+          find ./allure-report -name "index.html" -exec sed -i 's|<meta charset="utf-8">|<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">|' {} \;
 
       - name: Upload Allure report as artifact
         if: always()
@@ -43,6 +64,18 @@ jobs:
         with:
           name: allure-report
           path: allure-report
+          retention-days: 5 # keep it light
+
+      # --- POST-CLEANUP ---
+      - name: Cleanup workspace
+        if: always()
+        run: |
+          echo "Cleaning up workspace..."
+          rm -rf node_modules
+          rm -rf allure-results allure-report
+          du -h --max-depth=1 . | sort -hr
+          echo "Disk usage after cleanup:"
+          df -h
 
   deploy:
     needs: test
@@ -50,6 +83,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Free up disk space before deployment
+        run: |
+          echo "Initial disk usage:"
+          df -h
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf /usr/local/lib/android
+          sudo apt-get clean
+          echo "Disk usage after cleanup:"
+          df -h
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -59,26 +103,31 @@ jobs:
           name: allure-report
           path: ./allure-report
 
-      - name: Cleanup old reports
+      - name: Prepare main branch
         run: |
+          echo "Preparing main branch..."
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git clone --branch gh-pages https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} gh-pages
-          cd gh-pages
-          echo "Found folders:"
-          ls -1
-          # Keep only latest 30 runs, delete older
-          ls -1tr allure-run-* | head -n -30 | xargs -d '\n' rm -rf || true
+          rm -rf main
+          git clone --depth=1 --branch main https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} main
+          cd main
+          echo "Existing report folders:"
+          ls -1 || true
+          # Keep only the 10 most recent allure runs to save space
+          ls -1tr allure-run-* 2>/dev/null | head -n -10 | xargs -r rm -rf
           cd ..
         shell: bash
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3.9.2
-
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./allure-report
           destination_dir: allure-run-${{ github.run_number }}
+          keep_files: false  # 🧹 Delete everything before new deploy to prevent disk overflow
+
+      - name: Show disk usage after deploy
+        run: df -h
 
   notify-success:
     needs: [test, deploy]
@@ -90,7 +139,7 @@ jobs:
         with:
           server_address: smtp.gmail.com
           server_port: 465
-          secure : true
+          secure: true
           username: seif.t.axelites@gmail.com
           password: ${{ secrets.Menzzo_Checkout }}
           subject: "✅ Playwright Tests Passed - Run #${{ github.run_number }}"
@@ -118,7 +167,7 @@ jobs:
         with:
           server_address: smtp.gmail.com
           server_port: 465
-          secure : true
+          secure: true
           username: seif.t.axelites@gmail.com
           password: ${{ secrets.Menzzo_Checkout }}
           subject: "❌ Playwright Tests Failed - Run #${{ github.run_number }}"
