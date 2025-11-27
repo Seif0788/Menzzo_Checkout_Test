@@ -26,7 +26,7 @@ jobs:
 
       - name: Run Playwright Tests
         id: playwright
-        run: npx playwright test --reporter=line,allure-playwright,json:results.json
+        run: npx playwright test --project=Global_Checkoutsuite --reporter=line,allure-playwright,json:results.json
         continue-on-error: true
 
       - name: Generate Allure Report
