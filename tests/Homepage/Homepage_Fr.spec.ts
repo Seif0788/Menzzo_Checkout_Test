@@ -9,5 +9,5 @@ test('Menzzo.fr homepage should load correctly', async ({page})=>{
     await expect(page).toHaveTitle(/Menzzo/);
 
     //Check the main logo
-    await expect(page.locator('img[alt="Menzzo"]')).toBeVisible();
+    await expect(page.locator('img[alt="Menzzo.fr"]')).toBeVisible();
 })
