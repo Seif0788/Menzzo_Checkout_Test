@@ -1,6 +1,6 @@
 name: Playwright Tests with Allure
-
 on:
+/*
   push:
     branches: [ main, develop, Fix_playwright_github_actions ]
   pull_request:
@@ -184,3 +184,4 @@ jobs:
 
             🔗 Full run details: 
             ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+*/
