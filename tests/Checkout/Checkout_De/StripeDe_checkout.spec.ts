@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { waitForCheckoutReady, clickElementByText, ClickRandomProduct, closeFloatingMenus, clickAddToCart } from '../../../helpers/utils';
 import { performCheckout, CheckoutData } from '../../../helpers/checkout_full_helper';
 
-test('add_to_cart_checkout', async ({ page }) => {
+test('Stripe_De', async ({ page }) => {
   // 1️⃣ Go to homepage
   await page.goto('https://www.menzzo.de/', { waitUntil: 'domcontentloaded' });
   console.log('✅ Homepage loaded.');

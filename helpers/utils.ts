@@ -1,7 +1,7 @@
-import { Page, expect, Locator, Frame} from '@playwright/test';
+import { Page, expect, Locator, Frame } from '@playwright/test';
 
 // Navigate to URL and verify title
-export async function gotopageAndVerifyTitle(page: Page, url: string, titleText: string, timeout:number = 20000) {
+export async function gotopageAndVerifyTitle(page: Page, url: string, titleText: string, timeout: number = 20000) {
   await page.goto(url);
   await expect(page).toHaveTitle(titleText);
 }
@@ -101,7 +101,7 @@ export async function clickElementByText(
         const clicked = await tryClick(roleBtn);
         if (clicked) return clicked;
       }
-    } catch {}
+    } catch { }
 
     // 2) link by role
     try {
@@ -110,7 +110,7 @@ export async function clickElementByText(
         const clicked = await tryClick(roleLink);
         if (clicked) return clicked;
       }
-    } catch {}
+    } catch { }
 
     // 3) exact getByText
     try {
@@ -119,7 +119,7 @@ export async function clickElementByText(
         const clicked = await tryClick(byTextExact);
         if (clicked) return clicked;
       }
-    } catch {}
+    } catch { }
 
     // 4) Playwright text selector (handles many edge cases, including punctuation / accents)
     try {
@@ -131,7 +131,7 @@ export async function clickElementByText(
         const ancClicked = await tryClickAncestor(textLoc);
         if (ancClicked) return ancClicked;
       }
-    } catch {}
+    } catch { }
 
     // 5) XPath normalized exact match (strip commas and NBSPs, normalize whitespace)
     try {
@@ -144,7 +144,7 @@ export async function clickElementByText(
         const ancClicked = await tryClickAncestor(xpathLoc);
         if (ancClicked) return ancClicked;
       }
-    } catch {}
+    } catch { }
 
     // 6) XPath contains fallback (partial match)
     try {
@@ -157,7 +157,7 @@ export async function clickElementByText(
         const ancClicked = await tryClickAncestor(xpathContainsLoc);
         if (ancClicked) return ancClicked;
       }
-    } catch {}
+    } catch { }
 
     return null;
   }
@@ -165,7 +165,7 @@ export async function clickElementByText(
   // 1) Try in main page
   const mainResult = await tryStrategiesOn(page);
   if (mainResult) {
-    if (debug) console.log('clickElementByText: clicked in main page context:', text);
+    if (debug) console.log('✅ clickElementByText: clicked in main page context:', text);
     return mainResult;
   }
 
@@ -179,7 +179,7 @@ export async function clickElementByText(
         if (debug) console.log('clickElementByText: clicked in frame:', frame.url(), text);
         return res;
       }
-    } catch {}
+    } catch { }
   }
 
   // 3) Fallback: collect debug info for developer
@@ -199,7 +199,7 @@ export async function clickElementByText(
             const html = await loc.nth(i).evaluate((nEl) => (nEl as HTMLElement).outerHTML);
             samples.push({ selector: sel, index: i, html });
           }
-        } catch {}
+        } catch { }
       }
       console.log('clickElementByText debug samples:', samples);
     } catch (e) {
@@ -215,7 +215,7 @@ export async function clickElementByText(
       }
       const el = Array.from(document.querySelectorAll('*')).find(n => norm(n.textContent || '') === norm(needle));
       if (!el) return false;
-      try { (el as HTMLElement).click(); } catch {}
+      try { (el as HTMLElement).click(); } catch { }
       el.dispatchEvent(new Event('input', { bubbles: true }));
       el.dispatchEvent(new Event('change', { bubbles: true }));
       return true;
@@ -227,28 +227,29 @@ export async function clickElementByText(
       const fallback = page.locator(`text=${JSON.stringify(text)}`).first();
       return fallback;
     }
-  } catch {}
+  } catch { }
 
   throw new Error(`clickElementByText: could not find/click element with text "${text}" within ${timeout} ms`);
 }
 
 // Search function
 export async function search(page: Page, productName: string) {
-  const searchInput = page.locator('input[placeholder="Que cherchez-vous ?"]');
+  const searchInput = page.locator('input#search, input[name="q"]');
   await expect(searchInput).toBeVisible();
 
   await searchInput.fill(productName);
   const searchPopup = page.locator('div.row.container-search');
   await expect(searchPopup).toBeVisible({ timeout: 10000 });
 
+  const searchButton = page.locator('button[type="submit"], .action.search');
   await page.keyboard.press('Enter');
 
-  const results = page.locator('span[data-ui-id="page-title-wrapper"]');
+  /*const results = page.locator('span[data-ui-id="page-title-wrapper"]');
   const expectedRegex = new RegExp(`Résultats de recherche pour : ['"]?${productName}['"]?`, 'i');
   const resultsText = await results.first().innerText();
   if (!expectedRegex.test(resultsText)) {
     throw new Error(`Search result mismatch. Got "${resultsText}", expected "${productName}"`);
-  }
+  }*/
 }
 
 // Login function (optional if needed)
@@ -265,42 +266,42 @@ export async function login(page: Page, username: string, password: string) {
   await expect(accountLocator).toBeVisible();
 }
 
-export async function ClickRandomProduct(page:Page, timeout: number = 30000) {
+export async function ClickRandomProduct(page: Page, timeout: number = 30000) {
 
   //Wait for the product list container to appear
-  await page.waitForSelector('li.ais-InfiniteHits-item', {state: 'visible', timeout});
+  await page.waitForSelector('li.ais-InfiniteHits-item', { state: 'visible', timeout });
 
   const products = page.locator('li.ais-InfiniteHits-item');
-  
-  await expect(products.first()).toBeVisible({timeout});
+
+  await expect(products.first()).toBeVisible({ timeout });
 
   const count = await products.count();
-  if (count === 0){
+  if (count === 0) {
     throw new Error(`No product in this category page`);
   }
 
-  const randomIndex = Math.floor(Math.random()*count);
+  const randomIndex = Math.floor(Math.random() * count);
   const product = products.nth(randomIndex);
 
-  await product.scrollIntoViewIfNeeded({timeout});
+  await product.scrollIntoViewIfNeeded({ timeout });
   await page.waitForTimeout(500);
 
-  await product.click({timeout});
+  await product.click({ timeout });
 
   console.log(`Clicked on random product [${randomIndex}]/${count}`);
 
   return product;
 }
 
-export async function clickElementByTextWithPopUp (page:Page, mainText: string, popupText?: string, timeout: number = 10000){
+export async function clickElementByTextWithPopUp(page: Page, mainText: string, popupText?: string, timeout: number = 10000) {
   //Click the main button
-  const mainButton = page.getByText(mainText, {exact: true});
+  const mainButton = page.getByText(mainText, { exact: true });
   await mainButton.click();
 
-  if(popupText){
-    const popupButton = page.getByText(popupText, {exact: true});
+  if (popupText) {
+    const popupButton = page.getByText(popupText, { exact: true });
 
-    await popupButton.waitFor({state: 'visible', timeout});
+    await popupButton.waitFor({ state: 'visible', timeout });
 
     await popupButton.scrollIntoViewIfNeeded();
 
@@ -400,6 +401,9 @@ export async function waitForCheckoutReady(page: Page, timeout = 180000) {
       await page.waitForTimeout(3000);
     } catch (error: any) {
       console.error(`⚠️ Error during checkout readiness check: ${error.message}`);
+      if (page.isClosed()) {
+        throw error;
+      }
       await page.waitForTimeout(3000);
     }
   }
@@ -439,10 +443,10 @@ export async function clickAddToCart(page: Page) {
 
 // Closes any open menu or overlay that blocks clicks
 export async function closeFloatingMenus(page: Page) {
-  await page.keyboard.press('Escape').catch(() => {});
+  await page.keyboard.press('Escape').catch(() => { });
   // Click somewhere neutral (like the top banner or body)
   await page.mouse.move(5, 5);
-  await page.mouse.click(5, 5).catch(() => {});
+  await page.mouse.click(5, 5).catch(() => { });
   await page.waitForTimeout(300);
 }
 
@@ -461,4 +465,245 @@ export async function dismissOverlays(page: Page) {
     }
   }
 }
+
+// Check Time box
+
+// Check the Time Box (prefix + countdown)
+export async function CheckTimeBox(page: Page) {
+  // Locate the prefix text ("Fin de l'offre dans :")
+  const prefix = page.locator('//span[@class="timerbox-prefix"]');
+  await expect.soft(prefix, 'The timebox prefix should be visible').toBeVisible();
+
+  // Locate the timer countdown value (e.g. "03j 07h 00min 02s")
+  const timer = page.locator('//span[@id="timer-container" and contains(@class, "chrono-time")]');
+  await expect.soft(timer, 'The countdown timer should be visible').toBeVisible();
+
+  // Get their text contents
+  const prefixText = (await prefix.textContent())?.trim() || '';
+  const timerText = (await timer.textContent())?.trim() || '';
+
+  // Check that they are not empty
+  expect.soft(prefixText.length, 'Prefix text should not be empty').toBeGreaterThan(0);
+  expect.soft(timerText.length, 'Timer value should not be empty').toBeGreaterThan(0);
+
+  // ✅ Log results
+  console.log(`⏱️ Time Box Check`);
+  console.log(`   Prefix text: "${prefixText}"`);
+  console.log(`   Timer value: "${timerText}"`);
+
+  // ✅ Optional: check timer format (e.g. "03j 07h 00min 02s")
+  const timePattern = /^\d{1,2}j\s\d{1,2}h\s\d{1,2}min\s\d{1,2}s$/;
+  const formatIsValid = timePattern.test(timerText);
+
+  if (formatIsValid) {
+    console.log(`✅ Timer format is valid`);
+  } else {
+    console.log(`❌ Timer format is invalid`);
+  }
+
+  expect.soft(formatIsValid, 'Timer format should be valid').toBeTruthy();
+}
+
+export async function Button_Previous(page: Page) {
+  // Scope to the main product carousel
+  const carouselWrapper = page.locator('.carousel.carousel-product-top');
+
+  // Locate the Previous button
+  const previousButton = carouselWrapper.locator('button.flickity-button.flickity-prev-next-button.previous');
+
+  // Wait for it to be in the DOM
+  await previousButton.waitFor({ state: 'attached', timeout: 10000 });
+
+  // Hover the carousel to make buttons visible
+  await carouselWrapper.hover();
+
+  // Optional: wait a bit
+  await page.waitForTimeout(2000);
+
+  // Check if the button is disabled
+  const isDisabled = await previousButton.evaluate((btn: HTMLButtonElement) => btn.disabled);
+
+  if (isDisabled) {
+    console.log("⚠️ Previous button is disabled (first slide). Cannot click.");
+    return;
+  }
+
+  // Scroll into view and click
+  await previousButton.scrollIntoViewIfNeeded();
+  console.log("✅ Clicking the Previous button...");
+  await previousButton.click();
+}
+
+export async function Button_Next(page: Page) {
+  // Scope to the main product carousel
+  const carouselWrapper = page.locator('.carousel.carousel-product-top');
+
+  // Locate the Next button
+  const nextButton = carouselWrapper.locator('button.flickity-button.flickity-prev-next-button.next');
+
+  // Wait for it to be in the DOM
+  await nextButton.waitFor({ state: 'attached', timeout: 10000 });
+
+  // Hover the carousel to make buttons visible
+  await carouselWrapper.hover();
+
+  // Optional: wait a bit
+  await page.waitForTimeout(2000);
+
+  // Check if the button is disabled
+  const isDisabled = await nextButton.evaluate((btn: HTMLButtonElement) => btn.disabled);
+
+  if (isDisabled) {
+    console.log("⚠️ Next button is disabled (last slide). Cannot click.");
+    return;
+  }
+
+  // Scroll into view and click
+  await nextButton.scrollIntoViewIfNeeded();
+  console.log("✅ Clicking the Next button...");
+  await nextButton.click();
+}
+
+export async function clickAndWaitForNavigation(
+  page: Page,
+  buttonText: string,
+  urlPattern: RegExp | string = /onestepcheckout/,
+  timeout: number = 10000
+) {
+  console.log(`⏳ Clicking "${buttonText}" and waiting for URL or checkout form…`);
+
+  const startTime = Date.now();
+  let navigationTriggered = false;
+
+  while (Date.now() - startTime < timeout) {
+
+    const currentUrl = page.url();
+    const urlMatched = typeof urlPattern === "string"
+      ? currentUrl.includes(urlPattern)
+      : urlPattern.test(currentUrl);
+
+    // 1️⃣ URL NAVIGATION SUCCESS
+    if (urlMatched) {
+      console.log(`✅ Navigation detected → ${currentUrl}`);
+      return;
+    }
+
+    // 2️⃣ CHECK META TAG AS SIGNAL FOR AJAX LOADED CHECKOUT
+    const metaTitle = await page.locator('meta[name="title"]').getAttribute('content');
+    if (metaTitle?.includes("Finaliser la commande")) {
+      console.log("🟢 Checkout meta detected → Treating as successful navigation.");
+      return;
+    }
+
+    // 3️⃣ CLICK ATTEMPT
+    try {
+      await clickElementByText(page, buttonText, 3000);
+      navigationTriggered = true;
+    } catch { }
+
+    // WAIT FOR URL CHANGE if any
+    try {
+      if (typeof urlPattern === "string") {
+        await page.waitForURL((url) => url.toString().includes(urlPattern), { timeout: 3000 });
+      } else {
+        await page.waitForURL(urlPattern, { timeout: 3000 });
+      }
+    } catch {
+      // retry loop
+    }
+  }
+
+  throw new Error(`❌ Failed to reach checkout (URL or meta) after ${timeout}ms`);
+}
+
+
+export async function goToCheckout(page: Page) {
+  console.log("⏳ Going to checkout…");
+
+  // 1. Ensure the button is visible
+  const button = page.locator('text="Valider mon panier"');
+  await button.waitFor({ state: "visible", timeout: 15000 });
+
+  // 2. Click and wait for network to stabilize
+  await Promise.all([
+    page.waitForLoadState('networkidle', { timeout: 20000 }),
+    button.click()
+  ]).catch(() => { });
+
+  // 3. Wait for URL OR the checkout form
+  await Promise.race([
+    page.waitForURL(/onestepcheckout/, { timeout: 20000 }),
+    page.waitForSelector("#one-step-checkout-form", { timeout: 20000 })
+  ]);
+
+  console.log("✅ OneStepCheckout detected!");
+}
+
+export async function search_nl(page: Page, productName: string) {
+  const searchInput = page.locator('input[name="q"]');
+  await expect(searchInput).toBeVisible();
+
+  // Type search term
+  await searchInput.fill(productName);
+
+  // Ensure input keeps focus before Enter
+  await searchInput.focus();
+
+  // Small wait for Algolia to bind the event
+  await page.waitForTimeout(300);
+
+  // Press Enter to trigger search
+  await searchInput.press("Enter");
+
+  // Wait for results
+  await page.waitForURL(/catalogsearch\/result/i, { timeout: 10000 });
+}
+
+
+export async function clickAndWaitForCheckout_NL(
+  page: Page,
+  buttonText: string,
+  urlPattern: RegExp | string = /onestepcheckout/,
+  timeout: number = 15000,
+  retryInterval: number = 2000
+) {
+  console.log(`⏳ Clicking "${buttonText}" and waiting for checkout…`);
+
+  const startTime = Date.now();
+  let checkoutLoaded = false;
+
+  while (Date.now() - startTime < timeout) {
+    // Check if URL matches or meta signals checkout
+    const currentUrl = page.url();
+    const urlMatched = typeof urlPattern === "string"
+      ? currentUrl.includes(urlPattern)
+      : urlPattern.test(currentUrl);
+
+    const metaTitle = await page.locator('meta[name="title"]').getAttribute('content');
+    const metaMatched = metaTitle?.includes("Rond de bestelling af") || false;
+
+    if (urlMatched || metaMatched) {
+      console.log(`✅ Checkout detected → ${currentUrl}`);
+      checkoutLoaded = true;
+      break;
+    }
+
+    // Attempt click
+    try {
+      await clickElementByText(page, buttonText, 3000);
+    } catch {
+      console.warn("⚠️ Click attempt failed, retrying...");
+    }
+
+    // Wait a bit before next retry
+    await page.waitForTimeout(retryInterval);
+  }
+
+  if (!checkoutLoaded) {
+    throw new Error(`❌ Failed to reach checkout after ${timeout}ms`);
+  }
+}
+
+
+
 

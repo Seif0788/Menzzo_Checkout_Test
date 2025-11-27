@@ -1,0 +1,49 @@
+
+Running 1 test using 1 worker
+
+  ✘  1 [Menzzo_Checkout_Fr] › tests\Checkout\Checkout_Test\Menzzo_Nl\Nl_Stripe.spec.ts:11:1 › Nl_Stripe (13.6s)
+
+
+  1) [Menzzo_Checkout_Fr] › tests\Checkout\Checkout_Test\Menzzo_Nl\Nl_Stripe.spec.ts:11:1 › Nl_Stripe 
+
+    Error: expect.toBeVisible: Error: strict mode violation: locator('.ais-SearchBox-form-submit') resolved to 2 elements:
+        1) <label for="search" data-role="minisearch-label" class="label action ais-SearchBox-form-submit">…</label> aka getByText('Search Search X')
+        2) <button title="Search" aria-label="Search" class="action search ais-SearchBox-form-submit">…</button> aka getByRole('button', { name: 'Search' })
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for locator('.ais-SearchBox-form-submit')[22m
+
+
+       at ..\helpers\utils.ts:654
+
+      652 |   // CLICK the Algolia search button (mandatory for menzzo.nl)
+      653 |   const submitButton = page.locator('.ais-SearchBox-form-submit');
+    > 654 |   await expect(submitButton).toBeVisible();
+          |                              ^
+      655 |   await submitButton.click();
+      656 | }
+      657 |
+        at search_nl (C:\Users\SeifeddineTajouri\Desktop\Seif\Menzzo\Test\playwright\For_test\helpers\utils.ts:654:30)
+        at C:\Users\SeifeddineTajouri\Desktop\Seif\Menzzo\Test\playwright\For_test\tests\Checkout\Checkout_Test\Menzzo_Nl\Nl_Stripe.spec.ts:19:3
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\Menzzo_Nl-Nl_Stripe-Nl-Stripe-Menzzo-Checkout-Fr\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\Menzzo_Nl-Nl_Stripe-Nl-Stripe-Menzzo-Checkout-Fr\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\Menzzo_Nl-Nl_Stripe-Nl-Stripe-Menzzo-Checkout-Fr\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\Menzzo_Nl-Nl_Stripe-Nl-Stripe-Menzzo-Checkout-Fr\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\Menzzo_Nl-Nl_Stripe-Nl-Stripe-Menzzo-Checkout-Fr\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [Menzzo_Checkout_Fr] › tests\Checkout\Checkout_Test\Menzzo_Nl\Nl_Stripe.spec.ts:11:1 › Nl_Stripe 

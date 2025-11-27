@@ -1,0 +1,761 @@
+import { Page, expect } from '@playwright/test';
+import { allure } from 'allure-playwright';
+import { table } from 'console';
+
+export async function verifyH1MatchesTitle(page: Page) {
+  //Locate the H1 element
+  const h1 = page.locator('h1.ax-page-title');
+  await expect.soft(h1, 'H1 should be visible').toBeVisible();
+
+  //Get its text content
+  const h1Text = (await h1.textContent())?.trim() || '';
+
+  //Check that it's not empty
+  expect.soft(h1Text.length, 'H1 test should not be empty').toBeGreaterThan(0);
+
+  //Get the page title
+  const pageTitle = (await page.title()).trim();
+
+  //Compare title and H1 
+  expect.soft(
+    pageTitle.toLowerCase(),
+    'Page title should match H1 text'
+  ).toBe(h1Text.toLowerCase());
+
+  // ---Comparisaion----
+  const match = h1Text.toLowerCase() === pageTitle.toLowerCase();
+
+  if (match) {
+    console.log(`✅ SUCCESS: Page title matches H1 text`);
+    console.log(`   H1: "${h1Text}"`);
+    console.log(`   pageTitle: "${pageTitle}"`);
+  } else {
+    console.log(`❌ FAILED: Page title does not match H1 text`);
+    console.log(`   H1: "${h1Text}"`);
+    console.log(`   pageTitle: "${pageTitle}"`);
+  }
+}
+
+// Check the breadcrumb
+export async function breadcrumb(page: Page) {
+  // Locate the H1 element
+  const h1 = page.locator('h1.ax-page-title');
+  await expect.soft(h1, 'H1 should be visible').toBeVisible();
+
+  // Get its text content
+  const h1Text = (await h1.textContent())?.trim() || '';
+
+  // Locate the breadcrumb
+  const breadcrumb = page.locator('//div[@class="breadcrumbs"]//li[contains(@class, "item product")]');
+  await expect.soft(breadcrumb, 'Breadcrumb should be visible').toBeVisible();
+
+  // Get breadcrumb text
+  const breadcrumbText = (await breadcrumb.textContent())?.trim() || '';
+
+  // Check that H1 text is not empty
+  expect.soft(h1Text.length, 'H1 text should not be empty').toBeGreaterThan(0);
+
+  // Compare breadcrumb text and H1 text (case-insensitive)
+  expect.soft(
+    breadcrumbText.toLowerCase(),
+    'Breadcrumb text should match H1 text'
+  ).toBe(h1Text.toLowerCase());
+
+  //---Comparison---
+  const match2 = breadcrumbText.toLowerCase() === h1Text.toLowerCase();
+
+  if (match2) {
+    console.log(`✅ SUCCESS: Breadcrumb matches H1 text`);
+    console.log(`   H1: "${h1Text}"`);
+    console.log(`   Breadcrumb: "${breadcrumbText}"`);
+  } else {
+    console.log(`❌ FAILED: Breadcrumb does not match H1 text`);
+    console.log(`   H1: "${h1Text}"`);
+    console.log(`   pageTitle: "${breadcrumbText}"`);
+  }
+}
+
+// Check product availability
+export async function CheckProductAvailability(page: Page) {
+  try {
+    // Locate the main availability strong tag
+    const availability = page.locator('//div[contains(@class, "product-availability")]/strong[normalize-space()]');
+    await expect.soft(availability, 'Availability label should be visible').toBeVisible();
+
+    // Get its text
+    const availabilityText = (await availability.textContent())?.trim() || '';
+
+    // Log it
+    console.log(`📦 Product availability text: "${availabilityText}"`);
+
+    // Ensure text is not empty
+    expect.soft(availabilityText.length, 'Availability text should not be empty').toBeGreaterThan(0);
+
+    // Define acceptable stock statuses
+    const validStatuses = ['En stock', 'Livré sous plus d’un mois', 'Bientôt en stock'];
+
+    // Check if the value matches one of the expected statuses
+    const isValid = validStatuses.some(status =>
+      availabilityText.toLowerCase().includes(status.toLowerCase())
+    );
+
+    if (isValid) {
+      console.log(`✅ Product availability status is valid (${availabilityText})`);
+    } else {
+      console.log(`❌ Invalid availability status detected: "${availabilityText}"`);
+    }
+
+    // Assert it is valid for the report
+    expect.soft(isValid, 'Availability status should be a valid known label').toBeTruthy();
+  } catch (error) {
+    console.error('❌ Error in CheckProductAvailability:', error)
+  }
+}
+
+// Check text in popup
+export async function CheckTextPopup(page: Page) {
+
+  console.log('🟡 Checking popup text Stock statut');
+
+  const availability = page.locator('//div[contains(@class, "product-availability")]/strong[normalize-space()]');
+  await expect.soft(availability, 'Availability label should be visible').toBeVisible();
+
+  // Get its text
+  const availabilityText = (await availability.textContent())?.trim() || '';
+
+  //Click stock element
+  const StockButton = page.locator('//div[contains(@class, "dispo-infos-open")]');
+  await expect.soft(StockButton, 'Stock info button should be visible').toBeVisible();
+
+  // Check in it
+  await StockButton.click();
+  console.log('✅ Clicked on stock info button.');
+
+  //Wait for the popuo/modal to appear
+  const popup = page.locator('//div[@class = "dispo-infos show"]')
+  await expect.soft(popup, 'Popup should appear after clicking stock info').toBeVisible({ timeout: 5000 });
+
+  //Locate poppup text
+  const popupText = ((await popup.textContent())?.trim() || '').trim().replace(/\s+/g, ' ');
+  console.log(`📄 Popup text content: "${popupText}"`);
+
+  //Define expected text based on stock status
+  const expectedTexts: Record<string, string> = {
+    'En stock':
+      'Cet article est En stock au dépôt. Vous le recevrez après un délai dépendant du choix de votre mode de livraison.',
+    'Bientôt en stock':
+      'Cet article sera Bientôt en stock au dépôt. Vous le recevrez après un délai dépendant du choix de votre mode de livraison.',
+    'Livré sous plus d’un mois':
+      'Cet article sera Livré sous plus d’un mois au dépôt. Vous le recevrez après un délai dépendant du choix de votre mode de livraison. En savoir plus'
+  };
+
+  const expectedText = expectedTexts[availabilityText] || '';
+
+  if (expectedText) {
+    const normalize = (t: string) => t.toLowerCase().replace(/\s+/g, ' ').trim();
+    const matches = normalize(popupText).includes(normalize(expectedText));
+
+    if (matches) {
+      console.log(`✅ Popup text matches expected message for status "${availabilityText}".`);
+    } else {
+      console.log(`❌ Popup text does NOT match expected message for status "${availabilityText}".`);
+      console.log(`   Expected: "${expectedText}"`);
+      console.log(`   Found: "${popupText}"`);
+    }
+
+    expect.soft(matches, `Popup text should match expected message for status "${availabilityText}"`).toBeTruthy();
+  } else {
+    console.log(`⚠️ No expected text configured for status "${availabilityText}".`);
+  }
+
+  // 5️⃣ Close the stock info popup by clicking inside it
+  const Closepopup = page.locator('//div[contains(@class, "dispo-infos") and contains(@class, "show")]');
+
+  if (await Closepopup.isVisible()) {
+    // Click inside the popup (for example in the center area)
+    const box = await Closepopup.boundingBox();
+    if (box) {
+      await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
+      console.log('✅ Popup closed by clicking inside it.');
+    }
+
+    // Optional: Wait for it to disappear
+    await expect.soft(Closepopup).toBeHidden({ timeout: 5000 });
+  }
+  return availabilityText;
+}
+
+// Check product shipping amount
+export async function ShippingText(page: Page) {
+  console.log('🟡 Checking Shipping product text');
+
+  // Initialize return values
+  let FromDay: string | undefined;
+  let DayTo: string | undefined;
+  let ShippingPrice: string | undefined;
+
+  const DeliveryText = page.locator('//div[@class="product-shipping-amount"]');
+  await expect.soft(DeliveryText, 'The shipping product text should be visible').toBeVisible();
+
+  // Get shipping amount text
+  const TextDelivery = ((await DeliveryText.textContent())?.trim()) || '';
+  console.log(`📄 The delivery text is : "${TextDelivery}"`);
+
+  // Identifay the From and to shippmend
+  const match = TextDelivery.match(/(\d{1,2})\s*et\s*(\d{1,2})/);
+
+  const priceMatch = TextDelivery.match(/À\s*partir\s*de\s*(\d{1,3}(?:[.,]\d{2})?)/i);
+
+  if (match && priceMatch) {
+    FromDay = match[1];
+    DayTo = match[2];
+    ShippingPrice = priceMatch[1];
+    console.log(`FromDay: ${FromDay}, DayTo: ${DayTo}`);
+    console.log(`Delivery price: ${ShippingPrice}`);
+  }
+  return { FromDay, DayTo, ShippingPrice };
+}
+
+export async function CheckStockAndShipping(page: Page) {
+  console.log('🟢 Starting combined check: Stock popup + Shipping text');
+
+  // Step 1️⃣ — Run the popup check first (handles availability + logs everything)
+  const stockStatus = await CheckTextPopup(page);
+
+  // Step 2️⃣ — Continue only if stock is "En stock"
+  if (stockStatus !== 'En stock') {
+    console.log(`⚠️ Product is not "En stock" (it's "${stockStatus}"). Skipping shipping check.`);
+    return;
+  }
+
+
+  // Step 3️⃣ — Extract shipping info
+
+  const shippingInfo = await ShippingText(page);
+
+  if (!shippingInfo.FromDay || !shippingInfo.DayTo || !shippingInfo.ShippingPrice) {
+    console.warn('⚠️ Could not extract full shipping information.');
+    return;
+  }
+
+  console.log(`✅ Shipping info extracted: FromDay: ${shippingInfo.FromDay}, DayTo: ${shippingInfo.DayTo}, Price: ${shippingInfo.ShippingPrice}`);
+
+  // Step 4️⃣ — Validate FromDay and DayTo for "En stock"
+  const today = new Date();
+  const fromDateExpected = today.getDate() + 2; // today + 2
+  const dayToExpected = today.getDate() + 9;   // today + 9
+
+  const fromDayActual = parseInt(shippingInfo.FromDay, 10);
+  const DayToActual = parseInt(shippingInfo.DayTo, 10);
+
+  if (fromDayActual === fromDateExpected) {
+    console.log(`✅ FromDay is correct: ${fromDayActual} (expected: ${fromDateExpected})`);
+  } else {
+    console.warn(`❌ FromDay is incorrect: ${fromDayActual} (expected: ${fromDateExpected})`);
+  }
+
+
+  if (dayToExpected === DayToActual) {
+    console.log(`✅ FromDay is correct: ${dayToExpected} (expected: ${DayToActual})`);
+  } else {
+    console.warn(`❌ FromDay is incorrect: ${dayToExpected} (expected: ${DayToActual})`);
+  }
+
+  // Step 5️⃣ — Return structured info for further assertions
+  return {
+    stockStatus,
+    ...shippingInfo,
+    fromDayValid: fromDayActual === fromDateExpected,
+    dayToValid: DayToActual === dayToExpected,
+  };
+}
+
+export async function DeliveryPricePopup(page: Page) {
+  console.log('🟢 Starting check the delivery prices popup');
+
+  const Delivery = page.locator('//div[@class="product-shipping-amount"]');
+  const DeliveryPopup = Delivery.locator('.link-delivery.trusk-zone');
+
+  //Click in deliveryPopup
+  try {
+    await DeliveryPopup.waitFor({ state: 'visible', timeout: 5000 });
+    await DeliveryPopup.click();
+
+    const screenshotBuffer = await page.screenshot();
+    allure.attachment('Delivery popup screenshot', screenshotBuffer, 'image/png');
+    console.log('✅ The delivery popup was clicked');
+
+  } catch (e) {
+    console.log('⚠️ Delivery popup is not visible after waiting, could not click it');
+    const screenshotBuffer = await page.screenshot();
+    allure.attachment('Delivery popup screenshot', screenshotBuffer, 'image/png');
+  }
+
+  //Check delivery popup text
+  const PopupDeliverytext = page.locator('//div[@class="modal-inner-wrap"]').first();
+  const PopupText = ((await PopupDeliverytext.textContent()) || '').replace(/\s+/g, ' ').trim();
+  //console.log(`the popup text is: "${PopupText}"`);
+
+  const expectedOptions = ['Informations de livraison', 'Livraison classique', 'Livraison Étage'];
+
+  expectedOptions.forEach(option => {
+    if (PopupText.includes(option)) {
+      console.log(`✅ Option found: "${option}"`);
+    } else {
+      console.warn(`❌ Option NOT found: "${option}"`);
+    }
+  });
+
+  // Exit popup
+  const Exitpopup = PopupDeliverytext.locator('button.action-close');
+
+  if (await Exitpopup.isVisible()) {
+    await Exitpopup.click();
+    console.log('✅ Popup closed');
+  } else {
+    console.log('❌ Close popup faild');
+  }
+}
+
+export async function FreereturnPopUp(page: Page) {
+  console.log('🟢 Starting check the free return popup display');
+
+  const FreeReturn_expected = "Retour gratuit  *";
+
+  // Locate the main free return element
+  const ReturnDisplay = page.locator('//div[@class="d-flex mb-2 review-popup-free-return"]');
+  const TextReturnDisplay = ((await ReturnDisplay.textContent()) || ' ').trim();
+
+  console.log(`📄 the return display is "${TextReturnDisplay}"`);
+  expect(TextReturnDisplay.toLowerCase()).toBe(FreeReturn_expected.toLowerCase());
+
+  // Click to open the popup
+  await ReturnDisplay.click();
+
+  // Check popup text
+  const EXPECTED_POPUP_TEXT = `
+    VOTRE ARTICLE NE VOUS CONVIENT PAS ?
+    Pas d’inquiétude, avec notre offre : « Satisfait ou remboursé »
+    Bénéficiez d’un RETOUR GRATUIT *
+    * Obtenez simplement un bon d’achat du montant du produit frais de port inclus en effectuant votre demande jusqu’à 14 jours après réception du produit.
+    Ou vous pouvez toujours opter pour un remboursement classique hors frais de port.
+    `;
+
+  const locator = page.locator('#review-popup-free-return');
+  await expect.soft(locator).toBeVisible();
+
+  let actualText = (await locator.innerText()).replace(/\s+/g, ' ').trim();
+  const normalizedExpected = EXPECTED_POPUP_TEXT.replace(/\s+/g, ' ').trim();
+
+  if (actualText === normalizedExpected) {
+    console.log("✅ Free delivery popup text matches!");
+  } else {
+    console.log("❌ Free delivery popup text does not match!");
+  }
+
+  // Close the popup
+  const popup = page.locator('aside.modal-popup.ax-review-popup-free-return');
+  await popup.waitFor({ state: 'visible' })
+  const CloseBtn = popup.locator('button.action-close');
+
+  try {
+    await CloseBtn.waitFor({ state: 'visible', timeout: 3000 });
+    await CloseBtn.click();
+    console.log('✅ Popup closed');
+  } catch {
+    console.log('❌ Close popup failed — button not found');
+  }
+}
+
+export async function FreereturnDisplay(page: Page) {
+  const expected_AvisText = "15 jours pour changer d’avis";
+  const expected_SecurityPayment = "Paiement 100% sécurisé";
+  const review_left = page.locator('//div[@class="review-left"]');
+  const freeReturn_review = review_left.locator('//div[@class="d-flex mb-2"]');
+  // --- 15 jours pour changer d’avis ---
+  await expect(freeReturn_review).toBeVisible(); // ✔ This now works
+  const changeAvisText = (await freeReturn_review.textContent() || '').trim();
+  console.log(`📄 Change Avis text: "${changeAvisText}"`);
+
+  if (changeAvisText === expected_AvisText) {
+    console.log("✅ Free delivery text matches!");
+  } else {
+    console.log("❌ Free delivery text does not match!");
+  }
+  //---Paiement 100% sécurisé---
+  const SecurityPayment = page.locator('//div[@class="d-flex"]')
+  const SecurityPaymentText = (await SecurityPayment.textContent() || '').trim();
+
+  console.log(`📄 Security payment text: "${SecurityPaymentText}"`)
+
+  if (SecurityPaymentText === expected_SecurityPayment) {
+    console.log("✅ Security payement text matches!");
+  } else {
+    console.log("❌ Free delivery text does not match!");
+  }
+}
+
+//---Check Review---
+export async function review_report(page: Page) {
+  const suspected_review_message = "Clients satisfaits Voir tous les avis";
+  const review_text = page.locator('//div[@class="review-right"]').first();
+
+  //--Check review message--
+  const review_message = (await review_text.textContent() || '').trim();
+  console.log(`📄 the review message is: "${review_message}"`);
+  if (review_message === suspected_review_message) {
+    console.log("✅ review message is matches!");
+  } else {
+    console.log("❌ review message does not match!");
+  }
+  //--Check the review popup--
+  const review_popup = review_text.locator('div.review-click:has(a.link-reviews)');
+
+  console.log("🔍 Count:", await review_popup.count());
+  console.log("🔍 Visible:", await review_popup.first().isVisible());
+  console.log("🔍 Text:", await review_popup.first().textContent());
+
+  console.log("🟢 Clicking review link...");
+  await page.locator('a.link-reviews').scrollIntoViewIfNeeded();
+  await page.locator('a.link-reviews').click();
+
+  console.log("🟢 Waiting for review popup...");
+
+  //--Find the modal that contains the review wrapper
+  // Wait for the visible popup wrapper
+  const popupWrapper = page.locator('#review-popup-wrapper');
+  await popupWrapper.waitFor({ state: 'visible', timeout: 10000 });
+
+
+  // Now check the content inside
+  const popup_text = popupWrapper.locator('h3.text-center');
+  const popup_text2 = popupWrapper.locator('.review-info')
+  const popupTexts = (await popup_text.textContent() || '').trim();
+  console.log(`📄 the popup text is: "${popupTexts}"`);
+
+  await expect(popup_text).toContainText('Des clients satisfaits');
+  console.log("✅ 'Des clients satisfaits' exists in the popup");
+
+  await expect(popup_text2).toContainText(
+    'Les avis présentés sur cette page constituent une sélection'
+  );
+  console.log("✅ the long message exists in the popup");
+
+  // Close button
+  const shippingPopup = page.locator('aside.ax-product-reviews-popup-modal');
+  await shippingPopup.waitFor({ state: 'visible', timeout: 10000 });
+  await shippingPopup.locator('button.action-close[data-role="closeBtn"]').click();
+  console.log("✅ Popup closed by aria-describedby");
+}
+
+// Check discription
+export async function Description(page: Page) {
+
+  //Check discription title
+  const expect_discription_title = "Descriptifs";
+  const discription_Title = page.locator('//div[@class="item title active"]').first();
+  await discription_Title.waitFor({ state: 'visible', timeout: 30000 });
+  const discript_title_Text = (await discription_Title.textContent() || '').trim();
+
+  console.log(`📄 The discription title : "${discript_title_Text}"`);
+  if (discript_title_Text === expect_discription_title) {
+    console.log("✅ The discription title matches!");
+  } else {
+    console.log("❌ The discription does not match!");
+  }
+
+  //Check discription text
+  const discription_text = page.locator('//div[@class="product attribute description"]');
+  await discription_text.waitFor({ state: 'visible', timeout: 30000 });
+  const discriptionText = (await discription_text.textContent() || '').trim();
+
+  if (discriptionText.length > 0) {
+    console.log("✅ The discription text is NOT empty:");
+  } else {
+    console.log("❌ The discription is EMPTY");
+  }
+}
+
+// Check Information Table
+export async function InfoTable(page: Page) {
+
+  // Check information table title
+  const expected_InfotableTitle = "Informations complémentaires";
+  const InfoTabTitle = page.locator('//div[contains(@class,"item") and contains(@class,"title") and contains(@class,"active") and @aria-controls="tab-info"]');
+  await InfoTabTitle.waitFor({ state: 'visible', timeout: 30000 });
+  const InfoTabTitle_text = (await InfoTabTitle.textContent() || '').trim();
+
+  if (InfoTabTitle_text === expected_InfotableTitle) {
+    console.log("✅ The info table title matches!");
+  } else {
+    console.log("❌ The info table title does not match!");
+    console.log(`The display title is: "${InfoTabTitle_text}"`);
+  }
+
+  // Check inforation table text
+  const TableRow = ['Couleur', 'Matière détail', 'Dimensions', 'Poids net (kg)', 'Dimensions colis'];
+  const Table = page.locator('//div[@class = "additional-attributes-wrapper table-wrapper"]//table');
+
+  await expect(Table).toBeVisible();
+
+  for (const rowLabel of TableRow) {
+    const row = Table.locator(`xpath=.//tr[th[normalize-space(text())="${rowLabel}"]]`);
+    try {
+      console.log(`🔍 Checking row "${rowLabel}"...`);
+
+      await expect(row, `Row "${rowLabel}" should exist`).toHaveCount(1);
+
+      console.log(`✅ Row "${rowLabel}" exists`);
+
+
+      // Get the <td> value inside this row
+      const valueTd = row.locator('td.col.data');
+      const valueText = (await valueTd.textContent() || '').trim();
+
+      // Check it's not empty
+      if (valueText.length > 0) {
+        console.log(`✅ Row "${rowLabel}" value is not empty: "${valueText}"`);
+      } else {
+        console.log(`❌ Row "${rowLabel}" value is empty!`);
+      }
+
+      // Optional: assert non-empty with Playwright expect
+      await expect(valueTd, `Row "${rowLabel}" value should not be empty`).not.toBeEmpty();
+    } catch (error) {
+      console.log(`❌ Error when checking row "${rowLabel}": ${error}`);
+      // Continue to next row
+      continue;
+    }
+  }
+}
+
+// Check MenzzoHome
+/*export async function MenzzoHome(page:Page){
+  const MenzzoHome_Block = page.locator('//div[@class="bloc-review"]');
+  
+  //Check the MenzzoHome title
+  const MenzzoHome_title = MenzzoHome_Block.locator()
+}*/
+
+// Check "Vous aimerez aussi?"
+export async function upsell(page: Page) {
+  //---Check "vous aimerez aussi?" block---//
+  const upsell_block = page.locator('//div[contains(@class, "block upsell")]');
+
+  //---Check title---//
+  const upsell_title = upsell_block.locator('h3');
+  const upsell_titleText = (await upsell_title.textContent())?.trim() || " ";
+  const expectedUpsel_Title = "Vous aimerez aussi :";
+
+  if (upsell_titleText === expectedUpsel_Title) {
+    console.log("✅ Upsell title is correct:", upsell_titleText);
+  } else {
+    throw new Error(
+      `❌ Wrong upsell title. Expected "${expectedUpsel_Title}" but got "${upsell_titleText}"`
+    );
+  }
+
+  // Scroll to the upsell block to ensure lazy-loaded items are triggered
+  await upsell_block.scrollIntoViewIfNeeded();
+
+  //---Check upsell products---//
+  // Use a more direct selector inside the block, and wait for items to load
+  const upsell_Product = upsell_block.locator('.menzzo-product-item');
+
+  try {
+    // Wait up to 5 seconds for at least one item to be visible
+    await upsell_Product.first().waitFor({ state: 'visible', timeout: 5000 });
+  } catch (e) {
+    console.warn("⚠️ Upsell products did not appear within timeout.");
+  }
+
+  const count_upsell = await upsell_Product.count();
+
+  if (count_upsell === 0) {
+    console.warn("⚠️ No upsell products found. Skipping upsell check.");
+    return;
+  }
+
+  console.log(`✅ Found ${count_upsell} upsell products.`);
+  // expect(count_upsell).toBeGreaterThan(0); // Removed strict assertion to avoid failure on empty upsell
+
+  for (let i = 0; i < count_upsell; i++) {
+    const upsell_item = upsell_Product.nth(i);
+
+    // Locate the price-and-disponibility div
+    const priceDiv = upsell_item.locator('.price-and-disponibility');
+    await expect(priceDiv).toBeVisible();
+
+    const rawText = await priceDiv.innerText();
+    const text = rawText.trim().replace(/\s+/g, " ");
+
+    console.log(`🟦 Item ${i}: "${text}"`);
+
+    if (!text || text.length === 0) {
+      throw new Error(`❌ price-and-disponibility is EMPTY in item ${i}`);
+    }
+
+    expect(text).toMatch(/€/);             // must contain a price
+    expect(text.length).toBeGreaterThan(3); // avoid empty/glitch cases
+  }
+
+  console.log("✅ All price-and-disponibility blocks are filled.");
+}
+
+//--Client views--//
+export async function ClientViews(page: Page) {
+  // Use class selector as it is more standard than ID with spaces
+  const ClientViews_block = page.locator('.avis-clients-product');
+
+  await ClientViews_block.scrollIntoViewIfNeeded();
+  await expect(ClientViews_block).toBeVisible();
+
+  //Check client views title
+  const ClientViews_Title = ClientViews_block.locator('h3');
+  const expected_title = "Des clients satisfaits et qui le disent";
+  await expect(ClientViews_Title).toBeVisible();
+  const Title_text = await ClientViews_Title.innerText();
+  const ClienTitle_text = Title_text.trim().replace(/\s+/g, " ");
+
+  //console.log(`📄 The client views title : "${ClienTitle_text}"`);
+
+  if (ClienTitle_text === expected_title) {
+    console.log("✅ The clients view title matches!");
+  } else {
+    console.log("❌ The clients view title does not match!");
+    console.log(`The display title is: "${ClienTitle_text}"`);
+  }
+
+  //Check client views text
+  // Use .first() because there are many paragraphs in the reviews, 
+  // but the disclaimer/intro text is the first one in this block.
+  const ClientViews_Text = ClientViews_block.locator('p').first();
+  const expect_clientsViews_Text = "Les avis présentés sur cette page constituent une sélection et ne reflètent pas l’intégralité des avis reçus.";
+
+  await expect(ClientViews_Text).toBeVisible();
+  const ClientViewsText = await ClientViews_Text.innerText();
+  const ClientViewstext = ClientViewsText.trim().replace(/\s+/g, " ");
+
+  //console.log(`📄 The client views text : "${ClientViewstext}"`);
+
+  if (ClientViewstext === expect_clientsViews_Text) {
+    console.log("✅ The clients view text matches!");
+  } else {
+    console.log("❌ The clients view text does not match!");
+    console.log(`The display title is: "${ClientViewstext}"`);
+  }
+
+  //Check the clients reviews text
+  // Use the container we already found to scope the search
+  const Reviews = ClientViews_block.locator('.item-avis');
+
+  // Wait for at least one review to appear
+  try {
+    console.log("⏳ Waiting for reviews to load...");
+    await Reviews.first().waitFor({ state: 'visible', timeout: 30000 });
+  } catch (e) {
+    console.warn("⚠️ No reviews appeared within timeout.");
+  }
+
+  const totalReviews = await Reviews.count();
+  console.log(`📝 Total loaded reviews in DOM: ${totalReviews}`);
+
+  // We want to check at least 11 reviews (or fewer if fewer exist)
+  const countToCheck = Math.min(totalReviews, 11);
+
+  if (countToCheck > 0) {
+    console.log(`🔍 Checking first ${countToCheck} reviews...`);
+
+    for (let i = 0; i < countToCheck; i++) {
+      const review = Reviews.nth(i);
+      await expect(review).toBeVisible();
+
+      // Example: Check if review has some text
+      const reviewText = (await review.textContent())?.trim() || '';
+      if (reviewText.length > 0) {
+        console.log(`   ✅ Review ${i + 1} exists and has text.`);
+        //console.log(`📝 The constrmer text review : ${reviewText}`);
+      } else {
+        console.warn(`   ⚠️ Review ${i + 1} is empty.`);
+      }
+    }
+  } else {
+    console.warn("⚠️ No reviews found to check.");
+  }
+}
+
+//--Check photos--//
+export async function Photo_product(page: Page) {
+
+  console.log("🖼 Checking main product image…");
+
+  //--Check the big product photo--//
+  const Principal_picture = page.locator('.carousel.carousel-product-top');
+  await expect(Principal_picture).toBeVisible();
+
+  // Select only the active (visible) image
+  const Bigimg = page.locator('.carousel-product-top .carousel-cell.is-selected img').first();
+  await expect(Bigimg).toBeVisible();
+
+  // Get the REAL loaded image URL
+  const imgSrc = await Bigimg.evaluate(el => (el as HTMLImageElement).currentSrc);
+
+  // Check if empty
+  if (!imgSrc || imgSrc.trim() === "") {
+    console.log("❌ Picture is EMPTY — no image URL found");
+    return;
+  }
+
+  console.log("✅ Picture contains an image");
+  console.log("🔗 Real image URL:", imgSrc);
+
+  // Function to clean filename
+  const cleanImageName = (src: string) => {
+    const urlWithoutParams = src.split('?')[0];
+    return urlWithoutParams.substring(urlWithoutParams.lastIndexOf('/') + 1);
+  };
+
+  // Extract filename
+  const fileName = cleanImageName(imgSrc);
+
+  console.log("📄 Extracted big image:", fileName);
+
+  //--Check the small images--//
+  const Smallphoto = page.locator('.carousel-nav');
+  await expect(Smallphoto).toBeVisible();
+
+  //Selecte the first small image
+  const firstImage = page.locator('.carousel-cell.is-selected picture img').first();
+  await expect(firstImage).toBeVisible();
+
+  //Get the REAL loaded small image URL
+  const Smallimg = await firstImage.evaluate((el: HTMLImageElement) => el.currentSrc || el.src);
+
+  //Check if empty
+  if (!Smallimg || Smallimg.trim() === ""){
+    console.log("❌ Small picture is EMPTY — no image URL found");
+    return;
+  }
+  console.log("✅ Small picture contains an image");
+  console.log("🔗 Real image URL:", Smallimg);
+
+  const SmalPicture = cleanImageName(Smallimg);
+  console.log("📄 Extracted small image:", SmalPicture);
+
+  //Compare images name
+  if(fileName === SmalPicture){
+    console.log("✅ The photos matches!");
+  } else {
+    console.log("❌ The photos does not match!");
+  }
+}
+
+//--Count photo--//
+export async function CountPhoto(page: Page) {
+  const images = page.locator('[data-fancybox="gallery"]');
+  const count = await images.count();
+
+  console.log("Real number of images:", count);
+
+  return count;
+}

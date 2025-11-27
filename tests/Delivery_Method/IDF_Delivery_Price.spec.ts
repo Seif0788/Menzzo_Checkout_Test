@@ -1,18 +1,28 @@
-import {test} from '@playwright/test';
-import { waitForCheckoutReady, clickElementByText, ClickRandomProduct, closeFloatingMenus, clickAddToCart } from '../../../helpers/utils';
-import { performCheckout, CheckoutData } from '../../../helpers/checkout_full_helper';
+import { test, expect } from '@playwright/test';
+import { waitForCheckoutReady, clickElementByText, ClickRandomProduct, closeFloatingMenus, clickAddToCart } from '../../helpers/utils';
+
+  export interface CheckoutData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  address: string[];
+  postalCode: string;
+  city: string;
+  country?: string;
+  }
 
 test('add_to_cart_checkout', async ({ page }) => {
   // 1️⃣ Go to homepage
-  await page.goto('https://www.menzzo.de/', { waitUntil: 'domcontentloaded' });
+  await page.goto('https://www.menzzo.fr/', { waitUntil: 'domcontentloaded' });
   console.log('✅ Homepage loaded.');
 
   // Validate Cookies
-  await clickElementByText(page, "Alle akzeptieren");
+  await clickElementByText(page, "Accepter et continuer");
   console.log('✅ Cookies accepted.');
 
   // Select category
-  await clickElementByText(page, "Sofas");
+  await clickElementByText(page, "fauteuils");
   console.log('✅ Category selected.');
 
   await closeFloatingMenus(page);
@@ -30,7 +40,7 @@ test('add_to_cart_checkout', async ({ page }) => {
   await clickAddToCart(page);
 
   // 4️⃣ Go to cart
-  await clickElementByText(page, "Warenkorb anzeigen und bestellen ");
+  await clickElementByText(page, "Voir le panier & commander");
   console.log('🚀 Proceeded to cart.');
 
   // 5️⃣ Proceed to checkout
@@ -40,12 +50,12 @@ test('add_to_cart_checkout', async ({ page }) => {
   // Wait for navigation or visible checkout container
   await Promise.all([
     page.waitForNavigation({ waitUntil: 'networkidle', timeout: 60000 }).catch(() => {}),
-    clickElementByText(page, "Warenkorb bestätigen", 10000, { debug: true })
+    clickElementByText(page, "Valider mon panier", 10000, { debug: true })
   ]);
 
-  page.context().on('page', async newPage => {
+  /*page.context().on('page', async newPage => {
     console.log('🆕 New page detected:', await newPage.url());
-  });
+  });*/
 
   console.log('✅ Navigation to checkout complete. Waiting for OneStepCheckout...');
 
@@ -65,7 +75,7 @@ test('add_to_cart_checkout', async ({ page }) => {
         const url = p.url();
         if (/onestepcheckout/i.test(url)) {
           checkoutPage = p;
-          console.log(`🔄 Switched to new checkout page: ${url}`);
+        //  console.log(`🔄 Switched to new checkout page: ${url}`);
           break;
         }
       }
@@ -76,7 +86,9 @@ test('add_to_cart_checkout', async ({ page }) => {
     }
   }
 
-  // 7️⃣ Fill checkout data
+
+
+ // 7️⃣ Fill checkout data
   const checkoutData: CheckoutData = {
     firstName: 'Seif',
     lastName: 'Taj',
@@ -85,19 +97,7 @@ test('add_to_cart_checkout', async ({ page }) => {
     address: ['10 Rue Exemple'],
     postalCode: '75001',
     city: 'Paris',
-    paymentMethod: 'Klarna',
-    language: 'DE',
-  };
+    }
 
-  await performCheckout(page, checkoutData);
-  console.log('✅ Checkout performed successfully.');
-
-  // 8️⃣ Confirm navigation to payment method page
-  // Refine the locator for the payment method page title
-/* console.log('⏳ Verifying navigation to payment method page...');
-  await page.waitForSelector('h1.page-title', { state: 'visible', timeout: 60000 });
-  const pageTitle = await page.locator('h1.page-title').innerText();
-  // Update the expected title to match the actual title
-  expect(pageTitle).toMatch('Bestellung abschließen');
-  console.log('✅ Successfully navigated to payment method page.');*/
+  
 });

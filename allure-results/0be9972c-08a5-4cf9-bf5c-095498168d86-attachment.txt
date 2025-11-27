@@ -1,6 +1,0 @@
-✅ Homepage loaded.
-✅ Cookies accepted.
-✅ Category selected.
-Clicked on random product [4]/20
-✅ Random product selected.
-⏳ Waiting for product page to load...
