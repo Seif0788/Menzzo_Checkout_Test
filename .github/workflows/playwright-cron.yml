@@ -26,7 +26,7 @@ jobs:
 
       - name: Run Playwright Tests
         id: playwright
-        run: npx playwright test --project=Global_Checkoutsuite --reporter=line,allure-playwright,json:results.json
+        run: npx playwright test --project=Global_Checkoutsuite --reporter=line,allure-playwright,json=results.json
         continue-on-error: true
 
       - name: Generate Allure Report
@@ -71,11 +71,11 @@ jobs:
         with:
           server_address: smtp.gmail.com
           server_port: 465
-          username: ${{ secrets.MAIL_USERNAME }}
-          password: ${{ secrets.MAIL_PASSWORD }}
+          username: Git_App
+          password: nnbx btck stvk bxfm
           subject: "${{ env.STATUS_EMOJI }}: Playwright Scheduled Run Finished"
           to: seifeddine.t.axelites@gmail.com
-          from: GitHub Actions <${{ secrets.MAIL_USERNAME }}>
+          from: GitHub Actions <Git_App>
           body: |
             Playwright Scheduled Run Finished
             

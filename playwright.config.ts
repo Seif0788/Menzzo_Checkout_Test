@@ -16,22 +16,8 @@ export default defineConfig({
   // == Projects: each runs in parallel ==
   projects: [
     {
-      name: 'Checkout_API_Suites',
-      testDir: './tests/Checkout/Checkout_API',
-      workers: 1,
-      //retries: 1,
-      use: {
-        headless: true,
-        viewport: { width: 1280, height: 720 },
-        ignoreHTTPSErrors: true,
-        screenshot: 'only-on-failure',
-        video: 'retain-on-failure',
-        trace: 'retain-on-failure',
-      },
-    },
-    {
       name: 'FR Checkoutsuite',
-      testDir: './tests/Checkout/Checkout_Test/Menzzo_Fr',
+      testDir: './tests/Checkout/Menzzo_Fr',
       workers: 1,
       retries: 3,
       use: {
@@ -45,7 +31,7 @@ export default defineConfig({
     },
     {
       name: 'DE_Checkoutsuite',
-      testDir: './tests/Checkout/Checkout_Test/Menzzo_De',
+      testDir: './tests/Checkout/Menzzo_De',
       workers: 1,
       retries: 3,
       use: {
@@ -59,7 +45,7 @@ export default defineConfig({
     },
     {
       name: 'IT_Checkoutsuite',
-      testDir: './tests/Checkout/Checkout_Test/Menzzo_It',
+      testDir: './tests/Checkout/Menzzo_It',
       workers: 1,
       retries: 3,
       use: {
@@ -73,7 +59,7 @@ export default defineConfig({
     },
     {
       name: 'NL_Checkoutsuite',
-      testDir: './tests/Checkout/Checkout_Test/Menzzo_Nl',
+      testDir: './tests/Checkout/Menzzo_Nl',
       workers: 1,
       retries: 3,
       use: {
@@ -87,7 +73,7 @@ export default defineConfig({
     },
     {
       name: 'AT_Checkoutsuite',
-      testDir: './tests/Checkout/Checkout_Test/Menzzo_At',
+      testDir: './tests/Checkout/Menzzo_At',
       workers: 1,
       retries: 3,
       use: {
@@ -101,7 +87,7 @@ export default defineConfig({
     },
     {
       name: 'BE_Checkoutsuite',
-      testDir: './tests/Checkout/Checkout_Test/Menzzo_Be',
+      testDir: './tests/Checkout/Menzzo_Be',
       workers: 1,
       retries: 3,
       use: {
@@ -115,7 +101,7 @@ export default defineConfig({
     },
     {
       name: 'ES_Checkoutsuite',
-      testDir: './tests/Checkout/Checkout_Test/Menzzo_Es',
+      testDir: './tests/Checkout/Menzzo_Es',
       workers: 1,
       retries: 3,
       use: {
@@ -129,7 +115,7 @@ export default defineConfig({
     },
     {
       name: 'PT_Checkoutsuite',
-      testDir: './tests/Checkout/Checkout_Test/Menzzo_Pt',
+      testDir: './tests/Checkout/Menzzo_Pt',
       workers: 1,
       retries: 3,
       use: {
@@ -143,7 +129,7 @@ export default defineConfig({
     },
     {
       name: 'Global_Checkoutsuite',
-      testDir: './tests/Checkout/Checkout_Test',
+      testDir: './tests/Checkout/',
       workers: 4,
       retries: 3,
       use: {
@@ -171,13 +157,29 @@ export default defineConfig({
       name: 'Product_page',
       testDir: './tests/Product_Page',
       use: {
-        headless: false,
+        headless: true,
+        screenshot: 'only-on-failure',
+        video: 'retain-on-failure',
+        trace: 'retain-on-failure',
       }
     },
     {
       name: 'Search_Tests',
       testDir: './tests',
       testMatch: /Search_.*\.spec\.ts/,
+      use: {
+        headless: true,
+        viewport: { width: 1280, height: 720 },
+        ignoreHTTPSErrors: true,
+        screenshot: 'only-on-failure',
+        video: 'retain-on-failure',
+        trace: 'retain-on-failure',
+      }
+    },
+    {
+      name: 'Menu_Tests',
+      testDir: './tests/Menu',
+      testMatch: /Menu_.*\.spec\.ts/,
       use: {
         headless: false,
         viewport: { width: 1280, height: 720 },
@@ -192,41 +194,11 @@ export default defineConfig({
       testDir: './tests-examples',
     },
     {
-      name: "Menzzo_Checkout_Fr",
-      testDir: './tests/Checkout/Checkout_Test',
+      name: 'Mobile_iPhone_13',
+      testDir: './tests/Mobile_test',
       use: {
+        ...devices['iPhone 13'],
         headless: false,
-        viewport: { width: 1280, height: 720 },
-        ignoreHTTPSErrors: true,
-        screenshot: 'only-on-failure',
-        video: 'retain-on-failure',
-        trace: 'retain-on-failure'
-      }
-    },
-    {
-      name: 'FR_Checkout2',
-      testDir: './tests/Checkout/Checkout_Test/Menzzo_Fr',
-      workers: 1,
-      retries: 1,
-      use: {
-        headless: true,
-        viewport: { width: 1280, height: 720 },
-        ignoreHTTPSErrors: true,
-        screenshot: 'only-on-failure',
-        video: 'retain-on-failure',
-        trace: 'retain-on-failure',
-        launchOptions: {
-          args: [
-            '--disable-blink-features=AutomationControlled',
-            '--no-sandbox',
-            '--disable-setuid-sandbox',
-            '--disable-dev-shm-usage',
-            '--disable-accelerated-2d-canvas',
-            '--no-first-run',
-            '--no-zygote',
-            '--disable-gpu'
-          ],
-        },
       },
     },
   ],

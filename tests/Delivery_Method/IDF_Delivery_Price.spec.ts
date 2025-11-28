@@ -86,8 +86,6 @@ test('add_to_cart_checkout', async ({ page }) => {
     }
   }
 
-
-
  // 7️⃣ Fill checkout data
   const checkoutData: CheckoutData = {
     firstName: 'Seif',
