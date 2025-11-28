@@ -1,6 +1,6 @@
 name: Playwright Tests with Allure
 on:
-/*
+
   push:
     branches: [ main, develop, Fix_playwright_github_actions ]
   pull_request:
@@ -103,19 +103,30 @@ jobs:
           name: allure-report
           path: ./allure-report
 
-      - name: Prepare main branch
+      - name: Cleanup old reports
+        continue-on-error: true
         run: |
-          echo "Preparing main branch..."
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          rm -rf main
-          git clone --depth=1 --branch main https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} main
-          cd main
-          echo "Existing report folders:"
-          ls -1 || true
-          # Keep only the 10 most recent allure runs to save space
-          ls -1tr allure-run-* 2>/dev/null | head -n -10 | xargs -r rm -rf
-          cd ..
+          echo "Cleaning up old reports on gh-pages..."
+          git clone --single-branch --branch gh-pages "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" gh-pages-branch || echo "Branch gh-pages not found, skipping cleanup"
+          
+          if [ -d "gh-pages-branch" ]; then
+            cd gh-pages-branch
+            # List, sort by version/date, keep last 10, delete the rest
+            ls -d allure-run-* 2>/dev/null | sort -V | head -n -10 | xargs -r rm -rf
+            
+            if [[ -n $(git status -s) ]]; then
+              git config user.name "github-actions"
+              git config user.email "github-actions@github.com"
+              git add .
+              git commit -m "Cleanup old reports"
+              git push
+              echo "Cleanup complete."
+            else
+              echo "Nothing to clean up."
+            fi
+            cd ..
+            rm -rf gh-pages-branch
+          fi
         shell: bash
 
       - name: Deploy to GitHub Pages
@@ -124,7 +135,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./allure-report
           destination_dir: allure-run-${{ github.run_number }}
-          keep_files: false  # 🧹 Delete everything before new deploy to prevent disk overflow
+          keep_files: true  # Keep existing reports so history is preserved
 
       - name: Show disk usage after deploy
         run: df -h
@@ -184,4 +195,4 @@ jobs:
 
             🔗 Full run details: 
             ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-*/
+
