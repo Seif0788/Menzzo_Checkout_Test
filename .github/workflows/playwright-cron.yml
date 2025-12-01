@@ -30,7 +30,7 @@ jobs:
         run: |
           npx playwright test \
             --project=Global_Checkoutsuite \
-            --reporter=line,allure-playwright,json \
+            --reporter=line,allure-playwright,json=results.json \
             --output=./test-results
         continue-on-error: true
 
@@ -50,7 +50,7 @@ jobs:
         if: always()
         id: extract
         run: |
-          RESULT_FILE="./test-results/test-results.json"
+          RESULT_FILE="results.json"
           
           if [ -f "$RESULT_FILE" ]; then
             PASSED=$(jq '.stats.expected' "$RESULT_FILE")
@@ -83,7 +83,7 @@ jobs:
           username: seif.t.axelites@gmail.com
           password: ardd ojnm usgy nqec
           to: seifeddine.t.axelites@gmail.com
-          from: GitHub Actions seif.t.axelites@gmail.com
+          from: '"GitHub Actions" <seif.t.axelites@gmail.com>'
           subject: "${{ env.STATUS_EMOJI }}: Playwright Scheduled Run Finished"
           body: |
             Playwright Scheduled Run Finished
@@ -95,6 +95,5 @@ jobs:
             - Passed: ${{ env.PASSED }}
             - Failed: ${{ env.FAILED }}
 
-            Download Allure Report (Artifact): 
-            ${{ github.server_url }}/${{ github.repository }}/suites/${{ github.run_id }}/artifacts
-
+            Allure Report (Artifacts):
+            ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}#artifacts
