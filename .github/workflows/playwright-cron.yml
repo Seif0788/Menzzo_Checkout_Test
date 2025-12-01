@@ -95,5 +95,6 @@ jobs:
             - Passed: ${{ env.PASSED }}
             - Failed: ${{ env.FAILED }}
 
-            Allure Report:
-            ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            Download Allure Report (Artifact): 
+            ${{ github.server_url }}/${{ github.repository }}/suites/${{ github.run_id }}/artifacts
+
