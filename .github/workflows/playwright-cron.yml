@@ -71,11 +71,11 @@ jobs:
         with:
           server_address: smtp.gmail.com
           server_port: 465
-          username: Git_App
+          username: seif.t.axelites@gmail.com
           password: nnbx btck stvk bxfm
           subject: "${{ env.STATUS_EMOJI }}: Playwright Scheduled Run Finished"
           to: seifeddine.t.axelites@gmail.com
-          from: GitHub Actions <Git_App>
+          from: GitHub Actions <seif.t.axelites@gmail.com>
           body: |
             Playwright Scheduled Run Finished
             
