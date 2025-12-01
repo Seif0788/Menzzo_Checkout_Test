@@ -85,8 +85,8 @@ test('add_to_cart_checkout', async ({ page }) => {
       throw err;
     }
   }
-
- // 7️⃣ Fill checkout data
+  
+  // 7️⃣ Fill checkout data
   const checkoutData: CheckoutData = {
     firstName: 'Seif',
     lastName: 'Taj',
