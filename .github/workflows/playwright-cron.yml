@@ -81,7 +81,7 @@ jobs:
           server_address: smtp.gmail.com
           server_port: 465
           username: seif.t.axelites@gmail.com
-          password: nnbx btck stvk bxfm
+          password: ardd ojnm usgy nqec
           to: seifeddine.t.axelites@gmail.com
           from: GitHub Actions seif.t.axelites@gmail.com
           subject: "${{ env.STATUS_EMOJI }}: Playwright Scheduled Run Finished"
