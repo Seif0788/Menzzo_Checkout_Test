@@ -91,8 +91,35 @@ export async function CheckProductAvailability(page: Page) {
     // Ensure text is not empty
     expect.soft(availabilityText.length, 'Availability text should not be empty').toBeGreaterThan(0);
 
-    // Define acceptable stock statuses
-    const validStatuses = ['En stock', 'Livré sous plus d’un mois', 'Bientôt en stock'];
+    // Detect language from URL
+    const currentUrl = page.url();
+    let language = 'fr'; // default
+
+    if (currentUrl.includes('menzzo.de')) {
+      language = 'de';
+    } else if (currentUrl.includes('menzzo.it')) {
+      language = 'it';
+    } else if (currentUrl.includes('menzzo.es')) {
+      language = 'es';
+    } else if (currentUrl.includes('menzzo.pt')) {
+      language = 'pt';
+    } else if (currentUrl.includes('menzzo.nl')) {
+      language = 'nl';
+    }
+
+    console.log(`🌍 Detected language: ${language.toUpperCase()}`);
+
+    // Define acceptable stock statuses per language
+    const validStatusesByLanguage: Record<string, string[]> = {
+      fr: ['En stock', 'Livré sous plus d\'un mois', 'Bientôt en stock'],
+      de: ['Auf Lager', 'Lieferung in mehr als einem Monat', 'Bald auf Lager'],
+      it: ['Disponibile', 'Consegna in più di un mese', 'Presto disponibile'],
+      es: ['En stock', 'Entrega en más de un mes', 'Próximamente en stock'],
+      pt: ['Em stock', 'Entrega em mais de um mês', 'Em breve em stock'],
+      nl: ['Op voorraad', 'Levering in meer dan een maand', 'Binnenkort op voorraad']
+    };
+
+    const validStatuses = validStatusesByLanguage[language] || validStatusesByLanguage['fr'];
 
     // Check if the value matches one of the expected statuses
     const isValid = validStatuses.some(status =>
@@ -103,6 +130,7 @@ export async function CheckProductAvailability(page: Page) {
       console.log(`✅ Product availability status is valid (${availabilityText})`);
     } else {
       console.log(`❌ Invalid availability status detected: "${availabilityText}"`);
+      console.log(`   Expected one of: ${validStatuses.join(', ')}`);
     }
 
     // Assert it is valid for the report
@@ -732,7 +760,7 @@ export async function Photo_product(page: Page) {
   const Smallimg = await firstImage.evaluate((el: HTMLImageElement) => el.currentSrc || el.src);
 
   //Check if empty
-  if (!Smallimg || Smallimg.trim() === ""){
+  if (!Smallimg || Smallimg.trim() === "") {
     console.log("❌ Small picture is EMPTY — no image URL found");
     return;
   }
@@ -743,7 +771,7 @@ export async function Photo_product(page: Page) {
   console.log("📄 Extracted small image:", SmalPicture);
 
   //Compare images name
-  if(fileName === SmalPicture){
+  if (fileName === SmalPicture) {
     console.log("✅ The photos matches!");
   } else {
     console.log("❌ The photos does not match!");
@@ -758,4 +786,57 @@ export async function CountPhoto(page: Page) {
   console.log("Real number of images:", count);
 
   return count;
+}
+
+export async function getProductPrice(page: Page): Promise<number> {
+  // Wait for the price element to be visible
+  const priceElement = page.locator('.product-info-price .price-wrapper.final-price');
+  await priceElement.waitFor({ state: 'visible' });
+
+  // Get the text content
+  const priceText = await priceElement.innerText();
+
+  if (!priceText) {
+    throw new Error('Price text not found on the page.');
+  }
+
+  // Clean the string: remove "€", spaces, non-breaking spaces, etc.
+  // Example: "1 125,00 €" -> "1125.00"
+  const cleanPrice = priceText.replace(/[^0-9,.]/g, '').replace(',', '.');
+  const price = parseFloat(cleanPrice);
+
+  console.log(`The product price (from text): ${price}`);
+
+  return price;
+}
+
+export async function getLowPrice(page: Page): Promise<number> {
+  // Locate the old price element
+  const lowPriceElement = page.locator('[data-price-type="oldPrice"]');
+
+  // Wait until visible
+  await lowPriceElement.waitFor({ state: 'visible' });
+
+  // Extract the text content, e.g. "145,00 €"
+  const priceText = await lowPriceElement.textContent();
+
+  if (!priceText) {
+    throw new Error('Low price text not found.');
+  }
+
+  // Clean the string: "145,00 €" → "145.00"
+  const numericText = priceText
+    .replace(/\s/g, '')        // remove spaces / NBSP
+    .replace('€', '')          // remove euro sign
+    .replace(',', '.');        // convert comma to dot
+
+  const lowPrice = parseFloat(numericText);
+
+  if (isNaN(lowPrice)) {
+    throw new Error(`Could not parse low price: "${priceText}"`);
+  }
+
+  console.log(`The product low price: ${lowPrice}`);
+
+  return lowPrice;
 }
