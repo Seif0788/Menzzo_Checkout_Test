@@ -9,6 +9,8 @@ jobs:
   test:
     name: Run Playwright Tests
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout Repository
@@ -30,8 +32,8 @@ jobs:
         run: |
           npx playwright test \
             --project=Global_Checkoutsuite \
-            --reporter=line,allure-playwright,json=results.json \
-            --output=./test-results
+            --reporter=line,allure-playwright,json=./test-results/results.json \
+            --output=./playwright-report
         continue-on-error: true
 
       - name: Generate Allure Report
@@ -46,12 +48,20 @@ jobs:
           path: allure-report
           retention-days: 7
 
-      - name: Extract Test Results
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         if: always()
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./allure-report
+          publish_branch: gh-pages
+
+      - name: Extract Test Results
         id: extract
+        if: always()
         run: |
-          RESULT_FILE="results.json"
-          
+          RESULT_FILE="./test-results/results.json"
+
           if [ -f "$RESULT_FILE" ]; then
             PASSED=$(jq '.stats.expected' "$RESULT_FILE")
             FAILED=$(jq '.stats.unexpected' "$RESULT_FILE")
@@ -74,6 +84,10 @@ jobs:
             echo "STATUS_EMOJI=🟢 Success" >> $GITHUB_ENV
           fi
 
+          REPO_NAME=${GITHUB_REPOSITORY#*/}
+          OWNER=${GITHUB_REPOSITORY%/*}
+          echo "PAGES_URL=https://$OWNER.github.io/$REPO_NAME" >> $GITHUB_ENV
+
       - name: Send Email Notification
         uses: dawidd6/action-send-mail@v3
         if: always()
@@ -95,5 +109,8 @@ jobs:
             - Passed: ${{ env.PASSED }}
             - Failed: ${{ env.FAILED }}
 
-            Allure Report (Artifacts):
+            Allure Report:
+            ${{ env.PAGES_URL }}
+
+            Artifacts:
             ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}#artifacts
