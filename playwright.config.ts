@@ -1,5 +1,15 @@
 import { defineConfig, devices } from '@playwright/test';
 
+// Shared use options for checkout suites
+const checkoutUseOptions = {
+  headless: true,
+  viewport: { width: 1280, height: 720 },
+  ignoreHTTPSErrors: true,
+  screenshot: 'only-on-failure' as const,
+  video: 'retain-on-failure' as const,
+  trace: 'retain-on-failure' as const,
+};
+
 export default defineConfig({
   testDir: './tests',
   testMatch: /.*\.(spec|test)\.ts$/,
@@ -13,155 +23,92 @@ export default defineConfig({
   },
   fullyParallel: false,
 
-  // == Projects: each runs in parallel ==
   projects: [
+    // === Checkout Suites ===
     {
-      name: 'FR Checkoutsuite',
+      name: 'FR_Checkoutsuite',
       testDir: './tests/Checkout/Menzzo_Fr',
       workers: 1,
       retries: 3,
-      use: {
-        headless: true,
-        viewport: { width: 1280, height: 720 },
-        ignoreHTTPSErrors: true,
-        screenshot: 'only-on-failure',
-        video: 'retain-on-failure',
-        trace: 'retain-on-failure',
-      },
+      use: checkoutUseOptions,
     },
     {
       name: 'DE_Checkoutsuite',
       testDir: './tests/Checkout/Menzzo_De',
       workers: 1,
       retries: 3,
-      use: {
-        headless: true,
-        viewport: { width: 1280, height: 720 },
-        ignoreHTTPSErrors: true,
-        screenshot: 'only-on-failure',
-        video: 'retain-on-failure',
-        trace: 'retain-on-failure',
-      },
+      use: checkoutUseOptions,
     },
     {
       name: 'IT_Checkoutsuite',
       testDir: './tests/Checkout/Menzzo_It',
       workers: 1,
       retries: 3,
-      use: {
-        headless: true,
-        viewport: { width: 1280, height: 720 },
-        ignoreHTTPSErrors: true,
-        screenshot: 'only-on-failure',
-        video: 'retain-on-failure',
-        trace: 'retain-on-failure',
-      },
+      use: checkoutUseOptions,
     },
     {
       name: 'NL_Checkoutsuite',
       testDir: './tests/Checkout/Menzzo_Nl',
       workers: 1,
       retries: 3,
-      use: {
-        headless: true,
-        viewport: { width: 1280, height: 720 },
-        ignoreHTTPSErrors: true,
-        screenshot: 'only-on-failure',
-        video: 'retain-on-failure',
-        trace: 'retain-on-failure',
-      },
+      use: checkoutUseOptions,
     },
     {
       name: 'AT_Checkoutsuite',
       testDir: './tests/Checkout/Menzzo_At',
       workers: 1,
       retries: 3,
-      use: {
-        headless: true,
-        viewport: { width: 1280, height: 720 },
-        ignoreHTTPSErrors: true,
-        screenshot: 'only-on-failure',
-        video: 'retain-on-failure',
-        trace: 'retain-on-failure',
-      },
+      use: checkoutUseOptions,
     },
     {
       name: 'BE_Checkoutsuite',
       testDir: './tests/Checkout/Menzzo_Be',
       workers: 1,
       retries: 3,
-      use: {
-        headless: true,
-        viewport: { width: 1280, height: 720 },
-        ignoreHTTPSErrors: true,
-        screenshot: 'only-on-failure',
-        video: 'retain-on-failure',
-        trace: 'retain-on-failure',
-      },
+      use: checkoutUseOptions,
     },
     {
       name: 'ES_Checkoutsuite',
       testDir: './tests/Checkout/Menzzo_Es',
       workers: 1,
       retries: 3,
-      use: {
-        headless: true,
-        viewport: { width: 1280, height: 720 },
-        ignoreHTTPSErrors: true,
-        screenshot: 'only-on-failure',
-        video: 'retain-on-failure',
-        trace: 'retain-on-failure',
-      },
+      use: checkoutUseOptions,
     },
     {
       name: 'PT_Checkoutsuite',
       testDir: './tests/Checkout/Menzzo_Pt',
       workers: 1,
       retries: 3,
-      use: {
-        headless: true,
-        viewport: { width: 1280, height: 720 },
-        ignoreHTTPSErrors: true,
-        screenshot: 'only-on-failure',
-        video: 'retain-on-failure',
-        trace: 'retain-on-failure',
-      },
+      use: checkoutUseOptions,
     },
     {
       name: 'Global_Checkoutsuite',
       testDir: './tests/Checkout/',
       workers: 4,
       retries: 3,
-      use: {
-        headless: true,
-        viewport: { width: 1280, height: 720 },
-        ignoreHTTPSErrors: true,
-        screenshot: 'only-on-failure',
-        video: 'retain-on-failure',
-        trace: 'retain-on-failure',
-      },
+      use: checkoutUseOptions,
     },
+
+    // === Feature Tests ===
     {
-      name: 'delivery_methods',
+      name: 'Delivery_Methods',
       testDir: './tests/Delivery_Method',
       workers: 1,
     },
     {
       name: 'Homepage',
       testMatch: /Homepage_.*\.spec\.ts/,
-      use: {
-        headless: false
-      }
+      use: { headless: false },
     },
     {
-      name: 'Product_page',
+      name: 'Product_Page',
       testDir: './tests/Product_Page',
       use: {
         headless: false,
         screenshot: 'only-on-failure',
         video: 'retain-on-failure',
         trace: 'retain-on-failure',
-      }
+      },
     },
     {
       name: 'Product_Price',
@@ -171,38 +118,37 @@ export default defineConfig({
         screenshot: 'only-on-failure',
         video: 'retain-on-failure',
         trace: 'retain-on-failure',
-      }
+      },
     },
     {
       name: 'Search_Tests',
       testDir: './tests',
       testMatch: /Search_.*\.spec\.ts/,
-      use: {
-        headless: true,
-        viewport: { width: 1280, height: 720 },
-        ignoreHTTPSErrors: true,
-        screenshot: 'only-on-failure',
-        video: 'retain-on-failure',
-        trace: 'retain-on-failure',
-      }
+      use: checkoutUseOptions,
     },
     {
       name: 'Menu_Tests',
       testDir: './tests/Menu',
       testMatch: /Menu_.*\.spec\.ts/,
-      use: {
-        headless: true,
-        viewport: { width: 1280, height: 720 },
-        ignoreHTTPSErrors: true,
-        screenshot: 'only-on-failure',
-        video: 'retain-on-failure',
-        trace: 'retain-on-failure',
-      }
+      use: checkoutUseOptions,
     },
     {
-      name: 'examples',
-      testDir: './tests-examples',
+      name: 'Category_Tests',
+      testDir: './tests/Category_Page',
+      testMatch: /Category_.*\.spec\.ts/,
+      use: {
+        ...checkoutUseOptions,
+        headless: false,
+      },
     },
+    {
+      name: 'SEO_Tests',
+      testDir: './tests/SEO',
+      testMatch: /(SEO|CMS)_.*\.spec\.ts/,
+      use: checkoutUseOptions,
+    },
+
+    // === Mobile ===
     {
       name: 'Mobile_iPhone_13',
       testDir: './tests/Mobile_test',
@@ -211,44 +157,5 @@ export default defineConfig({
         headless: false,
       },
     },
-    {
-      name: 'Category_Tests',
-      testDir: './tests/Category_Page',
-      testMatch: /Category_.*\.spec\.ts/,
-      use: {
-        headless: false,
-        viewport: { width: 1280, height: 720 },
-        ignoreHTTPSErrors: true,
-        screenshot: 'only-on-failure',
-        video: 'retain-on-failure',
-        trace: 'retain-on-failure',
-      }
-    },
-    {
-      name: 'SEO_Tests',
-      testDir: './tests/SEO',
-      testMatch: /(SEO|CMS)_.*\.spec\.ts/,
-      use: {
-        headless: true,
-        viewport: { width: 1280, height: 720 },
-        ignoreHTTPSErrors: true,
-        screenshot: 'only-on-failure',
-        video: 'retain-on-failure',
-        trace: 'retain-on-failure',
-      }
-    },
-    {
-      name: 'BrowserStack_Tests',
-      testDir: './tests/BrowserStack',
-      testMatch: /.*\\.spec\\.ts$/,
-      use: {
-        headless: true,
-        viewport: { width: 375, height: 667 }, // Mobile viewport
-        ignoreHTTPSErrors: true,
-        screenshot: 'on',
-        video: 'on',
-        trace: 'on',
-      }
-    }
   ],
 });

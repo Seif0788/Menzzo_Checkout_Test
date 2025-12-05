@@ -28534,3 +28534,147 @@
 2025-12-05 15:59:55 - [32minfo[39m: Deleting C:\Users\SeifeddineTajouri\Desktop\Seif\Menzzo\Test\playwright\For_test\playwright-browserstack-sdk.config.ts
 2025-12-05 15:59:56 - [32minfo[39m: [BrowserstackCLI] stop: CLI is not running, skipping stop
 2025-12-05 15:59:56 - [32minfo[39m: [BrowserstackCLI] stop: CLI is not running, skipping stop
+2025-12-05 16:07:56 - [32minfo[39m: Reading configs from C:\Users\SeifeddineTajouri\Desktop\Seif\Menzzo\Test\playwright\For_test\browserstack.yml
+2025-12-05 16:07:56 - [32minfo[39m: Log Directory has been set to C:\Users\SeifeddineTajouri\Desktop\Seif\Menzzo\Test\playwright\For_test\log
+2025-12-05 16:07:56 - [32minfo[39m: Log Directory has been set to C:\Users\SeifeddineTajouri\Desktop\Seif\Menzzo\Test\playwright\For_test\log
+2025-12-05 16:07:56 - [32minfo[39m: Running SDK with args C:\Program Files\nodejs\node.exe C:\Users\SeifeddineTajouri\Desktop\Seif\Menzzo\Test\playwright\For_test\node_modules\browserstack-node-sdk\src\bin\runner.js playwright test --config playwright.config.js ../tests/BrowserStack/menzzo_android_browserstack.spec.ts
+2025-12-05 16:07:56 - [32minfo[39m: SDK run started with id: acb5a581-f0f1-4164-ba37-486712f94534
+2025-12-05 16:07:56 - [32minfo[39m: Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+2025-12-05 16:07:56 - [32minfo[39m: Running SDK with args C:\Program Files\nodejs\node.exe C:\Users\SeifeddineTajouri\Desktop\Seif\Menzzo\Test\playwright\For_test\node_modules\browserstack-node-sdk\src\bin\runner.js playwright test --config playwright.config.js ../tests/BrowserStack/menzzo_android_browserstack.spec.ts
+2025-12-05 16:07:56 - [32minfo[39m: SDK run started with id: acb5a581-f0f1-4164-ba37-486712f94534
+2025-12-05 16:07:56 - [32minfo[39m: Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+2025-12-05 16:07:57 - [32minfo[39m: [BrowserstackCLI] startMain: Starting main process
+2025-12-05 16:07:57 - [32minfo[39m: [BrowserstackCLI] startMain: Starting main process
+2025-12-05 16:07:57 - [32minfo[39m: [CLIUtils] Current CLI Path Found: C:\Users\SeifeddineTajouri\.browserstack\cli\binary-win-x64.exe
+2025-12-05 16:07:57 - [32minfo[39m: [CLIUtils] Current CLI Path Found: C:\Users\SeifeddineTajouri\.browserstack\cli\binary-win-x64.exe
+2025-12-05 16:07:57 - [32minfo[39m: [BrowserstackCLI] spawning command='C:\Users\SeifeddineTajouri\.browserstack\cli\binary-win-x64.exe,sdk'
+2025-12-05 16:07:57 - [32minfo[39m: [BrowserstackCLI] spawning command='C:\Users\SeifeddineTajouri\.browserstack\cli\binary-win-x64.exe,sdk'
+2025-12-05 16:07:58 - [32minfo[39m: [BrowserstackCLI] CLI params loaded: {"id":"8057ae7e-2afa-449f-a072-b353b89ff266","listen":"127.0.0.1:5400","port":"5400"}
+2025-12-05 16:07:58 - [32minfo[39m: [BrowserstackCLI] CLI params loaded: {"id":"8057ae7e-2afa-449f-a072-b353b89ff266","listen":"127.0.0.1:5400","port":"5400"}
+2025-12-05 16:07:58 - [32minfo[39m: [GrpcClient] Connected to gRPC server at 127.0.0.1:5400
+2025-12-05 16:07:58 - [32minfo[39m: [GrpcClient] Connected to gRPC server at 127.0.0.1:5400
+2025-12-05 16:07:58 - [32minfo[39m: [GrpcClient] Initialized gRPC client with bin session id: 8057ae7e-2afa-449f-a072-b353b89ff266 and listen address: 127.0.0.1:5400
+2025-12-05 16:07:58 - [32minfo[39m: [GrpcClient] Initialized gRPC client with bin session id: 8057ae7e-2afa-449f-a072-b353b89ff266 and listen address: 127.0.0.1:5400
+2025-12-05 16:07:58 - [32minfo[39m: [GrpcClient] startBinSession: Calling startBinSession
+2025-12-05 16:07:58 - [32minfo[39m: [GrpcClient] startBinSession: Calling startBinSession
+2025-12-05 16:07:58 - [32minfo[39m: [GrpcClient] setCliArgs: cliArgs=["playwright","test","--config","playwright.config.js","../tests/BrowserStack/menzzo_android_browserstack.spec.ts"], parsedConfig=[]
+2025-12-05 16:07:58 - [32minfo[39m: [GrpcClient] setCliArgs: cliArgs=["playwright","test","--config","playwright.config.js","../tests/BrowserStack/menzzo_android_browserstack.spec.ts"], parsedConfig=[]
+2025-12-05 16:07:59 - [32minfo[39m: [GrpcClient] StartBinSession successful
+2025-12-05 16:07:59 - [32minfo[39m: [GrpcClient] StartBinSession successful
+2025-12-05 16:07:59 - [32minfo[39m: [BrowserstackCLI] loadModules: Loading modules
+2025-12-05 16:07:59 - [32minfo[39m: [BrowserstackCLI] loadModules: binSessionId=8057ae7e-2afa-449f-a072-b353b89ff266
+2025-12-05 16:07:59 - [32minfo[39m: [BrowserstackCLI] loading Modules.
+2025-12-05 16:07:59 - [32minfo[39m: [BrowserstackCLI] setCliArgs: cliArgs=["playwright","test","--config","playwright.config.js","../tests/BrowserStack/menzzo_android_browserstack.spec.ts"]
+2025-12-05 16:07:59 - [32minfo[39m: [BrowserstackCLI] loadModules: Loading modules
+2025-12-05 16:07:59 - [32minfo[39m: [BrowserstackCLI] loadModules: binSessionId=8057ae7e-2afa-449f-a072-b353b89ff266
+2025-12-05 16:07:59 - [32minfo[39m: [BrowserstackCLI] loading Modules.
+2025-12-05 16:07:59 - [32minfo[39m: [BrowserstackCLI] setCliArgs: cliArgs=["playwright","test","--config","playwright.config.js","../tests/BrowserStack/menzzo_android_browserstack.spec.ts"]
+2025-12-05 16:07:59 - [32minfo[39m: [BrowserstackCLI] Accessibility success=false
+2025-12-05 16:07:59 - [31merror[39m: Error: C:\Users\SeifeddineTajouri\Desktop\Seif\Menzzo\Test\playwright\For_test\playwright.config.js does not exist
+    at resolveConfigFile (C:\Users\SeifeddineTajouri\Desktop\Seif\Menzzo\Test\playwright\For_test\node_modules\playwright\lib\common\configLoader.js:321:11)
+    at resolveConfigLocation (C:\Users\SeifeddineTajouri\Desktop\Seif\Menzzo\Test\playwright\For_test\node_modules\playwright\lib\common\configLoader.js:302:30)
+    at Object.OtsGU (C:\Users\SeifeddineTajouri\Desktop\Seif\Menzzo\Test\playwright\For_test\node_modules\browserstack-node-sdk\src\bin\playwright\command.js:2:2158)
+    at getUserPlaywrightConfig (C:\Users\SeifeddineTajouri\Desktop\Seif\Menzzo\Test\playwright\For_test\node_modules\browserstack-node-sdk\src\bin\playwright\command.js:2:2675)
+    at Object.rXsyb (C:\Users\SeifeddineTajouri\Desktop\Seif\Menzzo\Test\playwright\For_test\node_modules\browserstack-node-sdk\src\bin\playwright\command.js:2:5728)
+    at C:\Users\SeifeddineTajouri\Desktop\Seif\Menzzo\Test\playwright\For_test\node_modules\browserstack-node-sdk\src\bin\playwright\command.js:2:10433
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-12-05 16:07:59 - [32minfo[39m: [BrowserstackCLI] Accessibility success=false
+2025-12-05 16:07:59 - [31merror[39m: Error: C:\Users\SeifeddineTajouri\Desktop\Seif\Menzzo\Test\playwright\For_test\playwright.config.js does not exist
+    at resolveConfigFile (C:\Users\SeifeddineTajouri\Desktop\Seif\Menzzo\Test\playwright\For_test\node_modules\playwright\lib\common\configLoader.js:321:11)
+    at resolveConfigLocation (C:\Users\SeifeddineTajouri\Desktop\Seif\Menzzo\Test\playwright\For_test\node_modules\playwright\lib\common\configLoader.js:302:30)
+    at Object.OtsGU (C:\Users\SeifeddineTajouri\Desktop\Seif\Menzzo\Test\playwright\For_test\node_modules\browserstack-node-sdk\src\bin\playwright\command.js:2:2158)
+    at getUserPlaywrightConfig (C:\Users\SeifeddineTajouri\Desktop\Seif\Menzzo\Test\playwright\For_test\node_modules\browserstack-node-sdk\src\bin\playwright\command.js:2:2675)
+    at Object.rXsyb (C:\Users\SeifeddineTajouri\Desktop\Seif\Menzzo\Test\playwright\For_test\node_modules\browserstack-node-sdk\src\bin\playwright\command.js:2:5728)
+    at C:\Users\SeifeddineTajouri\Desktop\Seif\Menzzo\Test\playwright\For_test\node_modules\browserstack-node-sdk\src\bin\playwright\command.js:2:10433
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-12-05 16:08:00 - [32minfo[39m: [BrowserstackCLI] stop: CLI stop triggered
+2025-12-05 16:08:00 - [32minfo[39m: [BrowserstackCLI] stop: CLI stop triggered
+2025-12-05 16:08:00 - [32minfo[39m: [GrpcClient] Stopping bin session
+2025-12-05 16:08:00 - [32minfo[39m: [GrpcClient] Stopping bin session
+2025-12-05 16:08:02 - [32minfo[39m: [GrpcClient] StopBinSession successful
+2025-12-05 16:08:02 - [32minfo[39m: [GrpcClient] StopBinSession successful
+2025-12-05 16:08:02 - [32minfo[39m: stop: stopBinSession build_link=null hashed_id=null o11y_uuid=jebl004w781c69iqacajdxecgkzz2806xaaotrbm
+2025-12-05 16:08:02 - [32minfo[39m: [BrowserstackCLI] Unconfiguring modules
+2025-12-05 16:08:02 - [32minfo[39m: [BrowserstackCLI] stop: channel closed
+2025-12-05 16:08:02 - [32minfo[39m: [BrowserstackCLI] Unconfiguring modules
+2025-12-05 16:08:02 - [32minfo[39m: [BrowserstackCLI] stop: channel closed
+2025-12-05 16:08:07 - [32minfo[39m: [BrowserstackCLI] stop: shutting down CLI
+2025-12-05 16:08:07 - [32minfo[39m: [BrowserstackCLI] stop: shutting down CLI
+2025-12-05 16:08:07 - [32minfo[39m: [BrowserstackCLI] stop: CLI process exited
+2025-12-05 16:08:07 - [32minfo[39m: [BrowserstackCLI] stop: CLI process exited
+2025-12-05 16:08:10 - [32minfo[39m: [BrowserstackCLI] stop: CLI is not running, skipping stop
+2025-12-05 16:08:10 - [32minfo[39m: [BrowserstackCLI] stop: CLI is not running, skipping stop
+2025-12-05 16:10:20 - [32minfo[39m: Reading configs from C:\Users\SeifeddineTajouri\Desktop\Seif\Menzzo\Test\playwright\For_test\browserstack.yml
+2025-12-05 16:10:20 - [32minfo[39m: Log Directory has been set to C:\Users\SeifeddineTajouri\Desktop\Seif\Menzzo\Test\playwright\For_test\log
+2025-12-05 16:10:20 - [32minfo[39m: Log Directory has been set to C:\Users\SeifeddineTajouri\Desktop\Seif\Menzzo\Test\playwright\For_test\log
+2025-12-05 16:10:20 - [32minfo[39m: Running SDK with args C:\Program Files\nodejs\node.exe C:\Users\SeifeddineTajouri\Desktop\Seif\Menzzo\Test\playwright\For_test\node_modules\browserstack-node-sdk\src\bin\runner.js playwright test --config playwright.config.js ../tests/BrowserStack/menzzo_android_browserstack.spec.tsnpx browserstack-node-sdk playwright test ../tests/BrowserStack/menzzo_android_browserstack.spec.ts
+2025-12-05 16:10:20 - [32minfo[39m: SDK run started with id: c70cad50-11bb-4605-9d3b-e176e9cd6614
+2025-12-05 16:10:21 - [32minfo[39m: Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+2025-12-05 16:10:20 - [32minfo[39m: Running SDK with args C:\Program Files\nodejs\node.exe C:\Users\SeifeddineTajouri\Desktop\Seif\Menzzo\Test\playwright\For_test\node_modules\browserstack-node-sdk\src\bin\runner.js playwright test --config playwright.config.js ../tests/BrowserStack/menzzo_android_browserstack.spec.tsnpx browserstack-node-sdk playwright test ../tests/BrowserStack/menzzo_android_browserstack.spec.ts
+2025-12-05 16:10:20 - [32minfo[39m: SDK run started with id: c70cad50-11bb-4605-9d3b-e176e9cd6614
+2025-12-05 16:10:21 - [32minfo[39m: Project and debug logs are captured by default. To disable, set disableAutoCaptureLogs: true in config.
+2025-12-05 16:10:22 - [32minfo[39m: [BrowserstackCLI] startMain: Starting main process
+2025-12-05 16:10:22 - [32minfo[39m: [BrowserstackCLI] startMain: Starting main process
+2025-12-05 16:10:22 - [32minfo[39m: [CLIUtils] Current CLI Path Found: C:\Users\SeifeddineTajouri\.browserstack\cli\binary-win-x64.exe
+2025-12-05 16:10:22 - [32minfo[39m: [CLIUtils] Current CLI Path Found: C:\Users\SeifeddineTajouri\.browserstack\cli\binary-win-x64.exe
+2025-12-05 16:10:22 - [32minfo[39m: [BrowserstackCLI] spawning command='C:\Users\SeifeddineTajouri\.browserstack\cli\binary-win-x64.exe,sdk'
+2025-12-05 16:10:22 - [32minfo[39m: [BrowserstackCLI] spawning command='C:\Users\SeifeddineTajouri\.browserstack\cli\binary-win-x64.exe,sdk'
+2025-12-05 16:10:23 - [32minfo[39m: [BrowserstackCLI] CLI params loaded: {"id":"1c1802ee-e36b-4368-83cf-cfbed1d77ad4","listen":"127.0.0.1:5400","port":"5400"}
+2025-12-05 16:10:23 - [32minfo[39m: [BrowserstackCLI] CLI params loaded: {"id":"1c1802ee-e36b-4368-83cf-cfbed1d77ad4","listen":"127.0.0.1:5400","port":"5400"}
+2025-12-05 16:10:23 - [32minfo[39m: [GrpcClient] Connected to gRPC server at 127.0.0.1:5400
+2025-12-05 16:10:23 - [32minfo[39m: [GrpcClient] Initialized gRPC client with bin session id: 1c1802ee-e36b-4368-83cf-cfbed1d77ad4 and listen address: 127.0.0.1:5400
+2025-12-05 16:10:23 - [32minfo[39m: [GrpcClient] startBinSession: Calling startBinSession
+2025-12-05 16:10:23 - [32minfo[39m: [GrpcClient] setCliArgs: cliArgs=["playwright","test","--config","playwright.config.js","../tests/BrowserStack/menzzo_android_browserstack.spec.tsnpx","browserstack-node-sdk","playwright","test","../tests/BrowserStack/menzzo_android_browserstack.spec.ts"], parsedConfig=[]
+2025-12-05 16:10:23 - [32minfo[39m: [GrpcClient] Connected to gRPC server at 127.0.0.1:5400
+2025-12-05 16:10:23 - [32minfo[39m: [GrpcClient] Initialized gRPC client with bin session id: 1c1802ee-e36b-4368-83cf-cfbed1d77ad4 and listen address: 127.0.0.1:5400
+2025-12-05 16:10:23 - [32minfo[39m: [GrpcClient] startBinSession: Calling startBinSession
+2025-12-05 16:10:23 - [32minfo[39m: [GrpcClient] setCliArgs: cliArgs=["playwright","test","--config","playwright.config.js","../tests/BrowserStack/menzzo_android_browserstack.spec.tsnpx","browserstack-node-sdk","playwright","test","../tests/BrowserStack/menzzo_android_browserstack.spec.ts"], parsedConfig=[]
+2025-12-05 16:10:24 - [32minfo[39m: [GrpcClient] StartBinSession successful
+2025-12-05 16:10:24 - [32minfo[39m: [GrpcClient] StartBinSession successful
+2025-12-05 16:10:24 - [32minfo[39m: [BrowserstackCLI] loadModules: Loading modules
+2025-12-05 16:10:24 - [32minfo[39m: [BrowserstackCLI] loadModules: binSessionId=1c1802ee-e36b-4368-83cf-cfbed1d77ad4
+2025-12-05 16:10:24 - [32minfo[39m: [BrowserstackCLI] loading Modules.
+2025-12-05 16:10:24 - [32minfo[39m: [BrowserstackCLI] setCliArgs: cliArgs=["playwright","test","--config","playwright.config.js","../tests/BrowserStack/menzzo_android_browserstack.spec.tsnpx","browserstack-node-sdk","playwright","test","../tests/BrowserStack/menzzo_android_browserstack.spec.ts"]
+2025-12-05 16:10:24 - [32minfo[39m: [BrowserstackCLI] Accessibility success=false
+2025-12-05 16:10:24 - [32minfo[39m: [BrowserstackCLI] loadModules: Loading modules
+2025-12-05 16:10:24 - [31merror[39m: Error: C:\Users\SeifeddineTajouri\Desktop\Seif\Menzzo\Test\playwright\For_test\playwright.config.js does not exist
+    at resolveConfigFile (C:\Users\SeifeddineTajouri\Desktop\Seif\Menzzo\Test\playwright\For_test\node_modules\playwright\lib\common\configLoader.js:321:11)
+    at resolveConfigLocation (C:\Users\SeifeddineTajouri\Desktop\Seif\Menzzo\Test\playwright\For_test\node_modules\playwright\lib\common\configLoader.js:302:30)
+    at Object.OtsGU (C:\Users\SeifeddineTajouri\Desktop\Seif\Menzzo\Test\playwright\For_test\node_modules\browserstack-node-sdk\src\bin\playwright\command.js:2:2158)
+    at getUserPlaywrightConfig (C:\Users\SeifeddineTajouri\Desktop\Seif\Menzzo\Test\playwright\For_test\node_modules\browserstack-node-sdk\src\bin\playwright\command.js:2:2675)
+    at Object.rXsyb (C:\Users\SeifeddineTajouri\Desktop\Seif\Menzzo\Test\playwright\For_test\node_modules\browserstack-node-sdk\src\bin\playwright\command.js:2:5728)
+    at C:\Users\SeifeddineTajouri\Desktop\Seif\Menzzo\Test\playwright\For_test\node_modules\browserstack-node-sdk\src\bin\playwright\command.js:2:10433
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-12-05 16:10:24 - [32minfo[39m: [BrowserstackCLI] loadModules: binSessionId=1c1802ee-e36b-4368-83cf-cfbed1d77ad4
+2025-12-05 16:10:24 - [32minfo[39m: [BrowserstackCLI] loading Modules.
+2025-12-05 16:10:24 - [32minfo[39m: [BrowserstackCLI] setCliArgs: cliArgs=["playwright","test","--config","playwright.config.js","../tests/BrowserStack/menzzo_android_browserstack.spec.tsnpx","browserstack-node-sdk","playwright","test","../tests/BrowserStack/menzzo_android_browserstack.spec.ts"]
+2025-12-05 16:10:24 - [32minfo[39m: [BrowserstackCLI] Accessibility success=false
+2025-12-05 16:10:24 - [31merror[39m: Error: C:\Users\SeifeddineTajouri\Desktop\Seif\Menzzo\Test\playwright\For_test\playwright.config.js does not exist
+    at resolveConfigFile (C:\Users\SeifeddineTajouri\Desktop\Seif\Menzzo\Test\playwright\For_test\node_modules\playwright\lib\common\configLoader.js:321:11)
+    at resolveConfigLocation (C:\Users\SeifeddineTajouri\Desktop\Seif\Menzzo\Test\playwright\For_test\node_modules\playwright\lib\common\configLoader.js:302:30)
+    at Object.OtsGU (C:\Users\SeifeddineTajouri\Desktop\Seif\Menzzo\Test\playwright\For_test\node_modules\browserstack-node-sdk\src\bin\playwright\command.js:2:2158)
+    at getUserPlaywrightConfig (C:\Users\SeifeddineTajouri\Desktop\Seif\Menzzo\Test\playwright\For_test\node_modules\browserstack-node-sdk\src\bin\playwright\command.js:2:2675)
+    at Object.rXsyb (C:\Users\SeifeddineTajouri\Desktop\Seif\Menzzo\Test\playwright\For_test\node_modules\browserstack-node-sdk\src\bin\playwright\command.js:2:5728)
+    at C:\Users\SeifeddineTajouri\Desktop\Seif\Menzzo\Test\playwright\For_test\node_modules\browserstack-node-sdk\src\bin\playwright\command.js:2:10433
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-12-05 16:10:24 - [31merror[39m: Size mismatch
+2025-12-05 16:10:24 - [31merror[39m: Size mismatch
+2025-12-05 16:10:24 - [31merror[39m: Size mismatch
+2025-12-05 16:10:24 - [31merror[39m: Size mismatch
+2025-12-05 16:10:24 - [32minfo[39m: [BrowserstackCLI] stop: CLI stop triggered
+2025-12-05 16:10:24 - [32minfo[39m: [BrowserstackCLI] stop: CLI stop triggered
+2025-12-05 16:10:24 - [32minfo[39m: [GrpcClient] Stopping bin session
+2025-12-05 16:10:24 - [32minfo[39m: [GrpcClient] Stopping bin session
+2025-12-05 16:10:26 - [32minfo[39m: [GrpcClient] StopBinSession successful
+2025-12-05 16:10:26 - [32minfo[39m: [GrpcClient] StopBinSession successful
+2025-12-05 16:10:26 - [32minfo[39m: stop: stopBinSession build_link=null hashed_id=null o11y_uuid=lhbg6hjmgpezk43z6yeqvzhnjzichpsk7ifl4y44
+2025-12-05 16:10:26 - [32minfo[39m: [BrowserstackCLI] Unconfiguring modules
+2025-12-05 16:10:26 - [32minfo[39m: [BrowserstackCLI] Unconfiguring modules
+2025-12-05 16:10:26 - [32minfo[39m: [BrowserstackCLI] stop: channel closed
+2025-12-05 16:10:26 - [32minfo[39m: [BrowserstackCLI] stop: channel closed
+2025-12-05 16:10:31 - [32minfo[39m: [BrowserstackCLI] stop: shutting down CLI
+2025-12-05 16:10:31 - [32minfo[39m: [BrowserstackCLI] stop: shutting down CLI
+2025-12-05 16:10:31 - [32minfo[39m: [BrowserstackCLI] stop: CLI process exited
+2025-12-05 16:10:31 - [32minfo[39m: [BrowserstackCLI] stop: CLI process exited
+2025-12-05 16:10:34 - [32minfo[39m: [BrowserstackCLI] stop: CLI is not running, skipping stop
+2025-12-05 16:10:34 - [32minfo[39m: [BrowserstackCLI] stop: CLI is not running, skipping stop
