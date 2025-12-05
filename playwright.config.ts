@@ -157,6 +157,16 @@ export default defineConfig({
       name: 'Product_page',
       testDir: './tests/Product_Page',
       use: {
+        headless: false,
+        screenshot: 'only-on-failure',
+        video: 'retain-on-failure',
+        trace: 'retain-on-failure',
+      }
+    },
+    {
+      name: 'Product_Price',
+      testDir: './tests/Price/Price_01122025',
+      use: {
         headless: true,
         screenshot: 'only-on-failure',
         video: 'retain-on-failure',
@@ -181,7 +191,7 @@ export default defineConfig({
       testDir: './tests/Menu',
       testMatch: /Menu_.*\.spec\.ts/,
       use: {
-        headless: false,
+        headless: true,
         viewport: { width: 1280, height: 720 },
         ignoreHTTPSErrors: true,
         screenshot: 'only-on-failure',
@@ -201,5 +211,44 @@ export default defineConfig({
         headless: false,
       },
     },
+    {
+      name: 'Category_Tests',
+      testDir: './tests/Category_Page',
+      testMatch: /Category_.*\.spec\.ts/,
+      use: {
+        headless: false,
+        viewport: { width: 1280, height: 720 },
+        ignoreHTTPSErrors: true,
+        screenshot: 'only-on-failure',
+        video: 'retain-on-failure',
+        trace: 'retain-on-failure',
+      }
+    },
+    {
+      name: 'SEO_Tests',
+      testDir: './tests/SEO',
+      testMatch: /(SEO|CMS)_.*\.spec\.ts/,
+      use: {
+        headless: true,
+        viewport: { width: 1280, height: 720 },
+        ignoreHTTPSErrors: true,
+        screenshot: 'only-on-failure',
+        video: 'retain-on-failure',
+        trace: 'retain-on-failure',
+      }
+    },
+    {
+      name: 'BrowserStack_Tests',
+      testDir: './tests/BrowserStack',
+      testMatch: /.*\\.spec\\.ts$/,
+      use: {
+        headless: true,
+        viewport: { width: 375, height: 667 }, // Mobile viewport
+        ignoreHTTPSErrors: true,
+        screenshot: 'on',
+        video: 'on',
+        trace: 'on',
+      }
+    }
   ],
 });

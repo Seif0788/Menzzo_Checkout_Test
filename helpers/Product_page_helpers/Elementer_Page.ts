@@ -1,6 +1,7 @@
 import { Page, expect } from '@playwright/test';
 import { allure } from 'allure-playwright';
-import { table } from 'console';
+
+import { Button_Next, Button_Previous } from '../../helpers/utils';
 
 export async function verifyH1MatchesTitle(page: Page) {
   //Locate the H1 element
@@ -160,7 +161,7 @@ export async function CheckTextPopup(page: Page) {
   console.log('✅ Clicked on stock info button.');
 
   //Wait for the popuo/modal to appear
-  const popup = page.locator('//div[@class = "dispo-infos show"]')
+  const popup = page.locator('//div[@class = "dispo-infos show"]');
   await expect.soft(popup, 'Popup should appear after clicking stock info').toBeVisible({ timeout: 5000 });
 
   //Locate poppup text
@@ -840,3 +841,228 @@ export async function getLowPrice(page: Page): Promise<number> {
 
   return lowPrice;
 }
+
+export async function Check_Image(page: Page) {
+
+  // Count real number of pictures
+  const totalPhotos = await CountPhoto(page);
+
+  // Loop through each photo
+  for (let i = 0; i < totalPhotos; i++) {
+
+    console.log(`🖼 Checking photo ${i + 1} / ${totalPhotos}`);
+
+    // Check the big photo
+    await Photo_product(page);
+
+    // If not last photo → click Next
+    if (i < totalPhotos - 1) {
+      await Button_Next(page);
+    }
+  }
+
+  // OPTIONAL: Go back to first image
+  for (let i = 0; i < totalPhotos - 1; i++) {
+    await Button_Previous(page);
+
+    // Check the big photo
+    await Photo_product(page);
+  }
+}
+
+export async function OtherColor(page: Page) {
+
+  const colorItems = page.locator(
+    '//div[contains(@class, "bloc-associated")]//a[contains(@class, "catalog-product-color-switch")]'
+  );
+
+  // Count colors
+  const count = await colorItems.count();
+
+  if (count === 0) {
+    console.log("There are no color associations for this product");
+    return { count: 0, urls: [] };
+  }
+
+  console.log(`Found ${count} color association(s).`);
+
+  // Array to store all color product URLs
+  const allUrls: string[] = [];
+
+  for (let i = 0; i < count; i++) {
+    const item = colorItems.nth(i);
+    const url = await item.getAttribute("href");
+
+    if (url) {
+      allUrls.push(url);
+    }
+  }
+
+  console.log("All color URLs:", allUrls);
+
+  // Return without clicking
+  return { count, urls: allUrls };
+}
+
+export async function SEO_Title(page: Page) {
+
+  function detectLanguage(text: string): string {
+    text = text.toLowerCase();
+
+    const deKeywords = [
+      "bett", "lattenrost", "verstellbar", "mit", "dunkel", "holz",
+      "dunkles", "stoff", "sessel", "stuhl", "schrank", "kommode",
+      "couchtisch", "ecksofa", "sofa"
+    ];
+
+    const frAccents = /[àâäéèêëîïôöùûüç]/i;
+    const esAccents = /[áéíóúüñ]/i;
+    const ptAccents = /[áâãàéêíóôõúç]/i;
+    const itAccents = /[àèéìòóù]/i;
+
+    // 1️⃣ Detect German by vocabulary first (most reliable)
+    for (const kw of deKeywords) {
+      if (text.includes(kw)) return "de";
+    }
+
+    // 2️⃣ Then detect romantic languages by accents
+    if (frAccents.test(text)) return "fr";
+    if (esAccents.test(text)) return "es";
+    if (ptAccents.test(text)) return "pt";
+    if (itAccents.test(text)) return "it";
+
+    // 3️⃣ Detect Dutch by patterns
+    if (/ij|aa|ee|oo|uu|stoel|tafel|bed|kast/.test(text)) return "nl";
+
+    return "unknown";
+  }
+
+  // -------------------------------
+  // 📌 Extract the correct H1
+  // -------------------------------
+  const h1Locator = page.locator("h1.ax-page-title");
+
+  // -------------------------------
+  // 📌 Extract H1 & Title text
+  // -------------------------------
+  const h1Text = (await h1Locator.textContent())?.trim() || "";
+  const pageTitle = (await page.title()).trim();
+
+  // -------------------------------
+  // 🌐 Detect languages
+  // -------------------------------
+  const h1Lang = detectLanguage(h1Text);
+  const titleLang = detectLanguage(pageTitle);
+
+  // -------------------------------
+  // 📝 LOG OUTPUT
+  // -------------------------------
+  console.log("🌐 SEO Language Check:");
+  console.log("─────────────────────────────");
+  console.log(`📌 H1 text        : "${h1Text}"`);
+  console.log(`📌 Page Title     : "${pageTitle}"`);
+  console.log(`🌍 H1 language    : ${h1Lang}`);
+  console.log(`🌍 Title language : ${titleLang}`);
+  console.log("─────────────────────────────");
+
+  const sameLanguage = h1Lang === titleLang;
+
+  if (sameLanguage) {
+    console.log(`✅ Language match: Both are in "${h1Lang}"`);
+  } else {
+    console.log(`❌ Language mismatch detected!`);
+    console.log(`   → H1 is in: ${h1Lang}`);
+    console.log(`   → Title is in: ${titleLang}`);
+  }
+
+  // -------------------------------
+  // 📌 Assertion (soft)
+  // -------------------------------
+  await expect.soft(
+    sameLanguage,
+    `H1 and Page Title must be in the same language`
+  ).toBeTruthy();
+}
+
+
+export async function SEO_Description(page: Page) {
+
+  function detectLanguage(text: string): string {
+    text = text.toLowerCase();
+
+    const deKeywords = [
+      "bett", "lattenrost", "verstellbar", "mit", "dunkel", "holz",
+      "dunkles", "stoff", "sessel", "stuhl", "schrank", "kommode",
+      "couchtisch", "ecksofa", "sofa", "farbe", "umwandelbar"
+    ];
+
+    const frAccents = /[àâäéèêëîïôöùûüç]/i;
+    const esAccents = /[áéíóúüñ]/i;
+    const ptAccents = /[áâãàéêíóôõúç]/i;
+    const itAccents = /[àèéìòóù]/i;
+
+    // 1️⃣ Detect German by keywords
+    for (const kw of deKeywords) {
+      if (text.includes(kw)) return "de";
+    }
+
+    // 2️⃣ Romantic languages by accents
+    if (frAccents.test(text)) return "fr";
+    if (esAccents.test(text)) return "es";
+    if (ptAccents.test(text)) return "pt";
+    if (itAccents.test(text)) return "it";
+
+    // 3️⃣ Dutch detection
+    if (/ij|aa|ee|oo|uu|stoel|tafel|bed|kast/.test(text)) return "nl";
+
+    return "unknown";
+  }
+
+  // -------------------------------
+  // 📌 Extract H1, Title & Description
+  // -------------------------------
+  const h1Text = (await page.locator("h1").textContent())?.trim() || "";
+  const pageTitle = (await page.title()).trim();
+
+  const description = await page.locator('meta[name="description"]').getAttribute("content") || "";
+
+  // -------------------------------
+  // 🌐 Detect languages
+  // -------------------------------
+  const h1Lang = detectLanguage(h1Text);
+  const titleLang = detectLanguage(pageTitle);
+  const descLang = detectLanguage(description);
+
+  // -------------------------------
+  // 📝 LOG OUTPUT
+  // -------------------------------
+  console.log("🌐 SEO Language Check:");
+  console.log("─────────────────────────────");
+  console.log(`📌 H1 text            : "${h1Text}"`);
+  console.log(`📌 Page Title         : "${pageTitle}"`);
+  console.log(`📌 Meta Description   : "${description}"`);
+  console.log(`🌍 H1 language        : ${h1Lang}`);
+  console.log(`🌍 Title language     : ${titleLang}`);
+  console.log(`🌍 Description lang   : ${descLang}`);
+  console.log("─────────────────────────────");
+
+  const allMatch = h1Lang === titleLang && titleLang === descLang;
+
+  if (allMatch) {
+    console.log(`✅ Language match: All are in "${h1Lang}"`);
+  } else {
+    console.log(`❌ Language mismatch detected!`);
+    console.log(`   → H1 is: ${h1Lang}`);
+    console.log(`   → Title is: ${titleLang}`);
+    console.log(`   → Description is: ${descLang}`);
+  }
+
+  // -------------------------------
+  // 📌 Assertion (soft)
+  // -------------------------------
+  await expect.soft(
+    allMatch,
+    `H1, Title, and Description must be in the same language`
+  ).toBeTruthy();
+}
+
