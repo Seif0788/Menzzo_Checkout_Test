@@ -25,7 +25,7 @@ function loadCSV(): ProductCSV[] {
 const Price_Update = loadCSV();
 
 // --- Choose how many random tests to run ---
-const TEST_COUNT = 10;
+const TEST_COUNT = 220;
 
 // --- Set a specific product ID to test (leave empty for random) ---
 const SPECIFIC_PRODUCT_ID = ''; // Example: '90375' or leave empty ''

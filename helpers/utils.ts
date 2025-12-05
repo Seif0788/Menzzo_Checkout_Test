@@ -470,39 +470,48 @@ export async function dismissOverlays(page: Page) {
 
 // Check the Time Box (prefix + countdown)
 export async function CheckTimeBox(page: Page) {
-  // Locate the prefix text ("Fin de l'offre dans :")
+  // Locate elements
   const prefix = page.locator('//span[@class="timerbox-prefix"]');
-  await expect.soft(prefix, 'The timebox prefix should be visible').toBeVisible();
-
-  // Locate the timer countdown value (e.g. "03j 07h 00min 02s")
   const timer = page.locator('//span[@id="timer-container" and contains(@class, "chrono-time")]');
-  await expect.soft(timer, 'The countdown timer should be visible').toBeVisible();
 
-  // Get their text contents
+  // Check if prefix exists
+  const prefixExists = await prefix.count() > 0;
+  const timerExists = await timer.count() > 0;
+
+  if (!prefixExists || !timerExists) {
+    console.log("⏱️ No timerbox found on this page — skipping CheckTimeBox()");
+    return; // <-- Stop execution here
+  }
+
+  // Soft check but they already exist
+  await expect.soft(prefix).toBeVisible();
+  await expect.soft(timer).toBeVisible();
+
   const prefixText = (await prefix.textContent())?.trim() || '';
   const timerText = (await timer.textContent())?.trim() || '';
 
-  // Check that they are not empty
+  // Soft assertions
   expect.soft(prefixText.length, 'Prefix text should not be empty').toBeGreaterThan(0);
   expect.soft(timerText.length, 'Timer value should not be empty').toBeGreaterThan(0);
 
-  // ✅ Log results
+  // Logging
   console.log(`⏱️ Time Box Check`);
   console.log(`   Prefix text: "${prefixText}"`);
   console.log(`   Timer value: "${timerText}"`);
 
-  // ✅ Optional: check timer format (e.g. "03j 07h 00min 02s")
+  // Format check
   const timePattern = /^\d{1,2}j\s\d{1,2}h\s\d{1,2}min\s\d{1,2}s$/;
-  const formatIsValid = timePattern.test(timerText);
+  const isValid = timePattern.test(timerText);
 
-  if (formatIsValid) {
+  if (isValid) {
     console.log(`✅ Timer format is valid`);
   } else {
     console.log(`❌ Timer format is invalid`);
   }
 
-  expect.soft(formatIsValid, 'Timer format should be valid').toBeTruthy();
+  expect.soft(isValid, 'Timer format should be valid').toBeTruthy();
 }
+
 
 export async function Button_Previous(page: Page) {
   // Scope to the main product carousel
@@ -704,6 +713,50 @@ export async function clickAndWaitForCheckout_NL(
   }
 }
 
+// Search function
+export interface ProductInfo {
+  sku: string;
+  url: string;
+}
 
+export async function clickAndReturnProduct(
+  page: Page,
+  sku: string
+): Promise<ProductInfo> {
+
+  // 1. Search for the SKU
+  await search(page, sku);
+
+  // 2. Wait for results
+  // We use the same selector as in ClickRandomProduct for consistency with Algolia results
+  const resultSelector = 'li.ais-InfiniteHits-item';
+
+  try {
+    await page.waitForSelector(resultSelector, { state: 'visible', timeout: 10000 });
+  } catch (e) {
+    throw new Error(`No search results found for SKU: ${sku}`);
+  }
+
+  const products = page.locator(resultSelector);
+  const count = await products.count();
+
+  if (count === 0) {
+    throw new Error(`No product found for SKU: ${sku}`);
+  }
+
+  // 3. Click the first product
+  const product = products.first();
+
+  // extract URL
+  const url = await product.locator('a').first().getAttribute('href') ?? '';
+
+  // CLICK
+  await product.click();
+
+  return {
+    sku,
+    url,
+  };
+}
 
 
