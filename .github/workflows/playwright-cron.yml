@@ -137,7 +137,7 @@ jobs:
           password: nnbx btck stvk bxfm
           to: seifeddine.t.axelites@gmail.com
           from: '"GitHub Actions" <seif.t.axelites@gmail.com>'
-          subject: "${{ env.STATUS_EMOJI }}: Playwright Scheduled Run Finished"
+          subject: "${{ env.STATUS_EMOJI }}: Playwright Scheduled Run Finished-test"
           body: |
             Playwright Scheduled Run Finished
 
