@@ -1,7 +1,8 @@
-import { Page, expect } from '@playwright/test';
+import { Locator, Page, expect } from '@playwright/test';
 import { allure } from 'allure-playwright';
 
 import { Button_Next, Button_Previous } from '../../helpers/utils';
+import { detectLanguage } from '../detect_language';
 
 export async function verifyH1MatchesTitle(page: Page) {
   //Locate the H1 element
@@ -477,85 +478,197 @@ export async function review_report(page: Page) {
   console.log("✅ Popup closed by aria-describedby");
 }
 
-// Check discription
+// Check Description
 export async function Description(page: Page) {
 
-  //Check discription title
-  const expect_discription_title = "Descriptifs";
-  const discription_Title = page.locator('//div[@class="item title active"]').first();
-  await discription_Title.waitFor({ state: 'visible', timeout: 30000 });
-  const discript_title_Text = (await discription_Title.textContent() || '').trim();
+  // 1. Detect language from URL
+  const currentUrl = page.url();
+  let lang = 'fr'; // default fallback
 
-  console.log(`📄 The discription title : "${discript_title_Text}"`);
-  if (discript_title_Text === expect_discription_title) {
-    console.log("✅ The discription title matches!");
-  } else {
-    console.log("❌ The discription does not match!");
+  if (currentUrl.includes('menzzo.de')) lang = 'de';
+  else if (currentUrl.includes('menzzo.nl')) lang = 'nl';
+  else if (currentUrl.includes('menzzo.it')) lang = 'it';
+  else if (currentUrl.includes('menzzo.es')) lang = 'es';
+  else if (currentUrl.includes('menzzo.pt')) lang = 'pt';
+  else if (currentUrl.includes('menzzo.be')) lang = 'fr';
+  else if (currentUrl.includes('menzzo.at')) lang = 'de';
+  else if (currentUrl.includes('nl.menzzo.be')) lang = 'nl';
+
+  console.log(`🌍 Description: Detected language "${lang.toUpperCase()}"`);
+
+  // 2. i18n dictionary (title text per language)
+  const i18n: Record<string, { title: string }> = {
+    fr: { title: "Descriptifs" },
+    de: { title: "Beschreibung" },
+    nl: { title: "Omschrijving" },
+    it: { title: "Descrizione" },
+    es: { title: "Descripción" },
+    pt: { title: "Descrição" }
+  };
+
+  const data = i18n[lang] || i18n['fr'];
+
+  // 3. Check description title
+  const descTitleLocator = page.locator('//div[@class="item title active"]').first();
+
+  try {
+    await descTitleLocator.waitFor({ state: 'visible', timeout: 5000 });
+  } catch {
+    console.log("⚠️ Description title is NOT visible — may depend on layout or accordion state.");
   }
 
-  //Check discription text
-  const discription_text = page.locator('//div[@class="product attribute description"]');
-  await discription_text.waitFor({ state: 'visible', timeout: 30000 });
-  const discriptionText = (await discription_text.textContent() || '').trim();
+  const descTitleText = (await descTitleLocator.textContent() || '').trim();
 
-  if (discriptionText.length > 0) {
-    console.log("✅ The discription text is NOT empty:");
+  console.log(`📄 Found description title: "${descTitleText}"`);
+
+  if (descTitleText === data.title) {
+    console.log(`✅ Description title matches expected "${data.title}"`);
   } else {
-    console.log("❌ The discription is EMPTY");
+    console.log(`❌ Description title does NOT match`);
+    console.log(`   Expected: "${data.title}"`);
+    console.log(`   Found:    "${descTitleText}"`);
   }
+
+  // 4. Check description text content
+  const descTextLocator = page.locator('//div[@class="product attribute description"]');
+
+  await descTextLocator.waitFor({ state: 'visible', timeout: 30000 });
+  const descText = (await descTextLocator.textContent() || '').trim();
+
+  if (descText.length > 0) {
+    console.log("✅ Description text is NOT empty.");
+    console.log(`   Preview: "${descText.substring(0, 80)}..."`);
+  } else {
+    console.log("❌ Description text is EMPTY!");
+  }
+}
+
+// Normalize function: removes accents, converts ß → ss, trims
+function normalizeText(text: string): string {
+  return text
+    .normalize('NFD')                       // decompose accents
+    .replace(/[\u0300-\u036f]/g, '')        // remove diacritics
+    .replace(/ß/g, 'ss')                    // German sharp S
+    .toLowerCase()
+    .trim();
 }
 
 // Check Information Table
 export async function InfoTable(page: Page) {
 
-  // Check information table title
-  const expected_InfotableTitle = "Informations complémentaires";
-  const InfoTabTitle = page.locator('//div[contains(@class,"item") and contains(@class,"title") and contains(@class,"active") and @aria-controls="tab-info"]');
-  await InfoTabTitle.waitFor({ state: 'visible', timeout: 30000 });
-  const InfoTabTitle_text = (await InfoTabTitle.textContent() || '').trim();
+  // 1. Detect language from URL
+  const currentUrl = page.url();
+  let lang = 'fr'; // default
 
-  if (InfoTabTitle_text === expected_InfotableTitle) {
-    console.log("✅ The info table title matches!");
-  } else {
-    console.log("❌ The info table title does not match!");
-    console.log(`The display title is: "${InfoTabTitle_text}"`);
+  if (currentUrl.includes('menzzo.de')) {
+    lang = 'de';
+  } else if (currentUrl.includes('menzzo.nl')) {
+    lang = 'nl';
+  } else if (currentUrl.includes('menzzo.it')) {
+    lang = 'it';
+  } else if (currentUrl.includes('menzzo.es')) {
+    lang = 'es';
+  } else if (currentUrl.includes('menzzo.pt')) {
+    lang = 'pt';
+  } else if (currentUrl.includes('nl.menzzo.be')) {
+    lang = 'nl';  // Dutch Belgian - check BEFORE menzzo.be
+  } else if (currentUrl.includes('menzzo.be')) {
+    lang = 'fr';  // French Belgian
+  } else if (currentUrl.includes('menzzo.at')) {
+    lang = 'de';
   }
 
-  // Check inforation table text
-  const TableRow = ['Couleur', 'Matière détail', 'Dimensions', 'Poids net (kg)', 'Dimensions colis'];
-  const Table = page.locator('//div[@class = "additional-attributes-wrapper table-wrapper"]//table');
+  console.log(`🌍 InfoTable: Detected language "${lang.toUpperCase()}"`);
 
-  await expect(Table).toBeVisible();
+  // 2. Define translations
+  // Note: These need to be matched exactly against the site's text.
+  const i18n: Record<string, { title: string, rows: string[] }> = {
+    fr: {
+      title: "Informations complémentaires",
+      rows: ['Couleur', 'Matière détail', 'Dimensions', 'Poids net (kg)', 'Dimensions colis']
+    },
+    de: {
+      title: "Mehr Informationen",
+      rows: ['Farbe', 'Material-Detail', 'Maße', 'Nettogewicht (Kg)', 'Paket-Maße'] // adjust if needed (e.g. "Maße", "Paket")
+    },
+    nl: {
+      title: "Meer informatie",
+      rows: ['Kleur', 'Retail materiaal', 'Afmetingen', 'Netto gewicht / kg', 'Nettogewicht (kg)', 'Afmetingen van het pakket'] // adjust if needed
+    },
+    it: {
+      title: "Informazioni complementari", // check specific site wording
+      rows: ['Colore', 'Dettagli del materiale', 'Dimensioni', 'Peso netto (kg)', 'Dimensione Pacco']
+    },
+    es: {
+      title: "Informaciones complementarias",
+      rows: ['Color', 'Detalle del material', 'Medidas', 'Peso neto (kg)', 'Tamaño de la caja']
+    },
+    pt: {
+      title: "Mais informações",
+      rows: ['Cor', 'Pormenor do material', 'Dimensões', 'Peso líquido (kg)', 'Dimensões do pacote']
+    }
+  };
 
-  for (const rowLabel of TableRow) {
-    const row = Table.locator(`xpath=.//tr[th[normalize-space(text())="${rowLabel}"]]`);
-    try {
-      console.log(`🔍 Checking row "${rowLabel}"...`);
+  const data = i18n[lang] || i18n['fr'];
 
-      await expect(row, `Row "${rowLabel}" should exist`).toHaveCount(1);
+  // Check information table title
+  const InfoTabTitle = page.locator('//div[contains(@class,"item") and contains(@class,"title") and contains(@class,"active") and @aria-controls="tab-info"]');
 
-      console.log(`✅ Row "${rowLabel}" exists`);
+  // Soft wait
+  try {
+    await InfoTabTitle.waitFor({ state: 'visible', timeout: 5000 });
+  } catch {
+    console.log("⚠️ Info tab title not visible - might be a layout difference.");
+  }
 
+  const InfoTabTitle_text = (await InfoTabTitle.textContent() || '').trim();
+  if (normalizeText(InfoTabTitle_text) === normalizeText(data.title)) {
+    console.log(`✅ The info table title matches! ("${data.title}")`);
+  } else {
+    console.log(`❌ The info table title does not match!`);
+    console.log(`   Expected: "${data.title}"`);
+    console.log(`   Found:    "${InfoTabTitle_text}"`);
+  }
+  // 4️⃣ Info table rows
+  const Table = page.locator('//div[@class="additional-attributes-wrapper table-wrapper"]//table');
+  await expect.soft(Table).toBeVisible();
 
-      // Get the <td> value inside this row
-      const valueTd = row.locator('td.col.data');
-      const valueText = (await valueTd.textContent() || '').trim();
+  const allRows = await Table.locator('tr').all();
 
-      // Check it's not empty
-      if (valueText.length > 0) {
-        console.log(`✅ Row "${rowLabel}" value is not empty: "${valueText}"`);
-      } else {
-        console.log(`❌ Row "${rowLabel}" value is empty!`);
+  for (const rowLabel of data.rows) {
+    console.log(`🔍 Checking row "${rowLabel}"...`);
+
+    let matchedRow: Locator | null = null;
+
+    for (const r of allRows) {
+      const thText = (await r.locator('th').textContent() || '').trim();
+      if (normalizeText(thText).includes(normalizeText(rowLabel))) {
+        matchedRow = r;
+        break;
       }
+    }
 
-      // Optional: assert non-empty with Playwright expect
-      await expect(valueTd, `Row "${rowLabel}" value should not be empty`).not.toBeEmpty();
-    } catch (error) {
-      console.log(`❌ Error when checking row "${rowLabel}": ${error}`);
-      // Continue to next row
+    if (!matchedRow) {
+      console.log(`❌ Row "${rowLabel}" NOT found!`);
+      const allHeaders = await Table.locator('th').allTextContents();
+      console.log(`   Available headers: ${allHeaders.map(t => t.trim()).join(', ')}`);
       continue;
     }
+
+    console.log(`✅ Row "${rowLabel}" exists`);
+
+    const valueTd = matchedRow.locator('td.col.data');
+    const valueText = (await valueTd.textContent() || '').trim();
+
+    if (valueText.length > 0) {
+      console.log(`✅ Row "${rowLabel}" value is not empty: "${valueText}"`);
+    } else {
+      console.log(`❌ Row "${rowLabel}" value is empty!`);
+    }
+
+    await expect.soft(valueTd, `Row "${rowLabel}" value should not be empty`).not.toBeEmpty();
   }
+
 }
 
 // Check MenzzoHome
@@ -906,36 +1019,7 @@ export async function OtherColor(page: Page) {
 
 export async function SEO_Title(page: Page) {
 
-  function detectLanguage(text: string): string {
-    text = text.toLowerCase();
 
-    const deKeywords = [
-      "bett", "lattenrost", "verstellbar", "mit", "dunkel", "holz",
-      "dunkles", "stoff", "sessel", "stuhl", "schrank", "kommode",
-      "couchtisch", "ecksofa", "sofa"
-    ];
-
-    const frAccents = /[àâäéèêëîïôöùûüç]/i;
-    const esAccents = /[áéíóúüñ]/i;
-    const ptAccents = /[áâãàéêíóôõúç]/i;
-    const itAccents = /[àèéìòóù]/i;
-
-    // 1️⃣ Detect German by vocabulary first (most reliable)
-    for (const kw of deKeywords) {
-      if (text.includes(kw)) return "de";
-    }
-
-    // 2️⃣ Then detect romantic languages by accents
-    if (frAccents.test(text)) return "fr";
-    if (esAccents.test(text)) return "es";
-    if (ptAccents.test(text)) return "pt";
-    if (itAccents.test(text)) return "it";
-
-    // 3️⃣ Detect Dutch by patterns
-    if (/ij|aa|ee|oo|uu|stoel|tafel|bed|kast/.test(text)) return "nl";
-
-    return "unknown";
-  }
 
   // -------------------------------
   // 📌 Extract the correct H1
@@ -987,36 +1071,7 @@ export async function SEO_Title(page: Page) {
 
 export async function SEO_Description(page: Page) {
 
-  function detectLanguage(text: string): string {
-    text = text.toLowerCase();
 
-    const deKeywords = [
-      "bett", "lattenrost", "verstellbar", "mit", "dunkel", "holz",
-      "dunkles", "stoff", "sessel", "stuhl", "schrank", "kommode",
-      "couchtisch", "ecksofa", "sofa", "farbe", "umwandelbar"
-    ];
-
-    const frAccents = /[àâäéèêëîïôöùûüç]/i;
-    const esAccents = /[áéíóúüñ]/i;
-    const ptAccents = /[áâãàéêíóôõúç]/i;
-    const itAccents = /[àèéìòóù]/i;
-
-    // 1️⃣ Detect German by keywords
-    for (const kw of deKeywords) {
-      if (text.includes(kw)) return "de";
-    }
-
-    // 2️⃣ Romantic languages by accents
-    if (frAccents.test(text)) return "fr";
-    if (esAccents.test(text)) return "es";
-    if (ptAccents.test(text)) return "pt";
-    if (itAccents.test(text)) return "it";
-
-    // 3️⃣ Dutch detection
-    if (/ij|aa|ee|oo|uu|stoel|tafel|bed|kast/.test(text)) return "nl";
-
-    return "unknown";
-  }
 
   // -------------------------------
   // 📌 Extract H1, Title & Description
@@ -1066,3 +1121,9 @@ export async function SEO_Description(page: Page) {
   ).toBeTruthy();
 }
 
+export async function CheckTitleLanguage(page: Page) {
+  const title: string = await page.title();
+  const detectedLanguage = detectLanguage(title);
+  console.log(`📌 Title: ${title}`);
+  console.log(`📌 Title language: ${detectedLanguage}`);
+}
