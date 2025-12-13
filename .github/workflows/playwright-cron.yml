@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -27,13 +27,22 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
+      - name: Prepare result directories
+        run: |
+          mkdir -p test-results
+          mkdir -p playwright-report
+          mkdir -p allure-report
+
       - name: Run Playwright Tests
         id: playwright
         run: |
+          # ensure test-results exists and write JSON output
+          mkdir -p test-results
+          # run tests and produce a JSON report (also line reporter). Keep job going even if tests fail.
           npx playwright test \
             --project=Global_Checkoutsuite \
-            --reporter=line,allure-playwright,json=./test-results/results.json \
-            --output=./playwright-report
+            --reporter=line,json=./test-results/results.json \
+            --output=./playwright-report || true
         continue-on-error: true
 
       - name: Generate Allure Report
@@ -62,10 +71,11 @@ jobs:
         run: |
           RESULT_FILE="./test-results/results.json"
 
-          if [ -f "$RESULT_FILE" ]; then
-            PASSED=$(jq '.stats.expected' "$RESULT_FILE")
-            FAILED=$(jq '.stats.unexpected' "$RESULT_FILE")
-            TOTAL=$(jq '.stats.total' "$RESULT_FILE")
+          if [ -f "$RESULT_FILE" ] && [ -s "$RESULT_FILE" ]; then
+            # Count statuses anywhere in the JSON so parsing is resilient to different shapes
+            PASSED=$(jq '[.. | objects | select(.status=="passed")] | length' "$RESULT_FILE")
+            FAILED=$(jq '[.. | objects | select(.status=="failed")] | length' "$RESULT_FILE")
+            TOTAL=$(jq '[.. | objects | .status? // empty] | length' "$RESULT_FILE")
           else
             PASSED=0
             FAILED=0
@@ -88,16 +98,20 @@ jobs:
           OWNER=${GITHUB_REPOSITORY%/*}
           echo "PAGES_URL=https://$OWNER.github.io/$REPO_NAME" >> $GITHUB_ENV
 
+          # Expose the path so we can attach the file in the email step
+          echo "RESULT_FILE_PATH=$RESULT_FILE" >> $GITHUB_ENV
+
       - name: Send Email Notification
         uses: dawidd6/action-send-mail@v3
         if: always()
         with:
           server_address: smtp.gmail.com
           server_port: 465
+          secure: true
           username: seif.t.axelites@gmail.com
-          password: ardd ojnm usgy nqec
+          password: nnbx btck stvk bxfm
           to: seifeddine.t.axelites@gmail.com
-          from: '"GitHub Actions" <seif.t.axelites@gmail.com>'
+          from: '"GitHub Actions" <${{ secrets.GMAIL_USERNAME }}>'
           subject: "${{ env.STATUS_EMOJI }}: Playwright Scheduled Run Finished"
           body: |
             Playwright Scheduled Run Finished
@@ -114,3 +128,7 @@ jobs:
 
             Artifacts:
             ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}#artifacts
+
+            Notes:
+            - If Total = 0, review the Playwright run output (possible project name mismatch or tests not discovered).
+          attachments: ${{ env.RESULT_FILE_PATH }}
