@@ -1,4 +1,8 @@
 import { Page, expect, Locator } from '@playwright/test';
+import { selectCategory } from '../utils';
+import fs from 'fs';
+import Papa from 'papaparse';
+import path from 'path';
 
 //--Checking the category Name
 export async function CheckCategoryName(page: Page, CategoryName: string) {
@@ -118,4 +122,29 @@ export async function countProducts(page: Page): Promise<number> {
 
     return count;
 }
+
+export async function selectRandomCategory(page: Page) {
+
+    //---- 1. Load categories from CSV -----
+    function loadCategoriesFromCSV(filePath: string): string[] {
+        const absolutePath = path.resolve(process.cwd(), filePath);
+        if (!fs.existsSync(absolutePath)) {
+            throw new Error(`CSV file not found at: ${absolutePath}`);
+        }
+        const fileContent = fs.readFileSync(absolutePath, 'utf-8');
+        const parsed = Papa.parse(fileContent, { header: true });
+        //Assuming CSV has a column named "Category"
+        return parsed.data.map((row: any) => row.Category).filter(Boolean);
+    }
+
+    // --- Load categories from CSV ---
+    const categories = loadCategoriesFromCSV('data/Category.csv');
+
+    //Select category
+    const randomCategory = categories[Math.floor(Math.random() * categories.length)];
+    await selectCategory(page, randomCategory);
+    console.log(`🔹 Selected category: ${randomCategory}`);
+}
+
+
 

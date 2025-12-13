@@ -1,4 +1,4 @@
-import { Page, expect, Locator, Frame } from '@playwright/test';
+import { Page, expect, Locator, Frame, BrowserContext } from '@playwright/test';
 
 // Navigate to URL and verify title
 export async function gotopageAndVerifyTitle(page: Page, url: string, titleText: string, timeout: number = 20000) {
@@ -308,8 +308,6 @@ export async function clickElementByTextWithPopUp(page: Page, mainText: string, 
     await popupButton.click();
   }
 }
-
-
 
 // Wait to upload the page
 
@@ -759,4 +757,17 @@ export async function clickAndReturnProduct(
   };
 }
 
+export async function selectCategory(page: Page, categoryName: string) {
+  await clickElementByText(page, categoryName);
+  console.log(`✅ Selected category: ${categoryName}`);
+}
 
+
+export async function ensurePageIsOpen(page: Page, context: BrowserContext) {
+  if (page.isClosed()) {
+    console.log("🔄 Reopening new page because previous one was closed...");
+    page = await context.newPage();
+    await page.goto("https://www.menzzo.fr");
+  }
+  return page;
+}

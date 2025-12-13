@@ -20,13 +20,13 @@ function sleep(ms: number) {
 }
 
 export interface CheckoutData {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  address: string[];
-  postalCode: string;
-  city: string;
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  phone?: string;
+  address?: string[];
+  postalCode?: string;
+  city?: string;
   country?: string;
   paymentMethod?: keyof typeof paymentMethodMap;
   deliveryMethod?: keyof typeof deliveryMethodMap;
@@ -116,30 +116,44 @@ export async function performCheckout(page: Page, data: CheckoutData) {
   // -------------------------------
   // Fill address dynamically
   // -------------------------------
-  await page.locator('#customer-email').fill(data.email);
-  await page.locator(languageSelectors.firstName[lang]).first().fill(data.firstName);
-  await page.locator(languageSelectors.lastName[lang]).first().fill(data.lastName);
-
-  for (let i = 0; i < data.address.length; i++) {
-    const streetInput = page.locator(`input[name="street[${i}]"].google-auto-complete`).first();
-    await streetInput.fill(data.address[i]);
+  if (data.email) {
+    await page.locator('#customer-email').fill(data.email);
+  }
+  if (data.firstName) {
+    await page.locator(languageSelectors.firstName[lang]).first().fill(data.firstName);
+  }
+  if (data.lastName) {
+    await page.locator(languageSelectors.lastName[lang]).first().fill(data.lastName);
   }
 
-  const cityLocator = page.locator(languageSelectors.city[lang]).first();
-  await cityLocator.waitFor({ state: 'visible', timeout: 15000 });
-  await cityLocator.fill(data.city);
+  if (data.address && data.address.length > 0) {
+    for (let i = 0; i < data.address.length; i++) {
+      const streetInput = page.locator(`input[name="street[${i}]"].google-auto-complete`).first();
+      await streetInput.fill(data.address[i]);
+    }
+  }
 
-  const postalLocator = page.locator(languageSelectors.postalCode[lang]).first();
-  await postalLocator.waitFor({ state: 'visible', timeout: 15000 });
-  await postalLocator.fill(data.postalCode);
+  if (data.city) {
+    const cityLocator = page.locator(languageSelectors.city[lang]).first();
+    await cityLocator.waitFor({ state: 'visible', timeout: 15000 });
+    await cityLocator.fill(data.city);
+  }
 
-  // Convert array to Playwright multiple selector string
-  const phoneSelector = Array.isArray(languageSelectors.phoneLabel[lang])
-    ? languageSelectors.phoneLabel[lang].join(',')
-    : languageSelectors.phoneLabel[lang];
-  const phoneLocator = page.locator(phoneSelector).first();
-  await phoneLocator.waitFor({ state: 'visible', timeout: 15000 });
-  await phoneLocator.fill(data.phone);
+  if (data.postalCode) {
+    const postalLocator = page.locator(languageSelectors.postalCode[lang]).first();
+    await postalLocator.waitFor({ state: 'visible', timeout: 15000 });
+    await postalLocator.fill(data.postalCode);
+  }
+
+  if (data.phone) {
+    // Convert array to Playwright multiple selector string
+    const phoneSelector = Array.isArray(languageSelectors.phoneLabel[lang])
+      ? languageSelectors.phoneLabel[lang].join(',')
+      : languageSelectors.phoneLabel[lang];
+    const phoneLocator = page.locator(phoneSelector).first();
+    await phoneLocator.waitFor({ state: 'visible', timeout: 15000 });
+    await phoneLocator.fill(data.phone);
+  }
   // -------------------------------
   // Select delivery method
   // -------------------------------
