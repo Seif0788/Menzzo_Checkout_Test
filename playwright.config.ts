@@ -14,7 +14,7 @@ export default defineConfig({
   testDir: './tests',
   testMatch: /.*\.(spec|test)\.ts$/,
   timeout: 120000,
-  reporter: [['list'], ['allure-playwright']],
+  reporter: [['list'], ['allure-playwright', { outputFolder: 'allure-results' }]],
   use: {
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
@@ -29,8 +29,10 @@ export default defineConfig({
       name: 'FR_Checkoutsuite',
       testDir: './tests/Checkout/Menzzo_Fr',
       workers: 1,
-      retries: 3,
-      use: checkoutUseOptions,
+      //retries: 3,
+      use: {
+        headless: false,
+      }
     },
     {
       name: 'DE_Checkoutsuite',
@@ -84,6 +86,7 @@ export default defineConfig({
     {
       name: 'Global_Checkoutsuite',
       testDir: './tests/Checkout/',
+      testMatch: '**/*.spec.ts',
       workers: 4,
       retries: 3,
       use: checkoutUseOptions,
@@ -104,7 +107,20 @@ export default defineConfig({
       name: 'Product_Page',
       testDir: './tests/Product_Page',
       use: {
-        headless: false,
+        headless: true,
+        screenshot: 'only-on-failure',
+        video: 'retain-on-failure',
+        trace: 'retain-on-failure',
+      },
+    },
+    {
+      name: 'Maouro_Product_Tests',
+      testDir: './tests/Product_Page',
+      testMatch: /Maouro.*\.spec\.ts/,
+      workers: 2,
+      timeout: 3600000, // 1 hour timeout for CSV loop tests
+      use: {
+        headless: true,
         screenshot: 'only-on-failure',
         video: 'retain-on-failure',
         trace: 'retain-on-failure',
@@ -144,8 +160,17 @@ export default defineConfig({
     {
       name: 'SEO_Tests',
       testDir: './tests/SEO',
-      testMatch: /(SEO|CMS)_.*\.spec\.ts/,
       use: checkoutUseOptions,
+    },
+    {
+      name: 'Login_Tests',
+      testDir: './tests/Login',
+      use: {
+        headless: false,
+        screenshot: 'only-on-failure',
+        video: 'retain-on-failure',
+        trace: 'retain-on-failure',
+      },
     },
 
     // === Mobile ===
