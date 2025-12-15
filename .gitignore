@@ -6,6 +6,20 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
-
-allure-results/
 allure-report/
+allure-results/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

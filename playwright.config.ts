@@ -17,6 +17,7 @@ export default defineConfig({
   reporter: [
     ['line'],
     ['allure-playwright'],
+    ['html', { outputFolder: 'playwright-report', open: 'never' }],
     ['json', { outputFile: 'test-results/results.json' }]
   ],
   use: {
@@ -103,7 +104,7 @@ export default defineConfig({
     {
       name: 'Homepage',
       testMatch: /Homepage_.*\.spec\.ts/,
-      use: { headless: false },
+      use: { ...checkoutUseOptions, headless: false },
     },
     {
       name: 'Product_Page',
@@ -159,7 +160,10 @@ export default defineConfig({
       testDir: './tests/Mobile_test',
       use: {
         ...devices['iPhone 13'],
-        headless: false,
+        headless: true,
+        screenshot: 'only-on-failure',
+        video: 'retain-on-failure',
+        trace: 'retain-on-failure',
       },
     },
   ],
