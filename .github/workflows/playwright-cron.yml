@@ -134,7 +134,9 @@ jobs:
           secure: true
           # Use repository secrets for credentials instead of plain text:
           username: seif.t.axelites@gmail.com
-          password: nnbx btck stvk bxfm
+
+          password: ${{ secrets.MAIL_PASSWORD }}
+
           to: seifeddine.t.axelites@gmail.com
           from: '"GitHub Actions" <seif.t.axelites@gmail.com>'
           subject: "${{ env.STATUS_EMOJI }}: Playwright Scheduled Run Finished"
