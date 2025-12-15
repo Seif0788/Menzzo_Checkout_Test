@@ -14,7 +14,11 @@ export default defineConfig({
   testDir: './tests',
   testMatch: /.*\.(spec|test)\.ts$/,
   timeout: 120000,
-  reporter: [['list'], ['allure-playwright']],
+  reporter: [
+    ['line'],
+    ['allure-playwright'],
+    ['json', { outputFile: 'test-results/results.json' }]
+  ],
   use: {
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
@@ -105,7 +109,7 @@ export default defineConfig({
       name: 'Product_Page',
       testDir: './tests/Product_Page',
       use: {
-        headless: false,
+        headless: true,
         screenshot: 'only-on-failure',
         video: 'retain-on-failure',
         trace: 'retain-on-failure',
@@ -139,7 +143,7 @@ export default defineConfig({
       testMatch: /Category_.*\.spec\.ts/,
       use: {
         ...checkoutUseOptions,
-        headless: false,
+        headless: true,
       },
     },
     {
