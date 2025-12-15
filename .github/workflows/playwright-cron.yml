@@ -154,7 +154,7 @@ jobs:
             Artifacts:
             ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}#artifacts
 
-            Notes:
+            Test Notes:
             - If Total = 0, review the Playwright run output (possible project name mismatch or tests not discovered).
           attachments: ${{ env.RESULT_FILE_PATH }}
           
