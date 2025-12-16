@@ -139,7 +139,7 @@ jobs:
 
           to: seifeddine.t.axelites@gmail.com
           from: '"GitHub Actions" <seif.t.axelites@gmail.com>'
-          subject: "${{ env.STATUS_EMOJI }}: Playwright Scheduled Run Finished"
+          subject: "${{ env.STATUS_EMOJI }}: Playwright Scheduled Run Finished-test"
           body: |
             Playwright Scheduled Run Finished
 
@@ -156,7 +156,7 @@ jobs:
             Artifacts:
             ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}#artifacts
 
-            Notes:
+            Test Notes:
             - If Total = 0, review the Playwright run output (possible project name mismatch or tests not discovered).
           attachments: ${{ env.RESULT_FILE_PATH }}
           

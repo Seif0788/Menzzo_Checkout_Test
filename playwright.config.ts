@@ -14,11 +14,6 @@ export default defineConfig({
   testDir: './tests',
   testMatch: /.*\.(spec|test)\.ts$/,
   timeout: 120000,
-  reporter: [
-    ['line'],
-    ['allure-playwright'],
-    ['html', { outputFolder: 'playwright-report', open: 'never' }],
-    ['json', { outputFile: 'test-results/results.json' }]
   ],
   use: {
     trace: 'on-first-retry',
@@ -34,8 +29,10 @@ export default defineConfig({
       name: 'FR_Checkoutsuite',
       testDir: './tests/Checkout/Menzzo_Fr',
       workers: 1,
-      retries: 3,
-      use: checkoutUseOptions,
+      //retries: 3,
+      use: {
+        headless: false,
+      }
     },
     {
       name: 'DE_Checkoutsuite',
@@ -150,8 +147,17 @@ export default defineConfig({
     {
       name: 'SEO_Tests',
       testDir: './tests/SEO',
-      testMatch: /(SEO|CMS)_.*\.spec\.ts/,
       use: checkoutUseOptions,
+    },
+    {
+      name: 'Login_Tests',
+      testDir: './tests/Login',
+      use: {
+        headless: false,
+        screenshot: 'only-on-failure',
+        video: 'retain-on-failure',
+        trace: 'retain-on-failure',
+      },
     },
 
     // === Mobile ===
