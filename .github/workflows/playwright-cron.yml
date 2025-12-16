@@ -133,11 +133,11 @@ jobs:
           server_port: 465
           secure: true
           # Use repository secrets for credentials instead of plain text:
-          username: ${{ secrets.EMAIL_USERNAME }}
-          password: ${{ secrets.MAIL_PASSWORD }}
+          username: GithubAction
+          password: cjrg skml wmsd huhn
 
           to: seifeddine.t.axelites@gmail.com
-          from: '"GitHub Actions" <${{ secrets.EMAIL_USERNAME }}>'
+          from: '"GitHub Actions" <GithubAction>'
           subject: "${{ env.STATUS_EMOJI }}: Playwright Scheduled Run Finished-test"
           body: |
             Playwright Scheduled Run Finished
