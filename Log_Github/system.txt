@@ -1,0 +1,5 @@
+2025-12-16T11:14:56.1290000Z Job is about to start running on the hosted runner: GitHub Actions 1000002386
+2025-12-16T11:14:56.1230000Z Requested labels: ubuntu-latest
+2025-12-16T11:14:56.1230000Z Job defined at: Seif0788/Menzzo_Checkout_Test/.github/workflows/playwright-cron.yml@refs/heads/main
+2025-12-16T11:14:56.1230000Z Waiting for a runner to pick up this job...
+2025-12-16T11:14:56.1290000Z Job is waiting for a hosted runner to come online.

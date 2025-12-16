@@ -1,0 +1,18 @@
+﻿2025-12-16T11:42:20.3131998Z ##[group]Run sudo apt-get update
+2025-12-16T11:42:20.3132555Z [36;1msudo apt-get update[0m
+2025-12-16T11:42:20.3133032Z [36;1msudo apt-get install -y jq[0m
+2025-12-16T11:42:20.3171149Z shell: /usr/bin/bash -e {0}
+2025-12-16T11:42:20.3171438Z ##[endgroup]
+2025-12-16T11:42:20.3833370Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2025-12-16T11:42:20.4135706Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+2025-12-16T11:42:20.4163562Z Hit:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease
+2025-12-16T11:42:20.4171253Z Hit:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease
+2025-12-16T11:42:20.4175846Z Hit:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease
+2025-12-16T11:42:20.4367633Z Hit:6 https://packages.microsoft.com/repos/azure-cli noble InRelease
+2025-12-16T11:42:20.4401255Z Hit:7 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease
+2025-12-16T11:42:21.6734285Z Reading package lists...
+2025-12-16T11:42:21.7108129Z Reading package lists...
+2025-12-16T11:42:21.9399240Z Building dependency tree...
+2025-12-16T11:42:21.9407618Z Reading state information...
+2025-12-16T11:42:22.1318807Z jq is already the newest version (1.7.1-3ubuntu0.24.04.1).
+2025-12-16T11:42:22.1319693Z 0 upgraded, 0 newly installed, 0 to remove and 51 not upgraded.

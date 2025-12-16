@@ -8,6 +8,7 @@ node_modules/
 /playwright/.auth/
 allure-report/
 allure-results/
+Log_Github/
 
 # Environment
 .env

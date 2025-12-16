@@ -1,0 +1,21 @@
+﻿2025-12-16T11:42:14.7525511Z ##[group]Run echo "Workspace: $GITHUB_WORKSPACE"
+2025-12-16T11:42:14.7525710Z [36;1mecho "Workspace: $GITHUB_WORKSPACE"[0m
+2025-12-16T11:42:14.7525839Z [36;1mecho "Listing test-results directory:"[0m
+2025-12-16T11:42:14.7525945Z [36;1mls -la test-results || true[0m
+2025-12-16T11:42:14.7526126Z [36;1mif [ -f "$GITHUB_WORKSPACE/test-results/results.json" ]; then[0m
+2025-12-16T11:42:14.7526412Z [36;1m  echo "results.json content (first 2000 chars):"[0m
+2025-12-16T11:42:14.7526611Z [36;1m  head -c 2000 "$GITHUB_WORKSPACE/test-results/results.json" || true[0m
+2025-12-16T11:42:14.7526688Z [36;1m  echo[0m
+2025-12-16T11:42:14.7526828Z [36;1m  echo "Full JSON validated by jq (if installed):"[0m
+2025-12-16T11:42:14.7527094Z [36;1m  jq . "$GITHUB_WORKSPACE/test-results/results.json" || echo "jq failed or not installed"[0m
+2025-12-16T11:42:14.7527176Z [36;1melse[0m
+2025-12-16T11:42:14.7527297Z [36;1m  echo "No test-results/results.json found"[0m
+2025-12-16T11:42:14.7527369Z [36;1mfi[0m
+2025-12-16T11:42:14.7560024Z shell: /usr/bin/bash -e {0}
+2025-12-16T11:42:14.7560123Z ##[endgroup]
+2025-12-16T11:42:14.7614266Z Workspace: /home/runner/work/Menzzo_Checkout_Test/Menzzo_Checkout_Test
+2025-12-16T11:42:14.7614472Z Listing test-results directory:
+2025-12-16T11:42:14.7628703Z total 8
+2025-12-16T11:42:14.7629294Z drwxr-xr-x  2 runner runner 4096 Dec 16 11:16 .
+2025-12-16T11:42:14.7629851Z drwxr-xr-x 17 runner runner 4096 Dec 16 11:16 ..
+2025-12-16T11:42:14.7632097Z No test-results/results.json found

@@ -1,0 +1,108 @@
+﻿2025-12-16T11:42:19.4556552Z ##[group]Run peaceiris/actions-gh-pages@v3
+2025-12-16T11:42:19.4557085Z with:
+2025-12-16T11:42:19.4557909Z   github_token: ***
+2025-12-16T11:42:19.4558302Z   publish_dir: ./allure-report
+2025-12-16T11:42:19.4559046Z   publish_branch: gh-pages
+2025-12-16T11:42:19.4559486Z   allow_empty_commit: false
+2025-12-16T11:42:19.4559902Z   keep_files: false
+2025-12-16T11:42:19.4560272Z   force_orphan: false
+2025-12-16T11:42:19.4560661Z   enable_jekyll: false
+2025-12-16T11:42:19.4561030Z   disable_nojekyll: false
+2025-12-16T11:42:19.4561420Z   exclude_assets: .github
+2025-12-16T11:42:19.4561794Z ##[endgroup]
+2025-12-16T11:42:19.5216010Z [INFO] Usage https://github.com/peaceiris/actions-gh-pages#readme
+2025-12-16T11:42:19.5221316Z ##[group]Dump inputs
+2025-12-16T11:42:19.5222217Z [INFO] GithubToken: true
+2025-12-16T11:42:19.5223200Z [INFO] PublishBranch: gh-pages
+2025-12-16T11:42:19.5224263Z [INFO] PublishDir: ./allure-report
+2025-12-16T11:42:19.5225263Z [INFO] DestinationDir: 
+2025-12-16T11:42:19.5226144Z [INFO] ExternalRepository: 
+2025-12-16T11:42:19.5227227Z [INFO] AllowEmptyCommit: false
+2025-12-16T11:42:19.5228109Z [INFO] KeepFiles: false
+2025-12-16T11:42:19.5228736Z [INFO] ForceOrphan: false
+2025-12-16T11:42:19.5229216Z [INFO] UserName: 
+2025-12-16T11:42:19.5229631Z [INFO] UserEmail: 
+2025-12-16T11:42:19.5230081Z [INFO] CommitMessage: 
+2025-12-16T11:42:19.5230932Z [INFO] FullCommitMessage: 
+2025-12-16T11:42:19.5231666Z [INFO] TagName: 
+2025-12-16T11:42:19.5232076Z [INFO] TagMessage: 
+2025-12-16T11:42:19.5232580Z [INFO] EnableJekyll (DisableNoJekyll): false
+2025-12-16T11:42:19.5233067Z [INFO] CNAME: 
+2025-12-16T11:42:19.5233462Z [INFO] ExcludeAssets .github
+2025-12-16T11:42:19.5233733Z 
+2025-12-16T11:42:19.5234137Z ##[endgroup]
+2025-12-16T11:42:19.5234702Z ##[group]Setup auth token
+2025-12-16T11:42:19.5235153Z [INFO] setup GITHUB_TOKEN
+2025-12-16T11:42:19.5236410Z ##[endgroup]
+2025-12-16T11:42:19.5236981Z ##[group]Prepare publishing assets
+2025-12-16T11:42:19.5237700Z [INFO] ForceOrphan: false
+2025-12-16T11:42:19.5280390Z [command]/usr/bin/git clone --depth=1 --single-branch --branch gh-pages ***github.com/Seif0788/Menzzo_Checkout_Test.git /home/runner/actions_github_pages_1765885339522
+2025-12-16T11:42:19.5317474Z Cloning into '/home/runner/actions_github_pages_1765885339522'...
+2025-12-16T11:42:19.6999813Z [INFO] clean up /home/runner/actions_github_pages_1765885339522
+2025-12-16T11:42:19.7000897Z [INFO] chdir /home/runner/actions_github_pages_1765885339522
+2025-12-16T11:42:19.7016380Z [command]/usr/bin/git rm -r --ignore-unmatch *
+2025-12-16T11:42:19.7194422Z rm '.nojekyll'
+2025-12-16T11:42:19.7194860Z rm 'app.js'
+2025-12-16T11:42:19.7195295Z rm 'data/behaviors.csv'
+2025-12-16T11:42:19.7195740Z rm 'data/behaviors.json'
+2025-12-16T11:42:19.7196085Z rm 'data/categories.csv'
+2025-12-16T11:42:19.7196404Z rm 'data/categories.json'
+2025-12-16T11:42:19.7196736Z rm 'data/packages.json'
+2025-12-16T11:42:19.7197020Z rm 'data/suites.csv'
+2025-12-16T11:42:19.7197283Z rm 'data/suites.json'
+2025-12-16T11:42:19.7197554Z rm 'data/timeline.json'
+2025-12-16T11:42:19.7197859Z rm 'export/influxDbData.txt'
+2025-12-16T11:42:19.7198153Z rm 'export/mail.html'
+2025-12-16T11:42:19.7198641Z rm 'export/prometheusData.txt'
+2025-12-16T11:42:19.7198957Z rm 'favicon.ico'
+2025-12-16T11:42:19.7199308Z rm 'history/categories-trend.json'
+2025-12-16T11:42:19.7199877Z rm 'history/duration-trend.json'
+2025-12-16T11:42:19.7200334Z rm 'history/history-trend.json'
+2025-12-16T11:42:19.7200791Z rm 'history/history.json'
+2025-12-16T11:42:19.7201249Z rm 'history/retry-trend.json'
+2025-12-16T11:42:19.7201561Z rm 'index.html'
+2025-12-16T11:42:19.7201939Z rm 'plugin/behaviors/index.js'
+2025-12-16T11:42:19.7202432Z rm 'plugin/packages/index.js'
+2025-12-16T11:42:19.7202843Z rm 'plugin/screen-diff/index.js'
+2025-12-16T11:42:19.7203195Z rm 'plugin/screen-diff/styles.css'
+2025-12-16T11:42:19.7203495Z rm 'styles.css'
+2025-12-16T11:42:19.7203757Z rm 'widgets/behaviors.json'
+2025-12-16T11:42:19.7204097Z rm 'widgets/categories-trend.json'
+2025-12-16T11:42:19.7204424Z rm 'widgets/categories.json'
+2025-12-16T11:42:19.7205022Z rm 'widgets/duration-trend.json'
+2025-12-16T11:42:19.7205340Z rm 'widgets/duration.json'
+2025-12-16T11:42:19.7205637Z rm 'widgets/environment.json'
+2025-12-16T11:42:19.7205933Z rm 'widgets/executors.json'
+2025-12-16T11:42:19.7206227Z rm 'widgets/history-trend.json'
+2025-12-16T11:42:19.7206507Z rm 'widgets/launch.json'
+2025-12-16T11:42:19.7206775Z rm 'widgets/retry-trend.json'
+2025-12-16T11:42:19.7207056Z rm 'widgets/severity.json'
+2025-12-16T11:42:19.7207347Z rm 'widgets/status-chart.json'
+2025-12-16T11:42:19.7207622Z rm 'widgets/suites.json'
+2025-12-16T11:42:19.7207885Z rm 'widgets/summary.json'
+2025-12-16T11:42:19.7208274Z [INFO] chdir /home/runner/actions_github_pages_1765885339522
+2025-12-16T11:42:19.7208941Z [INFO] prepare publishing assets
+2025-12-16T11:42:19.7209934Z [INFO] copy /home/runner/work/Menzzo_Checkout_Test/Menzzo_Checkout_Test/allure-report to /home/runner/actions_github_pages_1765885339522
+2025-12-16T11:42:19.7403794Z cp: no such file or directory: /home/runner/work/Menzzo_Checkout_Test/Menzzo_Checkout_Test/allure-report/.*
+2025-12-16T11:42:19.7405610Z [INFO] delete excluded assets
+2025-12-16T11:42:19.7447022Z rm: no paths given
+2025-12-16T11:42:19.7449669Z [INFO] Created /home/runner/actions_github_pages_1765885339522/.nojekyll
+2025-12-16T11:42:19.7451248Z ##[endgroup]
+2025-12-16T11:42:19.7451996Z ##[group]Setup Git config
+2025-12-16T11:42:19.7465232Z [command]/usr/bin/git remote rm origin
+2025-12-16T11:42:19.7524756Z [command]/usr/bin/git remote add origin ***github.com/Seif0788/Menzzo_Checkout_Test.git
+2025-12-16T11:42:19.7567134Z [command]/usr/bin/git add --all
+2025-12-16T11:42:19.7684000Z [command]/usr/bin/git config user.name Seif0788
+2025-12-16T11:42:19.7722083Z [command]/usr/bin/git config user.email Seif0788@users.noreply.github.com
+2025-12-16T11:42:19.7748187Z ##[endgroup]
+2025-12-16T11:42:19.7748872Z ##[group]Create a commit
+2025-12-16T11:42:19.7761584Z [command]/usr/bin/git commit -m deploy: 5a4090bcafea73742605be04c4deaed8101492f7
+2025-12-16T11:42:19.7890326Z [gh-pages b8270f2] deploy: 5a4090bcafea73742605be04c4deaed8101492f7
+2025-12-16T11:42:19.7891204Z  2 files changed, 14 insertions(+), 14 deletions(-)
+2025-12-16T11:42:19.7895475Z ##[endgroup]
+2025-12-16T11:42:19.7896399Z ##[group]Push the commit or tag
+2025-12-16T11:42:19.7907758Z [command]/usr/bin/git push origin gh-pages
+2025-12-16T11:42:20.2966322Z To https://github.com/Seif0788/Menzzo_Checkout_Test.git
+2025-12-16T11:42:20.2967626Z    6fcad1f..b8270f2  gh-pages -> gh-pages
+2025-12-16T11:42:20.3025683Z ##[endgroup]
+2025-12-16T11:42:20.3026418Z [INFO] Action successfully completed

@@ -40,9 +40,7 @@ jobs:
           mkdir -p test-results
 
           npx playwright test \
-          --project=Global_Checkoutsuite \
-          --reporter=list,json \
-          --output=./playwright-report || true
+          --project=Global_Checkoutsuite || true
         continue-on-error: true
 
 

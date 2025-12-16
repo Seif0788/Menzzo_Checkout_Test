@@ -1,0 +1,21 @@
+﻿2025-12-16T11:42:18.7900291Z ##[group]Run actions/upload-artifact@v4
+2025-12-16T11:42:18.7900774Z with:
+2025-12-16T11:42:18.7901079Z   name: allure-report
+2025-12-16T11:42:18.7901441Z   path: allure-report
+2025-12-16T11:42:18.7901789Z   retention-days: 7
+2025-12-16T11:42:18.7902147Z   if-no-files-found: warn
+2025-12-16T11:42:18.7902560Z   compression-level: 6
+2025-12-16T11:42:18.7902968Z   overwrite: false
+2025-12-16T11:42:18.7903305Z   include-hidden-files: false
+2025-12-16T11:42:18.7903694Z ##[endgroup]
+2025-12-16T11:42:19.0234375Z With the provided path, there will be 38 files uploaded
+2025-12-16T11:42:19.0238638Z Artifact name is valid!
+2025-12-16T11:42:19.0239926Z Root directory input is valid!
+2025-12-16T11:42:19.1164068Z Beginning upload of artifact content to blob storage
+2025-12-16T11:42:19.3335975Z Uploaded bytes 1004671
+2025-12-16T11:42:19.3472172Z Finished uploading artifact content to blob storage!
+2025-12-16T11:42:19.3476405Z SHA256 digest of uploaded artifact zip is 5e06558f152a7f666543de0ffba322f05952b4b00e5ccdcded8f92580ac92bd1
+2025-12-16T11:42:19.3478193Z Finalizing artifact upload
+2025-12-16T11:42:19.4350448Z Artifact allure-report.zip successfully finalized. Artifact ID 4884477250
+2025-12-16T11:42:19.4351984Z Artifact allure-report has been successfully uploaded! Final size is 1004671 bytes. Artifact ID is 4884477250
+2025-12-16T11:42:19.4359737Z Artifact download URL: https://github.com/Seif0788/Menzzo_Checkout_Test/actions/runs/20265993004/artifacts/4884477250

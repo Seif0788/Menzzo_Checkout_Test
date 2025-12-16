@@ -1,0 +1,37 @@
+﻿2025-12-16T11:42:22.1381631Z ##[group]Run # Use absolute path to avoid surprises
+2025-12-16T11:42:22.1382157Z [36;1m# Use absolute path to avoid surprises[0m
+2025-12-16T11:42:22.1382627Z [36;1mRESULT_FILE="$GITHUB_WORKSPACE/test-results/results.json"[0m
+2025-12-16T11:42:22.1383037Z [36;1m[0m
+2025-12-16T11:42:22.1383341Z [36;1mif [ -f "$RESULT_FILE" ] && [ -s "$RESULT_FILE" ]; then[0m
+2025-12-16T11:42:22.1383914Z [36;1m  # Count statuses anywhere in the JSON so parsing is resilient to different shapes[0m
+2025-12-16T11:42:22.1384634Z [36;1m  PASSED=$(jq '[.. | objects | select(.status=="passed")] | length' "$RESULT_FILE" 2>/dev/null || echo 0)[0m
+2025-12-16T11:42:22.1385371Z [36;1m  FAILED=$(jq '[.. | objects | select(.status=="failed")] | length' "$RESULT_FILE" 2>/dev/null || echo 0)[0m
+2025-12-16T11:42:22.1386077Z [36;1m  TOTAL=$(jq '[.. | objects | .status? // empty] | length' "$RESULT_FILE" 2>/dev/null || echo 0)[0m
+2025-12-16T11:42:22.1386755Z [36;1melse[0m
+2025-12-16T11:42:22.1387063Z [36;1m  echo "RESULT_FILE missing or empty: $RESULT_FILE"[0m
+2025-12-16T11:42:22.1387490Z [36;1m  PASSED=0[0m
+2025-12-16T11:42:22.1387743Z [36;1m  FAILED=0[0m
+2025-12-16T11:42:22.1387990Z [36;1m  TOTAL=0[0m
+2025-12-16T11:42:22.1388226Z [36;1mfi[0m
+2025-12-16T11:42:22.1388628Z [36;1m[0m
+2025-12-16T11:42:22.1388911Z [36;1mecho "PASSED=$PASSED" >> $GITHUB_ENV[0m
+2025-12-16T11:42:22.1389279Z [36;1mecho "FAILED=$FAILED" >> $GITHUB_ENV[0m
+2025-12-16T11:42:22.1389629Z [36;1mecho "TOTAL=$TOTAL" >> $GITHUB_ENV[0m
+2025-12-16T11:42:22.1389946Z [36;1m[0m
+2025-12-16T11:42:22.1390182Z [36;1mif [ "$FAILED" -gt 0 ]; then[0m
+2025-12-16T11:42:22.1390547Z [36;1m  echo "STATUS_EMOJI=🔴 Failure" >> $GITHUB_ENV[0m
+2025-12-16T11:42:22.1390935Z [36;1melif [ "$TOTAL" -eq 0 ]; then[0m
+2025-12-16T11:42:22.1391342Z [36;1m  echo "STATUS_EMOJI=🔴 Failure (No Results)" >> $GITHUB_ENV[0m
+2025-12-16T11:42:22.1391757Z [36;1melse[0m
+2025-12-16T11:42:22.1392033Z [36;1m  echo "STATUS_EMOJI=🟢 Success" >> $GITHUB_ENV[0m
+2025-12-16T11:42:22.1392393Z [36;1mfi[0m
+2025-12-16T11:42:22.1392609Z [36;1m[0m
+2025-12-16T11:42:22.1392855Z [36;1mREPO_NAME=${GITHUB_REPOSITORY#*/}[0m
+2025-12-16T11:42:22.1393218Z [36;1mOWNER=${GITHUB_REPOSITORY%/*}[0m
+2025-12-16T11:42:22.1393717Z [36;1mecho "PAGES_URL=https://$OWNER.github.io/$REPO_NAME" >> $GITHUB_ENV[0m
+2025-12-16T11:42:22.1394165Z [36;1m[0m
+2025-12-16T11:42:22.1394492Z [36;1m# Expose the path so we can attach the file in the email step[0m
+2025-12-16T11:42:22.1394995Z [36;1mecho "RESULT_FILE_PATH=$RESULT_FILE" >> $GITHUB_ENV[0m
+2025-12-16T11:42:22.1429975Z shell: /usr/bin/bash -e {0}
+2025-12-16T11:42:22.1430282Z ##[endgroup]
+2025-12-16T11:42:22.1487958Z RESULT_FILE missing or empty: /home/runner/work/Menzzo_Checkout_Test/Menzzo_Checkout_Test/test-results/results.json
