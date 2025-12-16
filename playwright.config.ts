@@ -5,9 +5,9 @@ const checkoutUseOptions = {
   headless: true,
   viewport: { width: 1280, height: 720 },
   ignoreHTTPSErrors: true,
-  screenshot: 'only-on-failure' as const,
-  video: 'retain-on-failure' as const,
-  trace: 'retain-on-failure' as const,
+  screenshot: 'off' as const,
+  video: 'off' as const,
+  trace: 'off' as const,
 };
 
 export default defineConfig({
@@ -16,9 +16,9 @@ export default defineConfig({
   timeout: 120000,
 
   use: {
-    trace: 'on-first-retry',
-    screenshot: 'only-on-failure',
-    video: 'retain-on-failure',
+    trace: 'off',
+    screenshot: 'off',
+    video: 'off',
     userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
   },
   fullyParallel: false,
@@ -154,9 +154,9 @@ export default defineConfig({
       testDir: './tests/Login',
       use: {
         headless: false,
-        screenshot: 'only-on-failure',
-        video: 'retain-on-failure',
-        trace: 'retain-on-failure',
+        screenshot: 'off',
+        video: 'off',
+        trace: 'off',
       },
     },
 
@@ -165,9 +165,9 @@ export default defineConfig({
       testDir: './tests/Menzzo2test',
       use: {
         headless: true,
-        screenshot: 'only-on-failure',
-        video: 'retain-on-failure',
-        trace: 'retain-on-failure',
+        screenshot: 'off',
+        video: 'off',
+        trace: 'off',
       },
     },
 
@@ -178,9 +178,9 @@ export default defineConfig({
       use: {
         ...devices['iPhone 13'],
         headless: true,
-        screenshot: 'only-on-failure',
-        video: 'retain-on-failure',
-        trace: 'retain-on-failure',
+        screenshot: 'off',
+        video: 'off',
+        trace: 'off',
       },
     },
   ],
