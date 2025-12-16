@@ -27,6 +27,9 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
+      - name: Install Allure
+        run: npm install --save-dev allure-playwright
+
       - name: Prepare result directories
         run: |
           mkdir -p test-results
@@ -71,6 +74,13 @@ jobs:
           name: allure-report
           path: allure-report
           retention-days: 7
+      
+      - name: Debug Allure Results
+        if: always()
+        run: |
+          echo "Checking allure-results directory:"
+          ls -la allure-results || echo "❌ No allure-results directory"
+
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3

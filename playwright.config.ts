@@ -160,6 +160,17 @@ export default defineConfig({
       },
     },
 
+    {
+      name: 'Menzzo2test',
+      testDir: './tests/Menzzo2test',
+      use: {
+        headless: true,
+        screenshot: 'only-on-failure',
+        video: 'retain-on-failure',
+        trace: 'retain-on-failure',
+      },
+    },
+
     // === Mobile ===
     {
       name: 'Mobile_iPhone_13',
