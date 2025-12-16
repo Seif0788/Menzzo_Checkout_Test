@@ -36,14 +36,15 @@ jobs:
       - name: Run Playwright Tests
         id: playwright
         run: |
-          # ensure test-results exists and write JSON output
+        
           mkdir -p test-results
-          # use a common reporter syntax: list,json=path to guarantee JSON output
-          npx playwright test \
-            --project=Global_Checkoutsuite \
 
-            --output=./playwright-report || true
+          npx playwright test \
+          --project=Global_Checkoutsuite \
+          --reporter=list,json \
+          --output=./playwright-report || true
         continue-on-error: true
+
 
       - name: "Debug: show test-results contents"
         if: always()
