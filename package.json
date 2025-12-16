@@ -12,18 +12,22 @@
     "test:fr": "npm run allure:clean && npx playwright test --project=\"FR Checkoutsuite\" && npm run allure:generate && npm run allure:open",
     "test:de": "npm run allure:clean && npx playwright test --project=\"DE_Checkoutsuite\" && npm run allure:generate && npm run allure:open",
     "test:it": "npm run allure:clean && npx playwright test --project=\"IT_Checkoutsuite\" && npm run allure:generate && npm run allure:open",
-    "test:price": "npx playwright test --project=Product_Price && npm run allure:generate && npm run allure:open"
+    "test:price": "npx playwright test --project=Product_Price && npm run allure:generate && npm run allure:open",
+    "test:checkout": "npm run allure:clean && (npx playwright test --project=Global_Checkoutsuite && npm run allure:generate || npm run allure:generate) && npm run allure:open"
   },
   "devDependencies": {
     "@playwright/test": "^1.57.0",
+    "@types/langdetect": "^0.2.2",
     "@types/papaparse": "^5.5.0",
     "allure-commandline": "^2.34.1",
     "allure-playwright": "^3.4.1",
+    "playwright": "^1.57.0",
     "rimraf": "^6.0.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.2"
   },
   "dependencies": {
+    "eld": "^1.0.1",
     "franc": "^6.2.0",
     "langdetect": "^0.2.1",
     "papaparse": "^5.5.3"

@@ -14,7 +14,7 @@ export default defineConfig({
   testDir: './tests',
   testMatch: /.*\.(spec|test)\.ts$/,
   timeout: 120000,
-  reporter: [['list'], ['allure-playwright', { outputFolder: 'allure-results' }]],
+  ],
   use: {
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
@@ -86,7 +86,7 @@ export default defineConfig({
     {
       name: 'Global_Checkoutsuite',
       testDir: './tests/Checkout/',
-      testMatch: '**/*.spec.ts',
+      testMatch: '**/Menzzo_*/[!.]*.spec.ts',
       workers: 4,
       retries: 3,
       use: checkoutUseOptions,
@@ -101,24 +101,11 @@ export default defineConfig({
     {
       name: 'Homepage',
       testMatch: /Homepage_.*\.spec\.ts/,
-      use: { headless: false },
+      use: { ...checkoutUseOptions, headless: false },
     },
     {
       name: 'Product_Page',
       testDir: './tests/Product_Page',
-      use: {
-        headless: true,
-        screenshot: 'only-on-failure',
-        video: 'retain-on-failure',
-        trace: 'retain-on-failure',
-      },
-    },
-    {
-      name: 'Maouro_Product_Tests',
-      testDir: './tests/Product_Page',
-      testMatch: /Maouro.*\.spec\.ts/,
-      workers: 2,
-      timeout: 3600000, // 1 hour timeout for CSV loop tests
       use: {
         headless: true,
         screenshot: 'only-on-failure',
@@ -154,7 +141,7 @@ export default defineConfig({
       testMatch: /Category_.*\.spec\.ts/,
       use: {
         ...checkoutUseOptions,
-        headless: false,
+        headless: true,
       },
     },
     {
@@ -179,7 +166,10 @@ export default defineConfig({
       testDir: './tests/Mobile_test',
       use: {
         ...devices['iPhone 13'],
-        headless: false,
+        headless: true,
+        screenshot: 'only-on-failure',
+        video: 'retain-on-failure',
+        trace: 'retain-on-failure',
       },
     },
   ],
