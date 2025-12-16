@@ -137,7 +137,7 @@ jobs:
           password: ${{ secrets.MAIL_PASSWORD }}
 
           to: seifeddine.t.axelites@gmail.com
-          from: '"GitHub Actions" <seif.t.axelites@gmail.com>'
+          from: '"GitHub Actions" <${{ secrets.EMAIL_USERNAME }}>'
           subject: "${{ env.STATUS_EMOJI }}: Playwright Scheduled Run Finished-test"
           body: |
             Playwright Scheduled Run Finished
