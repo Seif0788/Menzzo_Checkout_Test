@@ -5,7 +5,7 @@ const checkoutUseOptions = {
   headless: true,
   viewport: { width: 1280, height: 720 },
   ignoreHTTPSErrors: true,
-  screenshot: 'off' as const,
+  screenshot: 'only-on-failure' as const,
   video: 'off' as const,
   trace: 'off' as const,
 };
@@ -17,7 +17,7 @@ export default defineConfig({
 
   use: {
     trace: 'off',
-    screenshot: 'off',
+    screenshot: 'only-on-failure',
     video: 'off',
     userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
   },
@@ -31,7 +31,7 @@ export default defineConfig({
       workers: 1,
       //retries: 3,
       use: {
-        headless: false,
+        headless: true,
       }
     },
     {
