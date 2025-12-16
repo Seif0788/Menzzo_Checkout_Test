@@ -1,0 +1,308 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - text: 
+      - link "store logo" [ref=e5] [cursor=pointer]:
+        - /url: https://www.menzzo.de/
+        - img "Menzzo.de" [ref=e7]
+      - generic [ref=e8]:
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - search:
+                  - generic:
+                    - searchbox "Gesamten Shop hier durchsuchen..." [ref=e9]
+                    - generic [ref=e10]:
+                      - text: 
+                      - generic [ref=e11]: Suche
+                      - generic [ref=e12]: Suche
+                  - button "Search" [ref=e13] [cursor=pointer]:
+                    - text: 
+                    - generic [ref=e14]: Suche
+      - generic [ref=e15]:
+        - list [ref=e16]:
+          - listitem [ref=e17]:
+            - link "Favoriten" [ref=e18] [cursor=pointer]:
+              - /url: https://www.menzzo.de/wish-list/
+              - img [ref=e19]
+              - generic [ref=e21]: Favoriten
+          - listitem [ref=e22]:
+            - link "Blog" [ref=e23] [cursor=pointer]:
+              - /url: https://www.menzzo.de/blog.html
+              - img [ref=e24]
+              - generic [ref=e26]: Blog
+          - listitem [ref=e27]:
+            - link "Anmelden" [ref=e28] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e29]
+              - generic [ref=e31]: Anmelden
+        - link "Mein Warenkorb 1 1items Warenkorb" [ref=e34] [cursor=pointer]:
+          - /url: https://www.menzzo.de/checkout/cart/
+          - img [ref=e35]
+          - generic [ref=e37]: Mein Warenkorb
+          - generic [ref=e38]:
+            - generic [ref=e39]: "1"
+            - generic [ref=e40]: 1items
+          - generic [ref=e41]: Warenkorb
+  - tablist [ref=e43]:
+    - tabpanel [ref=e44]:
+      - navigation [ref=e45]:
+        - menu [ref=e46]:
+          - menuitem
+          - menuitem "Sanfte preise" [ref=e47] [cursor=pointer]
+          - menuitem
+          - menuitem "Tische, Couchtische" [ref=e48] [cursor=pointer]:
+            - generic [ref=e49]:
+              - generic [ref=e50]: Tische,
+              - text: Couchtische
+          - menuitem
+          - menuitem "Stühle, Hocker" [ref=e51] [cursor=pointer]:
+            - generic [ref=e52]:
+              - generic [ref=e53]: Stühle,
+              - text: Hocker
+          - menuitem
+          - menuitem "Sofas, Sessel" [ref=e54] [cursor=pointer]:
+            - generic [ref=e55]:
+              - generic [ref=e56]: Sofas,
+              - text: Sessel
+          - menuitem
+          - menuitem "Betten, Kopfteile" [ref=e57] [cursor=pointer]:
+            - generic [ref=e58]:
+              - generic [ref=e59]: Betten,
+              - text: Kopfteile
+          - menuitem
+          - menuitem "Möbel, Aufbewahrung" [ref=e60] [cursor=pointer]:
+            - generic [ref=e61]:
+              - generic [ref=e62]: Möbel,
+              - text: Aufbewahrung
+          - menuitem
+          - menuitem "Dekoration" [ref=e63] [cursor=pointer]
+          - menuitem
+          - menuitem "Räumungsverkauf" [ref=e64] [cursor=pointer]
+  - main [ref=e65]:
+    - generic [ref=e67]:
+      - generic [ref=e69]:
+        - generic [ref=e70]:
+          - img [ref=e71]
+          - text: "Angebot endet in:"
+        - text: 02Tg 01h 23min 50s
+      - generic [ref=e76]: "-11% auf alles - Code : 11WINTER"
+    - heading "Mein Warenkorb" [level=1] [ref=e78]
+    - generic [ref=e81]:
+      - generic [ref=e82]:
+        - strong [ref=e83]: Zusammenfassung
+        - tablist [ref=e84]:
+          - table "Gesamtsumme" [ref=e88]:
+            - caption [ref=e89]: Gesamtsumme
+            - rowgroup [ref=e90]:
+              - row "Zwischensumme 770,00 €" [ref=e91]:
+                - rowheader "Zwischensumme" [ref=e92]
+                - cell "770,00 €" [ref=e93]
+          - table "Gesamtsumme" [ref=e96]:
+            - caption [ref=e97]: Gesamtsumme
+            - rowgroup [ref=e98]:
+              - row "Gesamtbetrag inkl. MwSt. 770,00 €" [ref=e99]:
+                - rowheader "Gesamtbetrag inkl. MwSt." [ref=e100]:
+                  - strong [ref=e101]: Gesamtbetrag inkl. MwSt.
+                - cell "770,00 €" [ref=e102]:
+                  - strong [ref=e103]: 770,00 €
+          - tab [ref=e104]
+        - list [ref=e105]:
+          - listitem [ref=e106]:
+            - button "Warenkorb bestätigen" [ref=e107] [cursor=pointer]
+        - generic [ref=e109]:
+          - generic [ref=e110]:
+            - text: Zufriedene Kunden
+            - generic [ref=e113] [cursor=pointer]: Alle Bewertungen anzeigen
+          - generic [ref=e114]:
+            - generic [ref=e115]:
+              - img [ref=e117]
+              - text: 15 Tage, um Ihre Meinung zu ändern
+            - generic [ref=e118]:
+              - img [ref=e120]
+              - text: 100 % sichere Zahlung
+        - generic [ref=e121]:
+          - generic [ref=e122]: Einmalige Zahlung
+          - generic [ref=e127]: oder in mehreren Raten ohne Zusatzkosten
+      - generic [ref=e133]:
+        - generic [ref=e134]:
+          - generic [ref=e135]: Artikel
+          - generic [ref=e136]:
+            - generic [ref=e137]: Anz.
+            - generic [ref=e138]: Preis
+        - generic [ref=e139]:
+          - generic [ref=e141]:
+            - link "Canapé 3 places convertible Vertice Tissu toile Beige" [ref=e143] [cursor=pointer]:
+              - /url: https://www.menzzo.de/3-sitzer-sofa-umwandelbar-vertice-stoff-canvas-beige.html
+              - img "Canapé 3 places convertible Vertice Tissu toile Beige" [ref=e147]
+            - generic [ref=e149]:
+              - link "3-Sitzer-Sofa, umwandelbar, Vertice Stoff Canvas Beige" [ref=e150] [cursor=pointer]:
+                - /url: https://www.menzzo.de/3-sitzer-sofa-umwandelbar-vertice-stoff-canvas-beige.html
+              - generic [ref=e151]:
+                - generic [ref=e152]: "Ref : asr560are2261"
+                - strong [ref=e154]: Auf Lager
+              - strong [ref=e156]: Lieferung zwischen 18 und 25 Dezember
+              - generic [ref=e158]: Nur noch 1 Artikel auf Lager !
+          - generic [ref=e160]:
+            - generic [ref=e161]:
+              - generic [ref=e165]:
+                - generic [ref=e166]: Anz.
+                - generic [ref=e167]:
+                  - generic [ref=e168] [cursor=pointer]: "-"
+                  - spinbutton "Anz. - +" [ref=e170]: "1"
+                  - generic [ref=e171] [cursor=pointer]: +
+              - link "Artikel entfernen" [ref=e173] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e174]: Artikel entfernen
+            - generic [ref=e177]: 770,00 €
+      - generic [ref=e182]:
+        - textbox "Gutscheincode eingeben" [ref=e185]:
+          - /placeholder: Gutscheincode
+        - button "OK" [ref=e188] [cursor=pointer]
+      - generic [ref=e194]:
+        - strong [ref=e195]: Schnellstmögliche Lieferung
+        - paragraph [ref=e196]: Mehrere Lieferungen pro Bestellung, damit Sie Ihre Artikel so schnell wie möglich erhalten. Maximal 259€ Versandkosten insgesamt – nutzen Sie die Gelegenheit, Ihre Einkäufe zu bündeln!
+  - contentinfo [ref=e197]:
+    - generic [ref=e199]:
+      - generic [ref=e201]:
+        - generic [ref=e202]:
+          - generic [ref=e203]: Alle Gutscheincodes
+          - generic [ref=e204]: Durch Anklicken von "Anmelden" akzeptiere ich den Erhalt des Newsletters per E-Mail und ich akzeptiere die Datenschutzrichtlinie von Menzzo.
+          - generic [ref=e207]:
+            - generic [ref=e210]:
+              - generic [ref=e211]: "Melden Sie sich für unseren Newsletter an:"
+              - textbox "Melden Sie sich für unseren Newsletter an:" [ref=e212]:
+                - /placeholder: Ihre E-Mail
+            - button "Anmelden" [ref=e213] [cursor=pointer]
+            - generic [ref=e215]:
+              - checkbox "Ich akzeptiere die Datenschutzbestimmungen und stimme der Verarbeitung meiner Daten zu Marketingzwecken durch Menzzo zu" [ref=e216]
+              - text: Ich akzeptiere die
+              - link "Datenschutzbestimmungen" [ref=e217] [cursor=pointer]:
+                - /url: https://www.menzzo.de/rgpd
+              - text: und stimme der Verarbeitung meiner Daten zu Marketingzwecken durch Menzzo zu
+        - img "img" [ref=e219]
+      - generic [ref=e221]:
+        - generic [ref=e223]:
+          - heading "KUNDENSERVICE" [level=3] [ref=e224]:
+            - img [ref=e225]
+            - text: KUNDENSERVICE
+          - generic [ref=e227]:
+            - generic [ref=e228]:
+              - img [ref=e229]
+              - link "kontakt@menzzo.de" [ref=e231] [cursor=pointer]:
+                - /url: mailto:kontakt@menzzo.de
+                - generic [ref=e232]: kontakt@menzzo.de
+            - generic [ref=e233]:
+              - img [ref=e234]
+              - generic [ref=e236]:
+                - strong [ref=e237]: "Montag bis Donnerstag :"
+                - text: 10-13 Uhr / 14-18 Uhr
+                - strong [ref=e238]: "Freitag :"
+                - text: 10 - 14 Uhr
+                - strong [ref=e239]: "Samstag - Sonntag :"
+                - text: Geschlossen
+                - strong
+          - link "Mehr anzeigen" [ref=e240] [cursor=pointer]:
+            - /url: https://www.menzzo.de/sav-menzzo-fr/
+        - generic [ref=e242]:
+          - heading "SICHERES BEZAHLEN" [level=3] [ref=e243]:
+            - img [ref=e244]
+            - text: SICHERES BEZAHLEN
+          - generic [ref=e247]:
+            - strong [ref=e248]: "Per Kreditkarte:"
+            - paragraph [ref=e255]: Online-Zahlungen sind durch das 3D-Secure-System gesichert. Menzzo hat keinen Zugriff auf Ihre Kreditkartendaten und speichert diese nicht.
+          - strong [ref=e256]: "Banküberweisung:"
+          - strong [ref=e257]: "Ratenzahlung:"
+          - paragraph [ref=e261]: Flexible Zahlungen oder in 3/4 Raten mit unseren Partnern.
+          - link "Mehr anzeigen" [ref=e262] [cursor=pointer]:
+            - /url: https://www.menzzo.de/financement
+        - generic [ref=e264]:
+          - heading "LIEFERUNG" [level=3] [ref=e265]:
+            - img [ref=e266]
+            - text: LIEFERUNG
+          - generic [ref=e268]:
+            - generic [ref=e271]: Die Lieferzeiten variieren je nach Produkt und sind auf jeder Produktseite separat angegeben
+            - generic [ref=e272]:
+              - paragraph [ref=e273]:
+                - strong [ref=e274]: Standardlieferung
+              - paragraph [ref=e277]: Die Ware wird am LKW abgeladen. Je nach Art des Artikels wird der Transporteur Sie per E-Mail, SMS oder Telefon kontaktieren, um Ihnen ein Lieferdatum mitzuteilen.
+            - link "Mehr anzeigen" [ref=e278] [cursor=pointer]:
+              - /url: https://www.menzzo.de/livraison/
+      - generic [ref=e280]:
+        - generic [ref=e281]:
+          - heading "BRAUCHEN SIE HILFE ?" [level=3] [ref=e282]
+          - generic [ref=e283]:
+            - list [ref=e284]:
+              - listitem [ref=e285]:
+                - link "Lieferung" [ref=e286] [cursor=pointer]:
+                  - /url: https://www.menzzo.de/livraison/
+              - listitem [ref=e287]:
+                - link "Rückgaberichtlinien" [ref=e288] [cursor=pointer]:
+                  - /url: https://www.menzzo.de/politique-de-retour
+              - listitem [ref=e289]:
+                - link "Materialglossar" [ref=e290] [cursor=pointer]:
+                  - /url: https://www.menzzo.de/materials
+            - list [ref=e291]:
+              - listitem [ref=e292]:
+                - link "Finanzierung" [ref=e293] [cursor=pointer]:
+                  - /url: https://www.menzzo.de/financement
+              - listitem [ref=e294]:
+                - link "Kundenservice" [ref=e295] [cursor=pointer]:
+                  - /url: https://www.menzzo.de/sav-menzzo-fr/
+        - generic [ref=e296]:
+          - heading "UNS BESSER KENNENLERNEN" [level=3] [ref=e297]
+          - generic [ref=e298]:
+            - list [ref=e299]:
+              - listitem [ref=e300]:
+                - link "Über Menzzo" [ref=e301] [cursor=pointer]:
+                  - /url: https://www.menzzo.de/a-propos-de-menzzo
+              - listitem [ref=e302]:
+                - link "Persönliche Daten" [ref=e303] [cursor=pointer]:
+                  - /url: https://www.menzzo.de/rgpd
+            - list [ref=e304]:
+              - listitem [ref=e305]:
+                - link "AGBs" [ref=e306] [cursor=pointer]:
+                  - /url: https://www.menzzo.de/conditions-generales-de-vente
+      - list [ref=e309]:
+        - listitem [ref=e310]
+        - listitem [ref=e312]
+        - listitem [ref=e314]
+        - listitem [ref=e316]
+        - listitem [ref=e318]:
+          - img "Monext" [ref=e320]
+        - listitem [ref=e321]:
+          - img "scalapay" [ref=e323]
+      - generic [ref=e324]:
+        - text: "Entdecken Sie Menzzo auch in anderen Ländern :"
+        - link "menzzo.fr" [ref=e325] [cursor=pointer]:
+          - /url: https://menzzo.fr
+          - img [ref=e326]
+        - link "menzzo.de" [ref=e328] [cursor=pointer]:
+          - /url: https://menzzo.de
+          - img [ref=e329]
+        - link "menzzo.it" [ref=e331] [cursor=pointer]:
+          - /url: https://menzzo.it
+          - img [ref=e332]
+        - link "menzzo.nl" [ref=e334] [cursor=pointer]:
+          - /url: https://menzzo.nl
+          - img [ref=e335]
+        - link "menzzo.at" [ref=e337] [cursor=pointer]:
+          - /url: https://menzzo.at
+          - img [ref=e338]
+        - link "menzzo.be" [ref=e340] [cursor=pointer]:
+          - /url: https://menzzo.be
+          - img [ref=e341]
+        - link "menzzo.es" [ref=e343] [cursor=pointer]:
+          - /url: https://menzzo.es/
+          - img [ref=e344]
+        - link "menzzo.pt" [ref=e346] [cursor=pointer]:
+          - /url: https://www.menzzo.pt/
+          - img [ref=e347]
+      - generic [ref=e350]: © 2025 Menzzo - Alle Rechte vorbehalten
+  - button "Chat Menzzo" [ref=e351] [cursor=pointer]:
+    - img "Chat Menzzo"
+```
