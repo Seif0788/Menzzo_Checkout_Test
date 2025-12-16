@@ -134,7 +134,6 @@ jobs:
           secure: true
           # Use repository secrets for credentials instead of plain text:
           username: seif.t.axelites@gmail.com
-
           password: ${{ secrets.MAIL_PASSWORD }}
 
           to: seifeddine.t.axelites@gmail.com
@@ -142,7 +141,6 @@ jobs:
           subject: "${{ env.STATUS_EMOJI }}: Playwright Scheduled Run Finished-test"
           body: |
             Playwright Scheduled Run Finished
-
             Status: ${{ env.STATUS_EMOJI }}
 
             Test Statistics:
