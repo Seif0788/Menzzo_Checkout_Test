@@ -41,7 +41,7 @@ jobs:
           # use a common reporter syntax: list,json=path to guarantee JSON output
           npx playwright test \
             --project=Global_Checkoutsuite \
-            --reporter=list,json=./test-results/results.json,allure-playwright \
+            npx playwright test --project=Global_Checkoutsuite --output=./playwright-report || true \
             --output=./playwright-report || true
         continue-on-error: true
 

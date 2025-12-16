@@ -14,7 +14,7 @@ export default defineConfig({
   testDir: './tests',
   testMatch: /.*\.(spec|test)\.ts$/,
   timeout: 120000,
-  ],
+
   use: {
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
@@ -172,5 +172,10 @@ export default defineConfig({
         trace: 'retain-on-failure',
       },
     },
+  ],
+  reporter: [
+    ['list'],
+    ['json', { outputFile: 'test-results/results.json' }],
+    ['allure-playwright'],
   ],
 });
