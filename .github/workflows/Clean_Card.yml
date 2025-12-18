@@ -2,7 +2,7 @@ name: Playwright Clean Card Tests
 
 on:
   schedule:
-    - cron: '0 */2 * * *'
+    - cron: '45 */2 * * *'
   workflow_dispatch:
 
 jobs:
@@ -106,7 +106,7 @@ jobs:
           password: cjrgskmlwmsdhuhn # Note: Use Secrets in production!
           to: seifeddine.t.axelites@gmail.com
           from: '"GitHub Actions" <seif.t.axelites@gmail.com>'
-          subject: "${{ env.STATUS_EMOJI }}: Playwright Run Finished"
+          subject: "${{ env.STATUS_EMOJI }}: Clean Card Run Finished"
           body: |
             Status: ${{ env.STATUS_EMOJI }}
             
