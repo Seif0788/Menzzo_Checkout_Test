@@ -153,9 +153,9 @@ jobs:
 
           to: seifeddine.t.axelites@gmail.com
           from: '"GitHub Actions" <seif.t.axelites@gmail.com>'
-          subject: "${{ env.STATUS_EMOJI }}: Playwright Scheduled Run Finished-test"
+          subject: "${{ env.STATUS_EMOJI }}: Playwright Scheduled Run Finished_Menzzo.es"
           body: |
-            Playwright Scheduled Run Finished
+            Playwright Scheduled Run Finished_Menzzo.es
             Status: ${{ env.STATUS_EMOJI }}
 
             Test Statistics:
