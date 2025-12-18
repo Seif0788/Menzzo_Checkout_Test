@@ -40,7 +40,7 @@ export default defineConfig({
       workers: 1,
       //retries: 3,
       use: {
-        headless: false,
+        headless: true,
       }
     },
     {
