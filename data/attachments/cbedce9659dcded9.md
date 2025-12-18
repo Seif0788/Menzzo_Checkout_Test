@@ -1,0 +1,993 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - text: 
+      - link "store logo" [ref=e5] [cursor=pointer]:
+        - /url: https://www.menzzo.fr/
+        - img "Menzzo.fr" [ref=e7]
+      - generic [ref=e8]:
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - search:
+                  - generic:
+                    - searchbox "Que cherchez-vous ?" [ref=e9]
+                    - generic [ref=e10]:
+                      - text: 
+                      - generic [ref=e11]: Rechercher
+                      - generic [ref=e12]: Rechercher
+                  - button "Search" [ref=e13] [cursor=pointer]:
+                    - text: 
+                    - generic [ref=e14]: Rechercher
+      - generic [ref=e15]:
+        - list [ref=e16]:
+          - listitem [ref=e17]:
+            - link [ref=e18] [cursor=pointer]:
+              - /url: https://www.menzzo.fr/wish-list/
+              - img [ref=e19]
+          - listitem [ref=e21]:
+            - link [ref=e22] [cursor=pointer]:
+              - /url: https://www.menzzo.fr/blog.html
+              - img [ref=e23]
+          - listitem [ref=e25]:
+            - link [ref=e26] [cursor=pointer]:
+              - /url: https://www.menzzo.fr/showroom/
+              - img [ref=e27]
+          - listitem [ref=e29] [cursor=pointer]:
+            - img [ref=e31]
+          - listitem [ref=e33]:
+            - img [ref=e35]
+        - link "Mon panier" [ref=e39] [cursor=pointer]:
+          - /url: https://www.menzzo.fr/checkout/cart/
+          - img [ref=e40]
+          - generic [ref=e42]: Mon panier
+  - tablist [ref=e44]:
+    - tabpanel [ref=e45]:
+      - navigation [ref=e46]:
+        - menu [ref=e47]:
+          - menuitem
+          - menuitem "Prix Doux" [ref=e48] [cursor=pointer]
+          - menuitem
+          - menuitem "Tables, tables Basses" [ref=e49] [cursor=pointer]:
+            - generic [ref=e50]:
+              - generic [ref=e51]: Tables,
+              - text: tables Basses
+          - menuitem
+          - menuitem "Chaises, tabourets" [ref=e52] [cursor=pointer]:
+            - generic [ref=e53]:
+              - generic [ref=e54]: Chaises,
+              - text: tabourets
+          - menuitem
+          - menuitem "Canapés, fauteuils" [ref=e55] [cursor=pointer]:
+            - generic [ref=e56]:
+              - generic [ref=e57]: Canapés,
+              - text: fauteuils
+          - menuitem
+          - menuitem "Lits, têtes de lit" [ref=e58] [cursor=pointer]:
+            - generic [ref=e59]:
+              - generic [ref=e60]: Lits,
+              - text: têtes de lit
+          - menuitem
+          - menuitem "Meubles, rangements" [ref=e61] [cursor=pointer]:
+            - generic [ref=e62]:
+              - generic [ref=e63]: Meubles,
+              - text: rangements
+          - menuitem "Tous les prix soldés >" [expanded] [ref=e64]:
+            - generic [ref=e66]:
+              - menu [ref=e68]:
+                - menuitem [ref=e69] [cursor=pointer]:
+                  - img [ref=e71]
+                - menuitem [ref=e72]:
+                  - menuitem [ref=e73] [cursor=pointer]: Armoire
+                - menuitem [ref=e74] [cursor=pointer]:
+                  - img [ref=e76]
+                - menuitem [ref=e77]:
+                  - menuitem [ref=e78] [cursor=pointer]: Coiffeuse
+                - menuitem [ref=e79] [cursor=pointer]:
+                  - img [ref=e81]
+                - menuitem [ref=e82]:
+                  - menuitem [ref=e83] [cursor=pointer]: Commode
+                - menuitem [ref=e84] [cursor=pointer]:
+                  - img [ref=e86]
+                - menuitem [ref=e87]:
+                  - menuitem [ref=e88] [cursor=pointer]: Table de chevet
+                - menuitem [ref=e89] [cursor=pointer]:
+                  - img [ref=e91]
+                - menuitem [ref=e92]:
+                  - menuitem [ref=e93] [cursor=pointer]: Meuble de cuisine
+                - menuitem [ref=e94] [cursor=pointer]:
+                  - img [ref=e96]
+                - menuitem [ref=e97]:
+                  - menuitem [ref=e98] [cursor=pointer]: Étagère et bibliothèque
+                - menuitem [ref=e99] [cursor=pointer]:
+                  - img [ref=e101]
+                - menuitem [ref=e102]:
+                  - menuitem [ref=e103] [cursor=pointer]: Meuble TV
+                - menuitem [ref=e104] [cursor=pointer]:
+                  - img [ref=e106]
+                - menuitem [ref=e107]:
+                  - menuitem [ref=e108] [cursor=pointer]: Buffet
+                - menuitem [ref=e109] [cursor=pointer]:
+                  - img [ref=e111]
+                - menuitem [ref=e112]:
+                  - menuitem [ref=e113] [cursor=pointer]: Console
+                - menuitem [ref=e114] [cursor=pointer]:
+                  - img [ref=e116]
+                - menuitem [ref=e117]:
+                  - menuitem [ref=e118] [cursor=pointer]: Bureau
+                - menuitem [ref=e119] [cursor=pointer]:
+                  - img [ref=e121]
+                - menuitem [ref=e122]:
+                  - menuitem [ref=e123] [cursor=pointer]: Coffre de rangement
+              - generic [ref=e124]:
+                - link [ref=e125] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/meubles-rangements.html
+                - link "Tous les prix soldés >" [ref=e127] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/meubles-rangements.html?promo=5,10,15,20,25,30,35,40,45,50
+          - menuitem
+          - menuitem "Déco" [ref=e128] [cursor=pointer]
+          - menuitem
+          - menuitem "Déstockage" [ref=e129] [cursor=pointer]
+  - list [ref=e131]:
+    - listitem [ref=e132]:
+      - link "Accueil" [ref=e133] [cursor=pointer]:
+        - /url: https://www.menzzo.fr/
+      - text: /
+    - listitem [ref=e134]:
+      - strong [ref=e135]: Meubles, rangements
+  - main [ref=e136]:
+    - heading "Meubles, rangements" [level=1] [ref=e139]
+    - generic [ref=e142]:
+      - link "Armoire" [ref=e143] [cursor=pointer]:
+        - /url: https://www.menzzo.fr/meubles-rangements/armoires.html
+        - img [ref=e145]
+        - text: Armoire
+      - link "Coiffeuse" [ref=e146] [cursor=pointer]:
+        - /url: https://www.menzzo.fr/rangements/console/coiffeuse.html
+        - img [ref=e148]
+        - text: Coiffeuse
+      - link "Commode" [ref=e149] [cursor=pointer]:
+        - /url: https://www.menzzo.fr/rangements/commode.html
+        - img [ref=e151]
+        - text: Commode
+      - link "Table de chevet" [ref=e152] [cursor=pointer]:
+        - /url: https://www.menzzo.fr/rangements/tables-de-chevet.html
+        - img [ref=e154]
+        - text: Table de chevet
+      - link "Meuble de cuisine" [ref=e155] [cursor=pointer]:
+        - /url: https://www.menzzo.fr/cuisine/meuble-de-cuisine.html
+        - img [ref=e157]
+        - text: Meuble de cuisine
+      - link "Étagère et bibliothèque" [ref=e158] [cursor=pointer]:
+        - /url: https://www.menzzo.fr/rangements/bibliotheque-et-etagere.html
+        - img [ref=e160]
+        - text: Étagère et bibliothèque
+      - link "Meuble TV" [ref=e161] [cursor=pointer]:
+        - /url: https://www.menzzo.fr/rangements/meubles-tv.html
+        - img [ref=e163]
+        - text: Meuble TV
+      - link "Buffet" [ref=e164] [cursor=pointer]:
+        - /url: https://www.menzzo.fr/rangements/buffets.html
+        - img [ref=e166]
+        - text: Buffet
+      - link "Console" [ref=e167] [cursor=pointer]:
+        - /url: https://www.menzzo.fr/rangements/console.html
+        - img [ref=e169]
+        - text: Console
+      - link "Bureau" [ref=e170] [cursor=pointer]:
+        - /url: https://www.menzzo.fr/bureau.html
+        - img [ref=e172]
+        - text: Bureau
+      - link "Coffre de rangement" [ref=e173] [cursor=pointer]:
+        - /url: https://www.menzzo.fr/rangements/coffre-rangement.html
+        - img [ref=e175]
+        - text: Coffre de rangement
+    - generic [ref=e181]:
+      - generic [ref=e183]:
+        - button "catégorie" [ref=e186] [cursor=pointer]
+        - button "prix" [ref=e189] [cursor=pointer]
+        - button "disponibilité" [ref=e192] [cursor=pointer]
+        - button "coloris" [ref=e195] [cursor=pointer]
+        - button "matière" [ref=e198] [cursor=pointer]
+        - button "forme" [ref=e201] [cursor=pointer]
+        - generic [ref=e202] [cursor=pointer]:
+          - text: Tous les filtres
+          - img [ref=e203]
+      - generic [ref=e205]:
+        - generic [ref=e206]:
+          - generic [ref=e210]: 146 Résultat(s) trouvé(s)
+          - generic [ref=e213]:
+            - strong [ref=e214]: "Trier par :"
+            - combobox [ref=e215]:
+              - option "Trier" [selected]
+              - option "Prix croissant"
+              - option "Prix décroissant"
+              - option "Nouveauté"
+              - option "Best sellers"
+        - list [ref=e218]:
+          - listitem [ref=e219]:
+            - text: "Catégorie :"
+            - generic [ref=e220]:
+              - text: Meubles, rangements
+              - button "X" [ref=e221] [cursor=pointer]
+        - generic [ref=e225]:
+          - list [ref=e226]:
+            - listitem [ref=e227]:
+              - generic [ref=e230]:
+                - generic [ref=e234]:
+                  - link "image" [ref=e236] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/coiffeuse-moderne-13-tiroirs-avec-miroir-lumineux-et-plateau-en-verre-l120cm-probeauty-blanc.html
+                    - img "image" [ref=e238]
+                  - link [ref=e240] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/coiffeuse-moderne-13-tiroirs-avec-miroir-lumineux-et-plateau-en-verre-l120cm-probeauty-blanc.html
+                    - img [ref=e242]
+                  - link [ref=e244] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/coiffeuse-moderne-13-tiroirs-avec-miroir-lumineux-et-plateau-en-verre-l120cm-probeauty-blanc.html
+                    - img [ref=e246]
+                  - link [ref=e248] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/coiffeuse-moderne-13-tiroirs-avec-miroir-lumineux-et-plateau-en-verre-l120cm-probeauty-blanc.html
+                    - img [ref=e250]
+                  - link [ref=e252] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/coiffeuse-moderne-13-tiroirs-avec-miroir-lumineux-et-plateau-en-verre-l120cm-probeauty-blanc.html
+                    - img [ref=e254]
+                  - link [ref=e256] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/coiffeuse-moderne-13-tiroirs-avec-miroir-lumineux-et-plateau-en-verre-l120cm-probeauty-blanc.html
+                    - img [ref=e258]
+                - strong [ref=e261]: En stock
+                - link "Coiffeuse moderne 13 tiroirs avec miroir lumineux et plateau en verre L120cm Probeauty Blanc" [ref=e263] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/coiffeuse-moderne-13-tiroirs-avec-miroir-lumineux-et-plateau-en-verre-l120cm-probeauty-blanc.html
+                - generic [ref=e264]:
+                  - generic [ref=e265]:
+                    - generic [ref=e266]: 335 €
+                    - generic [ref=e267]: "-6%"
+                    - generic [ref=e268]: 325 €
+                  - generic [ref=e269]: PRIX DOUX
+            - listitem [ref=e276]:
+              - generic [ref=e279]:
+                - generic [ref=e283]:
+                  - link "image" [ref=e285] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/buffet-bas-navalor-l160cm-design-arches-style-troglodyte-blanc.html
+                    - img "image" [ref=e287]
+                  - link [ref=e289] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/buffet-bas-navalor-l160cm-design-arches-style-troglodyte-blanc.html
+                    - img [ref=e291]
+                  - link [ref=e293] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/buffet-bas-navalor-l160cm-design-arches-style-troglodyte-blanc.html
+                    - img [ref=e295]
+                  - link [ref=e297] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/buffet-bas-navalor-l160cm-design-arches-style-troglodyte-blanc.html
+                    - img [ref=e299]
+                  - link [ref=e301] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/buffet-bas-navalor-l160cm-design-arches-style-troglodyte-blanc.html
+                    - img [ref=e303]
+                  - link [ref=e305] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/buffet-bas-navalor-l160cm-design-arches-style-troglodyte-blanc.html
+                    - img [ref=e307]
+                - strong [ref=e310]: En stock
+                - link "Buffet bas Navalor L160cm design arches style troglodyte Blanc" [ref=e312] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/buffet-bas-navalor-l160cm-design-arches-style-troglodyte-blanc.html
+                - generic [ref=e313]:
+                  - generic [ref=e315]: 164 €
+                  - generic [ref=e316]: PRIX DOUX
+            - listitem [ref=e317]:
+              - generic [ref=e320]:
+                - generic [ref=e324]:
+                  - link "image" [ref=e326] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/coiffeuse-paloma-1-tiroir-velours-beige.html
+                    - img "image" [ref=e328]
+                  - link [ref=e330] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/coiffeuse-paloma-1-tiroir-velours-beige.html
+                    - img [ref=e332]
+                  - link [ref=e334] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/coiffeuse-paloma-1-tiroir-velours-beige.html
+                    - img [ref=e336]
+                  - link [ref=e338] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/coiffeuse-paloma-1-tiroir-velours-beige.html
+                    - img [ref=e340]
+                  - link [ref=e342] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/coiffeuse-paloma-1-tiroir-velours-beige.html
+                    - img [ref=e344]
+                - strong [ref=e347]: En stock
+                - link "Coiffeuse Paloma 1 tiroir Velours Beige" [ref=e349] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/coiffeuse-paloma-1-tiroir-velours-beige.html
+                - generic [ref=e350]:
+                  - generic [ref=e352]: 129 €
+                  - generic [ref=e353]: PRIX DOUX
+            - listitem [ref=e362]:
+              - generic [ref=e365]:
+                - generic [ref=e369]:
+                  - link "image" [ref=e371] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/commode-6-tiroirs-panara-chene-clair.html
+                    - img "image" [ref=e373]
+                  - link [ref=e375] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/commode-6-tiroirs-panara-chene-clair.html
+                    - img [ref=e377]
+                  - link [ref=e379] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/commode-6-tiroirs-panara-chene-clair.html
+                    - img [ref=e381]
+                  - link [ref=e383] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/commode-6-tiroirs-panara-chene-clair.html
+                    - img [ref=e385]
+                  - link [ref=e387] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/commode-6-tiroirs-panara-chene-clair.html
+                    - img [ref=e389]
+                  - link [ref=e391] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/commode-6-tiroirs-panara-chene-clair.html
+                    - img [ref=e393]
+                - generic [ref=e394]:
+                  - strong [ref=e396]: En stock
+                  - generic [ref=e398]:
+                    - img [ref=e399]
+                    - generic [ref=e401]: Livraison OFFERTE
+                - link "Commode 6 tiroirs Panara L120cm Bois d'acacia patiné" [ref=e403] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/commode-6-tiroirs-panara-chene-clair.html
+                - generic [ref=e404]:
+                  - generic [ref=e405]:
+                    - generic [ref=e406]: 114 €
+                    - generic [ref=e407]: "-13%"
+                    - generic [ref=e408]: 99 €
+                  - generic [ref=e409]: PRIX DOUX
+                - generic [ref=e411]:
+                  - generic [ref=e412]: ⚠️
+                  - generic [ref=e413]: Derniers exemplaires avant retrait du catalogue !
+            - listitem [ref=e414]:
+              - generic [ref=e417]:
+                - generic [ref=e421]:
+                  - link "image" [ref=e423] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/banquette-coffre-winnie-velours-taupe-pieds-or.html
+                    - img "image" [ref=e425]
+                  - link [ref=e427] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/banquette-coffre-winnie-velours-taupe-pieds-or.html
+                    - img [ref=e429]
+                  - link [ref=e431] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/banquette-coffre-winnie-velours-taupe-pieds-or.html
+                    - img [ref=e433]
+                  - link [ref=e435] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/banquette-coffre-winnie-velours-taupe-pieds-or.html
+                    - img [ref=e437]
+                  - link [ref=e439] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/banquette-coffre-winnie-velours-taupe-pieds-or.html
+                    - img [ref=e441]
+                - strong [ref=e444]: En stock
+                - link "Banc coffre Winnie Velours Taupe Pieds Or" [ref=e446] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/banquette-coffre-winnie-velours-taupe-pieds-or.html
+                - generic [ref=e447]:
+                  - generic [ref=e448]:
+                    - generic [ref=e449]: 87 €
+                    - generic [ref=e450]: "-6%"
+                    - generic [ref=e451]: 85 €
+                  - generic [ref=e452]: PRIX DOUX
+                - generic [ref=e454]:
+                  - generic [ref=e455]: ⚠️
+                  - generic [ref=e456]: Derniers exemplaires avant retrait du catalogue !
+            - listitem [ref=e465]:
+              - generic [ref=e468]:
+                - generic [ref=e472]:
+                  - link "image" [ref=e474] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/table-de-chevet-catana-2-tiroirs-noir-carbone.html
+                    - img "image" [ref=e476]
+                  - link [ref=e478] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/table-de-chevet-catana-2-tiroirs-noir-carbone.html
+                    - img [ref=e480]
+                  - link [ref=e482] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/table-de-chevet-catana-2-tiroirs-noir-carbone.html
+                    - img [ref=e484]
+                - generic [ref=e485]:
+                  - strong [ref=e487]: En stock
+                  - generic [ref=e489]:
+                    - img [ref=e490]
+                    - generic [ref=e492]: Livraison OFFERTE
+                - link "Table de chevet Catana 2 tiroirs Noir Carbone" [ref=e494] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/table-de-chevet-catana-2-tiroirs-noir-carbone.html
+                - generic [ref=e495]:
+                  - generic [ref=e496]:
+                    - generic [ref=e497]: 29 €
+                    - generic [ref=e498]: "-7%"
+                    - generic [ref=e499]: 27 €
+                  - generic [ref=e500]: PRIX DOUX
+                - generic [ref=e502]:
+                  - generic [ref=e503]: ⚠️
+                  - generic [ref=e504]: Derniers exemplaires avant retrait du catalogue !
+            - listitem [ref=e505]:
+              - generic [ref=e508]:
+                - generic [ref=e512]:
+                  - link "image" [ref=e514] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/table-de-chevet-avec-2-tiroirs-arrondis-l45cm-mezade-noir.html
+                    - img "image" [ref=e516]
+                  - link [ref=e518] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/table-de-chevet-avec-2-tiroirs-arrondis-l45cm-mezade-noir.html
+                    - img [ref=e520]
+                  - link [ref=e522] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/table-de-chevet-avec-2-tiroirs-arrondis-l45cm-mezade-noir.html
+                    - img [ref=e524]
+                  - link [ref=e526] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/table-de-chevet-avec-2-tiroirs-arrondis-l45cm-mezade-noir.html
+                    - img [ref=e528]
+                  - link [ref=e530] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/table-de-chevet-avec-2-tiroirs-arrondis-l45cm-mezade-noir.html
+                    - img [ref=e532]
+                  - link [ref=e534] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/table-de-chevet-avec-2-tiroirs-arrondis-l45cm-mezade-noir.html
+                    - img [ref=e536]
+                - strong [ref=e539]: En stock
+                - link "Table de chevet avec 2 tiroirs arrondis L45cm Mezade Noir" [ref=e541] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/table-de-chevet-avec-2-tiroirs-arrondis-l45cm-mezade-noir.html
+                - generic [ref=e542]:
+                  - generic [ref=e543]:
+                    - generic [ref=e544]: 83 €
+                    - generic [ref=e545]: "-10%"
+                    - generic [ref=e546]: 75 €
+                  - generic [ref=e547]: PRIX DOUX
+            - listitem [ref=e554]:
+              - generic [ref=e557]:
+                - generic [ref=e561]:
+                  - link "image" [ref=e563] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/buffet-style-industriel-l190cm-4-portes-er-4-tiroirs-lunata-chene-et-gris.html
+                    - img "image" [ref=e565]
+                  - link [ref=e567] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/buffet-style-industriel-l190cm-4-portes-er-4-tiroirs-lunata-chene-et-gris.html
+                    - img [ref=e569]
+                  - link [ref=e571] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/buffet-style-industriel-l190cm-4-portes-er-4-tiroirs-lunata-chene-et-gris.html
+                    - img [ref=e573]
+                  - link [ref=e575] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/buffet-style-industriel-l190cm-4-portes-er-4-tiroirs-lunata-chene-et-gris.html
+                    - img [ref=e577]
+                  - link [ref=e579] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/buffet-style-industriel-l190cm-4-portes-er-4-tiroirs-lunata-chene-et-gris.html
+                    - img [ref=e581]
+                  - link [ref=e583] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/buffet-style-industriel-l190cm-4-portes-er-4-tiroirs-lunata-chene-et-gris.html
+                    - img [ref=e585]
+                - generic [ref=e586]:
+                  - strong [ref=e588]: En stock
+                  - generic [ref=e590]:
+                    - img [ref=e591]
+                    - generic [ref=e593]: Livraison OFFERTE
+                - link "Buffet style industriel L190cm 4 portes er 4 tiroirs Lunata Chêne et Gris" [ref=e595] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/buffet-style-industriel-l190cm-4-portes-er-4-tiroirs-lunata-chene-et-gris.html
+                - generic [ref=e596]:
+                  - generic [ref=e597]:
+                    - generic [ref=e598]: 255 €
+                    - generic [ref=e599]: "-12%"
+                    - generic [ref=e600]: 225 €
+                  - generic [ref=e601]: PRIX DOUX
+            - listitem [ref=e610]:
+              - generic [ref=e613]:
+                - generic [ref=e617]:
+                  - link "image" [ref=e619] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/table-de-chevet-1-tiroir-avec-cannage-dalgora-l40cm-blanc.html
+                    - img "image" [ref=e621]
+                  - link [ref=e623] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/table-de-chevet-1-tiroir-avec-cannage-dalgora-l40cm-blanc.html
+                    - img [ref=e625]
+                  - link [ref=e627] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/table-de-chevet-1-tiroir-avec-cannage-dalgora-l40cm-blanc.html
+                    - img [ref=e629]
+                  - link [ref=e631] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/table-de-chevet-1-tiroir-avec-cannage-dalgora-l40cm-blanc.html
+                    - img [ref=e633]
+                  - link [ref=e635] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/table-de-chevet-1-tiroir-avec-cannage-dalgora-l40cm-blanc.html
+                    - img [ref=e637]
+                  - link [ref=e639] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/table-de-chevet-1-tiroir-avec-cannage-dalgora-l40cm-blanc.html
+                    - img [ref=e641]
+                - strong [ref=e644]: En stock
+                - link "Table de chevet 1 tiroir avec cannage Dalgora L40cm Blanc" [ref=e646] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/table-de-chevet-1-tiroir-avec-cannage-dalgora-l40cm-blanc.html
+                - generic [ref=e647]:
+                  - generic [ref=e649]: 39 €
+                  - generic [ref=e650]: PRIX DOUX
+                - generic [ref=e652]:
+                  - generic [ref=e653]: ⚠️
+                  - generic [ref=e654]: Derniers exemplaires avant retrait du catalogue !
+            - listitem [ref=e655]:
+              - generic [ref=e658]:
+                - generic [ref=e662]:
+                  - link "image" [ref=e664] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/meuble-tv-au-design-lineaire-iliade-l180cm-bois-clair-et-blanc.html
+                    - img "image" [ref=e666]
+                  - link [ref=e668] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/meuble-tv-au-design-lineaire-iliade-l180cm-bois-clair-et-blanc.html
+                    - img [ref=e670]
+                  - link [ref=e672] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/meuble-tv-au-design-lineaire-iliade-l180cm-bois-clair-et-blanc.html
+                    - img [ref=e674]
+                  - link [ref=e676] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/meuble-tv-au-design-lineaire-iliade-l180cm-bois-clair-et-blanc.html
+                    - img [ref=e678]
+                  - link [ref=e680] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/meuble-tv-au-design-lineaire-iliade-l180cm-bois-clair-et-blanc.html
+                    - img [ref=e682]
+                  - link [ref=e684] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/meuble-tv-au-design-lineaire-iliade-l180cm-bois-clair-et-blanc.html
+                    - img [ref=e686]
+                - strong [ref=e689]: En stock
+                - link "Meuble TV au design linéaire Iliade L180cm Bois clair et Blanc" [ref=e691] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/meuble-tv-au-design-lineaire-iliade-l180cm-bois-clair-et-blanc.html
+                - generic [ref=e692]:
+                  - generic [ref=e693]:
+                    - generic [ref=e694]: 126 €
+                    - generic [ref=e695]: "-6%"
+                    - generic [ref=e696]: 120 €
+                  - generic [ref=e697]: PRIX DOUX
+            - listitem [ref=e698]:
+              - generic [ref=e701]:
+                - generic [ref=e705]:
+                  - link "image" [ref=e707] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/console-moderne-40x120cm-avec-pieds-style-colonnes-gwendoline-beige.html
+                    - img "image" [ref=e709]
+                  - link [ref=e711] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/console-moderne-40x120cm-avec-pieds-style-colonnes-gwendoline-beige.html
+                    - img [ref=e713]
+                  - link [ref=e715] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/console-moderne-40x120cm-avec-pieds-style-colonnes-gwendoline-beige.html
+                    - img [ref=e717]
+                  - link [ref=e719] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/console-moderne-40x120cm-avec-pieds-style-colonnes-gwendoline-beige.html
+                    - img [ref=e721]
+                - strong [ref=e724]: Livré sous plus d’un mois
+                - link "Console moderne 40x120cm avec pieds style colonnes Gwendoline Effet travertin Beige" [ref=e726] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/console-moderne-40x120cm-avec-pieds-style-colonnes-gwendoline-beige.html
+                - generic [ref=e727]:
+                  - generic [ref=e728]:
+                    - generic [ref=e729]: 105 €
+                    - generic [ref=e730]: "-10%"
+                    - generic [ref=e731]: 95 €
+                  - generic [ref=e732]: PRIX DOUX
+            - listitem [ref=e733]:
+              - generic [ref=e736]:
+                - generic [ref=e740]:
+                  - link "image" [ref=e742] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/console-moderne-pieds-colonnes-40x120cm-eglantine-bois-et-ceramique-effet-marbre-blanc.html
+                    - img "image" [ref=e744]
+                  - link [ref=e746] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/console-moderne-pieds-colonnes-40x120cm-eglantine-bois-et-ceramique-effet-marbre-blanc.html
+                    - img [ref=e748]
+                  - link [ref=e750] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/console-moderne-pieds-colonnes-40x120cm-eglantine-bois-et-ceramique-effet-marbre-blanc.html
+                    - img [ref=e752]
+                  - link [ref=e754] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/console-moderne-pieds-colonnes-40x120cm-eglantine-bois-et-ceramique-effet-marbre-blanc.html
+                    - img [ref=e756]
+                  - link [ref=e758] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/console-moderne-pieds-colonnes-40x120cm-eglantine-bois-et-ceramique-effet-marbre-blanc.html
+                    - img [ref=e760]
+                  - link [ref=e762] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/console-moderne-pieds-colonnes-40x120cm-eglantine-bois-et-ceramique-effet-marbre-blanc.html
+                    - img [ref=e764]
+                - strong [ref=e767]: Livré sous plus d’un mois
+                - link "Console moderne pieds colonnes 40x120cm Eglantine Bois et Céramique Effet marbre Blanc" [ref=e769] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/console-moderne-pieds-colonnes-40x120cm-eglantine-bois-et-ceramique-effet-marbre-blanc.html
+                - generic [ref=e771]:
+                  - generic [ref=e772]: 125 €
+                  - generic [ref=e773]: "-6%"
+                  - generic [ref=e774]: 119 €
+            - listitem [ref=e775]:
+              - generic [ref=e778]:
+                - generic [ref=e782]:
+                  - link "image" [ref=e784] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/ensemble-portemanteaux-et-armoire-a-chaussures-airian-metal-noir-et-bois-noir-effet-marbre.html
+                    - img "image" [ref=e786]
+                  - link [ref=e788] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/ensemble-portemanteaux-et-armoire-a-chaussures-airian-metal-noir-et-bois-noir-effet-marbre.html
+                    - img [ref=e790]
+                  - link [ref=e792] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/ensemble-portemanteaux-et-armoire-a-chaussures-airian-metal-noir-et-bois-noir-effet-marbre.html
+                    - img [ref=e794]
+                  - link [ref=e796] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/ensemble-portemanteaux-et-armoire-a-chaussures-airian-metal-noir-et-bois-noir-effet-marbre.html
+                    - img [ref=e798]
+                  - link [ref=e800] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/ensemble-portemanteaux-et-armoire-a-chaussures-airian-metal-noir-et-bois-noir-effet-marbre.html
+                    - img [ref=e802]
+                - strong [ref=e805]: En stock
+                - link "Ensemble portemanteaux et armoire à chaussures Airian Métal Noir et Bois Noir effet marbre" [ref=e807] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/ensemble-portemanteaux-et-armoire-a-chaussures-airian-metal-noir-et-bois-noir-effet-marbre.html
+                - generic [ref=e810]: 151 €
+                - generic [ref=e812]:
+                  - generic [ref=e813]: ⚠️
+                  - generic [ref=e814]: Derniers exemplaires avant retrait du catalogue !
+            - listitem [ref=e815]:
+              - generic [ref=e818]:
+                - generic [ref=e822]:
+                  - link "image" [ref=e824] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/armoire-avec-miroir-style-industriel-akoy-l40cm-bois-fonce-et-anthracite.html
+                    - img "image" [ref=e826]
+                  - link [ref=e828] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/armoire-avec-miroir-style-industriel-akoy-l40cm-bois-fonce-et-anthracite.html
+                    - img [ref=e830]
+                  - link [ref=e832] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/armoire-avec-miroir-style-industriel-akoy-l40cm-bois-fonce-et-anthracite.html
+                    - img [ref=e834]
+                  - link [ref=e836] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/armoire-avec-miroir-style-industriel-akoy-l40cm-bois-fonce-et-anthracite.html
+                    - img [ref=e838]
+                  - link [ref=e840] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/armoire-avec-miroir-style-industriel-akoy-l40cm-bois-fonce-et-anthracite.html
+                    - img [ref=e842]
+                  - link [ref=e844] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/armoire-avec-miroir-style-industriel-akoy-l40cm-bois-fonce-et-anthracite.html
+                    - img [ref=e846]
+                - strong [ref=e849]: En stock
+                - link "Armoire avec miroir style industriel Akoy L40cm Bois foncé et Anthracite" [ref=e851] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/armoire-avec-miroir-style-industriel-akoy-l40cm-bois-fonce-et-anthracite.html
+                - generic [ref=e854]: 315 €
+                - generic [ref=e856]:
+                  - generic [ref=e857]: ⚠️
+                  - generic [ref=e858]: Derniers exemplaires avant retrait du catalogue !
+            - listitem [ref=e859]:
+              - generic [ref=e862]:
+                - generic [ref=e866]:
+                  - link "image" [ref=e868] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/meuble-tv-awzil-l120cm-metal-et-bois-blanc.html
+                    - img "image" [ref=e870]
+                  - link [ref=e872] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/meuble-tv-awzil-l120cm-metal-et-bois-blanc.html
+                    - img [ref=e874]
+                  - link [ref=e876] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/meuble-tv-awzil-l120cm-metal-et-bois-blanc.html
+                    - img [ref=e878]
+                  - link [ref=e880] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/meuble-tv-awzil-l120cm-metal-et-bois-blanc.html
+                    - img [ref=e882]
+                  - link [ref=e884] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/meuble-tv-awzil-l120cm-metal-et-bois-blanc.html
+                    - img [ref=e886]
+                - strong [ref=e889]: En stock
+                - link "Meuble TV Awzil L120cm Métal et Bois Blanc" [ref=e891] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/meuble-tv-awzil-l120cm-metal-et-bois-blanc.html
+                - generic [ref=e894]: 179 €
+                - generic [ref=e896]:
+                  - generic [ref=e897]: ⚠️
+                  - generic [ref=e898]: Derniers exemplaires avant retrait du catalogue !
+            - listitem [ref=e899]:
+              - generic [ref=e902]:
+                - generic [ref=e906]:
+                  - link "image" [ref=e908] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/bureau-avec-etagere-fekadu-l120cm-bois-fonce-blanc-et-anthracite.html
+                    - img "image" [ref=e910]
+                  - link [ref=e912] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/bureau-avec-etagere-fekadu-l120cm-bois-fonce-blanc-et-anthracite.html
+                    - img [ref=e914]
+                  - link [ref=e916] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/bureau-avec-etagere-fekadu-l120cm-bois-fonce-blanc-et-anthracite.html
+                    - img [ref=e918]
+                - strong [ref=e921]: En stock
+                - link "Bureau avec étagère Fekadu L120cm Bois foncé, Blanc et Anthracite" [ref=e923] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/bureau-avec-etagere-fekadu-l120cm-bois-fonce-blanc-et-anthracite.html
+                - generic [ref=e926]: 223 €
+                - generic [ref=e928]:
+                  - generic [ref=e929]: ⚠️
+                  - generic [ref=e930]: Derniers exemplaires avant retrait du catalogue !
+            - listitem [ref=e931]:
+              - generic [ref=e934]:
+                - generic [ref=e938]:
+                  - link "image" [ref=e940] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/ensemble-armoire-miroir-et-porte-manteau-shera-bois-naturel-et-anthracite.html
+                    - img "image" [ref=e942]
+                  - link [ref=e944] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/ensemble-armoire-miroir-et-porte-manteau-shera-bois-naturel-et-anthracite.html
+                    - img [ref=e946]
+                  - link [ref=e948] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/ensemble-armoire-miroir-et-porte-manteau-shera-bois-naturel-et-anthracite.html
+                    - img [ref=e950]
+                  - link [ref=e952] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/ensemble-armoire-miroir-et-porte-manteau-shera-bois-naturel-et-anthracite.html
+                    - img [ref=e954]
+                  - link [ref=e956] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/ensemble-armoire-miroir-et-porte-manteau-shera-bois-naturel-et-anthracite.html
+                    - img [ref=e958]
+                  - link [ref=e960] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/ensemble-armoire-miroir-et-porte-manteau-shera-bois-naturel-et-anthracite.html
+                    - img [ref=e962]
+                - strong [ref=e965]: En stock
+                - link "Ensemble armoire, miroir et porte manteau Shera Bois Naturel et Anthracite" [ref=e967] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/ensemble-armoire-miroir-et-porte-manteau-shera-bois-naturel-et-anthracite.html
+                - generic [ref=e970]: 520 €
+                - generic [ref=e972]:
+                  - generic [ref=e973]: ⚠️
+                  - generic [ref=e974]: Derniers exemplaires avant retrait du catalogue !
+            - listitem [ref=e975]:
+              - generic [ref=e978]:
+                - generic [ref=e982]:
+                  - link "image" [ref=e984] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/ensemble-meuble-tv-et-bibliotheque-olimpica-bois-clair-et-blanc.html
+                    - img "image" [ref=e986]
+                  - link [ref=e988] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/ensemble-meuble-tv-et-bibliotheque-olimpica-bois-clair-et-blanc.html
+                    - img [ref=e990]
+                  - link [ref=e992] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/ensemble-meuble-tv-et-bibliotheque-olimpica-bois-clair-et-blanc.html
+                    - img [ref=e994]
+                  - link [ref=e996] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/ensemble-meuble-tv-et-bibliotheque-olimpica-bois-clair-et-blanc.html
+                    - img [ref=e998]
+                  - link [ref=e1000] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/ensemble-meuble-tv-et-bibliotheque-olimpica-bois-clair-et-blanc.html
+                    - img [ref=e1002]
+                  - link [ref=e1004] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/ensemble-meuble-tv-et-bibliotheque-olimpica-bois-clair-et-blanc.html
+                    - img [ref=e1006]
+                - strong [ref=e1009]: En stock
+                - link "Ensemble meuble TV et bibliothèque Olimpica Bois clair et Blanc" [ref=e1011] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/ensemble-meuble-tv-et-bibliotheque-olimpica-bois-clair-et-blanc.html
+                - generic [ref=e1014]: 278 €
+                - generic [ref=e1016]:
+                  - generic [ref=e1017]: ⚠️
+                  - generic [ref=e1018]: Derniers exemplaires avant retrait du catalogue !
+            - listitem [ref=e1019]:
+              - generic [ref=e1022]:
+                - generic [ref=e1026]:
+                  - link "image" [ref=e1028] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/meuble-tv-moderne-avec-2-portes-valmain-l180cm-blanc-et-metal-noir.html
+                    - img "image" [ref=e1030]
+                  - link [ref=e1032] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/meuble-tv-moderne-avec-2-portes-valmain-l180cm-blanc-et-metal-noir.html
+                    - img [ref=e1034]
+                  - link [ref=e1036] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/meuble-tv-moderne-avec-2-portes-valmain-l180cm-blanc-et-metal-noir.html
+                    - img [ref=e1038]
+                  - link [ref=e1040] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/meuble-tv-moderne-avec-2-portes-valmain-l180cm-blanc-et-metal-noir.html
+                    - img [ref=e1042]
+                  - link [ref=e1044] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/meuble-tv-moderne-avec-2-portes-valmain-l180cm-blanc-et-metal-noir.html
+                    - img [ref=e1046]
+                  - link [ref=e1048] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/meuble-tv-moderne-avec-2-portes-valmain-l180cm-blanc-et-metal-noir.html
+                    - img [ref=e1050]
+                - strong [ref=e1053]: En stock
+                - link "Meuble TV moderne avec 2 portes Valmain L180cm Blanc et Métal Noir" [ref=e1055] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/meuble-tv-moderne-avec-2-portes-valmain-l180cm-blanc-et-metal-noir.html
+                - generic [ref=e1056]:
+                  - generic [ref=e1057]:
+                    - generic [ref=e1058]: 109 €
+                    - generic [ref=e1059]: "-9%"
+                    - generic [ref=e1060]: 99 €
+                  - generic [ref=e1061]: PRIX DOUX
+            - listitem [ref=e1068]:
+              - generic [ref=e1071]:
+                - generic [ref=e1075]:
+                  - link "image" [ref=e1077] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/table-chevet-scandinave-1-tiroir-1-porte-battante-tasha-marron.html
+                    - img "image" [ref=e1079]
+                  - link [ref=e1081] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/table-chevet-scandinave-1-tiroir-1-porte-battante-tasha-marron.html
+                    - img [ref=e1083]
+                  - link [ref=e1085] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/table-chevet-scandinave-1-tiroir-1-porte-battante-tasha-marron.html
+                    - img [ref=e1087]
+                  - link [ref=e1089] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/table-chevet-scandinave-1-tiroir-1-porte-battante-tasha-marron.html
+                    - img [ref=e1091]
+                - strong [ref=e1094]: En stock
+                - link "Table de chevet 1 tiroir et 1 porte battante Tasha Marron" [ref=e1096] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/table-chevet-scandinave-1-tiroir-1-porte-battante-tasha-marron.html
+                - generic [ref=e1097]:
+                  - generic [ref=e1098]:
+                    - generic [ref=e1099]: 49 €
+                    - generic [ref=e1100]: "-8%"
+                    - generic [ref=e1101]: 45 €
+                  - generic [ref=e1102]: PRIX DOUX
+                - generic [ref=e1104]:
+                  - generic [ref=e1105]: ⚠️
+                  - generic [ref=e1106]: Derniers exemplaires avant retrait du catalogue !
+          - button "Voir plus de produits" [ref=e1107] [cursor=pointer]
+  - contentinfo [ref=e1108]:
+    - generic [ref=e1110]:
+      - generic [ref=e1112]:
+        - generic [ref=e1113]:
+          - generic [ref=e1114]: Tous les codes promo
+          - generic [ref=e1115]: En cliquant sur "Je m'inscris", j'accepte de recevoir la newsletter par email et j'accepte la politique de confidentialité de Menzzo.
+          - generic [ref=e1118]:
+            - generic [ref=e1121]:
+              - generic [ref=e1122]: "Inscription à notre lettre d’information :"
+              - textbox "Inscription à notre lettre d’information :" [ref=e1123]:
+                - /placeholder: Votre e-mail
+            - button "Je m'inscris !" [ref=e1124] [cursor=pointer]
+            - generic [ref=e1126]:
+              - checkbox "J'accepte la politique de confidentialité et je consens au traitement de mes données à des fins marketing par Menzzo" [ref=e1127]
+              - text: J'accepte la
+              - link "politique de confidentialité" [ref=e1128] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/rgpd
+              - text: et je consens au traitement de mes données à des fins marketing par Menzzo
+        - img "img" [ref=e1130]
+      - generic [ref=e1132]:
+        - generic [ref=e1134]:
+          - generic [ref=e1135]:
+            - img [ref=e1136]
+            - heading "SERVICE CLIENT" [level=3] [ref=e1138]
+            - paragraph [ref=e1139]: Vous avez passé commande et souhaitez nous joindre ?
+          - generic [ref=e1140]:
+            - generic [ref=e1141]:
+              - heading "Un seul endroit pour répondre à toutes vos demandes" [level=4] [ref=e1143]
+              - generic [ref=e1145]:
+                - img [ref=e1146]
+                - link "sav.menzzo.fr" [ref=e1148] [cursor=pointer]:
+                  - /url: https://sav.menzzo.fr/
+              - paragraph [ref=e1149]:
+                - text: Complétez le formulaire sur la plateforme
+                - link "sav.menzzo.fr" [ref=e1150] [cursor=pointer]:
+                  - /url: https://sav.menzzo.fr/
+                - text: et accédez directement aux informations que vous recherchez concernant votre commande.
+              - paragraph [ref=e1151]: Une réponse vous sera apportée en ligne ou vous aurez accès à un planning pour prendre un rdv téléphonique avec un de nos agents.
+            - generic [ref=e1152]:
+              - heading "Foire Aux Questions" [level=4] [ref=e1154]
+              - generic [ref=e1156]:
+                - img [ref=e1157]
+                - link "Consultez notre FAQ" [ref=e1159] [cursor=pointer]:
+                  - /url: /faq
+              - paragraph [ref=e1160]: Vos questions les plus courantes sont répertoriées dans notre FAQ pour que vous trouviez encore plus rapidement des réponses pertinentes à toutes vos interrogations.
+          - link "En savoir plus" [ref=e1161] [cursor=pointer]:
+            - /url: /sav-menzzo-fr
+        - generic [ref=e1163]:
+          - generic [ref=e1164]:
+            - img [ref=e1165]
+            - heading "Vendeurs conseil" [level=3] [ref=e1167]
+            - paragraph [ref=e1168]: Vous avez une question sur un produit ou un service ?
+          - generic [ref=e1169]:
+            - generic [ref=e1170]:
+              - heading "Contactez nos vendeurs conseil" [level=4] [ref=e1172]
+              - generic [ref=e1174]:
+                - img [ref=e1175]
+                - generic [ref=e1177]:
+                  - link "01 43 75 11 18" [ref=e1178] [cursor=pointer]:
+                    - /url: tel:0143751118
+                  - text: "Du lundi au jeudi : 10h-17h"
+                  - text: "Vendredi : 10h-15h"
+            - generic [ref=e1179]:
+              - heading "Outlet Menzzo" [level=4] [ref=e1181]
+              - generic [ref=e1183]:
+                - img [ref=e1184]
+                - generic [ref=e1186]:
+                  - text: 221 Rue Paul Vaillant Couturier
+                  - text: 94140 Alfortville
+                  - text: "Du lundi au jeudi : 9h30-15h"
+                  - generic [ref=e1187]:
+                    - text: Fermeture exceptionnelle
+                    - text: Aucune à prévoir...
+              - paragraph [ref=e1188]: Des articles juste déballés, retournés par les clients et soigneusement vérifiés, ou des fins de collection, fins de stock pour des coloris spécifiques... Nos meubles à prix cassé, c'est ça l'Outlet Menzzo !
+          - link "En savoir plus" [ref=e1189] [cursor=pointer]:
+            - /url: /showroom/
+        - generic [ref=e1191]:
+          - generic [ref=e1192]:
+            - img [ref=e1193]
+            - heading "PAIEMENT SÉCURISÉ" [level=3] [ref=e1195]
+            - paragraph [ref=e1196]: Achetez en toute sérénité grâce à nos différents modes de paiement en ligne.
+          - generic [ref=e1197]:
+            - generic [ref=e1198]:
+              - heading "Par carte bancaire :" [level=4] [ref=e1200]
+              - generic [ref=e1201]:
+                - img "cb" [ref=e1203]
+                - img "visa" [ref=e1205]
+                - img "master" [ref=e1207]
+                - img "american-express" [ref=e1209]
+              - paragraph [ref=e1210]: Les paiements en ligne sont sécurisés par le système 3D Secure. Menzzo n’a pas accès et ne sauvegarde pas vos données de carte bancaire.
+            - generic [ref=e1211]:
+              - heading "En plusieurs fois :" [level=4] [ref=e1213]
+              - paragraph [ref=e1218]:
+                - text: Divisez votre paiement en 3 versements égaux et sans frais ou en 6, 9 ou 12 fois. Simple et pratique.
+                - text: Un paiement par mois, immédiat et sans formalités.
+            - generic [ref=e1219]:
+              - heading "Par virement :" [level=4] [ref=e1221]
+              - paragraph [ref=e1222]: Plus besoin de carte bancaire ! Payez vos achats en un clic grâce à votre appli bancaire. Aucune saisie d’IBAN nécessaire et sécurisé par votre banque sans coût supplémentaire.
+          - link "En savoir plus" [ref=e1223] [cursor=pointer]:
+            - /url: /financement
+        - generic [ref=e1225]:
+          - generic [ref=e1226]:
+            - img [ref=e1227]
+            - heading "Livraison" [level=3] [ref=e1229]
+            - paragraph [ref=e1230]: Les tarifs des livraisons sont indiqués sur chaque fiche produit.
+          - generic [ref=e1231]:
+            - generic [ref=e1232]:
+              - heading "Livraison classique" [level=4] [ref=e1234]
+              - paragraph [ref=e1237]:
+                - text: Vous êtes livrés à l'extérieur, en bas de chez vous.
+                - text: Selon le type d’article, le transporteur vous contacte par mail, SMS ou téléphone pour vous communiquer une date de livraison.
+            - generic [ref=e1238]:
+              - heading "Livraison Étage" [level=4] [ref=e1240]
+              - paragraph [ref=e1243]:
+                - text: Vous êtes livrés dans la pièce de votre choix, même à l’étage.
+                - text: Selon le type d’article, le transporteur vous contacte par mail, SMS ou téléphone pour vous communiquer une date de livraison.
+          - link "En savoir plus" [ref=e1244] [cursor=pointer]:
+            - /url: /livraison
+      - generic [ref=e1246]:
+        - generic [ref=e1247]:
+          - heading "BESOIN D'AIDE?" [level=3] [ref=e1248]
+          - list [ref=e1249]:
+            - listitem [ref=e1250]:
+              - link "Blog" [ref=e1251] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/blog.html
+            - listitem [ref=e1252]:
+              - link "Livraison" [ref=e1253] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/livraison/
+            - listitem [ref=e1254]:
+              - link "Politique de retour" [ref=e1255] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/politique-de-retour/
+            - listitem [ref=e1256]:
+              - link "Financement" [ref=e1257] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/financement/
+            - listitem [ref=e1258]:
+              - link "Service client" [ref=e1259] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/sav-menzzo-fr/
+            - listitem [ref=e1260]:
+              - link "Glossaire des matières" [ref=e1261] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/materials/
+        - generic [ref=e1262]:
+          - heading "MIEUX NOUS CONNAÎTRE" [level=3] [ref=e1263]
+          - list [ref=e1264]:
+            - listitem [ref=e1265]:
+              - link "Outlet Menzzo" [ref=e1266] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/showroom
+            - listitem [ref=e1267]:
+              - link "À propos de menzzo" [ref=e1268] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/a-propos-de-menzzo/
+            - listitem [ref=e1269]:
+              - link "Conditions Générales de Vente" [ref=e1270] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/conditions-generales-de-vente/
+            - listitem [ref=e1271]:
+              - link "Données personnelles" [ref=e1272] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/rgpd
+            - listitem [ref=e1273]:
+              - link "Revue de presse" [ref=e1274] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/revue-de-presse
+        - generic [ref=e1275]:
+          - heading "RETROUVEZ-NOUS!" [level=3] [ref=e1276]
+          - generic [ref=e1277]:
+            - link "Facebook" [ref=e1278] [cursor=pointer]:
+              - /url: http://www.facebook.com/MenzzoFrance
+              - img [ref=e1279]
+            - link "Instagram" [ref=e1281] [cursor=pointer]:
+              - /url: https://www.instagram.com/menzzofr/
+              - img [ref=e1282]
+            - link "Pinterest" [ref=e1284] [cursor=pointer]:
+              - /url: http://www.pinterest.com/menzzo
+              - img [ref=e1285]
+      - list [ref=e1289]:
+        - listitem [ref=e1290]
+        - listitem [ref=e1292]
+        - listitem [ref=e1294]
+        - listitem [ref=e1296]
+        - listitem [ref=e1298]:
+          - img "Monext" [ref=e1300]
+        - listitem [ref=e1301]
+        - listitem [ref=e1303]:
+          - img "klarna" [ref=e1305]
+        - listitem [ref=e1306]:
+          - img "scalapay" [ref=e1308]
+      - generic [ref=e1309]:
+        - text: "Retrouvez Menzzo dans d'autres pays:"
+        - link "menzzo.fr" [ref=e1310] [cursor=pointer]:
+          - /url: https://menzzo.fr
+          - img [ref=e1311]
+        - link "menzzo.de" [ref=e1313] [cursor=pointer]:
+          - /url: https://menzzo.de
+          - img [ref=e1314]
+        - link "menzzo.it" [ref=e1316] [cursor=pointer]:
+          - /url: https://menzzo.it
+          - img [ref=e1317]
+        - link "menzzo.nl" [ref=e1319] [cursor=pointer]:
+          - /url: https://menzzo.nl
+          - img [ref=e1320]
+        - link "menzzo.at" [ref=e1322] [cursor=pointer]:
+          - /url: https://menzzo.at
+          - img [ref=e1323]
+        - link "menzzo.be" [ref=e1325] [cursor=pointer]:
+          - /url: https://menzzo.be
+          - img [ref=e1326]
+        - link "menzzo.es" [ref=e1328] [cursor=pointer]:
+          - /url: https://www.menzzo.es/
+          - img [ref=e1329]
+        - link "menzzo.pt" [ref=e1331] [cursor=pointer]:
+          - /url: https://www.menzzo.pt/
+          - img [ref=e1332]
+      - generic [ref=e1334]: © 2025 Menzzo - Tous droits réservés
+  - button "Chat Menzzo" [ref=e1335] [cursor=pointer]:
+    - img "Chat Menzzo"
+```
