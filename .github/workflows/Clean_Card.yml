@@ -78,7 +78,11 @@ jobs:
 
       - name: Generate Allure Report
         if: always()
-        run: npx allure generate allure-results -o allure-report --clean || echo "Allure gen failed"
+        run: |
+          # Install allure CLI if not present
+          npm install -g allure-commandline
+          # Generate report. Ensure it points to 'allure-results'
+          allure generate allure-results -o allure-report --clean
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
