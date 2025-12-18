@@ -74,7 +74,13 @@ jobs:
           name: allure-report
           path: allure-report
           retention-days: 7
-      
+
+      - name: Remove large Allure attachments
+        if: always()
+        run: |
+          echo "Cleaning large Allure attachments..."
+          rm -rf allure-report/data/attachments || true
+
       - name: Debug Allure Results
         if: always()
         run: |
