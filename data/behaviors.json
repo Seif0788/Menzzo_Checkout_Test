@@ -1,1 +1,1 @@
-{"uid":"b1a8273437954620fa374b796ffaacdd","name":"behaviors","children":[{"name":"Clean_Login_Checkout_fr","uid":"b90e4b24a2c4213d","parentUid":"b1a8273437954620fa374b796ffaacdd","status":"passed","time":{"start":1766060415242,"stop":1766060430479,"duration":15237},"flaky":false,"newFailed":false,"newPassed":false,"newBroken":false,"retriesCount":0,"retriesStatusChange":false,"parameters":["Clean_FR_Cart"],"tags":[]}]}
+{"uid":"b1a8273437954620fa374b796ffaacdd","name":"behaviors","children":[]}
