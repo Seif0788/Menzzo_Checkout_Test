@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v4 # Updated to v4 (standard)
         with:
           node-version: 20
 
@@ -33,15 +33,12 @@ jobs:
       - name: Prepare result directories
         run: |
           mkdir -p test-results
-          mkdir -p playwright-report
+          mkdir -p allure-results
           mkdir -p allure-report
 
       - name: Run Playwright Tests
         id: playwright
-        # Removed "|| true" here so we can actually see if Playwright crashes
-        # 'continue-on-error' still allows the workflow to proceed to reporting
         continue-on-error: true
-
         run: |
           npx playwright test --project=Clean_FR_Cart
 
@@ -53,10 +50,10 @@ jobs:
         id: extract
         if: always()
         run: |
+          # Use absolute path
           RESULT_FILE="${{ github.workspace }}/test-results/results.json"
           
           if [ -f "$RESULT_FILE" ]; then
-            # More robust parsing for Playwright JSON format
             PASSED=$(jq '.stats.expected // 0' "$RESULT_FILE")
             FAILED=$(jq '.stats.unexpected // 0' "$RESULT_FILE")
             TOTAL=$(jq '.stats.total // 0' "$RESULT_FILE")
@@ -64,24 +61,24 @@ jobs:
             PASSED=0; FAILED=0; TOTAL=0
           fi
 
+          # Save to Env for later steps
           echo "PASSED=$PASSED" >> $GITHUB_ENV
           echo "FAILED=$FAILED" >> $GITHUB_ENV
           echo "TOTAL=$TOTAL" >> $GITHUB_ENV
-          
+          echo "RESULT_FILE_PATH=$RESULT_FILE" >> $GITHUB_ENV # <--- ADDED THIS
+
           if [ "$FAILED" -gt 0 ] || [ "$TOTAL" -eq 0 ]; then
             echo "STATUS_EMOJI=🔴 Failure" >> $GITHUB_ENV
           else
             echo "STATUS_EMOJI=🟢 Success" >> $GITHUB_ENV
           fi
           
-          # Set Pages URL
-          OWNER_LOWER=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
-          REPO_NAME=$(echo "${{ github.event.repository.name }}" | tr '[:upper:]' '[:lower:]')
-          echo "PAGES_URL=https://$OWNER_LOWER.github.io/$REPO_NAME" >> $GITHUB_ENV
+          # Simplified Pages URL
+          echo "PAGES_URL=https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}" >> $GITHUB_ENV
 
       - name: Generate Allure Report
         if: always()
-        run: npm run allure:generate || allure generate allure-results -o allure-report --clean
+        run: npx allure generate allure-results -o allure-report --clean || echo "Allure gen failed"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
@@ -98,29 +95,19 @@ jobs:
           server_address: smtp.gmail.com
           server_port: 465
           secure: true
-          # Use repository secrets for credentials instead of plain text:
           username: seif.t.axelites@gmail.com
-          password: cjrgskmlwmsdhuhn
-
+          password: cjrgskmlwmsdhuhn # Note: Use Secrets in production!
           to: seifeddine.t.axelites@gmail.com
           from: '"GitHub Actions" <seif.t.axelites@gmail.com>'
-          subject: "${{ env.STATUS_EMOJI }}: Playwright Scheduled Run Finished-Clean Card"
+          subject: "${{ env.STATUS_EMOJI }}: Playwright Run Finished"
           body: |
-            Playwright Scheduled Run Finished-Clean Card
             Status: ${{ env.STATUS_EMOJI }}
-
+            
             Test Statistics:
             - Total: ${{ env.TOTAL }}
             - Passed: ${{ env.PASSED }}
             - Failed: ${{ env.FAILED }}
 
-            Allure Report:
-            ${{ env.PAGES_URL }}
-
-            Artifacts:
-            ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}#artifacts
-
-            Test Notes:
-            - If Total = 0, review the Playwright run output (possible project name mismatch or tests not discovered).
-          attachments: ${{ env.RESULT_FILE_PATH }}
-          
+            Allure Report: ${{ env.PAGES_URL }}
+            Artifacts: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          attachments: ${{ env.RESULT_FILE_PATH }} # This now works!
