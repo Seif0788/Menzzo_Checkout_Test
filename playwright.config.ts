@@ -35,6 +35,15 @@ export default defineConfig({
       }
     },
     {
+      name: 'Clean_FR_Cart',
+      testDir: './tests/Card_Page/Menzzo_Fr',
+      workers: 1,
+      //retries: 3,
+      use: {
+        headless: false,
+      }
+    },
+    {
       name: 'DE_Checkoutsuite',
       testDir: './tests/Checkout/Menzzo_De',
       workers: 1,
