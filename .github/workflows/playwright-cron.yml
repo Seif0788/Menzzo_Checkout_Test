@@ -63,11 +63,7 @@ jobs:
             echo "No test-results/results.json found"
           fi
 
-      - name: Clean large attachments before report generation
-        run: |
-          rm -rf allure-results/*-attachment.json || true
-
-
+          
       - name: Generate Allure Report
         if: always()
         run: npm run allure:generate
