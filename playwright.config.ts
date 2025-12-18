@@ -6,9 +6,10 @@ const checkoutUseOptions = {
   viewport: { width: 1280, height: 720 },
   ignoreHTTPSErrors: true,
   screenshot: 'only-on-failure' as const,
-  video: 'off' as const,
-  trace: 'off' as const,
+  video: 'retain-on-failure' as const,
+  trace: 'retain-on-failure' as const,
 };
+
 
 export default defineConfig({
   testDir: './tests',
@@ -30,18 +31,14 @@ export default defineConfig({
       testDir: './tests/Checkout/Menzzo_Fr',
       workers: 1,
       //retries: 3,
-      use: {
-        headless: true,
-      }
+      use: { ...checkoutUseOptions, headless: true },
     },
     {
       name: 'Clean_FR_Cart',
       testDir: './tests/Card_Page/Menzzo_Fr',
       workers: 1,
       //retries: 3,
-      use: {
-        headless: true,
-      }
+      use: { ...checkoutUseOptions, headless: true },
     },
     {
       name: 'DE_Checkoutsuite',
@@ -98,7 +95,12 @@ export default defineConfig({
       testMatch: '**/Menzzo_*/[!.]*.spec.ts',
       workers: 2,
       retries: 3,
-      use: checkoutUseOptions,
+      use: { ...checkoutUseOptions,
+        screenshot: 'only-on-failure',
+        video: 'off',
+        trace: 'retain-on-failure'
+      },
+
     },
 
     // === Feature Tests ===
@@ -174,9 +176,6 @@ export default defineConfig({
       testDir: './tests/Menzzo2test',
       use: {
         headless: true,
-        screenshot: 'off',
-        video: 'off',
-        trace: 'off',
       },
     },
 

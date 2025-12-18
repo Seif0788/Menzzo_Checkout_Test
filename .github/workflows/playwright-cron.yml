@@ -42,8 +42,7 @@ jobs:
 
           mkdir -p test-results
 
-          npx playwright test \
-          --project=Global_Checkoutsuite || true
+          npx playwright test --project=Global_Checkoutsuite --reporter=allure-playwright || true
         continue-on-error: true
 
 
@@ -66,7 +65,7 @@ jobs:
           
       - name: Generate Allure Report
         if: always()
-        run: npm run allure:generate
+        run: npx allure generate allure-results --clean -o allure-report
 
       - name: Upload Allure Report
         uses: actions/upload-artifact@v4
@@ -76,12 +75,7 @@ jobs:
           path: allure-report
           retention-days: 7
 
-      - name: Remove large Allure attachments
-        if: always()
-        run: |
-          echo "Cleaning large Allure attachments..."
-          rm -rf allure-report/data/attachments || true
-
+          
       - name: Debug Allure Results
         if: always()
         run: |
@@ -170,7 +164,4 @@ jobs:
             Artifacts:
             ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}#artifacts
 
-            Test Notes:
-            - If Total = 0, review the Playwright run output (possible project name mismatch or tests not discovered).
-          attachments: ${{ env.RESULT_FILE_PATH }}
           

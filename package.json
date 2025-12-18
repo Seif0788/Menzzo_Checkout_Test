@@ -13,7 +13,8 @@
     "test:de": "npm run allure:clean && npx playwright test --project=\"DE_Checkoutsuite\" && npm run allure:generate && npm run allure:open",
     "test:it": "npm run allure:clean && npx playwright test --project=\"IT_Checkoutsuite\" && npm run allure:generate && npm run allure:open",
     "test:price": "npx playwright test --project=Product_Price && npm run allure:generate && npm run allure:open",
-    "test:checkout": "npm run allure:clean && (npx playwright test --project=Global_Checkoutsuite && npm run allure:generate || npm run allure:generate) && npm run allure:open"
+    "test:checkout": "npm run allure:clean && (npx playwright test --project=Global_Checkoutsuite && npm run allure:generate || npm run allure:generate) && npm run allure:open",
+    "test:allure-global": "npm run allure:clean && npx playwright test --project=Global_Checkoutsuite --reporter=allure-playwright && npm run allure:generate"
   },
   "devDependencies": {
     "@playwright/test": "^1.57.0",
