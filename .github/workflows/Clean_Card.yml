@@ -76,11 +76,9 @@ jobs:
             echo "STATUS_EMOJI=🔴 Failure" >> $GITHUB_ENV
           fi
           
-          # Force lowercase for the URL to prevent 404s
-          OWNER_LC=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
-          REPO_LC=$(echo "${{ github.event.repository.name }}" | tr '[:upper:]' '[:lower:]')
-          echo "PAGES_URL=https://$OWNER_LC.github.io/$REPO_LC" >> $GITHUB_ENV
-          
+          # Simplified Pages URL
+          echo "PAGES_URL=https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}" >> $GITHUB_ENV
+
       - name: Generate Allure Report
         if: always()
         run: |
