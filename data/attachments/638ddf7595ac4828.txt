@@ -1,0 +1,23 @@
+Clicked on random product [13]/20
+⏳ Waiting for product page to load...
+✅ Product page loaded.
+✅ clickElementByText: clicked in main page context: Conferma il tuo carrello
+ℹ️ Not on checkout page yet. Trying 'ordine'...
+✅ Navigation to checkout complete. Waiting for OneStepCheckout...
+⏳ Waiting for OneStepCheckout to initialize...
+❌ Not on the checkout page. Current URL: https://www.menzzo.it/checkout/cart/
+❌ Not on the checkout page. Current URL: https://www.menzzo.it/checkout/cart/
+❌ Not on the checkout page. Current URL: https://www.menzzo.it/checkout/cart/
+❌ Not on the checkout page. Current URL: https://www.menzzo.it/checkout/cart/
+❌ Not on the checkout page. Current URL: https://www.menzzo.it/checkout/cart/
+❌ Not on the checkout page. Current URL: https://www.menzzo.it/checkout/cart/
+❌ Not on the checkout page. Current URL: https://www.menzzo.it/checkout/cart/
+❌ Not on the checkout page. Current URL: https://www.menzzo.it/checkout/cart/
+❌ Not on the checkout page. Current URL: https://www.menzzo.it/checkout/cart/
+❌ Not on the checkout page. Current URL: https://www.menzzo.it/checkout/cart/
+❌ Not on the checkout page. Current URL: https://www.menzzo.it/checkout/cart/
+❌ Not on the checkout page. Current URL: https://www.menzzo.it/checkout/cart/
+❌ Not on the checkout page. Current URL: https://www.menzzo.it/checkout/cart/
+❌ Not on the checkout page. Current URL: https://www.menzzo.it/checkout/cart/
+❌ Not on the checkout page. Current URL: https://www.menzzo.it/checkout/cart/
+❌ Not on the checkout page. Current URL: https://www.menzzo.it/checkout/cart/
