@@ -96,7 +96,7 @@ export default defineConfig({
       name: 'Global_Checkoutsuite',
       testDir: './tests/Checkout/',
       testMatch: '**/Menzzo_*/[!.]*.spec.ts',
-      workers: 4,
+      workers: 2,
       retries: 3,
       use: checkoutUseOptions,
     },
