@@ -1,2 +1,2 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","5","Clean_Login_Checkout_fr","Clean_FR_Cart","Thu Dec 18 11:07:28 UTC 2025","failed","Thu Dec 18 11:07:28 UTC 2025","","Card_Page/Menzzo_Fr/Login_Delete_Product.spec.ts","",""
+"","14234","Clean_Login_Checkout_fr","Clean_FR_Cart","Thu Dec 18 11:22:17 UTC 2025","passed","Thu Dec 18 11:22:32 UTC 2025","","Card_Page/Menzzo_Fr/Login_Delete_Product.spec.ts","",""
