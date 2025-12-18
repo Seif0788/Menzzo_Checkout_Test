@@ -57,7 +57,10 @@ jobs:
             PASSED=$(jq '.stats.expected // 0' "$RESULT_FILE")
             FAILED=$(jq '.stats.unexpected // 0' "$RESULT_FILE")
             TOTAL=$(jq '.stats.total // 0' "$RESULT_FILE")
+
+            echo "Debug: Detected Passed=$PASSED, Failed=$FAILED, Total=$TOTAL"
           else
+            echo "Debug: Result file not found!"
             PASSED=0; FAILED=0; TOTAL=0
           fi
 
@@ -68,14 +71,16 @@ jobs:
           echo "RESULT_FILE_PATH=$RESULT_FILE" >> $GITHUB_ENV # <--- ADDED THIS
 
           if [ "$FAILED" -gt 0 ] || [ "$TOTAL" -eq 0 ]; then
-            echo "STATUS_EMOJI=🔴 Failure" >> $GITHUB_ENV
-          else
             echo "STATUS_EMOJI=🟢 Success" >> $GITHUB_ENV
+          else
+            echo "STATUS_EMOJI=🔴 Failure" >> $GITHUB_ENV
           fi
           
-          # Simplified Pages URL
-          echo "PAGES_URL=https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}" >> $GITHUB_ENV
-
+          # Force lowercase for the URL to prevent 404s
+          OWNER_LC=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
+          REPO_LC=$(echo "${{ github.event.repository.name }}" | tr '[:upper:]' '[:lower:]')
+          echo "PAGES_URL=https://$OWNER_LC.github.io/$REPO_LC" >> $GITHUB_ENV
+          
       - name: Generate Allure Report
         if: always()
         run: |
