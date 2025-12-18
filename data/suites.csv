@@ -1,2 +1,4 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","17450","Clean_Login_Checkout_fr","Clean_FR_Cart","2025-12-18","passed","2025-12-18","","Card_Page/Menzzo_Fr/Login_Delete_Product.spec.ts","",""
+"","30704","Es_SeQura","ES_Checkoutsuite","Thu Dec 18 21:15:47 UTC 2025","passed","Thu Dec 18 21:16:18 UTC 2025","","Checkout/Menzzo_Es/Es_SeQura.spec.ts","",""
+"","34132","Es_Stripe","ES_Checkoutsuite","Thu Dec 18 21:16:18 UTC 2025","passed","Thu Dec 18 21:16:52 UTC 2025","","Checkout/Menzzo_Es/Es_Stripe.spec.ts","",""
+"","57538","Es_Scalapay","ES_Checkoutsuite","Thu Dec 18 21:14:48 UTC 2025","passed","Thu Dec 18 21:15:46 UTC 2025","","Checkout/Menzzo_Es/Es_Scalapay.spec.ts","",""
