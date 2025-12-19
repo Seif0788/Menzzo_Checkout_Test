@@ -99,7 +99,7 @@ export default defineConfig({
         ...checkoutUseOptions,
         screenshot: 'only-on-failure',
         video: 'off',
-        trace: 'retain-on-failure'
+        trace: 'on'
       },
 
     },
