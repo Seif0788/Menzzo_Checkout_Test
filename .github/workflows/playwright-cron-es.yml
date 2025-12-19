@@ -30,17 +30,9 @@ jobs:
       - name: Install Allure
         run: npm install --save-dev allure-playwright
 
-      - name: Prepare result directories
-        run: |
-          mkdir -p test-results
-          mkdir -p playwright-report
-          mkdir -p allure-report
-
       - name: Run Playwright Tests
         id: playwright
         run: |
-
-          mkdir -p test-results
 
           npx playwright test \
           --project=ES_Checkoutsuite || true

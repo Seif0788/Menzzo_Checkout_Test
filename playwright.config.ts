@@ -17,7 +17,7 @@ export default defineConfig({
   timeout: 120000,
 
   use: {
-    trace: 'off',
+    trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
     video: 'off',
     userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
@@ -95,7 +95,8 @@ export default defineConfig({
       testMatch: '**/Menzzo_*/[!.]*.spec.ts',
       workers: 2,
       retries: 3,
-      use: { ...checkoutUseOptions,
+      use: {
+        ...checkoutUseOptions,
         screenshot: 'only-on-failure',
         video: 'off',
         trace: 'retain-on-failure'
@@ -112,7 +113,7 @@ export default defineConfig({
     {
       name: 'Homepage',
       testMatch: /Homepage_.*\.spec\.ts/,
-      use: { ...checkoutUseOptions, headless: false },
+      use: { ...checkoutUseOptions, headless: true },
     },
     {
       name: 'Product_Page',
