@@ -1,5 +1,5 @@
 import { Page, expect, Locator, Frame, BrowserContext } from '@playwright/test';
-import { allure } from 'allure-playwright';
+import { attachment } from 'allure-js-commons';
 
 // Navigate to URL and verify title
 export async function gotopageAndVerifyTitle(page: Page, url: string, titleText: string, timeout: number = 20000) {
