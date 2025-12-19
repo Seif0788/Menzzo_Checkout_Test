@@ -30,8 +30,16 @@ jobs:
       - name: Install Allure
         run: npm install --save-dev allure-playwright
 
+
+      - name: Remove large Allure attachments
+        if: always()
+        run: |
+          echo "Removing Allure attachments to avoid GitHub size limit..."
+          rm -rf allure-report/data/attachments
+
       - name: Remove previous allure-results and allure-report
         run: |
+          echo "Removing Allure attachments to avoid GitHub size limit..."
           rm -rf allure-results allure-report
 
       - name: Run Playwright Tests
