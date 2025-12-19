@@ -1,4 +1,5 @@
 import { test, expect, Page } from '@playwright/test';
+import { allure } from "allure-playwright";
 import { clickElementByText, search, ClickRandomProduct, clickElementByTextWithPopUp, waitForCheckoutReady } from '../../../helpers/utils';
 import { performCheckout, CheckoutData } from '../../../helpers/Checkout/General_Checkout';
 
@@ -16,9 +17,9 @@ test('At_Scalapay', async ({ page }) => {
     await ClickRandomProduct(page);
 
     // 5️⃣ Wait for product page to load
-    console.log('⏳ Waiting for product page to load...');
+    allure.attachment('Console Log', '⏳ Waiting for product page to load...', 'text/plain');
     await page.waitForLoadState('networkidle', { timeout: 60000 });
-    console.log('✅ Product page loaded.');
+    allure.attachment('Console Log', '✅ Product page loaded.', 'text/plain');
 
     // 6️⃣ Click "In den Warenkorb"
     await clickElementByText(page, 'In den Warenkorb');
@@ -33,18 +34,18 @@ test('At_Scalapay', async ({ page }) => {
             clickElementByText(page, 'Warenkorb bestätigen', 5000, { debug: true }),
         ]);
     } catch (e) {
-        console.log("⚠️ 'Warenkorb bestätigen' click failed or timed out.");
+        allure.attachment('Console Warn', "⚠️ 'Warenkorb bestätigen' click failed or timed out.", 'text/plain');
     }
 
     // Fallback: if not on checkout, try "Zur Kasse" (standard button)
     if (!page.url().includes('onestepcheckout')) {
-        console.log("ℹ️ Not on checkout page yet. Trying 'Zur Kasse'...");
+        allure.attachment('Console Log', "ℹ️ Not on checkout page yet. Trying 'Zur Kasse'...", 'text/plain');
         await Promise.all([
             page.waitForNavigation({ waitUntil: 'networkidle', timeout: 30000 }).catch(() => { }),
-            clickElementByText(page, 'Zur Kasse', 10000).catch(() => console.log("⚠️ 'Zur Kasse' also failed.")),
+            clickElementByText(page, 'Zur Kasse', 10000).catch(() => allure.attachment('Console Warn', "⚠️ 'Zur Kasse' also failed.", 'text/plain')),
         ]);
     }
-    console.log('✅ Navigation to checkout complete. Waiting for OneStepCheckout...');
+    allure.attachment('Console Log', '✅ Navigation to checkout complete. Waiting for OneStepCheckout...', 'text/plain');
 
     let checkoutPage = page;
 
@@ -53,12 +54,12 @@ test('At_Scalapay', async ({ page }) => {
         await waitForCheckoutReady(page);
     } catch (err) {
         if (String(err).includes('Target page') || String(err).includes('closed')) {
-            console.warn('⚠️ Detected checkout reload or new tab — recovering...');
+            allure.attachment('Console Warn', '⚠️ Detected checkout reload or new tab — recovering...', 'text/plain');
             const allPages = page.context().pages();
             for (const p of allPages) {
                 if (/onestepcheckout/i.test(p.url())) {
                     checkoutPage = p;
-                    console.log(`🔄 Switched to new checkout page: ${checkoutPage.url()}`);
+                    allure.attachment('Console Log', `🔄 Switched to new checkout page: ${checkoutPage.url()}`, 'text/plain');
                     break;
                 }
             }
@@ -82,17 +83,17 @@ test('At_Scalapay', async ({ page }) => {
     };
 
     await performCheckout(checkoutPage, checkoutData);
-    console.log('✅ Checkout performed successfully.');
+    allure.attachment('Console Log', '✅ Checkout performed successfully.', 'text/plain');
 
     // 9️⃣ Confirm navigation to payment method page
     // Refine the locator for the payment method page title
-    console.log('⏳ Verifying navigation to payment method page...');
+    allure.attachment('Console Log', '⏳ Verifying navigation to payment method page...', 'text/plain');
     await checkoutPage.waitForSelector('h1.page-title', { state: 'visible', timeout: 60000 });
     const pageTitle = await checkoutPage.locator('h1.page-title').innerText();
     expect(pageTitle).toMatch(/Bestellung abschließen/i);
-    console.log('✅ Successfully navigated to payment method page.');
+    allure.attachment('Console Log', '✅ Successfully navigated to payment method page.', 'text/plain');
 
-    console.log("⏳ Waiting for Scalapay redirect...");
+    allure.attachment('Console Log', "⏳ Waiting for Scalapay redirect...", 'text/plain');
 
     // Use checkoutPage reference
     const timeout = 60000;
@@ -101,10 +102,10 @@ test('At_Scalapay', async ({ page }) => {
     // 1️⃣ Check for URL change to Scalapay
     try {
         await checkoutPage.waitForURL(/portal\.integration\.scalapay\.com\/login/, { timeout });
-        console.log("✅ Scalapay redirect detected in same tab!");
+        allure.attachment('Console Log', "✅ Scalapay redirect detected in same tab!", 'text/plain');
         redirected = true;
     } catch (err) {
-        console.log("⚠️ No redirect in same tab detected within timeout.");
+        allure.attachment('Console Warn', "⚠️ No redirect in same tab detected within timeout.", 'text/plain');
     }
 
     // 2️⃣ Check for popup windows
@@ -117,7 +118,7 @@ test('At_Scalapay', async ({ page }) => {
         if (popup) {
             await popup.waitForLoadState();
             await expect(popup).toHaveURL(/portal\.integration\.scalapay\.com\/login/);
-            console.log("✅ Scalapay popup detected!");
+            allure.attachment('Console Log', "✅ Scalapay popup detected!", 'text/plain');
             redirected = true;
         }
     }

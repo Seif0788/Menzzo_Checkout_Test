@@ -1,4 +1,5 @@
 import { test, expect, Page } from '@playwright/test';
+import { allure } from "allure-playwright";
 import {
     clickElementByText,
     search_nl,
@@ -25,9 +26,9 @@ test('Be_Nl_Klarna', async ({ page }) => {
         await ClickRandomProduct(page);
 
         // 5️⃣ Wait for product page to load
-        console.log('⏳ Waiting for product page to load...');
+        allure.attachment('Console Log', '⏳ Waiting for product page to load...', 'text/plain');
         await page.waitForLoadState('networkidle', { timeout: 60000 });
-        console.log('✅ Product page loaded.');
+        allure.attachment('Console Log', '✅ Product page loaded.', 'text/plain');
 
         // 6️⃣ Click "In Winkelwagen"
         await clickElementByText(page, 'In Winkelwagen');
@@ -38,7 +39,7 @@ test('Be_Nl_Klarna', async ({ page }) => {
         // 8️⃣ Navigate to checkout using robust helper
         await clickAndWaitForCheckout_NL(page, "Bevestig mijn winkelwagen");
 
-        console.log('✅ Navigation to checkout complete. Waiting for OneStepCheckout...');
+        allure.attachment('Console Log', '✅ Navigation to checkout complete. Waiting for OneStepCheckout...', 'text/plain');
 
         let checkoutPage = page;
 
@@ -47,12 +48,12 @@ test('Be_Nl_Klarna', async ({ page }) => {
             await waitForCheckoutReady(page);
         } catch (err) {
             if (String(err).includes('Target page') || String(err).includes('closed')) {
-                console.warn('⚠️ Detected checkout reload or new tab — recovering...');
+                allure.attachment('Console Warn', '⚠️ Detected checkout reload or new tab — recovering...', 'text/plain');
                 const allPages = page.context().pages();
                 for (const p of allPages) {
                     if (/onestepcheckout/i.test(p.url())) {
                         checkoutPage = p;
-                        console.log(`🔄 Switched to new checkout page: ${checkoutPage.url()}`);
+                        allure.attachment('Console Log', `🔄 Switched to new checkout page: ${checkoutPage.url()}`, 'text/plain');
                         break;
                     }
                 }
@@ -79,10 +80,10 @@ test('Be_Nl_Klarna', async ({ page }) => {
         for (let attempt = 1; attempt <= 5; attempt++) {
             try {
                 await performCheckout(checkoutPage, checkoutData);
-                console.log(`✅ Checkout performed successfully on attempt ${attempt}`);
+                allure.attachment('Console Log', `✅ Checkout performed successfully on attempt ${attempt}`, 'text/plain');
 
                 // 2️⃣ Wait for Klarna popup or redirect INSIDE the loop
-                console.log('⏳ Waiting for Klarna popup or redirect...');
+                allure.attachment('Console Log', '⏳ Waiting for Klarna popup or redirect...', 'text/plain');
 
                 const popupOrRedirect = await Promise.race([
                     page.waitForEvent('popup', { timeout: 60000 }).then(p => ({ type: 'popup', page: p })),
@@ -93,21 +94,21 @@ test('Be_Nl_Klarna', async ({ page }) => {
                     const popup = popupOrRedirect.page as Page;
                     await popup.waitForLoadState();
                     await expect(popup).toHaveURL(/klarna\.com/);
-                    console.log("✅ Klarna popup detected!");
+                    allure.attachment('Console Log', "✅ Klarna popup detected!", 'text/plain');
                 } else {
-                    console.log("✅ Klarna redirect detected!");
+                    allure.attachment('Console Log', "✅ Klarna redirect detected!", 'text/plain');
                 }
 
                 // If successful, break the loop
                 break;
 
             } catch (err) {
-                console.warn(`⚠️ Attempt ${attempt} failed:`, err);
-                console.warn("⚠️ Current URL:", page.url());
+                allure.attachment('Console Warn', `⚠️ Attempt ${attempt} failed: ${err}`, 'text/plain');
+                allure.attachment('Console Warn', `⚠️ Current URL: ${page.url()}`, 'text/plain');
 
                 if (attempt === 5) throw err;
 
-                console.log("🔄 Reloading page and retrying...");
+                allure.attachment('Console Log', "🔄 Reloading page and retrying...", 'text/plain');
                 await page.reload();
                 await page.waitForLoadState('networkidle');
 
@@ -122,7 +123,7 @@ test('Be_Nl_Klarna', async ({ page }) => {
             }
         }
     } catch (error) {
-        console.error('❌ Test failed with error:', error);
+        allure.attachment('Console Error', `❌ Test failed with error: ${error}`, 'text/plain');
         throw error;
     }
 });

@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { allure } from "allure-playwright";
 import {
   clickElementByText,
   search,
@@ -22,9 +23,9 @@ test('De_Stripe', async ({ page }) => {
   await ClickRandomProduct(page);
 
   // 5️⃣ Wait for product page to load
-  console.log('⏳ Waiting for product page to load...');
+  allure.attachment('Console Log', '⏳ Waiting for product page to load...', 'text/plain');
   await page.waitForLoadState('networkidle', { timeout: 60000 });
-  console.log('✅ Product page loaded.');
+  allure.attachment('Console Log', '✅ Product page loaded.', 'text/plain');
 
   // 6️⃣ Click "In den Warenkorb"
   await clickElementByText(page, 'In den Warenkorb');
@@ -39,18 +40,18 @@ test('De_Stripe', async ({ page }) => {
       clickElementByText(page, 'Warenkorb bestätigen', 5000, { debug: true }),
     ]);
   } catch (e) {
-    console.log("⚠️ 'Warenkorb bestätigen' click failed or timed out.");
+    allure.attachment('Console Warn', "⚠️ 'Warenkorb bestätigen' click failed or timed out.", 'text/plain');
   }
 
   // Fallback: if not on checkout, try "Zur Kasse" (standard button)
   if (!page.url().includes('onestepcheckout')) {
-    console.log("ℹ️ Not on checkout page yet. Trying 'Zur Kasse'...");
+    allure.attachment('Console Log', "ℹ️ Not on checkout page yet. Trying 'Zur Kasse'...", 'text/plain');
     await Promise.all([
       page.waitForNavigation({ waitUntil: 'networkidle', timeout: 30000 }).catch(() => { }),
-      clickElementByText(page, 'Zur Kasse', 10000).catch(() => console.log("⚠️ 'Zur Kasse' also failed.")),
+      clickElementByText(page, 'Zur Kasse', 10000).catch(() => allure.attachment('Console Warn', "⚠️ 'Zur Kasse' also failed.", 'text/plain')),
     ]);
   }
-  console.log('✅ Navigation to checkout complete. Waiting for OneStepCheckout...');
+  allure.attachment('Console Log', '✅ Navigation to checkout complete. Waiting for OneStepCheckout...', 'text/plain');
 
   let checkoutPage = page;
 
@@ -59,12 +60,12 @@ test('De_Stripe', async ({ page }) => {
     await waitForCheckoutReady(page);
   } catch (err) {
     if (String(err).includes('Target page') || String(err).includes('closed')) {
-      console.warn('⚠️ Detected checkout reload or new tab — recovering...');
+      allure.attachment('Console Warn', '⚠️ Detected checkout reload or new tab — recovering...', 'text/plain');
       const allPages = page.context().pages();
       for (const p of allPages) {
         if (/onestepcheckout/i.test(p.url())) {
           checkoutPage = p;
-          console.log(`🔄 Switched to new checkout page: ${checkoutPage.url()}`);
+          allure.attachment('Console Log', `🔄 Switched to new checkout page: ${checkoutPage.url()}`, 'text/plain');
           break;
         }
       }
@@ -89,15 +90,15 @@ test('De_Stripe', async ({ page }) => {
 
   // Perform checkout (multi-language safe)
   await performCheckout(checkoutPage, checkoutData);
-  console.log('✅ Checkout performed successfully.');
+  allure.attachment('Console Log', '✅ Checkout performed successfully.', 'text/plain');
 
   // 9️⃣ Confirm navigation to payment method page
-  console.log('⏳ Verifying navigation to Stripe...');
+  allure.attachment('Console Log', '⏳ Verifying navigation to Stripe...', 'text/plain');
   try {
     await expect(checkoutPage).toHaveURL(/stripe\.com/, { timeout: 60000 });
-    console.log('✅ Successfully navigated to Stripe.');
+    allure.attachment('Console Log', '✅ Successfully navigated to Stripe.', 'text/plain');
   } catch (e) {
-    console.log(`❌ Failed to navigate to Stripe. Current URL: ${checkoutPage.url()}`);
+    allure.attachment('Console Error', `❌ Failed to navigate to Stripe. Current URL: ${checkoutPage.url()}`, 'text/plain');
     throw e;
   }
 });

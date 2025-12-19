@@ -1,4 +1,5 @@
 import { test, expect, Page } from '@playwright/test';
+import { allure } from "allure-playwright";
 import {
   clickElementByText,
   search,
@@ -22,9 +23,9 @@ test('De_Klarna', async ({ page }) => {
   await ClickRandomProduct(page);
 
   // 5️⃣ Wait for product page to load
-  console.log('⏳ Waiting for product page to load...');
+  allure.attachment('Console Log', '⏳ Waiting for product page to load...', 'text/plain');
   await page.waitForLoadState('networkidle', { timeout: 60000 });
-  console.log('✅ Product page loaded.');
+  allure.attachment('Console Log', '✅ Product page loaded.', 'text/plain');
 
   // 6️⃣ Click "In den Warenkorb"
   await clickElementByText(page, 'In den Warenkorb');
@@ -39,18 +40,18 @@ test('De_Klarna', async ({ page }) => {
       clickElementByText(page, 'Warenkorb bestätigen', 5000, { debug: true }),
     ]);
   } catch (e) {
-    console.log("⚠️ 'Warenkorb bestätigen' click failed or timed out.");
+    allure.attachment('Console Warn', "⚠️ 'Warenkorb bestätigen' click failed or timed out.", 'text/plain');
   }
 
   // Fallback: if not on checkout, try "Zur Kasse" (standard button)
   if (!page.url().includes('onestepcheckout')) {
-    console.log("ℹ️ Not on checkout page yet. Trying 'Zur Kasse'...");
+    allure.attachment('Console Log', "ℹ️ Not on checkout page yet. Trying 'Zur Kasse'...", 'text/plain');
     await Promise.all([
       page.waitForNavigation({ waitUntil: 'networkidle', timeout: 30000 }).catch(() => { }),
-      clickElementByText(page, 'Zur Kasse', 10000).catch(() => console.log("⚠️ 'Zur Kasse' also failed.")),
+      clickElementByText(page, 'Zur Kasse', 10000).catch(() => allure.attachment('Console Warn', "⚠️ 'Zur Kasse' also failed.", 'text/plain')),
     ]);
   }
-  console.log('✅ Navigation to checkout complete. Waiting for OneStepCheckout...');
+  allure.attachment('Console Log', '✅ Navigation to checkout complete. Waiting for OneStepCheckout...', 'text/plain');
 
   let checkoutPage = page;
 
@@ -59,12 +60,12 @@ test('De_Klarna', async ({ page }) => {
     await waitForCheckoutReady(page);
   } catch (err) {
     if (String(err).includes('Target page') || String(err).includes('closed')) {
-      console.warn('⚠️ Detected checkout reload or new tab — recovering...');
+      allure.attachment('Console Warn', '⚠️ Detected checkout reload or new tab — recovering...', 'text/plain');
       const allPages = page.context().pages();
       for (const p of allPages) {
         if (/onestepcheckout/i.test(p.url())) {
           checkoutPage = p;
-          console.log(`🔄 Switched to new checkout page: ${checkoutPage.url()}`);
+          allure.attachment('Console Log', `🔄 Switched to new checkout page: ${checkoutPage.url()}`, 'text/plain');
           break;
         }
       }
@@ -88,49 +89,49 @@ test('De_Klarna', async ({ page }) => {
   };
 
   // 1️⃣ Retry filling checkout 5 times
-    for (let attempt = 1; attempt <= 5; attempt++) {
-      try {
-        await performCheckout(checkoutPage, checkoutData);
-        console.log(`✅ Checkout performed successfully on attempt ${attempt}`);
-  
-        // 2️⃣ Wait for Klarna popup or redirect INSIDE the loop
-        console.log('⏳ Waiting for Klarna popup or redirect...');
-  
-        const popupOrRedirect = await Promise.race([
-          page.waitForEvent('popup', { timeout: 60000 }).then(p => ({ type: 'popup', page: p })),
-          page.waitForURL(/klarna\.com/, { timeout: 60000, waitUntil: 'domcontentloaded' }).then(() => ({ type: 'redirect', page: page }))
-        ]);
-  
-        if (popupOrRedirect.type === 'popup') {
-          const popup = popupOrRedirect.page as Page;
-          await popup.waitForLoadState();
-          await expect(popup).toHaveURL(/klarna\.com/);
-          console.log("✅ Klarna popup detected!");
-        } else {
-          console.log("✅ Klarna redirect detected!");
-        }
-  
-        // If successful, break the loop
-        break;
-  
-      } catch (err) {
-        console.warn(`⚠️ Attempt ${attempt} failed:`, err);
-        console.warn("⚠️ Current URL:", page.url());
-  
-        if (attempt === 5) throw err;
-  
-        console.log("🔄 Reloading page and retrying...");
-        await page.reload();
-        await page.waitForLoadState('networkidle');
-  
-        // Re-detect checkout page if needed (in case reload redirects elsewhere)
-        const allPages = page.context().pages();
-        for (const p of allPages) {
-          if (/onestepcheckout/i.test(p.url())) {
-            checkoutPage = p;
-            break;
-          }
+  for (let attempt = 1; attempt <= 5; attempt++) {
+    try {
+      await performCheckout(checkoutPage, checkoutData);
+      allure.attachment('Console Log', `✅ Checkout performed successfully on attempt ${attempt}`, 'text/plain');
+
+      // 2️⃣ Wait for Klarna popup or redirect INSIDE the loop
+      allure.attachment('Console Log', '⏳ Waiting for Klarna popup or redirect...', 'text/plain');
+
+      const popupOrRedirect = await Promise.race([
+        page.waitForEvent('popup', { timeout: 60000 }).then(p => ({ type: 'popup', page: p })),
+        page.waitForURL(/klarna\.com/, { timeout: 60000, waitUntil: 'domcontentloaded' }).then(() => ({ type: 'redirect', page: page }))
+      ]);
+
+      if (popupOrRedirect.type === 'popup') {
+        const popup = popupOrRedirect.page as Page;
+        await popup.waitForLoadState();
+        await expect(popup).toHaveURL(/klarna\.com/);
+        allure.attachment('Console Log', "✅ Klarna popup detected!", 'text/plain');
+      } else {
+        allure.attachment('Console Log', "✅ Klarna redirect detected!", 'text/plain');
+      }
+
+      // If successful, break the loop
+      break;
+
+    } catch (err) {
+      allure.attachment('Console Warn', `⚠️ Attempt ${attempt} failed: ${err}`, 'text/plain');
+      allure.attachment('Console Warn', `⚠️ Current URL: ${page.url()}`, 'text/plain');
+
+      if (attempt === 5) throw err;
+
+      allure.attachment('Console Log', "🔄 Reloading page and retrying...", 'text/plain');
+      await page.reload();
+      await page.waitForLoadState('networkidle');
+
+      // Re-detect checkout page if needed (in case reload redirects elsewhere)
+      const allPages = page.context().pages();
+      for (const p of allPages) {
+        if (/onestepcheckout/i.test(p.url())) {
+          checkoutPage = p;
+          break;
         }
       }
     }
+  }
 });

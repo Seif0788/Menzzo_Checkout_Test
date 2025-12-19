@@ -1,4 +1,5 @@
 import { test, Page } from '@playwright/test';
+import { allure } from "allure-playwright";
 import { clickElementByText } from '../../helpers/utils';
 import fs from 'fs';
 import Papa from 'papaparse';
@@ -15,18 +16,18 @@ function loadCategoriesFromCSV(filePath: string): string[] {
 //----2. Function to select category ---
 async function selectCategory(page: Page, categoryName: string) {
     await clickElementByText(page, categoryName);
-    console.log(`✅ Selected category: ${categoryName}`);
+    allure.attachment('Console Log', `✅ Selected category: ${categoryName}`, 'text/plain');
 }
 
 
 test('Category testing', async ({ page }) => {
     // --- Open menzzo.fr ---
     await page.goto('https://www.menzzo.fr');
-    console.log("🚪 Menzzo.fr was opened");
+    allure.attachment('Console Log', "🚪 Menzzo.fr was opened", 'text/plain');
 
     // --- Close Cookies popup ---
     await clickElementByText(page, "Accepter et continuer");
-    console.log("✅ Cookies was closed");
+    allure.attachment('Console Log', "✅ Cookies was closed", 'text/plain');
 
     // --- Load categories from CSV ---
     const categories = loadCategoriesFromCSV('data/Category.csv');
@@ -34,7 +35,7 @@ test('Category testing', async ({ page }) => {
     // --- Click a random category ---
     const randomCategory = categories[Math.floor(Math.random() * categories.length)];
     await selectCategory(page, randomCategory);
-    console.log(`🔹 Selected category: ${randomCategory}`);
+    allure.attachment('Console Log', `🔹 Selected category: ${randomCategory}`, 'text/plain');
 
     // --- Check the category name on page ---
     await CheckCategoryName(page, randomCategory);

@@ -1,4 +1,5 @@
 import { test, expect, Page } from '@playwright/test';
+import { allure } from "allure-playwright";
 import { clickElementByText, ClickRandomProduct, search } from '../../../helpers/utils';
 import { SEO_Title, SEO_Description } from '../../../helpers/Product_page_helpers/Elementer_Page';
 import fs from 'fs';
@@ -50,9 +51,9 @@ test.describe(`SEO check (random SKUs x${TEST_COUNT})`, () => {
                 const randomProduct = Price_Update[randomIndex];
                 productID = randomProduct.id;
                 productSKU = randomProduct.SKU;
-                console.log(`Testing Random Product: ID=${productID}, SKU=${productSKU}`);
+                allure.attachment('Console Log', `Testing Random Product: ID=${productID}, SKU=${productSKU}`, 'text/plain');
             } else {
-                console.log(`Testing Specific Product: ID=${productID}`);
+                allure.attachment('Console Log', `Testing Specific Product: ID=${productID}`, 'text/plain');
             }
 
             // Navigate directly to the product page using the ID

@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { allure } from "allure-playwright";
 import { clickElementByText, search, ClickRandomProduct, CheckTimeBox, Button_Previous, Button_Next } from '../../../helpers/utils';
 import { verifyH1MatchesTitle, breadcrumb, CheckProductAvailability, CheckStockAndShipping, DeliveryPricePopup, FreereturnDisplay, FreereturnPopUp, review_report, Description, InfoTable, upsell, ClientViews, Photo_product, CountPhoto } from '../../../helpers/Product_page_helpers/Elementer_Page';
 import { detectLanguage } from '../../../helpers/detect_language';
@@ -11,12 +12,12 @@ test('Check_product_page', async ({ page }) => {
     await page.goto('https://www.menzzo.it');
 
     await clickElementByText(page, "Accettare tutto");
-    console.log('✅ Cookies accepted.');
+    allure.attachment('Console Log', '✅ Cookies accepted.', 'text/plain');
 
     await search(page, "Tavolino")
 
     await ClickRandomProduct(page);
-    console.log('✅ Random product selected.');
+    allure.attachment('Console Log', '✅ Random product selected.', 'text/plain');
 
     // --- Validate Language with detectLanguage helper ---
     const h1Element = page.locator('h1.ax-page-title');
@@ -26,11 +27,12 @@ test('Check_product_page', async ({ page }) => {
     const h1Lang = detectLanguage(h1Text);
     const titleLang = detectLanguage(pageTitle);
 
-    console.log(`🌍 Language Detection Results:`);
-    console.log(`   → H1 text: "${h1Text.substring(0, 50)}..."`);
-    console.log(`   → H1 detected language: ${h1Lang}`);
-    console.log(`   → Title detected language: ${titleLang}`);
-    console.log(`   → Expected language: ${EXPECTED_LANGUAGE}`);
+    let langResults = `🌍 Language Detection Results:\n`;
+    langResults += `   → H1 text: "${h1Text.substring(0, 50)}..."\n`;
+    langResults += `   → H1 detected language: ${h1Lang}\n`;
+    langResults += `   → Title detected language: ${titleLang}\n`;
+    langResults += `   → Expected language: ${EXPECTED_LANGUAGE}\n`;
+    allure.attachment('Console Log', langResults, 'text/plain');
 
     // Soft assertion for H1 language
     expect.soft(
@@ -45,11 +47,11 @@ test('Check_product_page', async ({ page }) => {
     ).toBeTruthy();
 
     if (h1Lang === EXPECTED_LANGUAGE && titleLang === EXPECTED_LANGUAGE) {
-        console.log(`✅ Language validation passed for ${EXPECTED_LANGUAGE.toUpperCase()}`);
+        allure.attachment('Console Log', `✅ Language validation passed for ${EXPECTED_LANGUAGE.toUpperCase()}`, 'text/plain');
     } else if (h1Lang === 'unknown' || titleLang === 'unknown') {
-        console.log(`⚠️ Some language detection was inconclusive`);
+        allure.attachment('Console Warn', `⚠️ Some language detection was inconclusive`, 'text/plain');
     } else {
-        console.log(`❌ Language mismatch detected!`);
+        allure.attachment('Console Error', `❌ Language mismatch detected!`, 'text/plain');
     }
 
     //Check that the title contains "product_name"
@@ -97,7 +99,7 @@ test('Check_product_page', async ({ page }) => {
     // Loop through each photo
     for (let i = 0; i < totalPhotos; i++) {
 
-        console.log(`🖼 Checking photo ${i + 1} / ${totalPhotos}`);
+        allure.attachment('Console Log', `🖼 Checking photo ${i + 1} / ${totalPhotos}`, 'text/plain');
 
         // Check the big photo
         await Photo_product(page);

@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { allure } from "allure-playwright";
 import {
   clickElementByText,
   search_nl,
@@ -25,9 +26,9 @@ test('Nl_Stripe', async ({ page }) => {
     await ClickRandomProduct(page);
 
     // 5️⃣ Wait for product page to load
-    console.log('⏳ Waiting for product page to load...');
+    allure.attachment('Console Log', '⏳ Waiting for product page to load...', 'text/plain');
     await page.waitForLoadState('networkidle', { timeout: 60000 });
-    console.log('✅ Product page loaded.');
+    allure.attachment('Console Log', '✅ Product page loaded.', 'text/plain');
 
     // 6️⃣ Click "In Winkelwagen"
     await clickElementByText(page, 'In Winkelwagen');
@@ -38,7 +39,7 @@ test('Nl_Stripe', async ({ page }) => {
     // 8️⃣ Navigate to checkout using robust helper
     await clickAndWaitForCheckout_NL(page, "Bevestig mijn winkelwagen");
 
-    console.log('✅ Navigation to checkout complete. Waiting for OneStepCheckout...');
+    allure.attachment('Console Log', '✅ Navigation to checkout complete. Waiting for OneStepCheckout...', 'text/plain');
 
     let checkoutPage = page;
 
@@ -47,12 +48,12 @@ test('Nl_Stripe', async ({ page }) => {
       await waitForCheckoutReady(page);
     } catch (err) {
       if (String(err).includes('Target page') || String(err).includes('closed')) {
-        console.warn('⚠️ Detected checkout reload or new tab — recovering...');
+        allure.attachment('Console Warn', '⚠️ Detected checkout reload or new tab — recovering...', 'text/plain');
         const allPages = page.context().pages();
         for (const p of allPages) {
           if (/onestepcheckout/i.test(p.url())) {
             checkoutPage = p;
-            console.log(`🔄 Switched to new checkout page: ${checkoutPage.url()}`);
+            allure.attachment('Console Log', `🔄 Switched to new checkout page: ${checkoutPage.url()}`, 'text/plain');
             break;
           }
         }
@@ -76,19 +77,19 @@ test('Nl_Stripe', async ({ page }) => {
     };
 
     await performCheckout(checkoutPage, checkoutData);
-    console.log('✅ Checkout performed successfully.');
+    allure.attachment('Console Log', '✅ Checkout performed successfully.', 'text/plain');
 
     // 1️⃣1️⃣ Confirm navigation to payment method page
-    console.log('⏳ Verifying navigation to Stripe...');
+    allure.attachment('Console Log', '⏳ Verifying navigation to Stripe...', 'text/plain');
     try {
       await expect(checkoutPage).toHaveURL(/stripe\.com/, { timeout: 60000 });
-      console.log('✅ Successfully navigated to Stripe.');
+      allure.attachment('Console Log', '✅ Successfully navigated to Stripe.', 'text/plain');
     } catch (e) {
-      console.log(`❌ Failed to navigate to Stripe. Current URL: ${checkoutPage.url()}`);
+      allure.attachment('Console Error', `❌ Failed to navigate to Stripe. Current URL: ${checkoutPage.url()}`, 'text/plain');
       throw e;
     }
   } catch (error) {
-    console.error('❌ Test failed with error:', error);
+    allure.attachment('Console Error', `❌ Test failed with error: ${error}`, 'text/plain');
     throw error;
   }
 });

@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { allure } from "allure-playwright";
 import {
     clickElementByText,
     search,
@@ -22,9 +23,9 @@ test('Es_SeQura', async ({ page }) => {
     await ClickRandomProduct(page);
 
     // 5️⃣ Wait for product page to load
-    console.log('⏳ Waiting for product page to load...');
+    allure.attachment('Console Log', '⏳ Waiting for product page to load...', 'text/plain');
     await page.waitForLoadState('networkidle', { timeout: 60000 });
-    console.log('✅ Product page loaded.');
+    allure.attachment('Console Log', '✅ Product page loaded.', 'text/plain');
 
     // 6️⃣ Click "Añadir al carrito"
     await clickElementByText(page, 'Añadir al carrito');
@@ -39,18 +40,18 @@ test('Es_SeQura', async ({ page }) => {
             clickElementByText(page, 'Validar', 5000, { debug: true }),
         ]);
     } catch (e) {
-        console.log("⚠️ 'Validar' click failed or timed out.");
+        allure.attachment('Console Warn', "⚠️ 'Validar' click failed or timed out.", 'text/plain');
     }
 
     // Fallback: if not on checkout, try "Zur Kasse" (standard button)
     if (!page.url().includes('onestepcheckout')) {
-        console.log("ℹ️ Not on checkout page yet. Trying 'Comprar'...");
+        allure.attachment('Console Log', "ℹ️ Not on checkout page yet. Trying 'Comprar'...", 'text/plain');
         await Promise.all([
             page.waitForNavigation({ waitUntil: 'networkidle', timeout: 30000 }).catch(() => { }),
-            clickElementByText(page, 'Comprar', 10000).catch(() => console.log("⚠️ 'Comprar' also failed.")),
+            clickElementByText(page, 'Comprar', 10000).catch(() => allure.attachment('Console Warn', "⚠️ 'Comprar' also failed.", 'text/plain')),
         ]);
     }
-    console.log('✅ Navigation to checkout complete. Waiting for OneStepCheckout...');
+    allure.attachment('Console Log', '✅ Navigation to checkout complete. Waiting for OneStepCheckout...', 'text/plain');
 
     let checkoutPage = page;
 
@@ -59,12 +60,12 @@ test('Es_SeQura', async ({ page }) => {
         await waitForCheckoutReady(page);
     } catch (err) {
         if (String(err).includes('Target page') || String(err).includes('closed')) {
-            console.warn('⚠️ Detected checkout reload or new tab — recovering...');
+            allure.attachment('Console Warn', '⚠️ Detected checkout reload or new tab — recovering...', 'text/plain');
             const allPages = page.context().pages();
             for (const p of allPages) {
                 if (/onestepcheckout/i.test(p.url())) {
                     checkoutPage = p;
-                    console.log(`🔄 Switched to new checkout page: ${checkoutPage.url()}`);
+                    allure.attachment('Console Log', `🔄 Switched to new checkout page: ${checkoutPage.url()}`, 'text/plain');
                     break;
                 }
             }
@@ -88,20 +89,20 @@ test('Es_SeQura', async ({ page }) => {
     };
 
     await performCheckout(checkoutPage, checkoutData);
-    console.log('✅ Checkout performed successfully.');
+    allure.attachment('Console Log', '✅ Checkout performed successfully.', 'text/plain');
 
     // 9️⃣ Confirm navigation to payment method page
     // Refine the locator for the payment method page title
-    console.log('⏳ Verifying navigation to payment method page...');
+    allure.attachment('Console Log', '⏳ Verifying navigation to payment method page...', 'text/plain');
     await checkoutPage.waitForSelector('h1.page-title', { state: 'visible', timeout: 60000 });
     const pageTitle = await checkoutPage.locator('h1.page-title').innerText();
     expect(pageTitle).toMatch(/Finalizar el pedido/i);
-    console.log('✅ Successfully navigated to payment method page.');
+    allure.attachment('Console Log', '✅ Successfully navigated to payment method page.', 'text/plain');
 
     // Wait for SeQura payment page to load
-    console.log('⏳ Wait for SeQura Widget to load...');
+    allure.attachment('Console Log', '⏳ Wait for SeQura Widget to load...', 'text/plain');
 
     // Wait for any navigation or page changes after clicking pay
     await checkoutPage.waitForLoadState('networkidle', { timeout: 60000 });
-    console.log('✅ Page loaded after payment selection.');
+    allure.attachment('Console Log', '✅ Page loaded after payment selection.', 'text/plain');
 })

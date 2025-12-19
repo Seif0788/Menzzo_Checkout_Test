@@ -1,4 +1,5 @@
 import { Page, expect } from '@playwright/test';
+import { allure } from "allure-playwright";
 
 export async function Check_logo(page: Page) {
     // Wait for the logo to be visible
@@ -77,3 +78,26 @@ export async function Check_Account(page: Page) {
     const accountURL = await accountlink.getAttribute('href');
     return accountURL;
 }
+
+export async function Check_Account_Icon(page: Page) {
+    const account_Icon = page.locator('li.header-account-login a.account-label span.text').first();
+
+    await expect(account_Icon).toBeVisible();
+
+    const account_Icon_text = await account_Icon.textContent();
+    return account_Icon_text?.trim() ?? '';
+}
+
+export async function Check_mini_cart(page: Page) {
+    const miniCartLink = page.locator('a.action.showcart').first();
+    await miniCartLink.waitFor({ state: 'visible' });
+    const miniCartLinkHref = await miniCartLink.getAttribute('href');
+
+    const miniCartLinkText = await miniCartLink.locator('span.text').first().textContent();
+
+    allure.attachment('Console Log', `Mini Cart Link Text: ${miniCartLinkText}`, 'text/plain');
+    allure.attachment('Console Log', `Mini Cart Link Href: ${miniCartLinkHref}`, 'text/plain');
+
+    return miniCartLinkText?.trim() ?? '';
+    return miniCartLinkHref;
+}   
