@@ -1,4 +1,4 @@
-name: Playwright Tests & Email Notification V1
+name: Playwright Cron – Global_Checkoutsuite
 
 on:
   schedule:
@@ -7,13 +7,16 @@ on:
 
 jobs:
   test:
-    name: Run Playwright Tests
+    name: Run Playwright Tests (Global_Checkoutsuite)
     runs-on: ubuntu-latest
     permissions:
       contents: write
 
     steps:
-      - name: Checkout Repository
+      # -----------------------------
+      # Checkout & Setup
+      # -----------------------------
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Setup Node.js
@@ -21,101 +24,100 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: npm ci
 
-      - name: Install Playwright Browsers
+      - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
-      - name: Install Allure
+      - name: Install Allure reporter
         run: npm install --save-dev allure-playwright
 
-      - name: Prepare result directories
+      # -----------------------------
+      # Clean previous Allure data
+      # -----------------------------
+      - name: Clean previous Allure data
         run: |
-          mkdir -p test-results
-          mkdir -p playwright-report
-          mkdir -p allure-report
+          rm -rf allure-results allure-report test-results
 
-      - name: Run Playwright Tests
+      # -----------------------------
+      # Run Playwright tests
+      # -----------------------------
+      - name: Run Playwright tests (Global_Checkoutsuite)
         id: playwright
-        run: |
-
-          mkdir -p test-results
-
-          npx playwright test \
-          --project=Global_Checkoutsuite || true
         continue-on-error: true
+        run: |
+          npx playwright test --project=Global_Checkoutsuite
 
-
-      - name: "Debug: show test-results contents"
+      # -----------------------------
+      # Debug Allure raw results
+      # -----------------------------
+      - name: Debug allure-results
         if: always()
         run: |
-          echo "Workspace: $GITHUB_WORKSPACE"
-          echo "Listing test-results directory:"
-          ls -la test-results || true
-          if [ -f "$GITHUB_WORKSPACE/test-results/results.json" ]; then
-            echo "results.json content (first 2000 chars):"
-            head -c 2000 "$GITHUB_WORKSPACE/test-results/results.json" || true
-            echo
-            echo "Full JSON validated by jq (if installed):"
-            jq . "$GITHUB_WORKSPACE/test-results/results.json" || echo "jq failed or not installed"
-          else
-            echo "No test-results/results.json found"
-          fi
+          echo "Listing allure-results:"
+          ls -la allure-results || echo "❌ allure-results not found"
 
-      - name: Generate Allure Report
+      # -----------------------------
+      # Generate Allure report
+      # -----------------------------
+      - name: Generate Allure report
         if: always()
         run: npm run allure:generate
 
-      - name: Upload Allure Report
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: allure-report
-          path: allure-report
-          retention-days: 7
-
+      # -----------------------------
+      # Remove heavy attachments (GitHub Pages limit)
+      # -----------------------------
       - name: Remove large Allure attachments
         if: always()
         run: |
-          echo "Cleaning large Allure attachments..."
-          rm -rf allure-report/data/attachments || true
+          echo "Removing large Allure attachments..."
+          rm -rf allure-report/data/attachments
 
-      - name: Debug Allure Results
+      # -----------------------------
+      # Upload Allure as artifact (optional but useful)
+      # -----------------------------
+      - name: Upload Allure report artifact
         if: always()
-        run: |
-          echo "Checking allure-results directory:"
-          ls -la allure-results || echo "❌ No allure-results directory"
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report-Global_Checkout
+          path: allure-report
+          retention-days: 7
 
-
-      - name: Deploy to GitHub Pages
+      # -----------------------------
+      # Deploy to GitHub Pages
+      # -----------------------------
+      - name: Deploy Allure to GitHub Pages
+        if: always()
         uses: peaceiris/actions-gh-pages@v3
-        if: always()
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./allure-report
           publish_branch: gh-pages
 
-      - name: Install jq (needed to parse JSON robustly)
+      # -----------------------------
+      # Install jq (for JSON parsing)
+      # -----------------------------
+      - name: Install jq
         if: always()
         run: |
           sudo apt-get update
           sudo apt-get install -y jq
 
-      - name: Extract Test Results
-        id: extract
+      # -----------------------------
+      # Extract test statistics
+      # -----------------------------
+      - name: Extract test results
         if: always()
         run: |
-          # Use absolute path to avoid surprises
           RESULT_FILE="$GITHUB_WORKSPACE/test-results/results.json"
 
           if [ -f "$RESULT_FILE" ] && [ -s "$RESULT_FILE" ]; then
-            # Count statuses anywhere in the JSON so parsing is resilient to different shapes
-            PASSED=$(jq '[.. | objects | select(.status=="passed")] | length' "$RESULT_FILE" 2>/dev/null || echo 0)
-            FAILED=$(jq '[.. | objects | select(.status=="failed")] | length' "$RESULT_FILE" 2>/dev/null || echo 0)
-            TOTAL=$(jq '[.. | objects | .status? // empty] | length' "$RESULT_FILE" 2>/dev/null || echo 0)
+            PASSED=$(jq '[.. | objects | select(.status=="passed")] | length' "$RESULT_FILE" || echo 0)
+            FAILED=$(jq '[.. | objects | select(.status=="failed")] | length' "$RESULT_FILE" || echo 0)
+            TOTAL=$(jq '[.. | objects | .status? // empty] | length' "$RESULT_FILE" || echo 0)
           else
-            echo "RESULT_FILE missing or empty: $RESULT_FILE"
             PASSED=0
             FAILED=0
             TOTAL=0
@@ -137,29 +139,31 @@ jobs:
           OWNER=${GITHUB_REPOSITORY%/*}
           echo "PAGES_URL=https://$OWNER.github.io/$REPO_NAME" >> $GITHUB_ENV
 
-          # Expose the path so we can attach the file in the email step
           echo "RESULT_FILE_PATH=$RESULT_FILE" >> $GITHUB_ENV
 
-      - name: Send Email Notification
-        uses: dawidd6/action-send-mail@v4
+      # -----------------------------
+      # Email notification
+      # -----------------------------
+      - name: Send email notification (Global_Checkoutsuite)
         if: always()
+        uses: dawidd6/action-send-mail@v4
         with:
           server_address: smtp.gmail.com
           server_port: 465
           secure: true
-          # Use repository secrets for credentials instead of plain text:
           username: seif.t.axelites@gmail.com
           password: cjrgskmlwmsdhuhn
 
           to: seifeddine.t.axelites@gmail.com
           from: '"GitHub Actions" <seif.t.axelites@gmail.com>'
-          subject: "${{ env.STATUS_EMOJI }}: Playwright Scheduled Run Finished-test"
+          subject: "${{ env.STATUS_EMOJI }} Playwright Cron – Global_Checkoutsuite"
           body: |
-            Playwright Scheduled Run Finished
+            Playwright cron run finished for Global_Checkoutsuite
+
             Status: ${{ env.STATUS_EMOJI }}
 
-            Test Statistics:
-            - Total: ${{ env.TOTAL }}
+            Results:
+            - Total:  ${{ env.TOTAL }}
             - Passed: ${{ env.PASSED }}
             - Failed: ${{ env.FAILED }}
 
@@ -168,8 +172,3 @@ jobs:
 
             Artifacts:
             ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}#artifacts
-
-            Test Notes:
-            - If Total = 0, review the Playwright run output (possible project name mismatch or tests not discovered).
-          attachments: ${{ env.RESULT_FILE_PATH }}
-          
