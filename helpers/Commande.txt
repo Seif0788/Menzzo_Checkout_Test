@@ -1,0 +1,2 @@
+Hard resade of allure report :
+Remove-Item -Recurse -Force allure-results, allure-report

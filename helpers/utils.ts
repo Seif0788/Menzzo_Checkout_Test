@@ -1,4 +1,5 @@
 import { Page, expect, Locator, Frame, BrowserContext } from '@playwright/test';
+import { allure } from 'allure-playwright';
 
 // Navigate to URL and verify title
 export async function gotopageAndVerifyTitle(page: Page, url: string, titleText: string, timeout: number = 20000) {
@@ -165,7 +166,7 @@ export async function clickElementByText(
   // 1) Try in main page
   const mainResult = await tryStrategiesOn(page);
   if (mainResult) {
-    if (debug) console.log('✅ clickElementByText: clicked in main page context:', text);
+    if (debug) allure.attachment('Console Log', `✅ clickElementByText: clicked in main page context: ${text}`, 'text/plain');
     return mainResult;
   }
 
@@ -176,7 +177,7 @@ export async function clickElementByText(
     try {
       const res = await tryStrategiesOn(frame);
       if (res) {
-        if (debug) console.log('clickElementByText: clicked in frame:', frame.url(), text);
+        if (debug) allure.attachment('Console Log', `clickElementByText: clicked in frame: ${frame.url()} ${text}`, 'text/plain');
         return res;
       }
     } catch { }
@@ -201,9 +202,9 @@ export async function clickElementByText(
           }
         } catch { }
       }
-      console.log('clickElementByText debug samples:', samples);
+      allure.attachment('Console Log', `clickElementByText debug samples: ${JSON.stringify(samples)}`, 'text/plain');
     } catch (e) {
-      console.warn('clickElementByText debug failed:', e);
+      allure.attachment('Console Warn', `clickElementByText debug failed: ${e}`, 'text/plain');
     }
   }
 
@@ -288,7 +289,7 @@ export async function ClickRandomProduct(page: Page, timeout: number = 30000) {
 
   await product.click({ timeout });
 
-  console.log(`Clicked on random product [${randomIndex}]/${count}`);
+  allure.attachment('Console Log', `Clicked on random product [${randomIndex}]/${count}`, 'text/plain');
 
   return product;
 }
@@ -319,7 +320,7 @@ export async function waitForPageLoad(page: Page, timeout: number = 30000) {
       await page.waitForLoadState(state, { timeout });
     } catch (e: any) {
       if (e.message.includes('Target page, context or browser has been closed')) {
-        console.warn(`[waitForPageLoad] Page closed before ${state} state`);
+        allure.attachment('Console Warn', `[waitForPageLoad] Page closed before ${state} state`, 'text/plain');
         return; // exit gracefully
       }
       throw e;
@@ -331,7 +332,7 @@ export async function waitForPageLoad(page: Page, timeout: number = 30000) {
     try {
       await page.waitForLoadState('networkidle', { timeout });
     } catch {
-      console.warn(`[waitForPageLoad] Skipped networkidle on ${page.url()}`);
+      allure.attachment('Console Warn', `[waitForPageLoad] Skipped networkidle on ${page.url()}`, 'text/plain');
     }
   }
 }
@@ -341,7 +342,7 @@ export async function waitForPageLoad(page: Page, timeout: number = 30000) {
  * Handles AJAX delays, slow rendering, and optional iframes.
  */
 export async function waitForCheckoutReady(page: Page, timeout = 180000) {
-  console.log('⏳ Waiting for OneStepCheckout to initialize...');
+  allure.attachment('Console Log', '⏳ Waiting for OneStepCheckout to initialize...', 'text/plain');
   const start = Date.now();
   let retries = 0;
 
@@ -349,11 +350,11 @@ export async function waitForCheckoutReady(page: Page, timeout = 180000) {
     try {
       // Ensure the page context is valid
       if (page.isClosed()) {
-        console.error('❌ Page context is closed. Attempting recovery...');
+        allure.attachment('Console Error', '❌ Page context is closed. Attempting recovery...', 'text/plain');
         const allPages = page.context().pages();
         for (const p of allPages) {
           if (/onestepcheckout/i.test(p.url())) {
-            console.log(`🔄 Switched to new checkout page: ${p.url()}`);
+            allure.attachment('Console Log', `🔄 Switched to new checkout page: ${p.url()}`, 'text/plain');
             page = p;
             break;
           }
@@ -365,12 +366,12 @@ export async function waitForCheckoutReady(page: Page, timeout = 180000) {
 
       // Ensure we're on the checkout page
       if (!page.url().includes('onestepcheckout')) {
-        console.log('❌ Not on the checkout page. Current URL:', page.url());
+        allure.attachment('Console Log', `❌ Not on the checkout page. Current URL: ${page.url()}`, 'text/plain');
         throw new Error('❌ Not on the checkout page.');
       }
 
-      console.log(`🔄 Current URL: ${page.url()}`);
-      console.log(`🔄 Retry ${retries}: Checking for #checkout container visibility...`);
+      allure.attachment('Console Log', `🔄 Current URL: ${page.url()}`, 'text/plain');
+      allure.attachment('Console Log', `🔄 Retry ${retries}: Checking for #checkout container visibility...`, 'text/plain');
 
       // Debugging: Log the state of the #checkout container
       const checkoutExists = await page.locator('#checkout').count();
@@ -389,16 +390,16 @@ export async function waitForCheckoutReady(page: Page, timeout = 180000) {
       // Check for the presence of the checkout container
       const checkoutContainer = page.locator('#checkout');
       if (await checkoutContainer.isVisible({ timeout: 5000 })) {
-        console.log('✅ Checkout container is visible.');
+        allure.attachment('Console Log', '✅ Checkout container is visible.', 'text/plain');
         return;
       }
 
       // Retry logic
       retries++;
-      console.warn(`⚠️ Retry ${retries}: Checkout not ready yet. Retrying...`);
+      allure.attachment('Console Warn', `⚠️ Retry ${retries}: Checkout not ready yet. Retrying...`, 'text/plain');
       await page.waitForTimeout(3000);
     } catch (error: any) {
-      console.error(`⚠️ Error during checkout readiness check: ${error.message}`);
+      allure.attachment('Console Error', `⚠️ Error during checkout readiness check: ${error.message}`, 'text/plain');
       if (page.isClosed()) {
         throw error;
       }
@@ -427,11 +428,11 @@ export async function clickAddToCart(page: Page) {
       const btn = addToCartBtn.first();
       if (await btn.isVisible()) {
         await btn.click({ force: true });
-        console.log('🧺 Product added to cart.');
+        allure.attachment('Console Log', '🧺 Product added to cart.', 'text/plain');
         return;
       }
     } catch (e) {
-      console.warn(`⚠️ Retry ${i + 1}/${maxRetries} failed:`, e);
+      allure.attachment('Console Warn', `⚠️ Retry ${i + 1}/${maxRetries} failed: ${e}`, 'text/plain');
     }
     await page.waitForTimeout(interval);
   }
@@ -458,7 +459,7 @@ export async function dismissOverlays(page: Page) {
   for (const selector of overlaySelectors) {
     const overlay = page.locator(selector);
     if (await overlay.isVisible()) {
-      console.log(`Dismissing overlay: ${selector}`);
+      allure.attachment('Console Log', `Dismissing overlay: ${selector}`, 'text/plain');
       await overlay.click({ force: true });
     }
   }
@@ -477,7 +478,7 @@ export async function CheckTimeBox(page: Page) {
   const timerExists = await timer.count() > 0;
 
   if (!prefixExists || !timerExists) {
-    console.log("⏱️ No timerbox found on this page — skipping CheckTimeBox()");
+    allure.attachment('Console Log', '⏱️ No timerbox found on this page — skipping CheckTimeBox()', 'text/plain');
     return; // <-- Stop execution here
   }
 
@@ -493,18 +494,18 @@ export async function CheckTimeBox(page: Page) {
   expect.soft(timerText.length, 'Timer value should not be empty').toBeGreaterThan(0);
 
   // Logging
-  console.log(`⏱️ Time Box Check`);
-  console.log(`   Prefix text: "${prefixText}"`);
-  console.log(`   Timer value: "${timerText}"`);
+  allure.attachment('Console Log', '⏱️ Time Box Check', 'text/plain');
+  allure.attachment('Console Log', `   Prefix text: "${prefixText}"`, 'text/plain');
+  allure.attachment('Console Log', `   Timer value: "${timerText}"`, 'text/plain');
 
   // Format check
   const timePattern = /^\d{1,2}j\s\d{1,2}h\s\d{1,2}min\s\d{1,2}s$/;
   const isValid = timePattern.test(timerText);
 
   if (isValid) {
-    console.log(`✅ Timer format is valid`);
+    allure.attachment('Console Log', '✅ Timer format is valid', 'text/plain');
   } else {
-    console.log(`❌ Timer format is invalid`);
+    allure.attachment('Console Log', '❌ Timer format is invalid', 'text/plain');
   }
 
   expect.soft(isValid, 'Timer format should be valid').toBeTruthy();
@@ -531,13 +532,13 @@ export async function Button_Previous(page: Page) {
   const isDisabled = await previousButton.evaluate((btn: HTMLButtonElement) => btn.disabled);
 
   if (isDisabled) {
-    console.log("⚠️ Previous button is disabled (first slide). Cannot click.");
+    allure.attachment('Console Log', '⚠️ Previous button is disabled (first slide). Cannot click.', 'text/plain');
     return;
   }
 
   // Scroll into view and click
   await previousButton.scrollIntoViewIfNeeded();
-  console.log("✅ Clicking the Previous button...");
+  allure.attachment('Console Log', '✅ Clicking the Previous button...', 'text/plain');
   await previousButton.click();
 }
 
@@ -561,13 +562,13 @@ export async function Button_Next(page: Page) {
   const isDisabled = await nextButton.evaluate((btn: HTMLButtonElement) => btn.disabled);
 
   if (isDisabled) {
-    console.log("⚠️ Next button is disabled (last slide). Cannot click.");
+    allure.attachment('Console Log', '⚠️ Next button is disabled (last slide). Cannot click.', 'text/plain');
     return;
   }
 
   // Scroll into view and click
   await nextButton.scrollIntoViewIfNeeded();
-  console.log("✅ Clicking the Next button...");
+  allure.attachment('Console Log', '✅ Clicking the Next button...', 'text/plain');
   await nextButton.click();
 }
 
@@ -577,7 +578,7 @@ export async function clickAndWaitForNavigation(
   urlPattern: RegExp | string = /onestepcheckout/,
   timeout: number = 10000
 ) {
-  console.log(`⏳ Clicking "${buttonText}" and waiting for URL or checkout form…`);
+  allure.attachment('Console Log', `⏳ Clicking "${buttonText}" and waiting for URL or checkout form…`, 'text/plain');
 
   const startTime = Date.now();
   let navigationTriggered = false;
@@ -591,14 +592,14 @@ export async function clickAndWaitForNavigation(
 
     // 1️⃣ URL NAVIGATION SUCCESS
     if (urlMatched) {
-      console.log(`✅ Navigation detected → ${currentUrl}`);
+      allure.attachment('Console Log', `✅ Navigation detected → ${currentUrl}`, 'text/plain');
       return;
     }
 
     // 2️⃣ CHECK META TAG AS SIGNAL FOR AJAX LOADED CHECKOUT
     const metaTitle = await page.locator('meta[name="title"]').getAttribute('content');
     if (metaTitle?.includes("Finaliser la commande")) {
-      console.log("🟢 Checkout meta detected → Treating as successful navigation.");
+      allure.attachment('Console Log', '🟢 Checkout meta detected → Treating as successful navigation.', 'text/plain');
       return;
     }
 
@@ -625,7 +626,7 @@ export async function clickAndWaitForNavigation(
 
 
 export async function goToCheckout(page: Page) {
-  console.log("⏳ Going to checkout…");
+  allure.attachment('Console Log', '⏳ Going to checkout…', 'text/plain');
 
   // 1. Ensure the button is visible
   const button = page.locator('text="Valider mon panier"');
@@ -643,7 +644,7 @@ export async function goToCheckout(page: Page) {
     page.waitForSelector("#one-step-checkout-form", { timeout: 20000 })
   ]);
 
-  console.log("✅ OneStepCheckout detected!");
+  allure.attachment('Console Log', '✅ OneStepCheckout detected!', 'text/plain');
 }
 
 export async function search_nl(page: Page, productName: string) {
@@ -674,7 +675,7 @@ export async function clickAndWaitForCheckout_NL(
   timeout: number = 15000,
   retryInterval: number = 2000
 ) {
-  console.log(`⏳ Clicking "${buttonText}" and waiting for checkout…`);
+  allure.attachment('Console Log', `⏳ Clicking "${buttonText}" and waiting for checkout…`, 'text/plain');
 
   const startTime = Date.now();
   let checkoutLoaded = false;
@@ -690,7 +691,7 @@ export async function clickAndWaitForCheckout_NL(
     const metaMatched = metaTitle?.includes("Rond de bestelling af") || false;
 
     if (urlMatched || metaMatched) {
-      console.log(`✅ Checkout detected → ${currentUrl}`);
+      allure.attachment('Console Log', `✅ Checkout detected → ${currentUrl}`, 'text/plain');
       checkoutLoaded = true;
       break;
     }
@@ -699,7 +700,7 @@ export async function clickAndWaitForCheckout_NL(
     try {
       await clickElementByText(page, buttonText, 3000);
     } catch {
-      console.warn("⚠️ Click attempt failed, retrying...");
+      allure.attachment('Console Warn', '⚠️ Click attempt failed, retrying...', 'text/plain');
     }
 
     // Wait a bit before next retry
@@ -759,13 +760,13 @@ export async function clickAndReturnProduct(
 
 export async function selectCategory(page: Page, categoryName: string) {
   await clickElementByText(page, categoryName);
-  console.log(`✅ Selected category: ${categoryName}`);
+  allure.attachment('Console Log', `✅ Selected category: ${categoryName}`, 'text/plain');
 }
 
 
 export async function ensurePageIsOpen(page: Page, context: BrowserContext) {
   if (page.isClosed()) {
-    console.log("🔄 Reopening new page because previous one was closed...");
+    allure.attachment('Console Log', '🔄 Reopening new page because previous one was closed...', 'text/plain');
     page = await context.newPage();
     await page.goto("https://www.menzzo.fr");
   }

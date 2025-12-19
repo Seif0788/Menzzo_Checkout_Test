@@ -28,13 +28,13 @@ export async function verifyH1MatchesTitle(page: Page) {
   const match = h1Text.toLowerCase() === pageTitle.toLowerCase();
 
   if (match) {
-    console.log(`✅ SUCCESS: Page title matches H1 text`);
-    console.log(`   H1: "${h1Text}"`);
-    console.log(`   pageTitle: "${pageTitle}"`);
+    allure.attachment('Console Log', `✅ SUCCESS: Page title matches H1 text`, 'text/plain');
+    allure.attachment('Console Log', `   H1: "${h1Text}"`, 'text/plain');
+    allure.attachment('Console Log', `   pageTitle: "${pageTitle}"`, 'text/plain');
   } else {
-    console.log(`❌ FAILED: Page title does not match H1 text`);
-    console.log(`   H1: "${h1Text}"`);
-    console.log(`   pageTitle: "${pageTitle}"`);
+    allure.attachment('Console Log', `❌ FAILED: Page title does not match H1 text`, 'text/plain');
+    allure.attachment('Console Log', `   H1: "${h1Text}"`, 'text/plain');
+    allure.attachment('Console Log', `   pageTitle: "${pageTitle}"`, 'text/plain');
   }
 }
 
@@ -67,13 +67,13 @@ export async function breadcrumb(page: Page) {
   const match2 = breadcrumbText.toLowerCase() === h1Text.toLowerCase();
 
   if (match2) {
-    console.log(`✅ SUCCESS: Breadcrumb matches H1 text`);
-    console.log(`   H1: "${h1Text}"`);
-    console.log(`   Breadcrumb: "${breadcrumbText}"`);
+    allure.attachment('Console Log', `✅ SUCCESS: Breadcrumb matches H1 text`, 'text/plain');
+    allure.attachment('Console Log', `   H1: "${h1Text}"`, 'text/plain');
+    allure.attachment('Console Log', `   Breadcrumb: "${breadcrumbText}"`, 'text/plain');
   } else {
-    console.log(`❌ FAILED: Breadcrumb does not match H1 text`);
-    console.log(`   H1: "${h1Text}"`);
-    console.log(`   pageTitle: "${breadcrumbText}"`);
+    allure.attachment('Console Log', `❌ FAILED: Breadcrumb does not match H1 text`, 'text/plain');
+    allure.attachment('Console Log', `   H1: "${h1Text}"`, 'text/plain');
+    allure.attachment('Console Log', `   pageTitle: "${breadcrumbText}"`, 'text/plain');
   }
 }
 
@@ -88,7 +88,7 @@ export async function CheckProductAvailability(page: Page) {
     const availabilityText = (await availability.textContent())?.trim() || '';
 
     // Log it
-    console.log(`📦 Product availability text: "${availabilityText}"`);
+    allure.attachment('Console Log', `📦 Product availability text: "${availabilityText}"`, 'text/plain');
 
     // Ensure text is not empty
     expect.soft(availabilityText.length, 'Availability text should not be empty').toBeGreaterThan(0);
@@ -109,7 +109,7 @@ export async function CheckProductAvailability(page: Page) {
       language = 'nl';
     }
 
-    console.log(`🌍 Detected language: ${language.toUpperCase()}`);
+    allure.attachment('Console Log', `🌍 Detected language: ${language.toUpperCase()}`, 'text/plain');
 
     // Define acceptable stock statuses per language
     const validStatusesByLanguage: Record<string, string[]> = {
@@ -129,23 +129,23 @@ export async function CheckProductAvailability(page: Page) {
     );
 
     if (isValid) {
-      console.log(`✅ Product availability status is valid (${availabilityText})`);
+      allure.attachment('Console Log', `✅ Product availability status is valid (${availabilityText})`, 'text/plain');
     } else {
-      console.log(`❌ Invalid availability status detected: "${availabilityText}"`);
-      console.log(`   Expected one of: ${validStatuses.join(', ')}`);
+      allure.attachment('Console Log', `❌ Invalid availability status detected: "${availabilityText}"`, 'text/plain');
+      allure.attachment('Console Log', `   Expected one of: ${validStatuses.join(', ')}`, 'text/plain');
     }
 
     // Assert it is valid for the report
     expect.soft(isValid, 'Availability status should be a valid known label').toBeTruthy();
   } catch (error) {
-    console.error('❌ Error in CheckProductAvailability:', error)
+    allure.attachment('Console Error', `❌ Error in CheckProductAvailability: ${error}`, 'text/plain');
   }
 }
 
 // Check text in popup
 export async function CheckTextPopup(page: Page) {
 
-  console.log('🟡 Checking popup text Stock statut');
+  allure.attachment('Console Log', '🟡 Checking popup text Stock statut', 'text/plain');
 
   const availability = page.locator('//div[contains(@class, "product-availability")]/strong[normalize-space()]');
   await expect.soft(availability, 'Availability label should be visible').toBeVisible();
@@ -159,7 +159,7 @@ export async function CheckTextPopup(page: Page) {
 
   // Check in it
   await StockButton.click();
-  console.log('✅ Clicked on stock info button.');
+  allure.attachment('Console Log', '✅ Clicked on stock info button.', 'text/plain');
 
   //Wait for the popuo/modal to appear
   const popup = page.locator('//div[@class = "dispo-infos show"]');
@@ -167,7 +167,7 @@ export async function CheckTextPopup(page: Page) {
 
   //Locate poppup text
   const popupText = ((await popup.textContent())?.trim() || '').trim().replace(/\s+/g, ' ');
-  console.log(`📄 Popup text content: "${popupText}"`);
+  allure.attachment('Console Log', `📄 Popup text content: "${popupText}"`, 'text/plain');
 
   //Define expected text based on stock status
   const expectedTexts: Record<string, string> = {
@@ -186,16 +186,16 @@ export async function CheckTextPopup(page: Page) {
     const matches = normalize(popupText).includes(normalize(expectedText));
 
     if (matches) {
-      console.log(`✅ Popup text matches expected message for status "${availabilityText}".`);
+      allure.attachment('Console Log', `✅ Popup text matches expected message for status "${availabilityText}".`, 'text/plain');
     } else {
-      console.log(`❌ Popup text does NOT match expected message for status "${availabilityText}".`);
-      console.log(`   Expected: "${expectedText}"`);
-      console.log(`   Found: "${popupText}"`);
+      allure.attachment('Console Log', `❌ Popup text does NOT match expected message for status "${availabilityText}".`, 'text/plain');
+      allure.attachment('Console Log', `   Expected: "${expectedText}"`, 'text/plain');
+      allure.attachment('Console Log', `   Found: "${popupText}"`, 'text/plain');
     }
 
     expect.soft(matches, `Popup text should match expected message for status "${availabilityText}"`).toBeTruthy();
   } else {
-    console.log(`⚠️ No expected text configured for status "${availabilityText}".`);
+    allure.attachment('Console Log', `⚠️ No expected text configured for status "${availabilityText}".`, 'text/plain');
   }
 
   // 5️⃣ Close the stock info popup by clicking inside it
@@ -206,7 +206,7 @@ export async function CheckTextPopup(page: Page) {
     const box = await Closepopup.boundingBox();
     if (box) {
       await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
-      console.log('✅ Popup closed by clicking inside it.');
+      allure.attachment('Console Log', '✅ Popup closed by clicking inside it.', 'text/plain');
     }
 
     // Optional: Wait for it to disappear
@@ -217,7 +217,7 @@ export async function CheckTextPopup(page: Page) {
 
 // Check product shipping amount
 export async function ShippingText(page: Page) {
-  console.log('🟡 Checking Shipping product text');
+  allure.attachment('Console Log', '🟡 Checking Shipping product text', 'text/plain');
 
   // Initialize return values
   let FromDay: string | undefined;
@@ -229,7 +229,7 @@ export async function ShippingText(page: Page) {
 
   // Get shipping amount text
   const TextDelivery = ((await DeliveryText.textContent())?.trim()) || '';
-  console.log(`📄 The delivery text is : "${TextDelivery}"`);
+  allure.attachment('Console Log', `📄 The delivery text is : "${TextDelivery}"`, 'text/plain');
 
   // Identifay the From and to shippmend
   const match = TextDelivery.match(/(\d{1,2})\s*et\s*(\d{1,2})/);
@@ -240,21 +240,21 @@ export async function ShippingText(page: Page) {
     FromDay = match[1];
     DayTo = match[2];
     ShippingPrice = priceMatch[1];
-    console.log(`FromDay: ${FromDay}, DayTo: ${DayTo}`);
-    console.log(`Delivery price: ${ShippingPrice}`);
+    allure.attachment('Console Log', `FromDay: ${FromDay}, DayTo: ${DayTo}`, 'text/plain');
+    allure.attachment('Console Log', `Delivery price: ${ShippingPrice}`, 'text/plain');
   }
   return { FromDay, DayTo, ShippingPrice };
 }
 
 export async function CheckStockAndShipping(page: Page) {
-  console.log('🟢 Starting combined check: Stock popup + Shipping text');
+  allure.attachment('Console Log', '🟢 Starting combined check: Stock popup + Shipping text', 'text/plain');
 
   // Step 1️⃣ — Run the popup check first (handles availability + logs everything)
   const stockStatus = await CheckTextPopup(page);
 
   // Step 2️⃣ — Continue only if stock is "En stock"
   if (stockStatus !== 'En stock') {
-    console.log(`⚠️ Product is not "En stock" (it's "${stockStatus}"). Skipping shipping check.`);
+    allure.attachment('Console Log', `⚠️ Product is not "En stock" (it's "${stockStatus}"). Skipping shipping check.`, 'text/plain');
     return;
   }
 
@@ -264,11 +264,11 @@ export async function CheckStockAndShipping(page: Page) {
   const shippingInfo = await ShippingText(page);
 
   if (!shippingInfo.FromDay || !shippingInfo.DayTo || !shippingInfo.ShippingPrice) {
-    console.warn('⚠️ Could not extract full shipping information.');
+    allure.attachment('Console Warn', '⚠️ Could not extract full shipping information.', 'text/plain');
     return;
   }
 
-  console.log(`✅ Shipping info extracted: FromDay: ${shippingInfo.FromDay}, DayTo: ${shippingInfo.DayTo}, Price: ${shippingInfo.ShippingPrice}`);
+  allure.attachment('Console Log', `✅ Shipping info extracted: FromDay: ${shippingInfo.FromDay}, DayTo: ${shippingInfo.DayTo}, Price: ${shippingInfo.ShippingPrice}`, 'text/plain');
 
   // Step 4️⃣ — Validate FromDay and DayTo for "En stock"
   const today = new Date();
@@ -279,16 +279,16 @@ export async function CheckStockAndShipping(page: Page) {
   const DayToActual = parseInt(shippingInfo.DayTo, 10);
 
   if (fromDayActual === fromDateExpected) {
-    console.log(`✅ FromDay is correct: ${fromDayActual} (expected: ${fromDateExpected})`);
+    allure.attachment('Console Log', `✅ FromDay is correct: ${fromDayActual} (expected: ${fromDateExpected})`, 'text/plain');
   } else {
-    console.warn(`❌ FromDay is incorrect: ${fromDayActual} (expected: ${fromDateExpected})`);
+    allure.attachment('Console Warn', `❌ FromDay is incorrect: ${fromDayActual} (expected: ${fromDateExpected})`, 'text/plain');
   }
 
 
   if (dayToExpected === DayToActual) {
-    console.log(`✅ FromDay is correct: ${dayToExpected} (expected: ${DayToActual})`);
+    allure.attachment('Console Log', `✅ FromDay is correct: ${dayToExpected} (expected: ${DayToActual})`, 'text/plain');
   } else {
-    console.warn(`❌ FromDay is incorrect: ${dayToExpected} (expected: ${DayToActual})`);
+    allure.attachment('Console Warn', `❌ FromDay is incorrect: ${dayToExpected} (expected: ${DayToActual})`, 'text/plain');
   }
 
   // Step 5️⃣ — Return structured info for further assertions
@@ -313,10 +313,10 @@ export async function DeliveryPricePopup(page: Page) {
 
     const screenshotBuffer = await page.screenshot();
     allure.attachment('Delivery popup screenshot', screenshotBuffer, 'image/png');
-    console.log('✅ The delivery popup was clicked');
+    allure.attachment('Console Log', '✅ The delivery popup was clicked', 'text/plain');
 
   } catch (e) {
-    console.log('⚠️ Delivery popup is not visible after waiting, could not click it');
+    allure.attachment('Console Log', '⚠️ Delivery popup is not visible after waiting, could not click it', 'text/plain');
     const screenshotBuffer = await page.screenshot();
     allure.attachment('Delivery popup screenshot', screenshotBuffer, 'image/png');
   }
@@ -330,9 +330,9 @@ export async function DeliveryPricePopup(page: Page) {
 
   expectedOptions.forEach(option => {
     if (PopupText.includes(option)) {
-      console.log(`✅ Option found: "${option}"`);
+      allure.attachment('Console Log', `✅ Option found: "${option}"`, 'text/plain');
     } else {
-      console.warn(`❌ Option NOT found: "${option}"`);
+      allure.attachment('Console Warn', `❌ Option NOT found: "${option}"`, 'text/plain');
     }
   });
 
@@ -341,14 +341,14 @@ export async function DeliveryPricePopup(page: Page) {
 
   if (await Exitpopup.isVisible()) {
     await Exitpopup.click();
-    console.log('✅ Popup closed');
+    allure.attachment('Console Log', '✅ Popup closed', 'text/plain');
   } else {
-    console.log('❌ Close popup faild');
+    allure.attachment('Console Log', '❌ Close popup faild', 'text/plain');
   }
 }
 
 export async function FreereturnPopUp(page: Page) {
-  console.log('🟢 Starting check the free return popup display');
+  allure.attachment('Console Log', '🟢 Starting check the free return popup display', 'text/plain');
 
   const FreeReturn_expected = "Retour gratuit  *";
 
@@ -356,7 +356,7 @@ export async function FreereturnPopUp(page: Page) {
   const ReturnDisplay = page.locator('//div[@class="d-flex mb-2 review-popup-free-return"]');
   const TextReturnDisplay = ((await ReturnDisplay.textContent()) || ' ').trim();
 
-  console.log(`📄 the return display is "${TextReturnDisplay}"`);
+  allure.attachment('Console Log', `📄 the return display is "${TextReturnDisplay}"`, 'text/plain');
   expect(TextReturnDisplay.toLowerCase()).toBe(FreeReturn_expected.toLowerCase());
 
   // Click to open the popup
@@ -378,9 +378,9 @@ export async function FreereturnPopUp(page: Page) {
   const normalizedExpected = EXPECTED_POPUP_TEXT.replace(/\s+/g, ' ').trim();
 
   if (actualText === normalizedExpected) {
-    console.log("✅ Free delivery popup text matches!");
+    allure.attachment('Console Log', "✅ Free delivery popup text matches!", 'text/plain');
   } else {
-    console.log("❌ Free delivery popup text does not match!");
+    allure.attachment('Console Log', "❌ Free delivery popup text does not match!", 'text/plain');
   }
 
   // Close the popup
@@ -391,9 +391,9 @@ export async function FreereturnPopUp(page: Page) {
   try {
     await CloseBtn.waitFor({ state: 'visible', timeout: 3000 });
     await CloseBtn.click();
-    console.log('✅ Popup closed');
+    allure.attachment('Console Log', '✅ Popup closed', 'text/plain');
   } catch {
-    console.log('❌ Close popup failed — button not found');
+    allure.attachment('Console Log', '❌ Close popup failed — button not found', 'text/plain');
   }
 }
 
@@ -405,23 +405,23 @@ export async function FreereturnDisplay(page: Page) {
   // --- 15 jours pour changer d’avis ---
   await expect(freeReturn_review).toBeVisible(); // ✔ This now works
   const changeAvisText = (await freeReturn_review.textContent() || '').trim();
-  console.log(`📄 Change Avis text: "${changeAvisText}"`);
+  allure.attachment('Console Log', `📄 Change Avis text: "${changeAvisText}"`, 'text/plain');
 
   if (changeAvisText === expected_AvisText) {
-    console.log("✅ Free delivery text matches!");
+    allure.attachment('Console Log', "✅ Free delivery text matches!", 'text/plain');
   } else {
-    console.log("❌ Free delivery text does not match!");
+    allure.attachment('Console Log', "❌ Free delivery text does not match!", 'text/plain');
   }
   //---Paiement 100% sécurisé---
   const SecurityPayment = page.locator('//div[@class="d-flex"]')
   const SecurityPaymentText = (await SecurityPayment.textContent() || '').trim();
 
-  console.log(`📄 Security payment text: "${SecurityPaymentText}"`)
+  allure.attachment('Console Log', `📄 Security payment text: "${SecurityPaymentText}"`, 'text/plain')
 
   if (SecurityPaymentText === expected_SecurityPayment) {
-    console.log("✅ Security payement text matches!");
+    allure.attachment('Console Log', "✅ Security payement text matches!", 'text/plain');
   } else {
-    console.log("❌ Free delivery text does not match!");
+    allure.attachment('Console Log', "❌ Free delivery text does not match!", 'text/plain');
   }
 }
 
@@ -432,24 +432,24 @@ export async function review_report(page: Page) {
 
   //--Check review message--
   const review_message = (await review_text.textContent() || '').trim();
-  console.log(`📄 the review message is: "${review_message}"`);
+  allure.attachment('Console Log', `📄 the review message is: "${review_message}"`, 'text/plain');
   if (review_message === suspected_review_message) {
-    console.log("✅ review message is matches!");
+    allure.attachment('Console Log', "✅ review message is matches!", 'text/plain');
   } else {
-    console.log("❌ review message does not match!");
+    allure.attachment('Console Log', "❌ review message does not match!", 'text/plain');
   }
   //--Check the review popup--
   const review_popup = review_text.locator('div.review-click:has(a.link-reviews)');
 
-  console.log("🔍 Count:", await review_popup.count());
-  console.log("🔍 Visible:", await review_popup.first().isVisible());
-  console.log("🔍 Text:", await review_popup.first().textContent());
+  allure.attachment('Console Log', `🔍 Count: ${await review_popup.count()}`, 'text/plain');
+  allure.attachment('Console Log', `🔍 Visible: ${await review_popup.first().isVisible()}`, 'text/plain');
+  allure.attachment('Console Log', `🔍 Text: ${await review_popup.first().textContent()}`, 'text/plain');
 
-  console.log("🟢 Clicking review link...");
+  allure.attachment('Console Log', "🟢 Clicking review link...", 'text/plain');
   await page.locator('a.link-reviews').scrollIntoViewIfNeeded();
   await page.locator('a.link-reviews').click();
 
-  console.log("🟢 Waiting for review popup...");
+  allure.attachment('Console Log', "🟢 Waiting for review popup...", 'text/plain');
 
   //--Find the modal that contains the review wrapper
   // Wait for the visible popup wrapper
@@ -461,21 +461,21 @@ export async function review_report(page: Page) {
   const popup_text = popupWrapper.locator('h3.text-center');
   const popup_text2 = popupWrapper.locator('.review-info')
   const popupTexts = (await popup_text.textContent() || '').trim();
-  console.log(`📄 the popup text is: "${popupTexts}"`);
+  allure.attachment('Console Log', `📄 the popup text is: "${popupTexts}"`, 'text/plain');
 
   await expect(popup_text).toContainText('Des clients satisfaits');
-  console.log("✅ 'Des clients satisfaits' exists in the popup");
+  allure.attachment('Console Log', "✅ 'Des clients satisfaits' exists in the popup", 'text/plain');
 
   await expect(popup_text2).toContainText(
     'Les avis présentés sur cette page constituent une sélection'
   );
-  console.log("✅ the long message exists in the popup");
+  allure.attachment('Console Log', "✅ the long message exists in the popup", 'text/plain');
 
   // Close button
   const shippingPopup = page.locator('aside.ax-product-reviews-popup-modal');
   await shippingPopup.waitFor({ state: 'visible', timeout: 10000 });
   await shippingPopup.locator('button.action-close[data-role="closeBtn"]').click();
-  console.log("✅ Popup closed by aria-describedby");
+  allure.attachment('Console Log', "✅ Popup closed by aria-describedby", 'text/plain');
 }
 
 // Check Description
@@ -494,7 +494,7 @@ export async function Description(page: Page) {
   else if (currentUrl.includes('menzzo.at')) lang = 'de';
   else if (currentUrl.includes('nl.menzzo.be')) lang = 'nl';
 
-  console.log(`🌍 Description: Detected language "${lang.toUpperCase()}"`);
+  allure.attachment('Console Log', `🌍 Description: Detected language "${lang.toUpperCase()}"`, 'text/plain');
 
   // 2. i18n dictionary (title text per language)
   const i18n: Record<string, { title: string }> = {
@@ -514,19 +514,19 @@ export async function Description(page: Page) {
   try {
     await descTitleLocator.waitFor({ state: 'visible', timeout: 5000 });
   } catch {
-    console.log("⚠️ Description title is NOT visible — may depend on layout or accordion state.");
+    allure.attachment('Console Log', "⚠️ Description title is NOT visible — may depend on layout or accordion state.", 'text/plain');
   }
 
   const descTitleText = (await descTitleLocator.textContent() || '').trim();
 
-  console.log(`📄 Found description title: "${descTitleText}"`);
+  allure.attachment('Console Log', `📄 Found description title: "${descTitleText}"`, 'text/plain');
 
   if (descTitleText === data.title) {
-    console.log(`✅ Description title matches expected "${data.title}"`);
+    allure.attachment('Console Log', `✅ Description title matches expected "${data.title}"`, 'text/plain');
   } else {
-    console.log(`❌ Description title does NOT match`);
-    console.log(`   Expected: "${data.title}"`);
-    console.log(`   Found:    "${descTitleText}"`);
+    allure.attachment('Console Log', `❌ Description title does NOT match`, 'text/plain');
+    allure.attachment('Console Log', `   Expected: "${data.title}"`, 'text/plain');
+    allure.attachment('Console Log', `   Found:    "${descTitleText}"`, 'text/plain');
   }
 
   // 4. Check description text content
@@ -536,10 +536,10 @@ export async function Description(page: Page) {
   const descText = (await descTextLocator.textContent() || '').trim();
 
   if (descText.length > 0) {
-    console.log("✅ Description text is NOT empty.");
-    console.log(`   Preview: "${descText.substring(0, 80)}..."`);
+    allure.attachment('Console Log', "✅ Description text is NOT empty.", 'text/plain');
+    allure.attachment('Console Log', `   Preview: "${descText.substring(0, 80)}..."`, 'text/plain');
   } else {
-    console.log("❌ Description text is EMPTY!");
+    allure.attachment('Console Log', "❌ Description text is EMPTY!", 'text/plain');
   }
 }
 
@@ -578,7 +578,7 @@ export async function InfoTable(page: Page) {
     lang = 'de';
   }
 
-  console.log(`🌍 InfoTable: Detected language "${lang.toUpperCase()}"`);
+  allure.attachment('Console Log', `🌍 InfoTable: Detected language "${lang.toUpperCase()}"`, 'text/plain');
 
   // 2. Define translations
   // Note: These need to be matched exactly against the site's text.
@@ -618,16 +618,16 @@ export async function InfoTable(page: Page) {
   try {
     await InfoTabTitle.waitFor({ state: 'visible', timeout: 5000 });
   } catch {
-    console.log("⚠️ Info tab title not visible - might be a layout difference.");
+    allure.attachment('Console Log', "⚠️ Info tab title not visible - might be a layout difference.", 'text/plain');
   }
 
   const InfoTabTitle_text = (await InfoTabTitle.textContent() || '').trim();
   if (normalizeText(InfoTabTitle_text) === normalizeText(data.title)) {
-    console.log(`✅ The info table title matches! ("${data.title}")`);
+    allure.attachment('Console Log', `✅ The info table title matches! ("${data.title}")`, 'text/plain');
   } else {
-    console.log(`❌ The info table title does not match!`);
-    console.log(`   Expected: "${data.title}"`);
-    console.log(`   Found:    "${InfoTabTitle_text}"`);
+    allure.attachment('Console Log', `❌ The info table title does not match!`, 'text/plain');
+    allure.attachment('Console Log', `   Expected: "${data.title}"`, 'text/plain');
+    allure.attachment('Console Log', `   Found:    "${InfoTabTitle_text}"`, 'text/plain');
   }
   // 4️⃣ Info table rows
   const Table = page.locator('//div[@class="additional-attributes-wrapper table-wrapper"]//table');
@@ -636,7 +636,7 @@ export async function InfoTable(page: Page) {
   const allRows = await Table.locator('tr').all();
 
   for (const rowLabel of data.rows) {
-    console.log(`🔍 Checking row "${rowLabel}"...`);
+    allure.attachment('Console Log', `🔍 Checking row "${rowLabel}"...`, 'text/plain');
 
     let matchedRow: Locator | null = null;
 
@@ -649,21 +649,21 @@ export async function InfoTable(page: Page) {
     }
 
     if (!matchedRow) {
-      console.log(`❌ Row "${rowLabel}" NOT found!`);
+      allure.attachment('Console Log', `❌ Row "${rowLabel}" NOT found!`, 'text/plain');
       const allHeaders = await Table.locator('th').allTextContents();
-      console.log(`   Available headers: ${allHeaders.map(t => t.trim()).join(', ')}`);
+      allure.attachment('Console Log', `   Available headers: ${allHeaders.map(t => t.trim()).join(', ')}`, 'text/plain');
       continue;
     }
 
-    console.log(`✅ Row "${rowLabel}" exists`);
+    allure.attachment('Console Log', `✅ Row "${rowLabel}" exists`, 'text/plain');
 
     const valueTd = matchedRow.locator('td.col.data');
     const valueText = (await valueTd.textContent() || '').trim();
 
     if (valueText.length > 0) {
-      console.log(`✅ Row "${rowLabel}" value is not empty: "${valueText}"`);
+      allure.attachment('Console Log', `✅ Row "${rowLabel}" value is not empty: "${valueText}"`, 'text/plain');
     } else {
-      console.log(`❌ Row "${rowLabel}" value is empty!`);
+      allure.attachment('Console Log', `❌ Row "${rowLabel}" value is empty!`, 'text/plain');
     }
 
     await expect.soft(valueTd, `Row "${rowLabel}" value should not be empty`).not.toBeEmpty();
@@ -690,7 +690,7 @@ export async function upsell(page: Page) {
   const expectedUpsel_Title = "Vous aimerez aussi :";
 
   if (upsell_titleText === expectedUpsel_Title) {
-    console.log("✅ Upsell title is correct:", upsell_titleText);
+    allure.attachment('Console Log', `✅ Upsell title is correct: ${upsell_titleText}`, 'text/plain');
   } else {
     throw new Error(
       `❌ Wrong upsell title. Expected "${expectedUpsel_Title}" but got "${upsell_titleText}"`
@@ -708,17 +708,17 @@ export async function upsell(page: Page) {
     // Wait up to 5 seconds for at least one item to be visible
     await upsell_Product.first().waitFor({ state: 'visible', timeout: 5000 });
   } catch (e) {
-    console.warn("⚠️ Upsell products did not appear within timeout.");
+    allure.attachment('Console Warn', "⚠️ Upsell products did not appear within timeout.", 'text/plain');
   }
 
   const count_upsell = await upsell_Product.count();
 
   if (count_upsell === 0) {
-    console.warn("⚠️ No upsell products found. Skipping upsell check.");
+    allure.attachment('Console Warn', "⚠️ No upsell products found. Skipping upsell check.", 'text/plain');
     return;
   }
 
-  console.log(`✅ Found ${count_upsell} upsell products.`);
+  allure.attachment('Console Log', `✅ Found ${count_upsell} upsell products.`, 'text/plain');
   // expect(count_upsell).toBeGreaterThan(0); // Removed strict assertion to avoid failure on empty upsell
 
   for (let i = 0; i < count_upsell; i++) {
@@ -731,7 +731,7 @@ export async function upsell(page: Page) {
     const rawText = await priceDiv.innerText();
     const text = rawText.trim().replace(/\s+/g, " ");
 
-    console.log(`🟦 Item ${i}: "${text}"`);
+    allure.attachment('Console Log', `🟦 Item ${i}: "${text}"`, 'text/plain');
 
     if (!text || text.length === 0) {
       throw new Error(`❌ price-and-disponibility is EMPTY in item ${i}`);
@@ -741,7 +741,7 @@ export async function upsell(page: Page) {
     expect(text.length).toBeGreaterThan(3); // avoid empty/glitch cases
   }
 
-  console.log("✅ All price-and-disponibility blocks are filled.");
+  allure.attachment('Console Log', "✅ All price-and-disponibility blocks are filled.", 'text/plain');
 }
 
 //--Client views--//
@@ -762,10 +762,10 @@ export async function ClientViews(page: Page) {
   //console.log(`📄 The client views title : "${ClienTitle_text}"`);
 
   if (ClienTitle_text === expected_title) {
-    console.log("✅ The clients view title matches!");
+    allure.attachment('Console Log', "✅ The clients view title matches!", 'text/plain');
   } else {
-    console.log("❌ The clients view title does not match!");
-    console.log(`The display title is: "${ClienTitle_text}"`);
+    allure.attachment('Console Log', "❌ The clients view title does not match!", 'text/plain');
+    allure.attachment('Console Log', `The display title is: "${ClienTitle_text}"`, 'text/plain');
   }
 
   //Check client views text
@@ -781,10 +781,10 @@ export async function ClientViews(page: Page) {
   //console.log(`📄 The client views text : "${ClientViewstext}"`);
 
   if (ClientViewstext === expect_clientsViews_Text) {
-    console.log("✅ The clients view text matches!");
+    allure.attachment('Console Log', "✅ The clients view text matches!", 'text/plain');
   } else {
-    console.log("❌ The clients view text does not match!");
-    console.log(`The display title is: "${ClientViewstext}"`);
+    allure.attachment('Console Log', "❌ The clients view text does not match!", 'text/plain');
+    allure.attachment('Console Log', `The display title is: "${ClientViewstext}"`, 'text/plain');
   }
 
   //Check the clients reviews text
@@ -800,13 +800,13 @@ export async function ClientViews(page: Page) {
   }
 
   const totalReviews = await Reviews.count();
-  console.log(`📝 Total loaded reviews in DOM: ${totalReviews}`);
+  allure.attachment('Console Log', `📝 Total loaded reviews in DOM: ${totalReviews}`, 'text/plain');
 
   // We want to check at least 11 reviews (or fewer if fewer exist)
   const countToCheck = Math.min(totalReviews, 11);
 
   if (countToCheck > 0) {
-    console.log(`🔍 Checking first ${countToCheck} reviews...`);
+    allure.attachment('Console Log', `🔍 Checking first ${countToCheck} reviews...`, 'text/plain');
 
     for (let i = 0; i < countToCheck; i++) {
       const review = Reviews.nth(i);
@@ -815,21 +815,21 @@ export async function ClientViews(page: Page) {
       // Example: Check if review has some text
       const reviewText = (await review.textContent())?.trim() || '';
       if (reviewText.length > 0) {
-        console.log(`   ✅ Review ${i + 1} exists and has text.`);
+        allure.attachment('Console Log', `   ✅ Review ${i + 1} exists and has text.`, 'text/plain');
         //console.log(`📝 The constrmer text review : ${reviewText}`);
       } else {
-        console.warn(`   ⚠️ Review ${i + 1} is empty.`);
+        allure.attachment('Console Warn', `   ⚠️ Review ${i + 1} is empty.`, 'text/plain');
       }
     }
   } else {
-    console.warn("⚠️ No reviews found to check.");
+    allure.attachment('Console Warn', "⚠️ No reviews found to check.", 'text/plain');
   }
 }
 
 //--Check photos--//
 export async function Photo_product(page: Page) {
 
-  console.log("🖼 Checking main product image…");
+  allure.attachment('Console Log', "🖼 Checking main product image…", 'text/plain');
 
   //--Check the big product photo--//
   const Principal_picture = page.locator('.carousel.carousel-product-top');
@@ -844,12 +844,12 @@ export async function Photo_product(page: Page) {
 
   // Check if empty
   if (!imgSrc || imgSrc.trim() === "") {
-    console.log("❌ Picture is EMPTY — no image URL found");
+    allure.attachment('Console Log', "❌ Picture is EMPTY — no image URL found", 'text/plain');
     return;
   }
 
-  console.log("✅ Picture contains an image");
-  console.log("🔗 Real image URL:", imgSrc);
+  allure.attachment('Console Log', "✅ Picture contains an image", 'text/plain');
+  allure.attachment('Console Log', `🔗 Real image URL: ${imgSrc}`, 'text/plain');
 
   // Function to clean filename
   const cleanImageName = (src: string) => {
@@ -860,7 +860,7 @@ export async function Photo_product(page: Page) {
   // Extract filename
   const fileName = cleanImageName(imgSrc);
 
-  console.log("📄 Extracted big image:", fileName);
+  allure.attachment('Console Log', `📄 Extracted big image: ${fileName}`, 'text/plain');
 
   //--Check the small images--//
   const Smallphoto = page.locator('.carousel-nav');
@@ -875,20 +875,20 @@ export async function Photo_product(page: Page) {
 
   //Check if empty
   if (!Smallimg || Smallimg.trim() === "") {
-    console.log("❌ Small picture is EMPTY — no image URL found");
+    allure.attachment('Console Log', "❌ Small picture is EMPTY — no image URL found", 'text/plain');
     return;
   }
-  console.log("✅ Small picture contains an image");
-  console.log("🔗 Real image URL:", Smallimg);
+  allure.attachment('Console Log', "✅ Small picture contains an image", 'text/plain');
+  allure.attachment('Console Log', `🔗 Real image URL: ${Smallimg}`, 'text/plain');
 
   const SmalPicture = cleanImageName(Smallimg);
-  console.log("📄 Extracted small image:", SmalPicture);
+  allure.attachment('Console Log', `📄 Extracted small image: ${SmalPicture}`, 'text/plain');
 
   //Compare images name
   if (fileName === SmalPicture) {
-    console.log("✅ The photos matches!");
+    allure.attachment('Console Log', "✅ The photos matches!", 'text/plain');
   } else {
-    console.log("❌ The photos does not match!");
+    allure.attachment('Console Log', "❌ The photos does not match!", 'text/plain');
   }
 }
 
@@ -897,7 +897,7 @@ export async function CountPhoto(page: Page) {
   const images = page.locator('[data-fancybox="gallery"]');
   const count = await images.count();
 
-  console.log("Real number of images:", count);
+  allure.attachment('Console Log', `Real number of images: ${count}`, 'text/plain');
 
   return count;
 }
@@ -919,7 +919,7 @@ export async function getProductPrice(page: Page): Promise<number> {
   const cleanPrice = priceText.replace(/[^0-9,.]/g, '').replace(',', '.');
   const price = parseFloat(cleanPrice);
 
-  console.log(`The product price (from text): ${price}`);
+  allure.attachment('Console Log', `The product price (from text): ${price}`, 'text/plain');
 
   return price;
 }
@@ -950,7 +950,7 @@ export async function getLowPrice(page: Page): Promise<number> {
     throw new Error(`Could not parse low price: "${priceText}"`);
   }
 
-  console.log(`The product low price: ${lowPrice}`);
+  allure.attachment('Console Log', `The product low price: ${lowPrice}`, 'text/plain');
 
   return lowPrice;
 }
@@ -963,7 +963,7 @@ export async function Check_Image(page: Page) {
   // Loop through each photo
   for (let i = 0; i < totalPhotos; i++) {
 
-    console.log(`🖼 Checking photo ${i + 1} / ${totalPhotos}`);
+    allure.attachment('Console Log', `🖼 Checking photo ${i + 1} / ${totalPhotos}`, 'text/plain');
 
     // Check the big photo
     await Photo_product(page);
@@ -993,11 +993,11 @@ export async function OtherColor(page: Page) {
   const count = await colorItems.count();
 
   if (count === 0) {
-    console.log("There are no color associations for this product");
+    allure.attachment('Console Log', "There are no color associations for this product", 'text/plain');
     return { count: 0, urls: [] };
   }
 
-  console.log(`Found ${count} color association(s).`);
+  allure.attachment('Console Log', `Found ${count} color association(s).`, 'text/plain');
 
   // Array to store all color product URLs
   const allUrls: string[] = [];
@@ -1011,7 +1011,7 @@ export async function OtherColor(page: Page) {
     }
   }
 
-  console.log("All color URLs:", allUrls);
+  allure.attachment('Console Log', `All color URLs: ${allUrls}`, 'text/plain');
 
   // Return without clicking
   return { count, urls: allUrls };
@@ -1041,22 +1041,22 @@ export async function SEO_Title(page: Page) {
   // -------------------------------
   // 📝 LOG OUTPUT
   // -------------------------------
-  console.log("🌐 SEO Language Check:");
-  console.log("─────────────────────────────");
-  console.log(`📌 H1 text        : "${h1Text}"`);
-  console.log(`📌 Page Title     : "${pageTitle}"`);
-  console.log(`🌍 H1 language    : ${h1Lang}`);
-  console.log(`🌍 Title language : ${titleLang}`);
-  console.log("─────────────────────────────");
+  allure.attachment('Console Log', "🌐 SEO Language Check:", 'text/plain');
+  allure.attachment('Console Log', "─────────────────────────────", 'text/plain');
+  allure.attachment('Console Log', `📌 H1 text        : "${h1Text}"`, 'text/plain');
+  allure.attachment('Console Log', `📌 Page Title     : "${pageTitle}"`, 'text/plain');
+  allure.attachment('Console Log', `🌍 H1 language    : ${h1Lang}`, 'text/plain');
+  allure.attachment('Console Log', `🌍 Title language : ${titleLang}`, 'text/plain');
+  allure.attachment('Console Log', "─────────────────────────────", 'text/plain');
 
   const sameLanguage = h1Lang === titleLang;
 
   if (sameLanguage) {
-    console.log(`✅ Language match: Both are in "${h1Lang}"`);
+    allure.attachment('Console Log', `✅ Language match: Both are in "${h1Lang}"`, 'text/plain');
   } else {
-    console.log(`❌ Language mismatch detected!`);
-    console.log(`   → H1 is in: ${h1Lang}`);
-    console.log(`   → Title is in: ${titleLang}`);
+    allure.attachment('Console Log', `❌ Language mismatch detected!`, 'text/plain');
+    allure.attachment('Console Log', `   → H1 is in: ${h1Lang}`, 'text/plain');
+    allure.attachment('Console Log', `   → Title is in: ${titleLang}`, 'text/plain');
   }
 
   // -------------------------------
@@ -1091,25 +1091,25 @@ export async function SEO_Description(page: Page) {
   // -------------------------------
   // 📝 LOG OUTPUT
   // -------------------------------
-  console.log("🌐 SEO Language Check:");
-  console.log("─────────────────────────────");
-  console.log(`📌 H1 text            : "${h1Text}"`);
-  console.log(`📌 Page Title         : "${pageTitle}"`);
-  console.log(`📌 Meta Description   : "${description}"`);
-  console.log(`🌍 H1 language        : ${h1Lang}`);
-  console.log(`🌍 Title language     : ${titleLang}`);
-  console.log(`🌍 Description lang   : ${descLang}`);
-  console.log("─────────────────────────────");
+  allure.attachment('Console Log', "🌐 SEO Language Check:", 'text/plain');
+  allure.attachment('Console Log', "─────────────────────────────", 'text/plain');
+  allure.attachment('Console Log', `📌 H1 text            : "${h1Text}"`, 'text/plain');
+  allure.attachment('Console Log', `📌 Page Title         : "${pageTitle}"`, 'text/plain');
+  allure.attachment('Console Log', `📌 Meta Description   : "${description}"`, 'text/plain');
+  allure.attachment('Console Log', `🌍 H1 language        : ${h1Lang}`, 'text/plain');
+  allure.attachment('Console Log', `🌍 Title language     : ${titleLang}`, 'text/plain');
+  allure.attachment('Console Log', `🌍 Description lang   : ${descLang}`, 'text/plain');
+  allure.attachment('Console Log', "─────────────────────────────", 'text/plain');
 
   const allMatch = h1Lang === titleLang && titleLang === descLang;
 
   if (allMatch) {
-    console.log(`✅ Language match: All are in "${h1Lang}"`);
+    allure.attachment('Console Log', `✅ Language match: All are in "${h1Lang}"`, 'text/plain');
   } else {
-    console.log(`❌ Language mismatch detected!`);
-    console.log(`   → H1 is: ${h1Lang}`);
-    console.log(`   → Title is: ${titleLang}`);
-    console.log(`   → Description is: ${descLang}`);
+    allure.attachment('Console Log', `❌ Language mismatch detected!`, 'text/plain');
+    allure.attachment('Console Log', `   → H1 is: ${h1Lang}`, 'text/plain');
+    allure.attachment('Console Log', `   → Title is: ${titleLang}`, 'text/plain');
+    allure.attachment('Console Log', `   → Description is: ${descLang}`, 'text/plain');
   }
 
   // -------------------------------
@@ -1124,6 +1124,6 @@ export async function SEO_Description(page: Page) {
 export async function CheckTitleLanguage(page: Page) {
   const title: string = await page.title();
   const detectedLanguage = detectLanguage(title);
-  console.log(`📌 Title: ${title}`);
-  console.log(`📌 Title language: ${detectedLanguage}`);
+  allure.attachment('Console Log', `📌 Title: ${title}`, 'text/plain');
+  allure.attachment('Console Log', `📌 Title language: ${detectedLanguage}`, 'text/plain');
 }
