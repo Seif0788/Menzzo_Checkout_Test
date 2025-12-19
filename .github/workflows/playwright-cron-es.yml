@@ -30,6 +30,10 @@ jobs:
       - name: Install Allure
         run: npm install --save-dev allure-playwright
 
+      - name: Remove previous allure-results and allure-report
+        run: |
+          rm -rf allure-results allure-report
+
       - name: Run Playwright Tests
         id: playwright
         run: |
