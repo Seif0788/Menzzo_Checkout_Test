@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { allure } from "allure-playwright";
+import { attachment } from 'allure-js-commons';
 import {
     clickElementByText,
     search,
@@ -23,9 +23,9 @@ test('At_Stripe', async ({ page }) => {
     await ClickRandomProduct(page);
 
     // 5️⃣ Wait for product page to load
-    allure.attachment('Console Log', '⏳ Waiting for product page to load...', 'text/plain');
+    attachment('Console Log', '⏳ Waiting for product page to load...', 'text/plain');
     await page.waitForLoadState('networkidle', { timeout: 60000 });
-    allure.attachment('Console Log', '✅ Product page loaded.', 'text/plain');
+    attachment('Console Log', '✅ Product page loaded.', 'text/plain');
 
     // 6️⃣ Click "In den Warenkorb"
     await clickElementByText(page, 'In den Warenkorb');
@@ -40,18 +40,18 @@ test('At_Stripe', async ({ page }) => {
             clickElementByText(page, 'Warenkorb bestätigen', 5000, { debug: true }),
         ]);
     } catch (e) {
-        allure.attachment('Console Warn', "⚠️ 'Warenkorb bestätigen' click failed or timed out.", 'text/plain');
+        attachment('Console Warn', "⚠️ 'Warenkorb bestätigen' click failed or timed out.", 'text/plain');
     }
 
     // Fallback: if not on checkout, try "Zur Kasse" (standard button)
     if (!page.url().includes('onestepcheckout')) {
-        allure.attachment('Console Log', "ℹ️ Not on checkout page yet. Trying 'Zur Kasse'...", 'text/plain');
+        attachment('Console Log', "ℹ️ Not on checkout page yet. Trying 'Zur Kasse'...", 'text/plain');
         await Promise.all([
             page.waitForNavigation({ waitUntil: 'networkidle', timeout: 30000 }).catch(() => { }),
-            clickElementByText(page, 'Zur Kasse', 10000).catch(() => allure.attachment('Console Warn', "⚠️ 'Zur Kasse' also failed.", 'text/plain')),
+            clickElementByText(page, 'Zur Kasse', 10000).catch(() => attachment('Console Warn', "⚠️ 'Zur Kasse' also failed.", 'text/plain')),
         ]);
     }
-    allure.attachment('Console Log', '✅ Navigation to checkout complete. Waiting for OneStepCheckout...', 'text/plain');
+    attachment('Console Log', '✅ Navigation to checkout complete. Waiting for OneStepCheckout...', 'text/plain');
 
     let checkoutPage = page;
 
@@ -60,12 +60,12 @@ test('At_Stripe', async ({ page }) => {
         await waitForCheckoutReady(page);
     } catch (err) {
         if (String(err).includes('Target page') || String(err).includes('closed')) {
-            allure.attachment('Console Warn', '⚠️ Detected checkout reload or new tab — recovering...', 'text/plain');
+            attachment('Console Warn', '⚠️ Detected checkout reload or new tab — recovering...', 'text/plain');
             const allPages = page.context().pages();
             for (const p of allPages) {
                 if (/onestepcheckout/i.test(p.url())) {
                     checkoutPage = p;
-                    allure.attachment('Console Log', `🔄 Switched to new checkout page: ${checkoutPage.url()}`, 'text/plain');
+                    attachment('Console Log', `🔄 Switched to new checkout page: ${checkoutPage.url()}`, 'text/plain');
                     break;
                 }
             }
@@ -90,15 +90,15 @@ test('At_Stripe', async ({ page }) => {
 
     // Perform checkout (multi-language safe)
     await performCheckout(checkoutPage, checkoutData);
-    allure.attachment('Console Log', '✅ Checkout performed successfully.', 'text/plain');
+    attachment('Console Log', '✅ Checkout performed successfully.', 'text/plain');
 
     // 9️⃣ Confirm navigation to payment method page
-    allure.attachment('Console Log', '⏳ Verifying navigation to Stripe...', 'text/plain');
+    attachment('Console Log', '⏳ Verifying navigation to Stripe...', 'text/plain');
     try {
         await expect(checkoutPage).toHaveURL(/stripe\.com/, { timeout: 60000 });
-        allure.attachment('Console Log', '✅ Successfully navigated to Stripe.', 'text/plain');
+        attachment('Console Log', '✅ Successfully navigated to Stripe.', 'text/plain');
     } catch (e) {
-        allure.attachment('Console Error', `❌ Failed to navigate to Stripe. Current URL: ${checkoutPage.url()}`, 'text/plain');
+        attachment('Console Error', `❌ Failed to navigate to Stripe. Current URL: ${checkoutPage.url()}`, 'text/plain');
         throw e;
     }
 });

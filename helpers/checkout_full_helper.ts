@@ -1,6 +1,6 @@
 import { Page, expect } from '@playwright/test';
 import { dismissOverlays } from './utils';
-import { allure } from "allure-playwright";
+import { attachment } from 'allure-js-commons';
 
 const paymentMethodMap: Record<string, string> = {
   Stripe: '#stripe_payments_checkout',
@@ -47,7 +47,7 @@ async function retryAction(action: () => Promise<boolean>, retries = 10, delay =
 // Wait for checkout ready
 // -------------------------
 export async function waitForCheckoutReady(page: Page, timeout = 120000) {
-  allure.attachment('Console Log', '⏳ Waiting for OneStepCheckout to initialize...', 'text/plain');
+  attachment('Console Log', '⏳ Waiting for OneStepCheckout to initialize...', 'text/plain');
   const start = Date.now();
   const retryInterval = 500;
 
@@ -76,7 +76,7 @@ export async function waitForCheckoutReady(page: Page, timeout = 120000) {
       const paymentReady = await checkoutElement.locator('input[name^="payment[method]"]').count().catch(() => 0);
 
       if ((emailVisible || nameVisible) && shippingReady > 0 && paymentReady > 0) {
-        allure.attachment('Console Log', '✅ Checkout is ready for interaction.', 'text/plain');
+        attachment('Console Log', '✅ Checkout is ready for interaction.', 'text/plain');
         return;
       }
       await sleep(retryInterval);
@@ -93,12 +93,12 @@ export async function waitForCheckoutReady(page: Page, timeout = 120000) {
 export async function performCheckout(page: Page, data: CheckoutData) {
   // Ensure the language property is set at the start of the function
   if (!data.language) {
-    allure.attachment('Console Warn', '⚠️ Language not provided. Defaulting to Italian (IT).', 'text/plain');
+    attachment('Console Warn', '⚠️ Language not provided. Defaulting to Italian (IT).', 'text/plain');
     data.language = 'IT';
   }
 
   // Debugging: Log the language being used
-  allure.attachment('Console Log', `🌍 Using language: ${data.language}`, 'text/plain');
+  attachment('Console Log', `🌍 Using language: ${data.language}`, 'text/plain');
 
   await page.waitForSelector('#checkout', { state: 'visible', timeout: 20000 });
 
@@ -114,7 +114,7 @@ export async function performCheckout(page: Page, data: CheckoutData) {
         : 'input[data-placeholder="Nome"]:visible,input[data-placeholder="Vorname"]:visible,input[data-placeholder="Prénom"]:visible'; // Default to Italian
 
   // Debugging: Log the updated locator
-  allure.attachment('Console Log', `Updated firstNameLocator: ${firstNameLocator}`, 'text/plain');
+  attachment('Console Log', `Updated firstNameLocator: ${firstNameLocator}`, 'text/plain');
 
   // Retry logic to handle dynamic content delays
   const maxRetries = 15; // Increased retries
@@ -122,15 +122,15 @@ export async function performCheckout(page: Page, data: CheckoutData) {
 
   const success = await retryAction(async () => {
     const isVisible = await page.locator(firstNameLocator).isVisible();
-    allure.attachment('Console Log', `Retrying visibility check for ${firstNameLocator}. Visible: ${isVisible}`, 'text/plain');
+    attachment('Console Log', `Retrying visibility check for ${firstNameLocator}. Visible: ${isVisible}`, 'text/plain');
 
     // Check for blocking elements
     const boundingBox = await page.locator(firstNameLocator).boundingBox();
     if (boundingBox) {
       const overlays = await page.locator('div[style*="z-index"]:visible').count();
-      allure.attachment('Console Log', `Bounding box: ${JSON.stringify(boundingBox)}, Overlays count: ${overlays}`, 'text/plain');
+      attachment('Console Log', `Bounding box: ${JSON.stringify(boundingBox)}, Overlays count: ${overlays}`, 'text/plain');
     } else {
-      allure.attachment('Console Log', `Bounding box not available for ${firstNameLocator}`, 'text/plain');
+      attachment('Console Log', `Bounding box not available for ${firstNameLocator}`, 'text/plain');
     }
 
     return isVisible;
@@ -140,11 +140,11 @@ export async function performCheckout(page: Page, data: CheckoutData) {
     throw new Error(`Field ${firstNameLocator} did not become visible after ${maxRetries} retries.`);
   }
 
-  allure.attachment('Console Log', '✅ First name field is visible.', 'text/plain');
+  attachment('Console Log', '✅ First name field is visible.', 'text/plain');
 
   // Debugging: Log the language and locator being used
-  allure.attachment('Console Log', `Language: ${data.language}`, 'text/plain');
-  allure.attachment('Console Log', `Using firstNameLocator: ${firstNameLocator}`, 'text/plain');
+  attachment('Console Log', `Language: ${data.language}`, 'text/plain');
+  attachment('Console Log', `Using firstNameLocator: ${firstNameLocator}`, 'text/plain');
 
   // Dismiss overlays before interacting with the first name field
   await dismissOverlays(page);
@@ -181,7 +181,7 @@ export async function performCheckout(page: Page, data: CheckoutData) {
         return false;
       }, 15, 300);
       if (!success) throw new Error(`❌ Failed to select the single available delivery method for ${data.language}`);
-      allure.attachment('Console Log', `✅ Automatically selected the single available delivery method for ${data.language}`, 'text/plain');
+      attachment('Console Log', `✅ Automatically selected the single available delivery method for ${data.language}`, 'text/plain');
     } else {
       // Determine the correct suffix for the delivery method based on language
       const deliverySuffixMap = {
@@ -191,7 +191,7 @@ export async function performCheckout(page: Page, data: CheckoutData) {
       };
 
       // Debugging: Log the refined suffix mapping
-      allure.attachment('Console Log', `🚧 Refined deliverySuffixMap: ${JSON.stringify(deliverySuffixMap)}`, 'text/plain');
+      attachment('Console Log', `🚧 Refined deliverySuffixMap: ${JSON.stringify(deliverySuffixMap)}`, 'text/plain');
 
       // Ensure the language is defined and valid before accessing the map
       if (!data.language || !Object.keys(deliverySuffixMap).includes(data.language)) {
@@ -248,15 +248,15 @@ export async function performCheckout(page: Page, data: CheckoutData) {
       await termsCheckbox.click({ force: true }).catch(() => { });
     } else {
       if (isDeStore) {
-        allure.attachment('Console Log', '✅ Terms accepted successfully (DE store).', 'text/plain');
+        attachment('Console Log', '✅ Terms accepted successfully (DE store).', 'text/plain');
       } else if (isItStore) {
-        allure.attachment('Console Log', '✅ Terms accepted successfully (IT store).', 'text/plain');
+        attachment('Console Log', '✅ Terms accepted successfully (IT store).', 'text/plain');
       } else {
-        allure.attachment('Console Log', '⚠️ Skipped terms acceptance for non-DE/IT store.', 'text/plain');
+        attachment('Console Log', '⚠️ Skipped terms acceptance for non-DE/IT store.', 'text/plain');
       }
     }
     // Confirm order
-    allure.attachment('Console Log', '🔍 Looking for pay button...', 'text/plain');
+    attachment('Console Log', '🔍 Looking for pay button...', 'text/plain');
 
     await sleep(20000); // Wait for 2 seconds to ensure button is loaded
 
@@ -273,13 +273,13 @@ export async function performCheckout(page: Page, data: CheckoutData) {
         ? payButtonTextMap[data.language]
         : /pay/i;
 
-    allure.attachment('Console Log', `🔍 Looking for visible pay button for language: ${data.language}...`, 'text/plain');
+    attachment('Console Log', `🔍 Looking for visible pay button for language: ${data.language}...`, 'text/plain');
 
     const payButtons = page.getByRole('button', { name: buttonLabel });
 
     const clickedPay = await retryAction(async () => {
       const count = await payButtons.count();
-      allure.attachment('Console Log', `🧩 Found ${count} matching pay buttons`, 'text/plain');
+      attachment('Console Log', `🧩 Found ${count} matching pay buttons`, 'text/plain');
 
       for (let i = 0; i < count; i++) {
         const btn = payButtons.nth(i);
@@ -287,19 +287,19 @@ export async function performCheckout(page: Page, data: CheckoutData) {
         const isEnabled = await btn.isEnabled().catch(() => false);
 
         if (isVisible && isEnabled) {
-          allure.attachment('Console Log', `✅ Found visible pay button [${i}] — clicking it...`, 'text/plain');
+          attachment('Console Log', `✅ Found visible pay button [${i}] — clicking it...`, 'text/plain');
           await btn.scrollIntoViewIfNeeded();
           await btn.click({ force: true });
           return true;
         }
       }
 
-      allure.attachment('Console Log', '⏳ No visible pay button yet, retrying...', 'text/plain');
+      attachment('Console Log', '⏳ No visible pay button yet, retrying...', 'text/plain');
       return false;
     }, 15, 1000);
 
     if (!clickedPay) throw new Error('❌ No visible pay button found or clickable');
 
-    allure.attachment('Console Log', `✅ Clicked pay button, waiting for ${data.paymentMethod} redirect...`, 'text/plain');
+    attachment('Console Log', `✅ Clicked pay button, waiting for ${data.paymentMethod} redirect...`, 'text/plain');
   }
 }

@@ -1,6 +1,6 @@
 import { Page, expect, Locator } from '@playwright/test';
 import { selectCategory } from '../utils';
-import { allure } from "allure-playwright";
+import { attachment } from 'allure-js-commons';
 import fs from 'fs';
 import Papa from 'papaparse';
 import path from 'path';
@@ -15,11 +15,11 @@ export async function CheckCategoryName(page: Page, CategoryName: string) {
     const normalizedActual = actualText.trim().toLowerCase();
     const normalizedExpected = CategoryName.trim().toLowerCase();
 
-    allure.attachment('Console Log', `DEBUG: Actual: "${actualText.trim()}", Expected: "${CategoryName}"`, 'text/plain');
+    attachment('Console Log', `DEBUG: Actual: "${actualText.trim()}", Expected: "${CategoryName}"`, 'text/plain');
 
     // Check if the expected text is contained in the actual text (case-insensitive)
     expect(normalizedActual).toContain(normalizedExpected);
-    allure.attachment('Console Log', `✅ Category Name matches: ${CategoryName}`, 'text/plain');
+    attachment('Console Log', `✅ Category Name matches: ${CategoryName}`, 'text/plain');
 }
 
 export async function verifyCategoryTitle(page: Page) {
@@ -49,13 +49,13 @@ export async function verifyCategoryTitle(page: Page) {
     const match = h1Text.toLowerCase() === pageTitle.toLowerCase();
 
     if (match) {
-        allure.attachment('Console Log', `✅ SUCCESS: Page title matches H1 text`, 'text/plain');
-        allure.attachment('Console Log', `   H1: "${h1Text}"`, 'text/plain');
-        allure.attachment('Console Log', `   pageTitle: "${pageTitle}"`, 'text/plain');
+        attachment('Console Log', `✅ SUCCESS: Page title matches H1 text`, 'text/plain');
+        attachment('Console Log', `   H1: "${h1Text}"`, 'text/plain');
+        attachment('Console Log', `   pageTitle: "${pageTitle}"`, 'text/plain');
     } else {
-        allure.attachment('Console Log', `❌ FAILED: Page title does not match H1 text`, 'text/plain');
-        allure.attachment('Console Log', `   H1: "${h1Text}"`, 'text/plain');
-        allure.attachment('Console Log', `   pageTitle: "${pageTitle}"`, 'text/plain');
+        attachment('Console Log', `❌ FAILED: Page title does not match H1 text`, 'text/plain');
+        attachment('Console Log', `   H1: "${h1Text}"`, 'text/plain');
+        attachment('Console Log', `   pageTitle: "${pageTitle}"`, 'text/plain');
     }
 }
 
@@ -68,7 +68,7 @@ export async function CheckProductCount(page: Page) {
     const match = countText.match(/\d+/);
     const countNumber = match ? parseInt(match[0], 10) : 0;
 
-    allure.attachment('Console Log', `🔹 Number of products found: ${countNumber}`, 'text/plain');
+    attachment('Console Log', `🔹 Number of products found: ${countNumber}`, 'text/plain');
     return countNumber;
 }
 
@@ -80,13 +80,13 @@ export async function loadAllProducts(page: Page) {
 
         const buttonClass = await loadMoreButton.getAttribute('class');
         if (buttonClass?.includes('ais-InfiniteHits-loadMore--disabled')) {
-            allure.attachment('Console Log', '🔹 Button disabled → all products loaded', 'text/plain');
+            attachment('Console Log', '🔹 Button disabled → all products loaded', 'text/plain');
             break;
         }
 
         const beforeCount = await page.locator('li.ais-InfiniteHits-item').count();
 
-        allure.attachment('Console Log', `⬇️ Clicking Load More (click ${clickCount + 1}) - Current products: ${beforeCount}`, 'text/plain');
+        attachment('Console Log', `⬇️ Clicking Load More (click ${clickCount + 1}) - Current products: ${beforeCount}`, 'text/plain');
 
         await loadMoreButton.scrollIntoViewIfNeeded();
         await loadMoreButton.click();
@@ -95,18 +95,18 @@ export async function loadAllProducts(page: Page) {
         await page.waitForTimeout(4000);
 
         const afterCount = await page.locator('li.ais-InfiniteHits-item').count();
-        allure.attachment('Console Log', `🔍 Products before: ${beforeCount}, after: ${afterCount}`, 'text/plain');
+        attachment('Console Log', `🔍 Products before: ${beforeCount}, after: ${afterCount}`, 'text/plain');
 
         // If number did not increase → nothing else to load
         if (afterCount <= beforeCount) {
-            allure.attachment('Console Log', "🔹 No new products loaded → reached the last page.", 'text/plain');
+            attachment('Console Log', "🔹 No new products loaded → reached the last page.", 'text/plain');
             break;
         }
 
         clickCount++;
     }
 
-    allure.attachment('Console Log', `✔️ All products loaded after ${clickCount} clicks`, 'text/plain');
+    attachment('Console Log', `✔️ All products loaded after ${clickCount} clicks`, 'text/plain');
 }
 
 
@@ -119,7 +119,7 @@ export async function countProducts(page: Page): Promise<number> {
     const items = page.locator(selector);
     const count = await items.count();
 
-    allure.attachment('Console Log', `🔹 Total products displayed: ${count}`, 'text/plain');
+    attachment('Console Log', `🔹 Total products displayed: ${count}`, 'text/plain');
 
     return count;
 }
@@ -144,7 +144,7 @@ export async function selectRandomCategory(page: Page) {
     //Select category
     const randomCategory = categories[Math.floor(Math.random() * categories.length)];
     await selectCategory(page, randomCategory);
-    allure.attachment('Console Log', `🔹 Selected category: ${randomCategory}`, 'text/plain');
+    attachment('Console Log', `🔹 Selected category: ${randomCategory}`, 'text/plain');
 }
 
 

@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { allure } from "allure-playwright";
+import { attachment } from 'allure-js-commons';
 import { clickElementByText } from '../../../helpers/utils';
 import fs from 'fs';
 import Papa from 'papaparse';
@@ -50,7 +50,7 @@ test.describe(`SEO check on ALL CMS pages (${CMS_PAGES.length} pages)`, () => {
         test(`SEO Test CMS: ${row.CMS}`, async ({ page }) => {
 
             const url = `https://www.menzzo.fr/${row.CMS}`;
-            allure.attachment('Console Log', `Testing CMS page: ${url}`, 'text/plain');
+            attachment('Console Log', `Testing CMS page: ${url}`, 'text/plain');
 
             await page.goto(url);
 
@@ -65,21 +65,21 @@ test.describe(`SEO check on ALL CMS pages (${CMS_PAGES.length} pages)`, () => {
             const descLang = detectLanguage(description || '');
 
             // --- Log results ---
-            allure.attachment('Console Log', '🌐 SEO Language Check:', 'text/plain');
-            allure.attachment('Console Log', '─────────────────────────────', 'text/plain');
-            allure.attachment('Console Log', `📌 H1 text        : "${h1}"`, 'text/plain');
-            allure.attachment('Console Log', `📌 Page Title     : "${title}"`, 'text/plain');
-            allure.attachment('Console Log', `📌 Meta Description: "${description}"`, 'text/plain');
-            allure.attachment('Console Log', `🌍 H1 language    : ${h1Lang}`, 'text/plain');
-            allure.attachment('Console Log', `🌍 Title language : ${titleLang}`, 'text/plain');
-            allure.attachment('Console Log', `🌍 Description lang : ${descLang}`, 'text/plain');
-            allure.attachment('Console Log', '─────────────────────────────', 'text/plain');
+            attachment('Console Log', '🌐 SEO Language Check:', 'text/plain');
+            attachment('Console Log', '─────────────────────────────', 'text/plain');
+            attachment('Console Log', `📌 H1 text        : "${h1}"`, 'text/plain');
+            attachment('Console Log', `📌 Page Title     : "${title}"`, 'text/plain');
+            attachment('Console Log', `📌 Meta Description: "${description}"`, 'text/plain');
+            attachment('Console Log', `🌍 H1 language    : ${h1Lang}`, 'text/plain');
+            attachment('Console Log', `🌍 Title language : ${titleLang}`, 'text/plain');
+            attachment('Console Log', `🌍 Description lang : ${descLang}`, 'text/plain');
+            attachment('Console Log', '─────────────────────────────', 'text/plain');
 
             // Optional: Assert that all languages match
             if (h1Lang !== descLang || titleLang !== descLang) {
-                allure.attachment('Console Warn', '❌ Language mismatch detected!', 'text/plain');
+                attachment('Console Warn', '❌ Language mismatch detected!', 'text/plain');
             } else {
-                allure.attachment('Console Log', '✅ Language match detected.', 'text/plain');
+                attachment('Console Log', '✅ Language match detected.', 'text/plain');
             }
         });
     }

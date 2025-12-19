@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { allure } from "allure-playwright";
+import { attachment } from 'allure-js-commons';
 import { clickElementByText } from '../../../helpers/utils';
 import fs from 'fs';
 import Papa from 'papaparse';
@@ -50,7 +50,7 @@ test.describe(`SEO check on ALL CMS pages (${CMS_PAGES.length} pages)`, () => {
         test(`SEO Test CMS: ${row.CMS}`, async ({ page }) => {
 
             const url = `https://www.menzzo.de/${row.CMS}`;
-            allure.attachment('Console Log', `Testing CMS page: ${url}`, 'text/plain');
+            attachment('Console Log', `Testing CMS page: ${url}`, 'text/plain');
 
             await page.goto(url);
 
@@ -75,13 +75,13 @@ test.describe(`SEO check on ALL CMS pages (${CMS_PAGES.length} pages)`, () => {
             logData += `🌍 Description lang : ${descLang}\n`;
             logData += '─────────────────────────────\n';
 
-            allure.attachment('Console Log', logData, 'text/plain');
+            attachment('Console Log', logData, 'text/plain');
 
             // Optional: Assert that all languages match
             if (h1Lang !== descLang || titleLang !== descLang) {
-                allure.attachment('Console Warn', '❌ Language mismatch detected!', 'text/plain');
+                attachment('Console Warn', '❌ Language mismatch detected!', 'text/plain');
             } else {
-                allure.attachment('Console Log', '✅ Language match detected.', 'text/plain');
+                attachment('Console Log', '✅ Language match detected.', 'text/plain');
             }
         });
     }

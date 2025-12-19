@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { allure } from "allure-playwright";
+import { attachment } from 'allure-js-commons';
 import { clickElementByText, ensurePageIsOpen } from '../../../../helpers/utils';
 import { Description, InfoTable, CheckTitleLanguage } from '../../../../helpers/Product_page_helpers/Elementer_Page';
 import { detectLanguage } from '../../../../helpers/detect_language';
@@ -35,19 +35,19 @@ test('Check_Maouro_Nl_Be_product_page', async ({ page }) => {
 
     // --- Open nl.menzzo.be ---
     await page.goto('https://nl.menzzo.be');
-    allure.attachment('Console Log', "🚪 nl.menzzo.be was opened", 'text/plain');
+    attachment('Console Log', "🚪 nl.menzzo.be was opened", 'text/plain');
 
     // --- Close Cookies popup ---
     try {
         await clickElementByText(page, "Accepteer alles");
-        allure.attachment('Console Log', "✅ Cookies was closed", 'text/plain');
+        attachment('Console Log', "✅ Cookies was closed", 'text/plain');
     } catch (error) {
-        allure.attachment('Console Warn', "⚠️ Cookie banner not found or already closed", 'text/plain');
+        attachment('Console Warn', "⚠️ Cookie banner not found or already closed", 'text/plain');
     }
 
     // --- Load categories from CSV ---
     const products = loadProductsFromCSV('data/Maouro_Product.csv');
-    allure.attachment('Console Log', `ℹ️ Loaded ${products.length} products from CSV`, 'text/plain');
+    attachment('Console Log', `ℹ️ Loaded ${products.length} products from CSV`, 'text/plain');
 
     if (products.length === 0) {
         throw new Error("❌ No products loaded! Check the CSV file path and headers (expected 'entity_id', 'sku').");
@@ -56,7 +56,7 @@ test('Check_Maouro_Nl_Be_product_page', async ({ page }) => {
     // --- Limit the number of iterations ---
     const MAX_ITERATIONS = 30;  // Reduced for testing Belgian site
     const productsToProcess = products.slice(0, MAX_ITERATIONS);
-    allure.attachment('Console Log', `ℹ️ limiting loop to ${MAX_ITERATIONS} items (Total in CSV: ${products.length})`, 'text/plain');
+    attachment('Console Log', `ℹ️ limiting loop to ${MAX_ITERATIONS} items (Total in CSV: ${products.length})`, 'text/plain');
 
     // --- Loop through all categories ---
     for (const product of productsToProcess) {
@@ -66,13 +66,13 @@ test('Check_Maouro_Nl_Be_product_page', async ({ page }) => {
         try {
             // Construct URL using entity_id
             const url = `https://nl.menzzo.be/catalog/product/view/id/${product.entity_id}`;
-            allure.attachment('Console Log', `🔹 Navigating to product: ${product.sku} (ID: ${product.entity_id}) -> ${url}`, 'text/plain');
+            attachment('Console Log', `🔹 Navigating to product: ${product.sku} (ID: ${product.entity_id}) -> ${url}`, 'text/plain');
 
             const response = await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
 
             // Check if page returned 404 or error
             if (response && response.status() >= 400) {
-                allure.attachment('Console Warn', `⚠️ Product ${product.sku} returned HTTP ${response.status()} - skipping`, 'text/plain');
+                attachment('Console Warn', `⚠️ Product ${product.sku} returned HTTP ${response.status()} - skipping`, 'text/plain');
                 continue;
             }
 
@@ -83,7 +83,7 @@ test('Check_Maouro_Nl_Be_product_page', async ({ page }) => {
             }).then(() => true).catch(() => false);
 
             if (!productFormExists) {
-                allure.attachment('Console Warn', `⚠️ Product ${product.sku} not found on Belgian site - skipping`, 'text/plain');
+                attachment('Console Warn', `⚠️ Product ${product.sku} not found on Belgian site - skipping`, 'text/plain');
                 continue;
             }
 
@@ -95,11 +95,11 @@ test('Check_Maouro_Nl_Be_product_page', async ({ page }) => {
             }
 
             if (pageSKU.toLowerCase() !== product.sku.toLowerCase()) {
-                allure.attachment('Console Warn', `❌ SKU mismatch! CSV SKU = ${product.sku}, Page SKU = ${pageSKU}. Skipping...`, 'text/plain');
+                attachment('Console Warn', `❌ SKU mismatch! CSV SKU = ${product.sku}, Page SKU = ${pageSKU}. Skipping...`, 'text/plain');
                 continue;
             }
 
-            allure.attachment('Console Log', `✅ SKU verified: ${pageSKU}`, 'text/plain');
+            attachment('Console Log', `✅ SKU verified: ${pageSKU}`, 'text/plain');
 
             // --- Validate Language with detectLanguage helper ---
             const h1Element = page.locator('h1.ax-page-title');
@@ -114,7 +114,7 @@ test('Check_Maouro_Nl_Be_product_page', async ({ page }) => {
             langResults += `   → H1 detected language: ${h1Lang}\n`;
             langResults += `   → Title detected language: ${titleLang}\n`;
             langResults += `   → Expected language: ${EXPECTED_LANGUAGE}\n`;
-            allure.attachment('Console Log', langResults, 'text/plain');
+            attachment('Console Log', langResults, 'text/plain');
 
             // Soft assertion for H1 language
             expect.soft(
@@ -129,11 +129,11 @@ test('Check_Maouro_Nl_Be_product_page', async ({ page }) => {
             ).toBeTruthy();
 
             if (h1Lang === EXPECTED_LANGUAGE && titleLang === EXPECTED_LANGUAGE) {
-                allure.attachment('Console Log', `✅ Language validation passed for ${EXPECTED_LANGUAGE.toUpperCase()}`, 'text/plain');
+                attachment('Console Log', `✅ Language validation passed for ${EXPECTED_LANGUAGE.toUpperCase()}`, 'text/plain');
             } else if (h1Lang === 'unknown' || titleLang === 'unknown') {
-                allure.attachment('Console Warn', `⚠️ Some language detection was inconclusive`, 'text/plain');
+                attachment('Console Warn', `⚠️ Some language detection was inconclusive`, 'text/plain');
             } else {
-                allure.attachment('Console Error', `❌ Language mismatch detected!`, 'text/plain');
+                attachment('Console Error', `❌ Language mismatch detected!`, 'text/plain');
             }
 
             // Check the title language (legacy function)
@@ -146,19 +146,19 @@ test('Check_Maouro_Nl_Be_product_page', async ({ page }) => {
             await InfoTable(page);
 
         } catch (error) {
-            allure.attachment('Console Error', `❌ Error processing SKU ${product.sku}: ${error}`, 'text/plain');
+            attachment('Console Error', `❌ Error processing SKU ${product.sku}: ${error}`, 'text/plain');
 
             try {
                 if (!page.isClosed()) {
                     const screenshotPath = `screenshots/error_${product.sku}.png`;
                     const screenshot = await page.screenshot({ path: screenshotPath, fullPage: true });
-                    allure.attachment(`Screenshot Error ${product.sku}`, screenshot, 'image/png');
-                    allure.attachment('Console Log', `📸 Screenshot saved to ${screenshotPath}`, 'text/plain');
+                    attachment(`Screenshot Error ${product.sku}`, screenshot, 'image/png');
+                    attachment('Console Log', `📸 Screenshot saved to ${screenshotPath}`, 'text/plain');
                 } else {
-                    allure.attachment('Console Warn', "⚠️ Could not take screenshot: Page is closed.", 'text/plain');
+                    attachment('Console Warn', "⚠️ Could not take screenshot: Page is closed.", 'text/plain');
                 }
             } catch (screenshotError) {
-                allure.attachment('Console Warn', `⚠️ Failed to take screenshot: ${screenshotError}`, 'text/plain');
+                attachment('Console Warn', `⚠️ Failed to take screenshot: ${screenshotError}`, 'text/plain');
             }
         }
     }

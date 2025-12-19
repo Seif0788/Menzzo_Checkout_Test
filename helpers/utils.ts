@@ -166,7 +166,7 @@ export async function clickElementByText(
   // 1) Try in main page
   const mainResult = await tryStrategiesOn(page);
   if (mainResult) {
-    if (debug) allure.attachment('Console Log', `✅ clickElementByText: clicked in main page context: ${text}`, 'text/plain');
+    if (debug) attachment('Console Log', `✅ clickElementByText: clicked in main page context: ${text}`, 'text/plain');
     return mainResult;
   }
 
@@ -177,7 +177,7 @@ export async function clickElementByText(
     try {
       const res = await tryStrategiesOn(frame);
       if (res) {
-        if (debug) allure.attachment('Console Log', `clickElementByText: clicked in frame: ${frame.url()} ${text}`, 'text/plain');
+        if (debug) attachment('Console Log', `clickElementByText: clicked in frame: ${frame.url()} ${text}`, 'text/plain');
         return res;
       }
     } catch { }
@@ -202,9 +202,9 @@ export async function clickElementByText(
           }
         } catch { }
       }
-      allure.attachment('Console Log', `clickElementByText debug samples: ${JSON.stringify(samples)}`, 'text/plain');
+      attachment('Console Log', `clickElementByText debug samples: ${JSON.stringify(samples)}`, 'text/plain');
     } catch (e) {
-      allure.attachment('Console Warn', `clickElementByText debug failed: ${e}`, 'text/plain');
+      attachment('Console Warn', `clickElementByText debug failed: ${e}`, 'text/plain');
     }
   }
 
@@ -289,7 +289,7 @@ export async function ClickRandomProduct(page: Page, timeout: number = 30000) {
 
   await product.click({ timeout });
 
-  allure.attachment('Console Log', `Clicked on random product [${randomIndex}]/${count}`, 'text/plain');
+  attachment('Console Log', `Clicked on random product [${randomIndex}]/${count}`, 'text/plain');
 
   return product;
 }
@@ -320,7 +320,7 @@ export async function waitForPageLoad(page: Page, timeout: number = 30000) {
       await page.waitForLoadState(state, { timeout });
     } catch (e: any) {
       if (e.message.includes('Target page, context or browser has been closed')) {
-        allure.attachment('Console Warn', `[waitForPageLoad] Page closed before ${state} state`, 'text/plain');
+        attachment('Console Warn', `[waitForPageLoad] Page closed before ${state} state`, 'text/plain');
         return; // exit gracefully
       }
       throw e;
@@ -332,7 +332,7 @@ export async function waitForPageLoad(page: Page, timeout: number = 30000) {
     try {
       await page.waitForLoadState('networkidle', { timeout });
     } catch {
-      allure.attachment('Console Warn', `[waitForPageLoad] Skipped networkidle on ${page.url()}`, 'text/plain');
+      attachment('Console Warn', `[waitForPageLoad] Skipped networkidle on ${page.url()}`, 'text/plain');
     }
   }
 }
@@ -342,7 +342,7 @@ export async function waitForPageLoad(page: Page, timeout: number = 30000) {
  * Handles AJAX delays, slow rendering, and optional iframes.
  */
 export async function waitForCheckoutReady(page: Page, timeout = 180000) {
-  allure.attachment('Console Log', '⏳ Waiting for OneStepCheckout to initialize...', 'text/plain');
+  attachment('Console Log', '⏳ Waiting for OneStepCheckout to initialize...', 'text/plain');
   const start = Date.now();
   let retries = 0;
 
@@ -350,11 +350,11 @@ export async function waitForCheckoutReady(page: Page, timeout = 180000) {
     try {
       // Ensure the page context is valid
       if (page.isClosed()) {
-        allure.attachment('Console Error', '❌ Page context is closed. Attempting recovery...', 'text/plain');
+        attachment('Console Error', '❌ Page context is closed. Attempting recovery...', 'text/plain');
         const allPages = page.context().pages();
         for (const p of allPages) {
           if (/onestepcheckout/i.test(p.url())) {
-            allure.attachment('Console Log', `🔄 Switched to new checkout page: ${p.url()}`, 'text/plain');
+            attachment('Console Log', `🔄 Switched to new checkout page: ${p.url()}`, 'text/plain');
             page = p;
             break;
           }
@@ -366,12 +366,12 @@ export async function waitForCheckoutReady(page: Page, timeout = 180000) {
 
       // Ensure we're on the checkout page
       if (!page.url().includes('onestepcheckout')) {
-        allure.attachment('Console Log', `❌ Not on the checkout page. Current URL: ${page.url()}`, 'text/plain');
+        attachment('Console Log', `❌ Not on the checkout page. Current URL: ${page.url()}`, 'text/plain');
         throw new Error('❌ Not on the checkout page.');
       }
 
-      allure.attachment('Console Log', `🔄 Current URL: ${page.url()}`, 'text/plain');
-      allure.attachment('Console Log', `🔄 Retry ${retries}: Checking for #checkout container visibility...`, 'text/plain');
+      attachment('Console Log', `🔄 Current URL: ${page.url()}`, 'text/plain');
+      attachment('Console Log', `🔄 Retry ${retries}: Checking for #checkout container visibility...`, 'text/plain');
 
       // Debugging: Log the state of the #checkout container
       const checkoutExists = await page.locator('#checkout').count();
@@ -390,16 +390,16 @@ export async function waitForCheckoutReady(page: Page, timeout = 180000) {
       // Check for the presence of the checkout container
       const checkoutContainer = page.locator('#checkout');
       if (await checkoutContainer.isVisible({ timeout: 5000 })) {
-        allure.attachment('Console Log', '✅ Checkout container is visible.', 'text/plain');
+        attachment('Console Log', '✅ Checkout container is visible.', 'text/plain');
         return;
       }
 
       // Retry logic
       retries++;
-      allure.attachment('Console Warn', `⚠️ Retry ${retries}: Checkout not ready yet. Retrying...`, 'text/plain');
+      attachment('Console Warn', `⚠️ Retry ${retries}: Checkout not ready yet. Retrying...`, 'text/plain');
       await page.waitForTimeout(3000);
     } catch (error: any) {
-      allure.attachment('Console Error', `⚠️ Error during checkout readiness check: ${error.message}`, 'text/plain');
+      attachment('Console Error', `⚠️ Error during checkout readiness check: ${error.message}`, 'text/plain');
       if (page.isClosed()) {
         throw error;
       }
@@ -428,11 +428,11 @@ export async function clickAddToCart(page: Page) {
       const btn = addToCartBtn.first();
       if (await btn.isVisible()) {
         await btn.click({ force: true });
-        allure.attachment('Console Log', '🧺 Product added to cart.', 'text/plain');
+        attachment('Console Log', '🧺 Product added to cart.', 'text/plain');
         return;
       }
     } catch (e) {
-      allure.attachment('Console Warn', `⚠️ Retry ${i + 1}/${maxRetries} failed: ${e}`, 'text/plain');
+      attachment('Console Warn', `⚠️ Retry ${i + 1}/${maxRetries} failed: ${e}`, 'text/plain');
     }
     await page.waitForTimeout(interval);
   }
@@ -459,7 +459,7 @@ export async function dismissOverlays(page: Page) {
   for (const selector of overlaySelectors) {
     const overlay = page.locator(selector);
     if (await overlay.isVisible()) {
-      allure.attachment('Console Log', `Dismissing overlay: ${selector}`, 'text/plain');
+      attachment('Console Log', `Dismissing overlay: ${selector}`, 'text/plain');
       await overlay.click({ force: true });
     }
   }
@@ -478,7 +478,7 @@ export async function CheckTimeBox(page: Page) {
   const timerExists = await timer.count() > 0;
 
   if (!prefixExists || !timerExists) {
-    allure.attachment('Console Log', '⏱️ No timerbox found on this page — skipping CheckTimeBox()', 'text/plain');
+    attachment('Console Log', '⏱️ No timerbox found on this page — skipping CheckTimeBox()', 'text/plain');
     return; // <-- Stop execution here
   }
 
@@ -494,18 +494,18 @@ export async function CheckTimeBox(page: Page) {
   expect.soft(timerText.length, 'Timer value should not be empty').toBeGreaterThan(0);
 
   // Logging
-  allure.attachment('Console Log', '⏱️ Time Box Check', 'text/plain');
-  allure.attachment('Console Log', `   Prefix text: "${prefixText}"`, 'text/plain');
-  allure.attachment('Console Log', `   Timer value: "${timerText}"`, 'text/plain');
+  attachment('Console Log', '⏱️ Time Box Check', 'text/plain');
+  attachment('Console Log', `   Prefix text: "${prefixText}"`, 'text/plain');
+  attachment('Console Log', `   Timer value: "${timerText}"`, 'text/plain');
 
   // Format check
   const timePattern = /^\d{1,2}j\s\d{1,2}h\s\d{1,2}min\s\d{1,2}s$/;
   const isValid = timePattern.test(timerText);
 
   if (isValid) {
-    allure.attachment('Console Log', '✅ Timer format is valid', 'text/plain');
+    attachment('Console Log', '✅ Timer format is valid', 'text/plain');
   } else {
-    allure.attachment('Console Log', '❌ Timer format is invalid', 'text/plain');
+    attachment('Console Log', '❌ Timer format is invalid', 'text/plain');
   }
 
   expect.soft(isValid, 'Timer format should be valid').toBeTruthy();
@@ -532,13 +532,13 @@ export async function Button_Previous(page: Page) {
   const isDisabled = await previousButton.evaluate((btn: HTMLButtonElement) => btn.disabled);
 
   if (isDisabled) {
-    allure.attachment('Console Log', '⚠️ Previous button is disabled (first slide). Cannot click.', 'text/plain');
+    attachment('Console Log', '⚠️ Previous button is disabled (first slide). Cannot click.', 'text/plain');
     return;
   }
 
   // Scroll into view and click
   await previousButton.scrollIntoViewIfNeeded();
-  allure.attachment('Console Log', '✅ Clicking the Previous button...', 'text/plain');
+  attachment('Console Log', '✅ Clicking the Previous button...', 'text/plain');
   await previousButton.click();
 }
 
@@ -562,13 +562,13 @@ export async function Button_Next(page: Page) {
   const isDisabled = await nextButton.evaluate((btn: HTMLButtonElement) => btn.disabled);
 
   if (isDisabled) {
-    allure.attachment('Console Log', '⚠️ Next button is disabled (last slide). Cannot click.', 'text/plain');
+    attachment('Console Log', '⚠️ Next button is disabled (last slide). Cannot click.', 'text/plain');
     return;
   }
 
   // Scroll into view and click
   await nextButton.scrollIntoViewIfNeeded();
-  allure.attachment('Console Log', '✅ Clicking the Next button...', 'text/plain');
+  attachment('Console Log', '✅ Clicking the Next button...', 'text/plain');
   await nextButton.click();
 }
 
@@ -578,7 +578,7 @@ export async function clickAndWaitForNavigation(
   urlPattern: RegExp | string = /onestepcheckout/,
   timeout: number = 10000
 ) {
-  allure.attachment('Console Log', `⏳ Clicking "${buttonText}" and waiting for URL or checkout form…`, 'text/plain');
+  attachment('Console Log', `⏳ Clicking "${buttonText}" and waiting for URL or checkout form…`, 'text/plain');
 
   const startTime = Date.now();
   let navigationTriggered = false;
@@ -592,14 +592,14 @@ export async function clickAndWaitForNavigation(
 
     // 1️⃣ URL NAVIGATION SUCCESS
     if (urlMatched) {
-      allure.attachment('Console Log', `✅ Navigation detected → ${currentUrl}`, 'text/plain');
+      attachment('Console Log', `✅ Navigation detected → ${currentUrl}`, 'text/plain');
       return;
     }
 
     // 2️⃣ CHECK META TAG AS SIGNAL FOR AJAX LOADED CHECKOUT
     const metaTitle = await page.locator('meta[name="title"]').getAttribute('content');
     if (metaTitle?.includes("Finaliser la commande")) {
-      allure.attachment('Console Log', '🟢 Checkout meta detected → Treating as successful navigation.', 'text/plain');
+      attachment('Console Log', '🟢 Checkout meta detected → Treating as successful navigation.', 'text/plain');
       return;
     }
 
@@ -626,7 +626,7 @@ export async function clickAndWaitForNavigation(
 
 
 export async function goToCheckout(page: Page) {
-  allure.attachment('Console Log', '⏳ Going to checkout…', 'text/plain');
+  attachment('Console Log', '⏳ Going to checkout…', 'text/plain');
 
   // 1. Ensure the button is visible
   const button = page.locator('text="Valider mon panier"');
@@ -644,7 +644,7 @@ export async function goToCheckout(page: Page) {
     page.waitForSelector("#one-step-checkout-form", { timeout: 20000 })
   ]);
 
-  allure.attachment('Console Log', '✅ OneStepCheckout detected!', 'text/plain');
+  attachment('Console Log', '✅ OneStepCheckout detected!', 'text/plain');
 }
 
 export async function search_nl(page: Page, productName: string) {
@@ -675,7 +675,7 @@ export async function clickAndWaitForCheckout_NL(
   timeout: number = 15000,
   retryInterval: number = 2000
 ) {
-  allure.attachment('Console Log', `⏳ Clicking "${buttonText}" and waiting for checkout…`, 'text/plain');
+  attachment('Console Log', `⏳ Clicking "${buttonText}" and waiting for checkout…`, 'text/plain');
 
   const startTime = Date.now();
   let checkoutLoaded = false;
@@ -691,7 +691,7 @@ export async function clickAndWaitForCheckout_NL(
     const metaMatched = metaTitle?.includes("Rond de bestelling af") || false;
 
     if (urlMatched || metaMatched) {
-      allure.attachment('Console Log', `✅ Checkout detected → ${currentUrl}`, 'text/plain');
+      attachment('Console Log', `✅ Checkout detected → ${currentUrl}`, 'text/plain');
       checkoutLoaded = true;
       break;
     }
@@ -700,7 +700,7 @@ export async function clickAndWaitForCheckout_NL(
     try {
       await clickElementByText(page, buttonText, 3000);
     } catch {
-      allure.attachment('Console Warn', '⚠️ Click attempt failed, retrying...', 'text/plain');
+      attachment('Console Warn', '⚠️ Click attempt failed, retrying...', 'text/plain');
     }
 
     // Wait a bit before next retry
@@ -760,13 +760,13 @@ export async function clickAndReturnProduct(
 
 export async function selectCategory(page: Page, categoryName: string) {
   await clickElementByText(page, categoryName);
-  allure.attachment('Console Log', `✅ Selected category: ${categoryName}`, 'text/plain');
+  attachment('Console Log', `✅ Selected category: ${categoryName}`, 'text/plain');
 }
 
 
 export async function ensurePageIsOpen(page: Page, context: BrowserContext) {
   if (page.isClosed()) {
-    allure.attachment('Console Log', '🔄 Reopening new page because previous one was closed...', 'text/plain');
+    attachment('Console Log', '🔄 Reopening new page because previous one was closed...', 'text/plain');
     page = await context.newPage();
     await page.goto("https://www.menzzo.fr");
   }

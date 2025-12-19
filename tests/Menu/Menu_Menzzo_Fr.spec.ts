@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { allure } from "allure-playwright";
+import { attachment } from 'allure-js-commons';
 import { gotopageAndVerifyTitle, clickElementByText } from "../../helpers/utils";
 import * as fs from 'fs';
 import * as path from 'path';
@@ -8,16 +8,16 @@ test("Menu_Menzzo_Fr", async ({ page }) => {
     try {
         //Open the browser
         await gotopageAndVerifyTitle(page, "https://www.menzzo.fr/", "Menzzo : Table & Chaise Design, Meubles Mobilier Scandinave pas cher", 20000);
-        allure.attachment('Console Log', "✅ Page opened and title verified.", 'text/plain');
+        attachment('Console Log', "✅ Page opened and title verified.", 'text/plain');
 
         //Close cookies popup
         await clickElementByText(page, "Accepter et continuer");
-        allure.attachment('Console Log', "✅ Cookies popup closed.", 'text/plain');
+        attachment('Console Log', "✅ Cookies popup closed.", 'text/plain');
 
         //Verify that the menu is displayed
         const Menu = page.locator("#store\\.menu");
         await expect(Menu).toBeVisible();
-        allure.attachment('Console Log', "✅ Menu is displayed.", 'text/plain');
+        attachment('Console Log', "✅ Menu is displayed.", 'text/plain');
 
         // DEBUG: Log top-level menu items to understand exact text structure
         // Try different selectors to find the menu structure
@@ -25,22 +25,22 @@ test("Menu_Menzzo_Fr", async ({ page }) => {
         let topLevelTexts = await topLevelLinks.allInnerTexts();
 
         if (topLevelTexts.length === 0) {
-            allure.attachment('Console Warn', "⚠️ No items found with '> li > a', trying 'li > a'", 'text/plain');
+            attachment('Console Warn', "⚠️ No items found with '> li > a', trying 'li > a'", 'text/plain');
             topLevelLinks = Menu.locator('li > a');
             topLevelTexts = await topLevelLinks.allInnerTexts();
         }
 
         if (topLevelTexts.length === 0) {
-            allure.attachment('Console Warn', "⚠️ No items found with 'li > a', trying just 'a'", 'text/plain');
+            attachment('Console Warn', "⚠️ No items found with 'li > a', trying just 'a'", 'text/plain');
             topLevelLinks = Menu.locator('a');
             topLevelTexts = await topLevelLinks.allInnerTexts();
         }
 
-        allure.attachment('Console Log', `🔍 Found ${topLevelTexts.length} menu items`, 'text/plain');
+        attachment('Console Log', `🔍 Found ${topLevelTexts.length} menu items`, 'text/plain');
 
         // Read and parse CSV data
         const csvPath = path.resolve(process.cwd(), "menzzo_menu_data.csv");
-        allure.attachment('Console Log', `Reading CSV from: ${csvPath}`, 'text/plain');
+        attachment('Console Log', `Reading CSV from: ${csvPath}`, 'text/plain');
 
         if (!fs.existsSync(csvPath)) {
             throw new Error(`CSV file not found at ${csvPath}`);
@@ -67,11 +67,11 @@ test("Menu_Menzzo_Fr", async ({ page }) => {
             }
         }
 
-        allure.attachment('Console Log', `Loaded ${menuMap.size} categories from CSV.`, 'text/plain');
+        attachment('Console Log', `Loaded ${menuMap.size} categories from CSV.`, 'text/plain');
 
         // Iterate through categories and verify subcategories
         for (const [category, subcategories] of menuMap) {
-            allure.attachment('Console Log', `\n🔍 Checking Category: ${category}`, 'text/plain');
+            attachment('Console Log', `\n🔍 Checking Category: ${category}`, 'text/plain');
 
             // Normalize category name for comparison
             // The menu has newlines and commas, CSV has spaces
@@ -107,14 +107,14 @@ test("Menu_Menzzo_Fr", async ({ page }) => {
                         normalizedText.includes(targetCategory) ||
                         targetCategory.includes(normalizedText))) {
                     categoryLink = link;
-                    allure.attachment('Console Log', `   ✅ Matched "${text.replace(/\n/g, ' ')}" with "${category}"`, 'text/plain');
+                    attachment('Console Log', `   ✅ Matched "${text.replace(/\n/g, ' ')}" with "${category}"`, 'text/plain');
                     break;
                 }
             }
 
             if (!categoryLink) {
-                allure.attachment('Console Warn', `⚠️ Category not found in menu: ${category}`, 'text/plain');
-                allure.attachment('Console Warn', `   Looking for normalized: "${targetCategory}"`, 'text/plain');
+                attachment('Console Warn', `⚠️ Category not found in menu: ${category}`, 'text/plain');
+                attachment('Console Warn', `   Looking for normalized: "${targetCategory}"`, 'text/plain');
                 continue;
             }
 
@@ -125,7 +125,7 @@ test("Menu_Menzzo_Fr", async ({ page }) => {
             // Small wait for animation/rendering
             await page.waitForTimeout(1500);
 
-            allure.attachment('Console Log', `   Hovered ${category}. Checking ${subcategories.length} subcategories...`, 'text/plain');
+            attachment('Console Log', `   Hovered ${category}. Checking ${subcategories.length} subcategories...`, 'text/plain');
 
             let foundCount = 0;
             let notFoundCount = 0;
@@ -139,19 +139,19 @@ test("Menu_Menzzo_Fr", async ({ page }) => {
                     await expect(subLink).toBeVisible({ timeout: 2000 });
                     foundCount++;
                 } catch (e) {
-                    allure.attachment('Console Error', `   ❌ Subcategory not found or not visible: ${sub}`, 'text/plain');
+                    attachment('Console Error', `   ❌ Subcategory not found or not visible: ${sub}`, 'text/plain');
                     notFoundCount++;
                 }
             }
-            allure.attachment('Console Log', `   ✅ ${foundCount}/${subcategories.length} subcategories verified for ${category}`, 'text/plain');
+            attachment('Console Log', `   ✅ ${foundCount}/${subcategories.length} subcategories verified for ${category}`, 'text/plain');
             if (notFoundCount > 0) {
-                allure.attachment('Console Warn', `   ⚠️ ${notFoundCount} subcategories not found`, 'text/plain');
+                attachment('Console Warn', `   ⚠️ ${notFoundCount} subcategories not found`, 'text/plain');
             }
         }
 
-        allure.attachment('Console Log', "\n✅ ✅ ✅ Menu verification completed successfully! ✅ ✅ ✅", 'text/plain');
+        attachment('Console Log', "\n✅ ✅ ✅ Menu verification completed successfully! ✅ ✅ ✅", 'text/plain');
     } catch (error) {
-        allure.attachment('Console Error', `❌ Test failed with error: ${error}`, 'text/plain');
+        attachment('Console Error', `❌ Test failed with error: ${error}`, 'text/plain');
         throw error;
     }
 });

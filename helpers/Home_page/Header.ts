@@ -1,5 +1,5 @@
 import { Page, expect } from '@playwright/test';
-import { allure } from "allure-playwright";
+import { attachment } from 'allure-js-commons';
 
 export async function Check_logo(page: Page) {
     // Wait for the logo to be visible
@@ -95,9 +95,11 @@ export async function Check_mini_cart(page: Page) {
 
     const miniCartLinkText = await miniCartLink.locator('span.text').first().textContent();
 
-    allure.attachment('Console Log', `Mini Cart Link Text: ${miniCartLinkText}`, 'text/plain');
-    allure.attachment('Console Log', `Mini Cart Link Href: ${miniCartLinkHref}`, 'text/plain');
+    attachment('Console Log', `Mini Cart Link Text: ${miniCartLinkText}`, 'text/plain');
+    attachment('Console Log', `Mini Cart Link Href: ${miniCartLinkHref}`, 'text/plain');
+    return {
+        miniCartLinkText: miniCartLinkText?.trim() ?? '',
+        miniCartLinkHref: miniCartLinkHref
+    };
 
-    return miniCartLinkText?.trim() ?? '';
-    return miniCartLinkHref;
 }   

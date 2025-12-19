@@ -1,5 +1,5 @@
 import { test, expect, Page } from '@playwright/test';
-import { allure } from "allure-playwright";
+import { attachment } from 'allure-js-commons';
 import { clickElementByText, search, ClickRandomProduct, clickElementByTextWithPopUp, waitForCheckoutReady, clickAndWaitForNavigation } from '../../../helpers/utils';
 import { performCheckout, CheckoutData } from '../../../helpers/Checkout/General_Checkout';
 
@@ -10,12 +10,12 @@ test('Klarna_Fr', async ({ page }) => {
   page.on('console', msg => {
     const type = msg.type();
     if (type === 'error' || type === 'warning') {
-      allure.attachment(`Browser ${type.toUpperCase()}`, msg.text(), 'text/plain');
+      attachment(`Browser ${type.toUpperCase()}`, msg.text(), 'text/plain');
     }
   });
 
   page.on('pageerror', err => {
-    allure.attachment('Browser Page Error', err.message, 'text/plain');
+    attachment('Browser Page Error', err.message, 'text/plain');
   });
 
   //Open Menzzo.fr
@@ -30,9 +30,9 @@ test('Klarna_Fr', async ({ page }) => {
   //Click a random product
   await ClickRandomProduct(page);
 
-  allure.attachment('Console Log', '⏳ Waiting for product page to load...', 'text/plain');
+  attachment('Console Log', '⏳ Waiting for product page to load...', 'text/plain');
   await page.waitForLoadState('networkidle', { timeout: 60000 });
-  allure.attachment('Console Log', '✅ Product page loaded.', 'text/plain');
+  attachment('Console Log', '✅ Product page loaded.', 'text/plain');
 
   //Add to cart
   await clickElementByText(page, "Ajouter au panier");
@@ -47,23 +47,23 @@ test('Klarna_Fr', async ({ page }) => {
 
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
-      allure.attachment('Console Log', `⏳ Attempt ${attempt}: Navigating to checkout...`, 'text/plain');
+      attachment('Console Log', `⏳ Attempt ${attempt}: Navigating to checkout...`, 'text/plain');
       await clickAndWaitForNavigation(page, "Valider mon panier");
 
       // Wait for checkout readiness
       await waitForCheckoutReady(checkoutPage);
-      allure.attachment('Console Log', '✅ Checkout form ready.', 'text/plain');
+      attachment('Console Log', '✅ Checkout form ready.', 'text/plain');
       success = true;
       break;
     } catch (err) {
-      allure.attachment('Console Warn', `⚠️ Attempt ${attempt} failed: ${err}`, 'text/plain');
+      attachment('Console Warn', `⚠️ Attempt ${attempt} failed: ${err}`, 'text/plain');
       // Check for new tab / reload
       const allPages = page.context().pages();
       for (const p of allPages) {
         const url = p.url();
         if (/onestepcheckout/i.test(url)) {
           checkoutPage = p;
-          allure.attachment('Console Log', `🔄 Switched to new checkout page: ${url}`, 'text/plain');
+          attachment('Console Log', `🔄 Switched to new checkout page: ${url}`, 'text/plain');
           break;
         }
       }
@@ -91,10 +91,10 @@ test('Klarna_Fr', async ({ page }) => {
   for (let attempt = 1; attempt <= 5; attempt++) {
     try {
       await performCheckout(checkoutPage, checkoutData);
-      allure.attachment('Console Log', `✅ Checkout performed successfully on attempt ${attempt}`, 'text/plain');
+      attachment('Console Log', `✅ Checkout performed successfully on attempt ${attempt}`, 'text/plain');
 
       // 2️⃣ Wait for Klarna popup or redirect INSIDE the loop
-      allure.attachment('Console Log', '⏳ Waiting for Klarna popup or redirect...', 'text/plain');
+      attachment('Console Log', '⏳ Waiting for Klarna popup or redirect...', 'text/plain');
 
       const popupOrRedirect = await Promise.race([
         page.waitForEvent('popup', { timeout: 60000 }).then(p => ({ type: 'popup', page: p })),
@@ -105,21 +105,21 @@ test('Klarna_Fr', async ({ page }) => {
         const popup = popupOrRedirect.page as Page;
         await popup.waitForLoadState();
         await expect(popup).toHaveURL(/klarna\.com/);
-        allure.attachment('Console Log', "✅ Klarna popup detected!", 'text/plain');
+        attachment('Console Log', "✅ Klarna popup detected!", 'text/plain');
       } else {
-        allure.attachment('Console Log', "✅ Klarna redirect detected!", 'text/plain');
+        attachment('Console Log', "✅ Klarna redirect detected!", 'text/plain');
       }
 
       // If successful, break the loop
       break;
 
     } catch (err) {
-      allure.attachment('Console Warn', `⚠️ Attempt ${attempt} failed: ${err}`, 'text/plain');
-      allure.attachment('Console Warn', `⚠️ Current URL: ${page.url()}`, 'text/plain');
+      attachment('Console Warn', `⚠️ Attempt ${attempt} failed: ${err}`, 'text/plain');
+      attachment('Console Warn', `⚠️ Current URL: ${page.url()}`, 'text/plain');
 
       if (attempt === 5) throw err;
 
-      allure.attachment('Console Log', "🔄 Reloading page and retrying...", 'text/plain');
+      attachment('Console Log', "🔄 Reloading page and retrying...", 'text/plain');
       await page.reload();
       await page.waitForLoadState('networkidle');
 

@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { allure } from "allure-playwright";
+import { attachment } from 'allure-js-commons';
 import { clickElementByText, search, ClickRandomProduct, clickElementByTextWithPopUp, waitForCheckoutReady, clickAndWaitForNavigation } from '../../../helpers/utils';
 import { performCheckout, CheckoutData } from '../../../helpers/Checkout/General_Checkout';
 
@@ -19,9 +19,9 @@ test('SeQura_Fr', async ({ page }) => {
   await ClickRandomProduct(page);
 
   // Wait for product page to load
-  allure.attachment('Console Log', '⏳ Waiting for product page to load...', 'text/plain');
+  attachment('Console Log', '⏳ Waiting for product page to load...', 'text/plain');
   await page.waitForLoadState('networkidle', { timeout: 60000 });
-  allure.attachment('Console Log', '✅ Product page loaded.', 'text/plain');
+  attachment('Console Log', '✅ Product page loaded.', 'text/plain');
 
   //Click in "Ajouter au panier"
   await clickElementByText(page, "Ajouter au panier");
@@ -32,9 +32,9 @@ test('SeQura_Fr', async ({ page }) => {
   // Use robust navigation helper
   await clickAndWaitForNavigation(page, "Valider mon panier", /onestepcheckout/);
 
-  allure.attachment('Console Log', '✅ Navigation to checkout complete. Waiting for OneStepCheckout...', 'text/plain');
+  attachment('Console Log', '✅ Navigation to checkout complete. Waiting for OneStepCheckout...', 'text/plain');
 
-  allure.attachment('Console Log', '✅ Checkout page detected.', 'text/plain');
+  attachment('Console Log', '✅ Checkout page detected.', 'text/plain');
 
   // 6️⃣ Wait for checkout form readiness
   let checkoutPage = page;
@@ -43,14 +43,14 @@ test('SeQura_Fr', async ({ page }) => {
     await waitForCheckoutReady(page);
   } catch (err) {
     if (String(err).includes('Target page') || String(err).includes('closed')) {
-      allure.attachment('Console Warn', '⚠️ Detected checkout reload or new tab — recovering...', 'text/plain');
+      attachment('Console Warn', '⚠️ Detected checkout reload or new tab — recovering...', 'text/plain');
       // Look for a new checkout page in the context
       const allPages = page.context().pages();
       for (const p of allPages) {
         const url = p.url();
         if (/onestepcheckout/i.test(url)) {
           checkoutPage = p;
-          //  allure.attachment('Console Log', `🔄 Switched to new checkout page: ${url}`, 'text/plain');
+          //  attachment('Console Log', `🔄 Switched to new checkout page: ${url}`, 'text/plain');
           break;
         }
       }
@@ -75,22 +75,22 @@ test('SeQura_Fr', async ({ page }) => {
   };
 
   await performCheckout(checkoutPage, checkoutData);
-  allure.attachment('Console Log', '✅ Checkout performed successfully.', 'text/plain');
+  attachment('Console Log', '✅ Checkout performed successfully.', 'text/plain');
 
   // 9️⃣ Confirm navigation to payment method page
   // Refine the locator for the payment method page title
-  allure.attachment('Console Log', '⏳ Verifying navigation to payment method page...', 'text/plain');
+  attachment('Console Log', '⏳ Verifying navigation to payment method page...', 'text/plain');
   await checkoutPage.waitForSelector('h1.page-title', { state: 'visible', timeout: 60000 });
   const pageTitle = await checkoutPage.locator('h1.page-title').innerText();
   expect(pageTitle).toMatch(/Finaliser la commande/i);
-  allure.attachment('Console Log', '✅ Successfully navigated to payment method page.', 'text/plain');
+  attachment('Console Log', '✅ Successfully navigated to payment method page.', 'text/plain');
 
   // Wait for SeQura payment page to load
-  allure.attachment('Console Log', '⏳ Wait for SeQura Widget to load...', 'text/plain');
+  attachment('Console Log', '⏳ Wait for SeQura Widget to load...', 'text/plain');
 
   // Wait for any navigation or page changes after clicking pay
   await checkoutPage.waitForLoadState('networkidle', { timeout: 60000 });
-  allure.attachment('Console Log', '✅ Page loaded after payment selection.', 'text/plain');
+  attachment('Console Log', '✅ Page loaded after payment selection.', 'text/plain');
 
 
 });

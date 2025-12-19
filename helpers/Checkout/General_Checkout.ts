@@ -1,5 +1,5 @@
 import { ElementHandle, Page, expect } from '@playwright/test';
-import { allure } from "allure-playwright";
+import { attachment } from 'allure-js-commons';
 
 const paymentMethodMap: Record<string, string> = {
   Stripe: '#stripe_payments_checkout',
@@ -112,7 +112,7 @@ export async function performCheckout(page: Page, data: CheckoutData) {
     ? (htmlLangRaw as LangType)
     : 'fr'; // fallback to French
 
-  allure.attachment('Console Log', `🌐 Page language detected: ${lang}`, 'text/plain');
+  attachment('Console Log', `🌐 Page language detected: ${lang}`, 'text/plain');
 
   // -------------------------------
   // Fill address dynamically
@@ -173,7 +173,7 @@ export async function performCheckout(page: Page, data: CheckoutData) {
       return false;
     }, 15, 300);
 
-    allure.attachment('Console Log', `✅ Selected delivery method: ${data.deliveryMethod}`, 'text/plain');
+    attachment('Console Log', `✅ Selected delivery method: ${data.deliveryMethod}`, 'text/plain');
   }
 
   // -------------------------------
@@ -212,7 +212,7 @@ export async function performCheckout(page: Page, data: CheckoutData) {
     }, 15, 300);
 
     if (!success) throw new Error(`❌ Failed to select payment method "${data.paymentMethod}"`);
-    allure.attachment('Console Log', `✅ Selected payment method: ${data.paymentMethod}`, 'text/plain');
+    attachment('Console Log', `✅ Selected payment method: ${data.paymentMethod}`, 'text/plain');
     await sleep(2000); // Wait for any scripts to run after selection
   }
 
@@ -233,7 +233,7 @@ export async function performCheckout(page: Page, data: CheckoutData) {
   // -------------------------------
   // Accept terms checkbox
   // -------------------------------
-  allure.attachment('Console Log', '🔍 Checking for terms checkbox...', 'text/plain');
+  attachment('Console Log', '🔍 Checking for terms checkbox...', 'text/plain');
   const agreementLocator = 'input[name^="agreement"]';
 
   let agreementFound = false;
@@ -241,7 +241,7 @@ export async function performCheckout(page: Page, data: CheckoutData) {
     await page.waitForSelector(agreementLocator, { state: 'attached', timeout: 5000 });
     agreementFound = true;
   } catch (e) {
-    allure.attachment('Console Log', 'ℹ️ Agreement checkbox not found (timeout). Skipping.', 'text/plain');
+    attachment('Console Log', 'ℹ️ Agreement checkbox not found (timeout). Skipping.', 'text/plain');
   }
 
   if (agreementFound) {
@@ -252,7 +252,7 @@ export async function performCheckout(page: Page, data: CheckoutData) {
       for (const cb of checkboxes) {
         if (await cb.isVisible() && !(await cb.isDisabled())) {
           agreementCheckbox = cb as ElementHandle<HTMLInputElement>;
-          allure.attachment('Console Log', `✅ Found visible & enabled checkbox (attempt ${i + 1})`, 'text/plain');
+          attachment('Console Log', `✅ Found visible & enabled checkbox (attempt ${i + 1})`, 'text/plain');
           break;
         }
       }
@@ -271,19 +271,19 @@ export async function performCheckout(page: Page, data: CheckoutData) {
       }, 15, 1000);
 
       if (!successCheckbox) {
-        allure.attachment('Console Warn', `⚠️ Failed to check the terms checkbox despite finding it.`, 'text/plain');
+        attachment('Console Warn', `⚠️ Failed to check the terms checkbox despite finding it.`, 'text/plain');
       } else {
-        allure.attachment('Console Log', '✅ Terms checkbox checked.', 'text/plain');
+        attachment('Console Log', '✅ Terms checkbox checked.', 'text/plain');
       }
     } else {
-      allure.attachment('Console Log', '⚠️ Agreement checkbox present in DOM but none visible/enabled. Skipping.', 'text/plain');
+      attachment('Console Log', '⚠️ Agreement checkbox present in DOM but none visible/enabled. Skipping.', 'text/plain');
     }
   }
 
   // -------------------------------
   // Confirm order / Pay button
   // -------------------------------
-  allure.attachment('Console Log', '🔍 Looking for pay button...', 'text/plain');
+  attachment('Console Log', '🔍 Looking for pay button...', 'text/plain');
   const payBtn = page.locator('button.action.primary.checkout:visible').first();
 
   const clickedPay = await retryAction(async () => {
@@ -297,5 +297,5 @@ export async function performCheckout(page: Page, data: CheckoutData) {
 
   if (!clickedPay) throw new Error('❌ Pay button not clickable or not found');
 
-  allure.attachment('Console Log', `✅ Clicked pay button, waiting for ${data.paymentMethod} redirect...`, 'text/plain');
+  attachment('Console Log', `✅ Clicked pay button, waiting for ${data.paymentMethod} redirect...`, 'text/plain');
 }

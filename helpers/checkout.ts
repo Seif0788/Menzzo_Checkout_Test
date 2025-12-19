@@ -1,5 +1,5 @@
 import { ElementHandle, Page, expect } from '@playwright/test';
-import { allure } from "allure-playwright";
+import { attachment } from 'allure-js-commons';
 
 const paymentMethodMap: Record<string, string> = {
   Stripe: '#stripe_payments_checkout',
@@ -77,7 +77,7 @@ export async function performCheckout(page: Page, data: CheckoutData) {
           checked: (el as HTMLInputElement).checked,
         }))
     );
-    allure.attachment('Console Log', `🔍 Visible delivery options: ${JSON.stringify(visibleOptions)}`, 'text/plain');
+    attachment('Console Log', `🔍 Visible delivery options: ${JSON.stringify(visibleOptions)}`, 'text/plain');
 
     const success = await retryAction(async () => {
       const element = await radioLocator.first();
@@ -90,7 +90,7 @@ export async function performCheckout(page: Page, data: CheckoutData) {
     }, 15, 300);
 
     if (!success) throw new Error(`❌ Failed to select delivery method "${data.deliveryMethod}"`);
-    allure.attachment('Console Log', `✅ Selected delivery method: ${data.deliveryMethod}`, 'text/plain');
+    attachment('Console Log', `✅ Selected delivery method: ${data.deliveryMethod}`, 'text/plain');
   }
 
   // -------------------------------
@@ -110,7 +110,7 @@ export async function performCheckout(page: Page, data: CheckoutData) {
     }, 15, 300);
 
     if (!success) throw new Error(`❌ Failed to select payment method "${data.paymentMethod}"`);
-    allure.attachment('Console Log', `✅ Selected payment method: ${data.paymentMethod}`, 'text/plain');
+    attachment('Console Log', `✅ Selected payment method: ${data.paymentMethod}`, 'text/plain');
   }
 
   // -------------------------------
@@ -130,7 +130,7 @@ export async function performCheckout(page: Page, data: CheckoutData) {
   // -------------------------------
   // Accept terms and verify checkbox
   // -------------------------------
-  allure.attachment('Console Log', '🔍 Checking and accepting terms...', 'text/plain');
+  attachment('Console Log', '🔍 Checking and accepting terms...', 'text/plain');
 
   const agreementLocator = 'input[name="agreement[1]"]';
 
@@ -147,7 +147,7 @@ export async function performCheckout(page: Page, data: CheckoutData) {
       const isDisabled = await cb.isDisabled();
       if (isVisible && !isDisabled) {
         agreementCheckbox = cb as ElementHandle<HTMLInputElement>;
-        allure.attachment('Console Log', `✅ Found visible & enabled checkbox (attempt ${i + 1})`, 'text/plain');
+        attachment('Console Log', `✅ Found visible & enabled checkbox (attempt ${i + 1})`, 'text/plain');
         break;
       }
     }
@@ -163,7 +163,7 @@ export async function performCheckout(page: Page, data: CheckoutData) {
         disabled: (el as HTMLInputElement).disabled,
       }))
     );
-    allure.attachment('Console Error', `❌ No visible checkbox found. States: ${JSON.stringify(allStates)}`, 'text/plain');
+    attachment('Console Error', `❌ No visible checkbox found. States: ${JSON.stringify(allStates)}`, 'text/plain');
     throw new Error('Agreement checkbox did not appear visible/enabled.');
   }
 
@@ -182,12 +182,12 @@ export async function performCheckout(page: Page, data: CheckoutData) {
     throw new Error(`❌ Failed to check the terms checkbox. Current URL: ${currentUrl}`);
   }
 
-  allure.attachment('Console Log', '✅ Terms checkbox checked.', 'text/plain');
+  attachment('Console Log', '✅ Terms checkbox checked.', 'text/plain');
 
   // -------------------------------
   // Confirm order / Pay
   // -------------------------------
-  allure.attachment('Console Log', '🔍 Looking for pay button...', 'text/plain');
+  attachment('Console Log', '🔍 Looking for pay button...', 'text/plain');
   const payBtn = page.getByRole('button', { name: /Payer ma commande/i }).first();
 
   const clickedPay = await retryAction(async () => {
@@ -203,6 +203,6 @@ export async function performCheckout(page: Page, data: CheckoutData) {
 
   if (!clickedPay) throw new Error('❌ Pay button not clickable or not found');
 
-  allure.attachment('Console Log', `✅ Clicked pay button, waiting for ${data.paymentMethod} redirect...`, 'text/plain');
+  attachment('Console Log', `✅ Clicked pay button, waiting for ${data.paymentMethod} redirect...`, 'text/plain');
 
 }

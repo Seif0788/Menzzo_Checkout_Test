@@ -1,5 +1,5 @@
 import { test, expect, Page } from '@playwright/test';
-import { allure } from "allure-playwright";
+import { attachment } from 'allure-js-commons';
 import { clickElementByText, clickAndReturnProduct, ClickRandomProduct, search } from '../../../helpers/utils';
 import { getProductPrice, getLowPrice } from '../../../helpers/Product_page_helpers/Elementer_Page';
 import fs from 'fs';
@@ -51,13 +51,13 @@ test.describe(`Price check (random SKUs x${TEST_COUNT})`, () => {
         if (!randomProduct) {
           throw new Error(`Product with ID ${SPECIFIC_PRODUCT_ID} not found in CSV`);
         }
-        allure.attachment('Console Log', `🎯 Test #${i} → Specific ID selected: ${randomProduct.SKU}, ID: ${randomProduct.id}`, 'text/plain');
+        attachment('Console Log', `🎯 Test #${i} → Specific ID selected: ${randomProduct.SKU}, ID: ${randomProduct.id}`, 'text/plain');
       } else {
         // Pick a random product that has a valid ID
         do {
           randomProduct = Price_Update[Math.floor(Math.random() * Price_Update.length)];
         } while (!randomProduct.id || randomProduct.id === '#N/A');
-        allure.attachment('Console Log', `🎯 Test #${i} → Random SKU selected: ${randomProduct.SKU}, ID: ${randomProduct.id}`, 'text/plain');
+        attachment('Console Log', `🎯 Test #${i} → Random SKU selected: ${randomProduct.SKU}, ID: ${randomProduct.id}`, 'text/plain');
       }
 
       const expectedPrice = parseFloat(randomProduct.Price);
@@ -67,13 +67,13 @@ test.describe(`Price check (random SKUs x${TEST_COUNT})`, () => {
 
       // Get the price
       const productPrice = await getProductPrice(page);
-      allure.attachment('Console Log', `💶 Price for SKU ${randomProduct.SKU}: ${productPrice}`, 'text/plain');
+      attachment('Console Log', `💶 Price for SKU ${randomProduct.SKU}: ${productPrice}`, 'text/plain');
 
       // Compare price before assertion
       if (productPrice !== expectedPrice) {
-        allure.attachment('Console Error', `❌ PRICE MISMATCH for SKU ${randomProduct.SKU}\nExpected: ${expectedPrice}\nFound:    ${productPrice}`, 'text/plain');
+        attachment('Console Error', `❌ PRICE MISMATCH for SKU ${randomProduct.SKU}\nExpected: ${expectedPrice}\nFound:    ${productPrice}`, 'text/plain');
       } else {
-        allure.attachment('Console Log', `✅ Price is correct for SKU ${randomProduct.SKU}`, 'text/plain');
+        attachment('Console Log', `✅ Price is correct for SKU ${randomProduct.SKU}`, 'text/plain');
       }
 
       // Final assertion (keeps Playwright validation)
@@ -85,19 +85,19 @@ test.describe(`Price check (random SKUs x${TEST_COUNT})`, () => {
 
         // Get the Low price
         const LowproductPrice = await getLowPrice(page);
-        allure.attachment('Console Log', `💶 Low Price for SKU ${randomProduct.SKU}: ${LowproductPrice}`, 'text/plain');
+        attachment('Console Log', `💶 Low Price for SKU ${randomProduct.SKU}: ${LowproductPrice}`, 'text/plain');
 
         // Compare price before assertion
         if (LowproductPrice !== expectedLP30) {
-          allure.attachment('Console Error', `❌ LOW PRICE MISMATCH for SKU ${randomProduct.SKU}\nExpected: ${expectedLP30}\nFound:    ${LowproductPrice}`, 'text/plain');
+          attachment('Console Error', `❌ LOW PRICE MISMATCH for SKU ${randomProduct.SKU}\nExpected: ${expectedLP30}\nFound:    ${LowproductPrice}`, 'text/plain');
         } else {
-          allure.attachment('Console Log', `✅ Low Price is correct for SKU ${randomProduct.SKU}`, 'text/plain');
+          attachment('Console Log', `✅ Low Price is correct for SKU ${randomProduct.SKU}`, 'text/plain');
         }
 
         // Final assertion (keeps Playwright validation)
         expect(LowproductPrice).toBe(expectedLP30);
       } else {
-        allure.attachment('Console Log', `⏭️  Skipping LP30 check for SKU ${randomProduct.SKU} (no LP30 value in CSV)`, 'text/plain');
+        attachment('Console Log', `⏭️  Skipping LP30 check for SKU ${randomProduct.SKU} (no LP30 value in CSV)`, 'text/plain');
       }
 
     });
