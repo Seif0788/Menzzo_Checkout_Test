@@ -9,8 +9,6 @@ jobs:
   test:
     name: Run Playwright Tests
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
 
     steps:
       - name: Checkout Repository
@@ -26,95 +24,7 @@ jobs:
 
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
-
-      - name: Install Allure
-        run: npm install --save-dev allure-playwright
-
       - name: Prepare result directories
-        run: |
-          mkdir -p test-results
-          mkdir -p allure-results
-          mkdir -p allure-report
-
+        run: mkdir -p test-results
       - name: Run Playwright Tests
-        id: playwright
-        continue-on-error: true
-        run: |
-          npx playwright test --project=Clean_FR_Cart
-
-      - name: Install jq
-        if: always()
-        run: sudo apt-get update && sudo apt-get install -y jq
-
-      - name: Extract Test Results
-        id: extract
-        if: always()
-        run: |
-          # Use absolute path
-          RESULT_FILE="${{ github.workspace }}/test-results/results.json"
-          
-          if [ -f "$RESULT_FILE" ]; then
-            PASSED=$(jq '.stats.expected // 0' "$RESULT_FILE")
-            FAILED=$(jq '.stats.unexpected // 0' "$RESULT_FILE")
-            TOTAL=$(jq '.stats.total // 0' "$RESULT_FILE")
-
-            echo "Debug: Detected Passed=$PASSED, Failed=$FAILED, Total=$TOTAL"
-          else
-            echo "Debug: Result file not found!"
-            PASSED=0; FAILED=0; TOTAL=0
-          fi
-
-          # Save to Env for later steps
-          echo "PASSED=$PASSED" >> $GITHUB_ENV
-          echo "FAILED=$FAILED" >> $GITHUB_ENV
-          echo "TOTAL=$TOTAL" >> $GITHUB_ENV
-          echo "RESULT_FILE_PATH=$RESULT_FILE" >> $GITHUB_ENV # <--- ADDED THIS
-
-          if [ "$FAILED" -gt 0 ] || [ "$TOTAL" -eq 0 ]; then
-            echo "STATUS_EMOJI=🟢 Success" >> $GITHUB_ENV
-          else
-            echo "STATUS_EMOJI=🔴 Failure" >> $GITHUB_ENV
-          fi
-          
-          # Simplified Pages URL
-          echo "PAGES_URL=https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}" >> $GITHUB_ENV
-
-      - name: Generate Allure Report
-        if: always()
-        run: |
-          # Install allure CLI if not present
-          npm install -g allure-commandline
-          # Generate report. Ensure it points to 'allure-results'
-          allure generate allure-results -o allure-report --clean
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        if: always()
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./allure-report
-          publish_branch: gh-pages
-
-      - name: Send Email Clean Card Notification
-        uses: dawidd6/action-send-mail@v4
-        if: always()
-        with:
-          server_address: smtp.gmail.com
-          server_port: 465
-          secure: true
-          username: seif.t.axelites@gmail.com
-          password: cjrgskmlwmsdhuhn # Note: Use Secrets in production!
-          to: seifeddine.t.axelites@gmail.com
-          from: '"GitHub Actions" <seif.t.axelites@gmail.com>'
-          subject: "${{ env.STATUS_EMOJI }}: Clean Card Run Finished"
-          body: |
-            Status: ${{ env.STATUS_EMOJI }}
-            
-            Test Statistics:
-            - Total: ${{ env.TOTAL }}
-            - Passed: ${{ env.PASSED }}
-            - Failed: ${{ env.FAILED }}
-
-            Allure Report: ${{ env.PAGES_URL }}
-            Artifacts: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-          attachments: ${{ env.RESULT_FILE_PATH }} # This now works!
+        run: npx playwright test --project=Clean_FR_Cart
