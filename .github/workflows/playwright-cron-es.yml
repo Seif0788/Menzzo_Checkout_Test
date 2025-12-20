@@ -72,7 +72,7 @@ jobs:
         if: always()
         run: |
           echo "Removing large Allure attachments..."
-          rm -rf allure-report/data/attachments
+          find allure-report/data/attachments -type f ! -name "*.txt" -delete || echo "No heavy attachments found"
 
       # -----------------------------
       # Upload Allure as artifact (optional but useful)
