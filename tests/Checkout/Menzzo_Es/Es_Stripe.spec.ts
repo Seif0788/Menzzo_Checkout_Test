@@ -84,7 +84,7 @@ test('Es_Stripe', async ({ page }) => {
         address: ['Carrer de la Ciutat de Granada, 53'],
         postalCode: '08005',
         city: 'Barcelona',
-        deliveryMethod: 'Home Delivery - At Room',
+        deliveryMethod: 'Home Delivery - Classic',
         paymentMethod: 'Stripe'
     };
 
