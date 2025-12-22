@@ -1,0 +1,1 @@
+⚠️ Error during checkout readiness check: locator.count: Test timeout of 120000ms exceeded.
