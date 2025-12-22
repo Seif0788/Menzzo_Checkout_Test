@@ -1,1 +1,0 @@
-Bad InfiniteScroll path option. Next link not found: .pagination__next
