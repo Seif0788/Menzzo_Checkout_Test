@@ -1,0 +1,1 @@
+⚠️ Error during checkout readiness check: page.waitForTimeout: Test timeout of 120000ms exceeded.
