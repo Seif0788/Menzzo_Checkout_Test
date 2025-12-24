@@ -1,0 +1,1 @@
+⚠️ No redirect in same tab detected within timeout.
