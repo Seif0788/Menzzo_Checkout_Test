@@ -1,4 +1,0 @@
-TypeError: Failed to fetch
-    at o (https://cdn-cookieyes.com/client_data/9e41931680589e915ca33f47/banner.js:1:1190)
-    at W (https://cdn-cookieyes.com/client_data/9e41931680589e915ca33f47/banner.js:1:15902)
-    at Y (https://cdn-cookieyes.com/client_data/9e41931680589e915ca33f47/banner.js:1:17010)
