@@ -1,0 +1,952 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - text: 
+      - link "store logo" [ref=e5] [cursor=pointer]:
+        - /url: https://www.menzzo.fr/
+        - img "Menzzo.fr" [ref=e7]
+      - generic [ref=e8]:
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - search:
+                  - generic:
+                    - searchbox "Que cherchez-vous ?" [ref=e9]
+                    - generic [ref=e10]:
+                      - text: 
+                      - generic [ref=e11]: Rechercher
+                      - generic [ref=e12]: Rechercher
+                  - button "Search" [ref=e13] [cursor=pointer]:
+                    - text: 
+                    - generic [ref=e14]: Rechercher
+      - generic [ref=e15]:
+        - list [ref=e16]:
+          - listitem [ref=e17]:
+            - link [ref=e18] [cursor=pointer]:
+              - /url: https://www.menzzo.fr/wish-list/
+              - img [ref=e19]
+          - listitem [ref=e21]:
+            - link [ref=e22] [cursor=pointer]:
+              - /url: https://www.menzzo.fr/blog.html
+              - img [ref=e23]
+          - listitem [ref=e25]:
+            - link [ref=e26] [cursor=pointer]:
+              - /url: https://www.menzzo.fr/showroom/
+              - img [ref=e27]
+          - listitem [ref=e29] [cursor=pointer]:
+            - img [ref=e31]
+          - listitem [ref=e33]:
+            - img [ref=e35]
+        - link "Mon panier 1 1items" [ref=e39] [cursor=pointer]:
+          - /url: https://www.menzzo.fr/checkout/cart/
+          - img [ref=e40]
+          - generic [ref=e42]: Mon panier
+          - generic [ref=e43]:
+            - generic [ref=e44]: "1"
+            - generic [ref=e45]: 1items
+  - tablist [ref=e47]:
+    - tabpanel [ref=e48]:
+      - navigation [ref=e49]:
+        - menu [ref=e50]:
+          - menuitem
+          - menuitem "Prix Doux" [ref=e51] [cursor=pointer]
+          - menuitem
+          - menuitem "Tables, tables Basses" [ref=e52] [cursor=pointer]:
+            - generic [ref=e53]:
+              - generic [ref=e54]: Tables,
+              - text: tables Basses
+          - menuitem
+          - menuitem "Chaises, tabourets" [ref=e55] [cursor=pointer]:
+            - generic [ref=e56]:
+              - generic [ref=e57]: Chaises,
+              - text: tabourets
+          - menuitem
+          - menuitem "Canapés, fauteuils" [ref=e58] [cursor=pointer]:
+            - generic [ref=e59]:
+              - generic [ref=e60]: Canapés,
+              - text: fauteuils
+          - menuitem "Tous les prix soldés >" [expanded] [ref=e61]:
+            - generic [ref=e63]:
+              - menu [ref=e65]:
+                - menuitem [ref=e66] [cursor=pointer]:
+                  - img [ref=e68]
+                - menuitem [ref=e69]:
+                  - menuitem [ref=e70] [cursor=pointer]: Fauteuil
+                  - menu [ref=e71]:
+                    - menuitem [ref=e72] [cursor=pointer]: Avec repose-pieds
+                    - menuitem [ref=e73] [cursor=pointer]: Scandinave
+                    - menuitem [ref=e74] [cursor=pointer]: En velours
+                    - menuitem [ref=e75] [cursor=pointer]: En tissu
+                    - menuitem [ref=e76] [cursor=pointer]: En cuir ou simili
+                    - menuitem [ref=e77] [cursor=pointer]: Lot de 2
+                - menuitem [ref=e78] [cursor=pointer]:
+                  - img [ref=e80]
+                - menuitem [ref=e81]:
+                  - menuitem [ref=e82] [cursor=pointer]: Canapé droit
+                  - menu [ref=e83]:
+                    - menuitem [ref=e84] [cursor=pointer]: 2 places
+                    - menuitem [ref=e85] [cursor=pointer]: 3 places
+                    - menuitem [ref=e86] [cursor=pointer]: 4 places et +
+                    - menuitem [ref=e87] [cursor=pointer]: Convertible
+                    - menuitem [ref=e88] [cursor=pointer]: Chesterfield
+                - menuitem [ref=e89] [cursor=pointer]:
+                  - img [ref=e91]
+                - menuitem [ref=e92]:
+                  - menuitem [ref=e93] [cursor=pointer]: Canapé d'angle
+                  - menu [ref=e94]:
+                    - menuitem [ref=e95] [cursor=pointer]: En velours
+                    - menuitem [ref=e96] [cursor=pointer]: En tissu
+                    - menuitem [ref=e97] [cursor=pointer]: En cuir ou simili
+                    - menuitem [ref=e98] [cursor=pointer]: Avec rangement
+                - menuitem [ref=e99] [cursor=pointer]:
+                  - img [ref=e101]
+                - menuitem [ref=e102]:
+                  - menuitem [ref=e103] [cursor=pointer]: Canapé convertible
+                  - menu [ref=e104]:
+                    - menuitem [ref=e105] [cursor=pointer]: 3 places
+                    - menuitem [ref=e106] [cursor=pointer]: Canapé d'angle
+                - menuitem [ref=e107] [cursor=pointer]:
+                  - img [ref=e109]
+                - menuitem [ref=e110]:
+                  - menuitem [ref=e111] [cursor=pointer]: Pouf et banquette
+                  - menu [ref=e112]:
+                    - menuitem [ref=e113] [cursor=pointer]: Pouf
+                    - menuitem [ref=e114] [cursor=pointer]: Banc et banquette
+                    - menuitem [ref=e115] [cursor=pointer]: Banquette-coffre
+              - generic [ref=e116]:
+                - link [ref=e117] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/canapes-fauteuils.html
+                - link "Tous les prix soldés >" [ref=e119] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/canapes-fauteuils.html?promo=5,10,15,20,25,30,35,40,45,50
+          - menuitem
+          - menuitem "Lits, têtes de lit" [ref=e120] [cursor=pointer]:
+            - generic [ref=e121]:
+              - generic [ref=e122]: Lits,
+              - text: têtes de lit
+          - menuitem
+          - menuitem "Meubles, rangements" [ref=e123] [cursor=pointer]:
+            - generic [ref=e124]:
+              - generic [ref=e125]: Meubles,
+              - text: rangements
+          - menuitem
+          - menuitem "Déco" [ref=e126] [cursor=pointer]
+          - menuitem
+          - menuitem "Déstockage" [ref=e127] [cursor=pointer]
+  - list [ref=e129]:
+    - listitem [ref=e130]:
+      - link "Accueil" [ref=e131] [cursor=pointer]:
+        - /url: https://www.menzzo.fr/
+      - text: /
+    - listitem [ref=e132]:
+      - strong [ref=e133]: Canapés, fauteuils
+  - main [ref=e134]:
+    - heading "Canapés, fauteuils" [level=1] [ref=e137]
+    - generic [ref=e140]:
+      - link "Fauteuil" [ref=e141] [cursor=pointer]:
+        - /url: https://www.menzzo.fr/fauteuils.html
+        - img [ref=e143]
+        - text: Fauteuil
+      - link "Canapé droit" [ref=e144] [cursor=pointer]:
+        - /url: https://www.menzzo.fr/canapes-fauteuils/canape-droit.html
+        - img [ref=e146]
+        - text: Canapé droit
+      - link "Canapé d'angle" [ref=e147] [cursor=pointer]:
+        - /url: https://www.menzzo.fr/canapes/canape-angle.html
+        - img [ref=e149]
+        - text: Canapé d'angle
+      - link "Canapé convertible" [ref=e150] [cursor=pointer]:
+        - /url: https://www.menzzo.fr/canapes/canape-convertible.html
+        - img [ref=e152]
+        - text: Canapé convertible
+      - link "Pouf et banquette" [ref=e153] [cursor=pointer]:
+        - /url: https://www.menzzo.fr/canapes-fauteuils/pouf-et-banquette.html
+        - img [ref=e155]
+        - text: Pouf et banquette
+    - generic [ref=e161]:
+      - generic [ref=e163] [cursor=pointer]:
+        - text: Tous les filtres
+        - img [ref=e164]
+      - generic [ref=e167]:
+        - button "catégorie" [ref=e170] [cursor=pointer]
+        - button "prix" [ref=e173] [cursor=pointer]
+        - button "disponibilité" [ref=e176] [cursor=pointer]
+        - button "coloris" [ref=e179] [cursor=pointer]
+        - button "matière" [ref=e182] [cursor=pointer]
+        - button "forme" [ref=e185] [cursor=pointer]
+        - generic [ref=e186] [cursor=pointer]:
+          - text: Tous les filtres
+          - img [ref=e187]
+      - generic [ref=e189]:
+        - generic [ref=e190]:
+          - generic [ref=e194]: 372 Résultat(s) trouvé(s)
+          - generic [ref=e197]:
+            - strong [ref=e198]: "Trier par :"
+            - combobox [ref=e199]:
+              - option "Trier" [selected]
+              - option "Prix croissant"
+              - option "Prix décroissant"
+              - option "Nouveauté"
+              - option "Best sellers"
+        - list [ref=e202]:
+          - listitem [ref=e203]:
+            - text: "Catégorie :"
+            - generic [ref=e204]:
+              - text: Canapés, fauteuils
+              - button "X" [ref=e205] [cursor=pointer]
+        - generic [ref=e209]:
+          - list [ref=e210]:
+            - listitem [ref=e211]:
+              - generic [ref=e214]:
+                - generic [ref=e218]:
+                  - link "image" [ref=e220] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-design-coquillage-arielina-tissu-bouclette-blanc.html
+                    - img "image" [ref=e222]
+                  - link [ref=e224] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-design-coquillage-arielina-tissu-bouclette-blanc.html
+                    - img [ref=e226]
+                  - link [ref=e228] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-design-coquillage-arielina-tissu-bouclette-blanc.html
+                    - img [ref=e230]
+                  - link [ref=e232] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-design-coquillage-arielina-tissu-bouclette-blanc.html
+                    - img [ref=e234]
+                  - link [ref=e236] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-design-coquillage-arielina-tissu-bouclette-blanc.html
+                    - img [ref=e238]
+                  - link [ref=e240] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-design-coquillage-arielina-tissu-bouclette-blanc.html
+                    - img [ref=e242]
+                - strong [ref=e245]: En stock
+                - link "Fauteuil design coquillage Arielina Tissu bouclette Blanc" [ref=e247] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/fauteuil-design-coquillage-arielina-tissu-bouclette-blanc.html
+                - generic [ref=e248]:
+                  - generic [ref=e250]: 218 €
+                  - generic [ref=e251]: PRIX DOUX
+            - listitem [ref=e262]:
+              - generic [ref=e265]:
+                - generic [ref=e269]:
+                  - link "image" [ref=e271] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-d-angle-convertible-antoni-avec-tetieres-relevables-simili-noir-5263.html
+                    - img "image" [ref=e273]
+                  - link [ref=e275] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-d-angle-convertible-antoni-avec-tetieres-relevables-simili-noir-5263.html
+                    - img [ref=e277]
+                  - link [ref=e279] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-d-angle-convertible-antoni-avec-tetieres-relevables-simili-noir-5263.html
+                    - img [ref=e281]
+                  - link [ref=e283] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-d-angle-convertible-antoni-avec-tetieres-relevables-simili-noir-5263.html
+                    - img [ref=e285]
+                  - link [ref=e287] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-d-angle-convertible-antoni-avec-tetieres-relevables-simili-noir-5263.html
+                    - img [ref=e289]
+                - strong [ref=e292]: En stock
+                - link "Canapé d'angle convertible Antoni avec têtières relevables Simili Noir" [ref=e294] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/canape-d-angle-convertible-antoni-avec-tetieres-relevables-simili-noir-5263.html
+                - generic [ref=e295]:
+                  - generic [ref=e297]: 679 €
+                  - generic [ref=e298]: PRIX DOUX
+            - listitem [ref=e311]:
+              - generic [ref=e312]:
+                - generic [ref=e314]:
+                  - generic [ref=e318]:
+                    - link "image" [ref=e320] [cursor=pointer]:
+                      - /url: https://www.menzzo.fr/canape-chesterfield-velours-3pl-noir.html
+                      - img "image" [ref=e322]
+                    - link [ref=e324] [cursor=pointer]:
+                      - /url: https://www.menzzo.fr/canape-chesterfield-velours-3pl-noir.html
+                      - img [ref=e326]
+                    - link [ref=e328] [cursor=pointer]:
+                      - /url: https://www.menzzo.fr/canape-chesterfield-velours-3pl-noir.html
+                      - img [ref=e330]
+                    - link [ref=e332] [cursor=pointer]:
+                      - /url: https://www.menzzo.fr/canape-chesterfield-velours-3pl-noir.html
+                      - img [ref=e334]
+                    - link [ref=e336] [cursor=pointer]:
+                      - /url: https://www.menzzo.fr/canape-chesterfield-velours-3pl-noir.html
+                      - img [ref=e338]
+                    - link [ref=e340] [cursor=pointer]:
+                      - /url: https://www.menzzo.fr/canape-chesterfield-velours-3pl-noir.html
+                      - img [ref=e342]
+                  - strong [ref=e345]: En stock
+                  - link "Grand canapé 3 places Chesterfield Velours Noir" [ref=e347] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-chesterfield-velours-3pl-noir.html
+                  - generic [ref=e348]:
+                    - generic [ref=e350]: 349 €
+                    - generic [ref=e351]: PRIX DOUX
+                - img [ref=e375]
+            - listitem [ref=e377]:
+              - generic [ref=e380]:
+                - generic [ref=e384]:
+                  - link "image" [ref=e386] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-3-places-convertible-saphir-tissu-gris-clair.html
+                    - img "image" [ref=e388]
+                  - link [ref=e390] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-3-places-convertible-saphir-tissu-gris-clair.html
+                    - img [ref=e392]
+                  - link [ref=e394] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-3-places-convertible-saphir-tissu-gris-clair.html
+                    - img [ref=e396]
+                  - link [ref=e398] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-3-places-convertible-saphir-tissu-gris-clair.html
+                    - img [ref=e400]
+                  - link [ref=e402] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-3-places-convertible-saphir-tissu-gris-clair.html
+                    - img [ref=e404]
+                - strong [ref=e407]: En stock
+                - link "Canapé 3 places Convertible Saphir Tissu Gris Clair" [ref=e409] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/canape-3-places-convertible-saphir-tissu-gris-clair.html
+                - generic [ref=e410]:
+                  - generic [ref=e412]: 325 €
+                  - generic [ref=e413]: PRIX DOUX
+            - listitem [ref=e422]:
+              - generic [ref=e425]:
+                - generic [ref=e429]:
+                  - link "image" [ref=e431] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-scandinave-klarys-velours-bleu.html
+                    - img "image" [ref=e433]
+                  - link [ref=e435] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-scandinave-klarys-velours-bleu.html
+                    - img [ref=e437]
+                  - link [ref=e439] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-scandinave-klarys-velours-bleu.html
+                    - img [ref=e441]
+                  - link [ref=e443] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-scandinave-klarys-velours-bleu.html
+                    - img [ref=e445]
+                  - link [ref=e447] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-scandinave-klarys-velours-bleu.html
+                    - img [ref=e449]
+                  - link [ref=e451] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-scandinave-klarys-velours-bleu.html
+                    - img [ref=e453]
+                - strong [ref=e456]: En stock
+                - link "Fauteuil scandinave Klarys Velours Bleu" [ref=e458] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/fauteuil-scandinave-klarys-velours-bleu.html
+                - generic [ref=e459]:
+                  - generic [ref=e461]: 73 €
+                  - generic [ref=e462]: PRIX DOUX
+            - listitem [ref=e481]:
+              - generic [ref=e484]:
+                - generic [ref=e488]:
+                  - link "image" [ref=e490] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-moderne-bombaro-pieds-metal-dore-et-tissu-bouclette-beige.html
+                    - img "image" [ref=e492]
+                  - link [ref=e494] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-moderne-bombaro-pieds-metal-dore-et-tissu-bouclette-beige.html
+                    - img [ref=e496]
+                  - link [ref=e498] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-moderne-bombaro-pieds-metal-dore-et-tissu-bouclette-beige.html
+                    - img [ref=e500]
+                  - link [ref=e502] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-moderne-bombaro-pieds-metal-dore-et-tissu-bouclette-beige.html
+                    - img [ref=e504]
+                  - link [ref=e506] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-moderne-bombaro-pieds-metal-dore-et-tissu-bouclette-beige.html
+                    - img [ref=e508]
+                  - link [ref=e510] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-moderne-bombaro-pieds-metal-dore-et-tissu-bouclette-beige.html
+                    - img [ref=e512]
+                - strong [ref=e515]: En stock
+                - link "Fauteuil moderne Bombaro pieds métal doré et Tissu bouclette Beige" [ref=e517] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/fauteuil-moderne-bombaro-pieds-metal-dore-et-tissu-bouclette-beige.html
+                - generic [ref=e518]:
+                  - generic [ref=e520]: 135 €
+                  - generic [ref=e521]: PRIX DOUX
+            - listitem [ref=e530]:
+              - generic [ref=e531]:
+                - generic [ref=e533]:
+                  - generic [ref=e537]:
+                    - link "image" [ref=e539] [cursor=pointer]:
+                      - /url: https://www.menzzo.fr/fauteuil-plus-pouf-scandinave-tissu-patchwork.html
+                      - img "image" [ref=e541]
+                    - link [ref=e543] [cursor=pointer]:
+                      - /url: https://www.menzzo.fr/fauteuil-plus-pouf-scandinave-tissu-patchwork.html
+                      - img [ref=e545]
+                    - link [ref=e547] [cursor=pointer]:
+                      - /url: https://www.menzzo.fr/fauteuil-plus-pouf-scandinave-tissu-patchwork.html
+                      - img [ref=e549]
+                  - strong [ref=e552]: En stock
+                  - link "Fauteuil scandinave + pouf Lylou Tissu Patchwork" [ref=e554] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-plus-pouf-scandinave-tissu-patchwork.html
+                  - generic [ref=e555]:
+                    - generic [ref=e556]:
+                      - generic [ref=e557]: 125 €
+                      - generic [ref=e558]: "-6%"
+                      - generic [ref=e559]: 119 €
+                    - generic [ref=e560]: PRIX DOUX
+                  - generic [ref=e562]:
+                    - generic [ref=e563]: ⚠️
+                    - generic [ref=e564]: Derniers exemplaires avant retrait du catalogue !
+                - img [ref=e586]
+            - listitem [ref=e588]:
+              - generic [ref=e591]:
+                - generic [ref=e595]:
+                  - link "image" [ref=e597] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-scandinave-savoy-velours-bleu.html
+                    - img "image" [ref=e599]
+                  - link [ref=e601] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-scandinave-savoy-velours-bleu.html
+                    - img [ref=e603]
+                  - link [ref=e605] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-scandinave-savoy-velours-bleu.html
+                    - img [ref=e607]
+                  - link [ref=e609] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-scandinave-savoy-velours-bleu.html
+                    - img [ref=e611]
+                  - link [ref=e613] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-scandinave-savoy-velours-bleu.html
+                    - img [ref=e615]
+                  - link [ref=e617] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-scandinave-savoy-velours-bleu.html
+                    - img [ref=e619]
+                - strong [ref=e622]: En stock
+                - link "Fauteuil scandinave Savoy Velours Bleu" [ref=e624] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/fauteuil-scandinave-savoy-velours-bleu.html
+                - generic [ref=e625]:
+                  - generic [ref=e626]:
+                    - generic [ref=e627]: 114 €
+                    - generic [ref=e628]: "-8%"
+                    - generic [ref=e629]: 105 €
+                  - generic [ref=e630]: PRIX DOUX
+            - listitem [ref=e641]:
+              - generic [ref=e644]:
+                - generic [ref=e648]:
+                  - link "image" [ref=e650] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-convertible-scandinave-yazu-multicolore.html
+                    - img "image" [ref=e652]
+                  - link [ref=e654] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-convertible-scandinave-yazu-multicolore.html
+                    - img [ref=e656]
+                  - link [ref=e658] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-convertible-scandinave-yazu-multicolore.html
+                    - img [ref=e660]
+                  - link [ref=e662] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-convertible-scandinave-yazu-multicolore.html
+                    - img [ref=e664]
+                  - link [ref=e666] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-convertible-scandinave-yazu-multicolore.html
+                    - img [ref=e668]
+                  - link [ref=e670] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-convertible-scandinave-yazu-multicolore.html
+                    - img [ref=e672]
+                - strong [ref=e675]: En stock
+                - link "Canapé convertible clic-clac scandinave Yazu Multicolore" [ref=e677] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/canape-convertible-scandinave-yazu-multicolore.html
+                - generic [ref=e678]:
+                  - generic [ref=e679]:
+                    - generic [ref=e680]: 187 €
+                    - generic [ref=e681]: "-6%"
+                    - generic [ref=e682]: 179 €
+                  - generic [ref=e683]: PRIX DOUX
+            - listitem [ref=e690]:
+              - generic [ref=e693]:
+                - generic [ref=e697]:
+                  - link "image" [ref=e699] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-d-angle-avec-tetieres-relevables-alfa-velours-taupe-5280.html
+                    - img "image" [ref=e701]
+                  - link [ref=e703] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-d-angle-avec-tetieres-relevables-alfa-velours-taupe-5280.html
+                    - img [ref=e705]
+                  - link [ref=e707] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-d-angle-avec-tetieres-relevables-alfa-velours-taupe-5280.html
+                    - img [ref=e709]
+                  - link [ref=e711] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-d-angle-avec-tetieres-relevables-alfa-velours-taupe-5280.html
+                    - img [ref=e713]
+                  - link [ref=e715] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-d-angle-avec-tetieres-relevables-alfa-velours-taupe-5280.html
+                    - img [ref=e717]
+                  - link [ref=e719] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-d-angle-avec-tetieres-relevables-alfa-velours-taupe-5280.html
+                    - img [ref=e721]
+                - strong [ref=e724]: En stock
+                - link "Canapé d'angle avec têtières relevables Alfa Velours Taupe" [ref=e726] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/canape-d-angle-avec-tetieres-relevables-alfa-velours-taupe-5280.html
+                - generic [ref=e727]:
+                  - generic [ref=e729]: 499 €
+                  - generic [ref=e730]: PRIX DOUX
+            - listitem [ref=e745]:
+              - generic [ref=e748]:
+                - generic [ref=e752]:
+                  - link "image" [ref=e754] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-2-places-design-coquillage-horizan-tissu-bouclette-creme.html
+                    - img "image" [ref=e756]
+                  - link [ref=e758] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-2-places-design-coquillage-horizan-tissu-bouclette-creme.html
+                    - img [ref=e760]
+                  - link [ref=e762] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-2-places-design-coquillage-horizan-tissu-bouclette-creme.html
+                    - img [ref=e764]
+                  - link [ref=e766] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-2-places-design-coquillage-horizan-tissu-bouclette-creme.html
+                    - img [ref=e768]
+                  - link [ref=e770] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-2-places-design-coquillage-horizan-tissu-bouclette-creme.html
+                    - img [ref=e772]
+                  - link [ref=e774] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-2-places-design-coquillage-horizan-tissu-bouclette-creme.html
+                    - img [ref=e776]
+                - strong [ref=e779]: Livré sous plus d’un mois
+                - link "Canapé 2 Places design coquillage Horizan Tissu bouclette Crème" [ref=e781] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/canape-2-places-design-coquillage-horizan-tissu-bouclette-creme.html
+                - generic [ref=e782]:
+                  - generic [ref=e784]: 264 €
+                  - generic [ref=e785]: PRIX DOUX
+            - listitem [ref=e786]:
+              - generic [ref=e789]:
+                - generic [ref=e793]:
+                  - link "image" [ref=e795] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-convertible-3-places-clayton-tissu-beige.html
+                    - img "image" [ref=e797]
+                  - link [ref=e799] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-convertible-3-places-clayton-tissu-beige.html
+                    - img [ref=e801]
+                  - link [ref=e803] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-convertible-3-places-clayton-tissu-beige.html
+                    - img [ref=e805]
+                  - link [ref=e807] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-convertible-3-places-clayton-tissu-beige.html
+                    - img [ref=e809]
+                  - link [ref=e811] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-convertible-3-places-clayton-tissu-beige.html
+                    - img [ref=e813]
+                  - link [ref=e815] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-convertible-3-places-clayton-tissu-beige.html
+                    - img [ref=e817]
+                - strong [ref=e820]: Livré sous plus d’un mois
+                - link "Canapé convertible 3 places Clayton Tissu Beige" [ref=e822] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/canape-convertible-3-places-clayton-tissu-beige.html
+                - generic [ref=e823]:
+                  - generic [ref=e825]: 214 €
+                  - generic [ref=e826]: PRIX DOUX
+            - listitem [ref=e835]:
+              - generic [ref=e838]:
+                - generic [ref=e842]:
+                  - link "image" [ref=e844] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-regina-tissu-dossier-a-petits-carreaux-et-assise-uni-jaune-moutarde.html
+                    - img "image" [ref=e846]
+                  - link [ref=e848] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-regina-tissu-dossier-a-petits-carreaux-et-assise-uni-jaune-moutarde.html
+                    - img [ref=e850]
+                  - link [ref=e852] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-regina-tissu-dossier-a-petits-carreaux-et-assise-uni-jaune-moutarde.html
+                    - img [ref=e854]
+                  - link [ref=e856] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-regina-tissu-dossier-a-petits-carreaux-et-assise-uni-jaune-moutarde.html
+                    - img [ref=e858]
+                  - link [ref=e860] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-regina-tissu-dossier-a-petits-carreaux-et-assise-uni-jaune-moutarde.html
+                    - img [ref=e862]
+                  - link [ref=e864] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-regina-tissu-dossier-a-petits-carreaux-et-assise-uni-jaune-moutarde.html
+                    - img [ref=e866]
+                - strong [ref=e869]: En stock
+                - link "Fauteuil Regina Tissu dossier à petits carreaux et assise uni Jaune moutarde" [ref=e871] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/fauteuil-regina-tissu-dossier-a-petits-carreaux-et-assise-uni-jaune-moutarde.html
+                - generic [ref=e874]: 466 €
+                - generic [ref=e876]:
+                  - generic [ref=e877]: ⚠️
+                  - generic [ref=e878]: Derniers exemplaires avant retrait du catalogue !
+            - listitem [ref=e879]:
+              - generic [ref=e882]:
+                - generic [ref=e886]:
+                  - link "image" [ref=e888] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-angle-a-droite-convertible-lefkadao-bois-massif-noir-et-tissu-vert.html
+                    - img "image" [ref=e890]
+                  - link [ref=e892] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-angle-a-droite-convertible-lefkadao-bois-massif-noir-et-tissu-vert.html
+                    - img [ref=e894]
+                  - link [ref=e896] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-angle-a-droite-convertible-lefkadao-bois-massif-noir-et-tissu-vert.html
+                    - img [ref=e898]
+                  - link [ref=e900] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-angle-a-droite-convertible-lefkadao-bois-massif-noir-et-tissu-vert.html
+                    - img [ref=e902]
+                  - link [ref=e904] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-angle-a-droite-convertible-lefkadao-bois-massif-noir-et-tissu-vert.html
+                    - img [ref=e906]
+                  - link [ref=e908] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-angle-a-droite-convertible-lefkadao-bois-massif-noir-et-tissu-vert.html
+                    - img [ref=e910]
+                - strong [ref=e913]: En stock
+                - link "Canapé angle à droite convertible Lefkadao Bois massif Noir et Tissu Vert" [ref=e915] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/canape-angle-a-droite-convertible-lefkadao-bois-massif-noir-et-tissu-vert.html
+                - generic [ref=e918]: 680 €
+                - generic [ref=e920]:
+                  - generic [ref=e921]: ⚠️
+                  - generic [ref=e922]: Derniers exemplaires avant retrait du catalogue !
+            - listitem [ref=e923]:
+              - generic [ref=e926]:
+                - generic [ref=e930]:
+                  - link "image" [ref=e932] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-dangle-a-droite-convertible-avec-3-coussins-vesna-velours-orange.html
+                    - img "image" [ref=e934]
+                  - link [ref=e936] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-dangle-a-droite-convertible-avec-3-coussins-vesna-velours-orange.html
+                    - img [ref=e938]
+                  - link [ref=e940] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-dangle-a-droite-convertible-avec-3-coussins-vesna-velours-orange.html
+                    - img [ref=e942]
+                  - link [ref=e944] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-dangle-a-droite-convertible-avec-3-coussins-vesna-velours-orange.html
+                    - img [ref=e946]
+                  - link [ref=e948] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-dangle-a-droite-convertible-avec-3-coussins-vesna-velours-orange.html
+                    - img [ref=e950]
+                  - link [ref=e952] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-dangle-a-droite-convertible-avec-3-coussins-vesna-velours-orange.html
+                    - img [ref=e954]
+                - strong [ref=e957]: En stock
+                - link "Canapé d'angle à droite convertible avec 3 coussins Vesna Velours Orange" [ref=e959] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/canape-dangle-a-droite-convertible-avec-3-coussins-vesna-velours-orange.html
+                - generic [ref=e962]: 1410 €
+                - generic [ref=e964]:
+                  - generic [ref=e965]: ⚠️
+                  - generic [ref=e966]: Derniers exemplaires avant retrait du catalogue !
+            - listitem [ref=e967]:
+              - generic [ref=e970]:
+                - generic [ref=e974]:
+                  - link "image" [ref=e976] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/pouf-convertible-2-places-joude-velours-noir.html
+                    - img "image" [ref=e978]
+                  - link [ref=e980] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/pouf-convertible-2-places-joude-velours-noir.html
+                    - img [ref=e982]
+                  - link [ref=e984] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/pouf-convertible-2-places-joude-velours-noir.html
+                    - img [ref=e986]
+                  - link [ref=e988] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/pouf-convertible-2-places-joude-velours-noir.html
+                    - img [ref=e990]
+                  - link [ref=e992] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/pouf-convertible-2-places-joude-velours-noir.html
+                    - img [ref=e994]
+                  - link [ref=e996] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/pouf-convertible-2-places-joude-velours-noir.html
+                    - img [ref=e998]
+                - strong [ref=e1001]: En stock
+                - link "Pouf convertible 2 places Joude Velours Noir" [ref=e1003] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/pouf-convertible-2-places-joude-velours-noir.html
+                - generic [ref=e1006]: 434 €
+                - generic [ref=e1008]:
+                  - generic [ref=e1009]: ⚠️
+                  - generic [ref=e1010]: Derniers exemplaires avant retrait du catalogue !
+            - listitem [ref=e1011]:
+              - generic [ref=e1014]:
+                - generic [ref=e1018]:
+                  - link "image" [ref=e1020] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-a-bascule-vitocha-velours-gris.html
+                    - img "image" [ref=e1022]
+                  - link [ref=e1024] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-a-bascule-vitocha-velours-gris.html
+                    - img [ref=e1026]
+                  - link [ref=e1028] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-a-bascule-vitocha-velours-gris.html
+                    - img [ref=e1030]
+                  - link [ref=e1032] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-a-bascule-vitocha-velours-gris.html
+                    - img [ref=e1034]
+                - strong [ref=e1037]: En stock
+                - link "Fauteuil à bascule Vitocha Velours Gris" [ref=e1039] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/fauteuil-a-bascule-vitocha-velours-gris.html
+                - generic [ref=e1042]: 244 €
+                - generic [ref=e1044]:
+                  - generic [ref=e1045]: ⚠️
+                  - generic [ref=e1046]: Derniers exemplaires avant retrait du catalogue !
+            - listitem [ref=e1047]:
+              - generic [ref=e1050]:
+                - generic [ref=e1054]:
+                  - link "image" [ref=e1056] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-hermoso-tissu-blanc-creme.html
+                    - img "image" [ref=e1058]
+                  - link [ref=e1060] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-hermoso-tissu-blanc-creme.html
+                    - img [ref=e1062]
+                  - link [ref=e1064] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-hermoso-tissu-blanc-creme.html
+                    - img [ref=e1066]
+                  - link [ref=e1068] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-hermoso-tissu-blanc-creme.html
+                    - img [ref=e1070]
+                  - link [ref=e1072] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-hermoso-tissu-blanc-creme.html
+                    - img [ref=e1074]
+                  - link [ref=e1076] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-hermoso-tissu-blanc-creme.html
+                    - img [ref=e1078]
+                - strong [ref=e1081]: En stock
+                - link "Fauteuil Hermoso Tissu Blanc crème" [ref=e1083] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/fauteuil-hermoso-tissu-blanc-creme.html
+                - generic [ref=e1086]: 348 €
+                - generic [ref=e1088]:
+                  - generic [ref=e1089]: ⚠️
+                  - generic [ref=e1090]: Derniers exemplaires avant retrait du catalogue !
+            - listitem [ref=e1091]:
+              - generic [ref=e1094]:
+                - generic [ref=e1098]:
+                  - link "image" [ref=e1100] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-scandinave-lyliane-effet-patchwork-velours-gris-et-bleu.html
+                    - img "image" [ref=e1102]
+                  - link [ref=e1104] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-scandinave-lyliane-effet-patchwork-velours-gris-et-bleu.html
+                    - img [ref=e1106]
+                  - link [ref=e1108] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-scandinave-lyliane-effet-patchwork-velours-gris-et-bleu.html
+                    - img [ref=e1110]
+                  - link [ref=e1112] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-scandinave-lyliane-effet-patchwork-velours-gris-et-bleu.html
+                    - img [ref=e1114]
+                  - link [ref=e1116] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-scandinave-lyliane-effet-patchwork-velours-gris-et-bleu.html
+                    - img [ref=e1118]
+                - strong [ref=e1121]: En stock
+                - link "Fauteuil scandinave Lyliane Effet patchwork Velours Gris et Bleu" [ref=e1123] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/fauteuil-scandinave-lyliane-effet-patchwork-velours-gris-et-bleu.html
+                - generic [ref=e1124]:
+                  - generic [ref=e1126]: 79 €
+                  - generic [ref=e1127]: PRIX DOUX
+            - listitem [ref=e1128]:
+              - generic [ref=e1131]:
+                - generic [ref=e1135]:
+                  - link "image" [ref=e1137] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-clic-clac-3-places-roger-velours-cotele-bleu.html
+                    - img "image" [ref=e1139]
+                  - link [ref=e1141] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-clic-clac-3-places-roger-velours-cotele-bleu.html
+                    - img [ref=e1143]
+                  - link [ref=e1145] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-clic-clac-3-places-roger-velours-cotele-bleu.html
+                    - img [ref=e1147]
+                  - link [ref=e1149] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-clic-clac-3-places-roger-velours-cotele-bleu.html
+                    - img [ref=e1151]
+                  - link [ref=e1153] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-clic-clac-3-places-roger-velours-cotele-bleu.html
+                    - img [ref=e1155]
+                  - link [ref=e1157] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/canape-clic-clac-3-places-roger-velours-cotele-bleu.html
+                    - img [ref=e1159]
+                - strong [ref=e1162]: En stock
+                - link "Canapé clic-clac 3 places Roger Velours côtelé Bleu" [ref=e1164] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/canape-clic-clac-3-places-roger-velours-cotele-bleu.html
+                - generic [ref=e1165]:
+                  - generic [ref=e1167]: 355 €
+                  - generic [ref=e1168]: PRIX DOUX
+          - button "Voir plus de produits" [ref=e1179] [cursor=pointer]
+  - contentinfo [ref=e1180]:
+    - generic [ref=e1182]:
+      - generic [ref=e1184]:
+        - generic [ref=e1185]:
+          - generic [ref=e1186]: Tous les codes promo
+          - generic [ref=e1187]: En cliquant sur "Je m'inscris", j'accepte de recevoir la newsletter par email et j'accepte la politique de confidentialité de Menzzo.
+          - generic [ref=e1190]:
+            - generic [ref=e1193]:
+              - generic [ref=e1194]: "Inscription à notre lettre d’information :"
+              - textbox "Inscription à notre lettre d’information :" [ref=e1195]:
+                - /placeholder: Votre e-mail
+            - button "Je m'inscris !" [ref=e1196] [cursor=pointer]
+            - generic [ref=e1198]:
+              - checkbox "J'accepte la politique de confidentialité et je consens au traitement de mes données à des fins marketing par Menzzo" [ref=e1199]
+              - text: J'accepte la
+              - link "politique de confidentialité" [ref=e1200] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/rgpd
+              - text: et je consens au traitement de mes données à des fins marketing par Menzzo
+        - img "img" [ref=e1202]
+      - generic [ref=e1204]:
+        - generic [ref=e1206]:
+          - generic [ref=e1207]:
+            - img [ref=e1208]
+            - heading "SERVICE CLIENT" [level=3] [ref=e1210]
+            - paragraph [ref=e1211]: Vous avez passé commande et souhaitez nous joindre ?
+          - generic [ref=e1212]:
+            - generic [ref=e1213]:
+              - heading "Un seul endroit pour répondre à toutes vos demandes" [level=4] [ref=e1215]
+              - generic [ref=e1217]:
+                - img [ref=e1218]
+                - link "sav.menzzo.fr" [ref=e1220] [cursor=pointer]:
+                  - /url: https://sav.menzzo.fr/
+              - paragraph [ref=e1221]:
+                - text: Complétez le formulaire sur la plateforme
+                - link "sav.menzzo.fr" [ref=e1222] [cursor=pointer]:
+                  - /url: https://sav.menzzo.fr/
+                - text: et accédez directement aux informations que vous recherchez concernant votre commande.
+              - paragraph [ref=e1223]: Une réponse vous sera apportée en ligne ou vous aurez accès à un planning pour prendre un rdv téléphonique avec un de nos agents.
+            - generic [ref=e1224]:
+              - heading "Foire Aux Questions" [level=4] [ref=e1226]
+              - generic [ref=e1228]:
+                - img [ref=e1229]
+                - link "Consultez notre FAQ" [ref=e1231] [cursor=pointer]:
+                  - /url: /faq
+              - paragraph [ref=e1232]: Vos questions les plus courantes sont répertoriées dans notre FAQ pour que vous trouviez encore plus rapidement des réponses pertinentes à toutes vos interrogations.
+          - link "En savoir plus" [ref=e1233] [cursor=pointer]:
+            - /url: /sav-menzzo-fr
+        - generic [ref=e1235]:
+          - generic [ref=e1236]:
+            - img [ref=e1237]
+            - heading "Vendeurs conseil" [level=3] [ref=e1239]
+            - paragraph [ref=e1240]: Vous avez une question sur un produit ou un service ?
+          - generic [ref=e1241]:
+            - generic [ref=e1242]:
+              - heading "Contactez nos vendeurs conseil" [level=4] [ref=e1244]
+              - generic [ref=e1246]:
+                - img [ref=e1247]
+                - generic [ref=e1249]:
+                  - link "01 43 75 11 18" [ref=e1250] [cursor=pointer]:
+                    - /url: tel:0143751118
+                  - text: "Du lundi au jeudi : 10h-17h"
+                  - text: "Vendredi : 10h-15h"
+            - generic [ref=e1251]:
+              - heading "Outlet Menzzo" [level=4] [ref=e1253]
+              - generic [ref=e1255]:
+                - img [ref=e1256]
+                - generic [ref=e1258]:
+                  - text: 221 Rue Paul Vaillant Couturier
+                  - text: 94140 Alfortville
+                  - text: "Du lundi au jeudi : 9h30-15h"
+                  - generic [ref=e1259]:
+                    - text: Fermeture exceptionnelle
+                    - text: Aucune à prévoir...
+              - paragraph [ref=e1260]: Des articles juste déballés, retournés par les clients et soigneusement vérifiés, ou des fins de collection, fins de stock pour des coloris spécifiques... Nos meubles à prix cassé, c'est ça l'Outlet Menzzo !
+          - link "En savoir plus" [ref=e1261] [cursor=pointer]:
+            - /url: /showroom/
+        - generic [ref=e1263]:
+          - generic [ref=e1264]:
+            - img [ref=e1265]
+            - heading "PAIEMENT SÉCURISÉ" [level=3] [ref=e1267]
+            - paragraph [ref=e1268]: Achetez en toute sérénité grâce à nos différents modes de paiement en ligne.
+          - generic [ref=e1269]:
+            - generic [ref=e1270]:
+              - heading "Par carte bancaire :" [level=4] [ref=e1272]
+              - generic [ref=e1273]:
+                - img "cb" [ref=e1275]
+                - img "visa" [ref=e1277]
+                - img "master" [ref=e1279]
+                - img "american-express" [ref=e1281]
+              - paragraph [ref=e1282]: Les paiements en ligne sont sécurisés par le système 3D Secure. Menzzo n’a pas accès et ne sauvegarde pas vos données de carte bancaire.
+            - generic [ref=e1283]:
+              - heading "En plusieurs fois :" [level=4] [ref=e1285]
+              - paragraph [ref=e1290]:
+                - text: Divisez votre paiement en 3 versements égaux et sans frais ou en 6, 9 ou 12 fois. Simple et pratique.
+                - text: Un paiement par mois, immédiat et sans formalités.
+            - generic [ref=e1291]:
+              - heading "Par virement :" [level=4] [ref=e1293]
+              - paragraph [ref=e1294]: Plus besoin de carte bancaire ! Payez vos achats en un clic grâce à votre appli bancaire. Aucune saisie d’IBAN nécessaire et sécurisé par votre banque sans coût supplémentaire.
+          - link "En savoir plus" [ref=e1295] [cursor=pointer]:
+            - /url: /financement
+        - generic [ref=e1297]:
+          - generic [ref=e1298]:
+            - img [ref=e1299]
+            - heading "Livraison" [level=3] [ref=e1301]
+            - paragraph [ref=e1302]: Les tarifs des livraisons sont indiqués sur chaque fiche produit.
+          - generic [ref=e1303]:
+            - generic [ref=e1304]:
+              - heading "Livraison classique" [level=4] [ref=e1306]
+              - paragraph [ref=e1309]:
+                - text: Vous êtes livrés à l'extérieur, en bas de chez vous.
+                - text: Selon le type d’article, le transporteur vous contacte par mail, SMS ou téléphone pour vous communiquer une date de livraison.
+            - generic [ref=e1310]:
+              - heading "Livraison Étage" [level=4] [ref=e1312]
+              - paragraph [ref=e1315]:
+                - text: Vous êtes livrés dans la pièce de votre choix, même à l’étage.
+                - text: Selon le type d’article, le transporteur vous contacte par mail, SMS ou téléphone pour vous communiquer une date de livraison.
+          - link "En savoir plus" [ref=e1316] [cursor=pointer]:
+            - /url: /livraison
+      - generic [ref=e1318]:
+        - generic [ref=e1319]:
+          - heading "BESOIN D'AIDE?" [level=3] [ref=e1320]
+          - list [ref=e1321]:
+            - listitem [ref=e1322]:
+              - link "Blog" [ref=e1323] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/blog.html
+            - listitem [ref=e1324]:
+              - link "Livraison" [ref=e1325] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/livraison/
+            - listitem [ref=e1326]:
+              - link "Politique de retour" [ref=e1327] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/politique-de-retour/
+            - listitem [ref=e1328]:
+              - link "Financement" [ref=e1329] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/financement/
+            - listitem [ref=e1330]:
+              - link "Service client" [ref=e1331] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/sav-menzzo-fr/
+            - listitem [ref=e1332]:
+              - link "Glossaire des matières" [ref=e1333] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/materials/
+        - generic [ref=e1334]:
+          - heading "MIEUX NOUS CONNAÎTRE" [level=3] [ref=e1335]
+          - list [ref=e1336]:
+            - listitem [ref=e1337]:
+              - link "Outlet Menzzo" [ref=e1338] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/showroom
+            - listitem [ref=e1339]:
+              - link "À propos de menzzo" [ref=e1340] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/a-propos-de-menzzo/
+            - listitem [ref=e1341]:
+              - link "Conditions Générales de Vente" [ref=e1342] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/conditions-generales-de-vente/
+            - listitem [ref=e1343]:
+              - link "Données personnelles" [ref=e1344] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/rgpd
+            - listitem [ref=e1345]:
+              - link "Revue de presse" [ref=e1346] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/revue-de-presse
+        - generic [ref=e1347]:
+          - heading "RETROUVEZ-NOUS!" [level=3] [ref=e1348]
+          - generic [ref=e1349]:
+            - link "Facebook" [ref=e1350] [cursor=pointer]:
+              - /url: http://www.facebook.com/MenzzoFrance
+              - img [ref=e1351]
+            - link "Instagram" [ref=e1353] [cursor=pointer]:
+              - /url: https://www.instagram.com/menzzofr/
+              - img [ref=e1354]
+            - link "Pinterest" [ref=e1356] [cursor=pointer]:
+              - /url: http://www.pinterest.com/menzzo
+              - img [ref=e1357]
+      - list [ref=e1361]:
+        - listitem [ref=e1362]
+        - listitem [ref=e1364]
+        - listitem [ref=e1366]
+        - listitem [ref=e1368]
+        - listitem [ref=e1370]:
+          - img "Monext" [ref=e1372]
+        - listitem [ref=e1373]
+        - listitem [ref=e1375]:
+          - img "klarna" [ref=e1377]
+        - listitem [ref=e1378]:
+          - img "scalapay" [ref=e1380]
+      - generic [ref=e1381]:
+        - text: "Retrouvez Menzzo dans d'autres pays:"
+        - link "menzzo.fr" [ref=e1382] [cursor=pointer]:
+          - /url: https://menzzo.fr
+          - img [ref=e1383]
+        - link "menzzo.de" [ref=e1385] [cursor=pointer]:
+          - /url: https://menzzo.de
+          - img [ref=e1386]
+        - link "menzzo.it" [ref=e1388] [cursor=pointer]:
+          - /url: https://menzzo.it
+          - img [ref=e1389]
+        - link "menzzo.nl" [ref=e1391] [cursor=pointer]:
+          - /url: https://menzzo.nl
+          - img [ref=e1392]
+        - link "menzzo.at" [ref=e1394] [cursor=pointer]:
+          - /url: https://menzzo.at
+          - img [ref=e1395]
+        - link "menzzo.be" [ref=e1397] [cursor=pointer]:
+          - /url: https://menzzo.be
+          - img [ref=e1398]
+        - link "menzzo.es" [ref=e1400] [cursor=pointer]:
+          - /url: https://www.menzzo.es/
+          - img [ref=e1401]
+        - link "menzzo.pt" [ref=e1403] [cursor=pointer]:
+          - /url: https://www.menzzo.pt/
+          - img [ref=e1404]
+      - generic [ref=e1406]: © 2025 Menzzo - Tous droits réservés
+  - button "Chat Menzzo" [ref=e1407] [cursor=pointer]:
+    - img "Chat Menzzo"
+```
