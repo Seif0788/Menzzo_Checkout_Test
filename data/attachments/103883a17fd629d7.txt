@@ -1,4 +1,0 @@
-⚠️ Attempt 1 failed: TimeoutError: page.waitForEvent: Timeout 60000ms exceeded while waiting for event "popup"
-=========================== logs ===========================
-waiting for event "popup"
-============================================================
