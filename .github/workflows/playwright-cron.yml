@@ -125,7 +125,9 @@ jobs:
           echo "FAILED=$FAILED" >> $GITHUB_ENV
           echo "TOTAL=$TOTAL" >> $GITHUB_ENV
 
-          if [ "$FAILED" -gt 0 ]; then
+          if [ "$PASSED" -ge 21 ]; then
+            echo "STATUS_EMOJI=🟢 Success" >> $GITHUB_ENV
+          elif [ "$FAILED" -gt 0 ]; then
             echo "STATUS_EMOJI=🔴 Failure" >> $GITHUB_ENV
           elif [ "$TOTAL" -eq 0 ]; then
             echo "STATUS_EMOJI=🔴 Failure (No Results)" >> $GITHUB_ENV
