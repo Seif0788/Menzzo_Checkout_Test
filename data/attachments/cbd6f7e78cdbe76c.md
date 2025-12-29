@@ -1,0 +1,920 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - text: 
+      - link "store logo" [ref=e5] [cursor=pointer]:
+        - /url: https://www.menzzo.fr/
+        - img "Menzzo.fr" [ref=e7]
+      - generic [ref=e8]:
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - search:
+                  - generic:
+                    - searchbox "Que cherchez-vous ?" [ref=e9]
+                    - generic [ref=e10]:
+                      - text: 
+                      - generic [ref=e11]: Rechercher
+                      - generic [ref=e12]: Rechercher
+                  - button "Search" [ref=e13] [cursor=pointer]:
+                    - text: 
+                    - generic [ref=e14]: Rechercher
+      - generic [ref=e15]:
+        - list [ref=e16]:
+          - listitem [ref=e17]:
+            - link [ref=e18] [cursor=pointer]:
+              - /url: https://www.menzzo.fr/wish-list/
+              - img [ref=e19]
+          - listitem [ref=e21]:
+            - link [ref=e22] [cursor=pointer]:
+              - /url: https://www.menzzo.fr/blog.html
+              - img [ref=e23]
+          - listitem [ref=e25]:
+            - link [ref=e26] [cursor=pointer]:
+              - /url: https://www.menzzo.fr/showroom/
+              - img [ref=e27]
+          - listitem [ref=e29] [cursor=pointer]:
+            - img [ref=e31]
+          - listitem [ref=e33]:
+            - img [ref=e35]
+        - link "Mon panier 3 3items" [ref=e39] [cursor=pointer]:
+          - /url: https://www.menzzo.fr/checkout/cart/
+          - img [ref=e40]
+          - generic [ref=e42]: Mon panier
+          - generic [ref=e43]:
+            - generic [ref=e44]: "3"
+            - generic [ref=e45]: 3items
+  - tablist [ref=e47]:
+    - tabpanel [ref=e48]:
+      - navigation [ref=e49]:
+        - menu [ref=e50]:
+          - menuitem
+          - menuitem "Prix Doux" [ref=e51] [cursor=pointer]
+          - menuitem
+          - menuitem "Tables, tables Basses" [ref=e52] [cursor=pointer]:
+            - generic [ref=e53]:
+              - generic [ref=e54]: Tables,
+              - text: tables Basses
+          - menuitem
+          - menuitem "Chaises, tabourets" [ref=e55] [cursor=pointer]:
+            - generic [ref=e56]:
+              - generic [ref=e57]: Chaises,
+              - text: tabourets
+          - menuitem "Tous les prix soldés >" [expanded] [ref=e58]:
+            - generic [ref=e60]:
+              - menu [ref=e62]:
+                - menuitem [ref=e63] [cursor=pointer]:
+                  - img [ref=e65]
+                - menuitem [ref=e66]:
+                  - menuitem [ref=e67] [cursor=pointer]: Chaise de salle à manger
+                  - menu [ref=e68]:
+                    - menuitem [ref=e69] [cursor=pointer]: Chaise médaillon
+                    - menuitem [ref=e70] [cursor=pointer]: Cuir et Simili
+                    - menuitem [ref=e71] [cursor=pointer]: Tissu et velours
+                    - menuitem [ref=e72] [cursor=pointer]: PVC et Polycarbonate
+                    - menuitem [ref=e73] [cursor=pointer]: Avec accoudoirs
+                    - menuitem [ref=e74] [cursor=pointer]: Pliable et empilable
+                - menuitem [ref=e75] [cursor=pointer]:
+                  - img [ref=e77]
+                - menuitem [ref=e78]:
+                  - menuitem [ref=e79] [cursor=pointer]: Lot de chaises
+                  - menu [ref=e80]:
+                    - menuitem [ref=e81] [cursor=pointer]: Lot de 2 chaises
+                    - menuitem [ref=e82] [cursor=pointer]: Lot de 4 chaises
+                    - menuitem [ref=e83] [cursor=pointer]: Lot de 6 chaises
+                    - menuitem [ref=e84] [cursor=pointer]: Lot de 8 chaises
+                    - menuitem [ref=e85] [cursor=pointer]: Lot de 20 chaises
+                - menuitem [ref=e86] [cursor=pointer]:
+                  - img [ref=e88]
+                - menuitem [ref=e89]:
+                  - menuitem [ref=e90] [cursor=pointer]: Chaise de bureau
+                - menuitem [ref=e91] [cursor=pointer]:
+                  - img [ref=e93]
+                - menuitem [ref=e94]:
+                  - menuitem [ref=e95] [cursor=pointer]: Chaise et tabouret de bar
+                  - menu [ref=e96]:
+                    - menuitem [ref=e97] [cursor=pointer]: Hauteur ajustable
+                    - menuitem [ref=e98] [cursor=pointer]: Hauteur fixe
+                    - menuitem [ref=e99] [cursor=pointer]: Siège pivotant
+              - generic [ref=e100]:
+                - link [ref=e101] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/chaises-tabourets.html
+                - link "Tous les prix soldés >" [ref=e103] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/chaises-tabourets.html?promo=5,10,15,20,25,30,35,40,45,50
+          - menuitem
+          - menuitem "Canapés, fauteuils" [ref=e104] [cursor=pointer]:
+            - generic [ref=e105]:
+              - generic [ref=e106]: Canapés,
+              - text: fauteuils
+          - menuitem
+          - menuitem "Lits, têtes de lit" [ref=e107] [cursor=pointer]:
+            - generic [ref=e108]:
+              - generic [ref=e109]: Lits,
+              - text: têtes de lit
+          - menuitem
+          - menuitem "Meubles, rangements" [ref=e110] [cursor=pointer]:
+            - generic [ref=e111]:
+              - generic [ref=e112]: Meubles,
+              - text: rangements
+          - menuitem
+          - menuitem "Déco" [ref=e113] [cursor=pointer]
+          - menuitem
+          - menuitem "Déstockage" [ref=e114] [cursor=pointer]
+  - list [ref=e116]:
+    - listitem [ref=e117]:
+      - link "Accueil" [ref=e118] [cursor=pointer]:
+        - /url: https://www.menzzo.fr/
+      - text: /
+    - listitem [ref=e119]:
+      - strong [ref=e120]: Chaises, tabourets
+  - main [ref=e121]:
+    - heading "Chaises, tabourets" [level=1] [ref=e124]
+    - generic [ref=e127]:
+      - link "Chaise de salle à manger" [ref=e128] [cursor=pointer]:
+        - /url: https://www.menzzo.fr/chaises-tabourets/chaise-de-salle-a-manger.html
+        - img [ref=e130]
+        - text: Chaise de salle à manger
+      - link "Lot de chaises" [ref=e131] [cursor=pointer]:
+        - /url: https://www.menzzo.fr/chaises-tabourets/lot-de-chaises.html
+        - img [ref=e133]
+        - text: Lot de chaises
+      - link "Chaise de bureau" [ref=e134] [cursor=pointer]:
+        - /url: https://www.menzzo.fr/chaises/chaise-bureau.html
+        - img [ref=e136]
+        - text: Chaise de bureau
+      - link "Chaise et tabouret de bar" [ref=e137] [cursor=pointer]:
+        - /url: https://www.menzzo.fr/chaises-tabourets/chaise-et-tabouret-de-bar.html
+        - img [ref=e139]
+        - text: Chaise et tabouret de bar
+    - generic [ref=e145]:
+      - generic [ref=e147] [cursor=pointer]:
+        - text: Tous les filtres
+        - img [ref=e148]
+      - generic [ref=e151]:
+        - button "catégorie" [ref=e154] [cursor=pointer]
+        - button "prix" [ref=e157] [cursor=pointer]
+        - button "disponibilité" [ref=e160] [cursor=pointer]
+        - button "coloris" [ref=e163] [cursor=pointer]
+        - button "matière" [ref=e166] [cursor=pointer]
+        - button "forme" [ref=e169] [cursor=pointer]
+        - generic [ref=e170] [cursor=pointer]:
+          - text: Tous les filtres
+          - img [ref=e171]
+      - generic [ref=e173]:
+        - generic [ref=e174]:
+          - generic [ref=e178]: 219 Résultat(s) trouvé(s)
+          - generic [ref=e181]:
+            - strong [ref=e182]: "Trier par :"
+            - combobox [ref=e183]:
+              - option "Trier" [selected]
+              - option "Prix croissant"
+              - option "Prix décroissant"
+              - option "Nouveauté"
+              - option "Best sellers"
+        - list [ref=e186]:
+          - listitem [ref=e187]:
+            - text: "Catégorie :"
+            - generic [ref=e188]:
+              - text: Chaises, tabourets
+              - button "X" [ref=e189] [cursor=pointer]
+        - generic [ref=e193]:
+          - list [ref=e194]:
+            - listitem [ref=e195]:
+              - generic [ref=e198]:
+                - generic [ref=e202]:
+                  - link "image" [ref=e204] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/tabouret-de-bar-en-metal-drakkar-noir-et-velours-gris.html
+                    - img "image" [ref=e206]
+                  - link [ref=e208] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/tabouret-de-bar-en-metal-drakkar-noir-et-velours-gris.html
+                    - img [ref=e210]
+                  - link [ref=e212] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/tabouret-de-bar-en-metal-drakkar-noir-et-velours-gris.html
+                    - img [ref=e214]
+                  - link [ref=e216] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/tabouret-de-bar-en-metal-drakkar-noir-et-velours-gris.html
+                    - img [ref=e218]
+                  - link [ref=e220] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/tabouret-de-bar-en-metal-drakkar-noir-et-velours-gris.html
+                    - img [ref=e222]
+                  - link [ref=e224] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/tabouret-de-bar-en-metal-drakkar-noir-et-velours-gris.html
+                    - img [ref=e226]
+                - strong [ref=e229]: En stock
+                - link "Tabouret de bar en métal Drakkar Noir et Velours Gris" [ref=e231] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/tabouret-de-bar-en-metal-drakkar-noir-et-velours-gris.html
+                - generic [ref=e232]:
+                  - generic [ref=e233]:
+                    - generic [ref=e234]: 33 €
+                    - generic [ref=e235]: "-9%"
+                    - generic [ref=e236]: 30 €
+                  - generic [ref=e237]: PRIX DOUX
+            - listitem [ref=e254]:
+              - generic [ref=e257]:
+                - generic [ref=e261]:
+                  - link "image" [ref=e263] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-de-bar-ruben-bois-noisette-noir-3028-3028.html
+                    - img "image" [ref=e265]
+                  - link [ref=e267] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-de-bar-ruben-bois-noisette-noir-3028-3028.html
+                    - img [ref=e269]
+                  - link [ref=e271] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-de-bar-ruben-bois-noisette-noir-3028-3028.html
+                    - img [ref=e273]
+                  - link [ref=e275] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-de-bar-ruben-bois-noisette-noir-3028-3028.html
+                    - img [ref=e277]
+                  - link [ref=e279] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-de-bar-ruben-bois-noisette-noir-3028-3028.html
+                    - img [ref=e281]
+                  - link [ref=e283] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-de-bar-ruben-bois-noisette-noir-3028-3028.html
+                    - img [ref=e285]
+                - strong [ref=e288]: En stock
+                - link "Lot de 2 chaises de bar Ruben Bois Noisette & Noir" [ref=e290] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/lot-de-2-chaises-de-bar-ruben-bois-noisette-noir-3028-3028.html
+                - generic [ref=e291]:
+                  - generic [ref=e293]: 103 €
+                  - generic [ref=e294]: PRIX DOUX
+            - listitem [ref=e303]:
+              - generic [ref=e306]:
+                - generic [ref=e310]:
+                  - link "image" [ref=e312] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-4-chaises-empilables-balagan-noir.html
+                    - img "image" [ref=e314]
+                  - link [ref=e316] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-4-chaises-empilables-balagan-noir.html
+                    - img [ref=e318]
+                  - link [ref=e320] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-4-chaises-empilables-balagan-noir.html
+                    - img [ref=e322]
+                  - link [ref=e324] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-4-chaises-empilables-balagan-noir.html
+                    - img [ref=e326]
+                  - link [ref=e328] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-4-chaises-empilables-balagan-noir.html
+                    - img [ref=e330]
+                - strong [ref=e333]: En stock
+                - link "Lot de 4 chaises empilables Balagan Noir" [ref=e335] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/lot-de-4-chaises-empilables-balagan-noir.html
+                - generic [ref=e336]:
+                  - generic [ref=e338]: 89 €
+                  - generic [ref=e339]: PRIX DOUX
+                - generic [ref=e341]:
+                  - generic [ref=e342]: ⚠️
+                  - generic [ref=e343]: Derniers exemplaires avant retrait du catalogue !
+            - listitem [ref=e344]:
+              - generic [ref=e347]:
+                - generic [ref=e351]:
+                  - link "image" [ref=e353] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-design-galilea-metal-effet-bois-fonce-et-tissu-anthracite.html
+                    - img "image" [ref=e355]
+                  - link [ref=e357] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-design-galilea-metal-effet-bois-fonce-et-tissu-anthracite.html
+                    - img [ref=e359]
+                  - link [ref=e361] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-design-galilea-metal-effet-bois-fonce-et-tissu-anthracite.html
+                    - img [ref=e363]
+                  - link [ref=e365] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-design-galilea-metal-effet-bois-fonce-et-tissu-anthracite.html
+                    - img [ref=e367]
+                  - link [ref=e369] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-design-galilea-metal-effet-bois-fonce-et-tissu-anthracite.html
+                    - img [ref=e371]
+                  - link [ref=e373] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-design-galilea-metal-effet-bois-fonce-et-tissu-anthracite.html
+                    - img [ref=e375]
+                - strong [ref=e378]: En stock
+                - link "Lot de 2 chaises design Galilea Métal Effet bois foncé et Tissu Anthracite" [ref=e380] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/lot-de-2-chaises-design-galilea-metal-effet-bois-fonce-et-tissu-anthracite.html
+                - generic [ref=e381]:
+                  - generic [ref=e383]: 167 €
+                  - generic [ref=e384]: PRIX DOUX
+            - listitem [ref=e393]:
+              - generic [ref=e396]:
+                - generic [ref=e400]:
+                  - link "image" [ref=e402] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-design-oregon-bois-clair-et-tissu-bouclette-beige.html
+                    - img "image" [ref=e404]
+                  - link [ref=e406] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-design-oregon-bois-clair-et-tissu-bouclette-beige.html
+                    - img [ref=e408]
+                  - link [ref=e410] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-design-oregon-bois-clair-et-tissu-bouclette-beige.html
+                    - img [ref=e412]
+                  - link [ref=e414] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-design-oregon-bois-clair-et-tissu-bouclette-beige.html
+                    - img [ref=e416]
+                  - link [ref=e418] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-design-oregon-bois-clair-et-tissu-bouclette-beige.html
+                    - img [ref=e420]
+                  - link [ref=e422] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-design-oregon-bois-clair-et-tissu-bouclette-beige.html
+                    - img [ref=e424]
+                - strong [ref=e427]: En stock
+                - link "Lot de 2 chaises design Oregon Bois clair et Tissu bouclette Beige" [ref=e429] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/lot-de-2-chaises-design-oregon-bois-clair-et-tissu-bouclette-beige.html
+                - generic [ref=e431]:
+                  - generic [ref=e432]: 199 €
+                  - generic [ref=e433]: "-7%"
+                  - generic [ref=e434]: 185 €
+            - listitem [ref=e445]:
+              - generic [ref=e448]:
+                - generic [ref=e452]:
+                  - link "image" [ref=e454] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/table-de-bar-style-industriel-avec-ses-2-tabourets-jostin-bois-et-metal-noir.html
+                    - img "image" [ref=e456]
+                  - link [ref=e458] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/table-de-bar-style-industriel-avec-ses-2-tabourets-jostin-bois-et-metal-noir.html
+                    - img [ref=e460]
+                  - link [ref=e462] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/table-de-bar-style-industriel-avec-ses-2-tabourets-jostin-bois-et-metal-noir.html
+                    - img [ref=e464]
+                  - link [ref=e466] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/table-de-bar-style-industriel-avec-ses-2-tabourets-jostin-bois-et-metal-noir.html
+                    - img [ref=e468]
+                  - link [ref=e470] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/table-de-bar-style-industriel-avec-ses-2-tabourets-jostin-bois-et-metal-noir.html
+                    - img [ref=e472]
+                  - link [ref=e474] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/table-de-bar-style-industriel-avec-ses-2-tabourets-jostin-bois-et-metal-noir.html
+                    - img [ref=e476]
+                - strong [ref=e479]: En stock
+                - link "Table de bar style industriel avec ses 2 tabourets Jostin Bois et Métal Noir" [ref=e481] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/table-de-bar-style-industriel-avec-ses-2-tabourets-jostin-bois-et-metal-noir.html
+                - generic [ref=e482]:
+                  - generic [ref=e483]:
+                    - generic [ref=e484]: 76 €
+                    - generic [ref=e485]: "-8%"
+                    - generic [ref=e486]: 70 €
+                  - generic [ref=e487]: PRIX DOUX
+                - generic [ref=e489]:
+                  - generic [ref=e490]: ⚠️
+                  - generic [ref=e491]: Derniers exemplaires avant retrait du catalogue !
+            - listitem [ref=e492]:
+              - generic [ref=e495]:
+                - generic [ref=e499]:
+                  - link "image" [ref=e501] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-matelassees-coutures-verticales-louvenda-velours-taupe.html
+                    - img "image" [ref=e503]
+                  - link [ref=e505] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-matelassees-coutures-verticales-louvenda-velours-taupe.html
+                    - img [ref=e507]
+                  - link [ref=e509] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-matelassees-coutures-verticales-louvenda-velours-taupe.html
+                    - img [ref=e511]
+                  - link [ref=e513] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-matelassees-coutures-verticales-louvenda-velours-taupe.html
+                    - img [ref=e515]
+                  - link [ref=e517] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-matelassees-coutures-verticales-louvenda-velours-taupe.html
+                    - img [ref=e519]
+                - strong [ref=e522]: En stock
+                - link "Lot de 2 chaises matelassées coutures verticales Louvenda Velours Taupe" [ref=e524] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/lot-de-2-chaises-matelassees-coutures-verticales-louvenda-velours-taupe.html
+                - generic [ref=e525]:
+                  - generic [ref=e526]:
+                    - generic [ref=e527]: 79 €
+                    - generic [ref=e528]: "-8%"
+                    - generic [ref=e529]: 73 €
+                  - generic [ref=e530]: PRIX DOUX
+            - listitem [ref=e537]:
+              - generic [ref=e540]:
+                - generic [ref=e544]:
+                  - link "image" [ref=e546] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/tabouret-de-bar-yokori-en-cannage-et-bambou-noir.html
+                    - img "image" [ref=e548]
+                  - link [ref=e550] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/tabouret-de-bar-yokori-en-cannage-et-bambou-noir.html
+                    - img [ref=e552]
+                  - link [ref=e554] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/tabouret-de-bar-yokori-en-cannage-et-bambou-noir.html
+                    - img [ref=e556]
+                  - link [ref=e558] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/tabouret-de-bar-yokori-en-cannage-et-bambou-noir.html
+                    - img [ref=e560]
+                  - link [ref=e562] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/tabouret-de-bar-yokori-en-cannage-et-bambou-noir.html
+                    - img [ref=e564]
+                  - link [ref=e566] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/tabouret-de-bar-yokori-en-cannage-et-bambou-noir.html
+                    - img [ref=e568]
+                - strong [ref=e571]: En stock
+                - link "Tabouret de bar Yokori en cannage et Bambou Noir" [ref=e573] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/tabouret-de-bar-yokori-en-cannage-et-bambou-noir.html
+                - generic [ref=e574]:
+                  - generic [ref=e576]: 35 €
+                  - generic [ref=e577]: PRIX DOUX
+            - listitem [ref=e578]:
+              - generic [ref=e581]:
+                - generic [ref=e585]:
+                  - link "image" [ref=e587] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-de-bar-veronika-velours-taupe.html
+                    - img "image" [ref=e589]
+                  - link [ref=e591] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-de-bar-veronika-velours-taupe.html
+                    - img [ref=e593]
+                  - link [ref=e595] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-de-bar-veronika-velours-taupe.html
+                    - img [ref=e597]
+                  - link [ref=e599] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-de-bar-veronika-velours-taupe.html
+                    - img [ref=e601]
+                  - link [ref=e603] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-de-bar-veronika-velours-taupe.html
+                    - img [ref=e605]
+                  - link [ref=e607] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-de-bar-veronika-velours-taupe.html
+                    - img [ref=e609]
+                - strong [ref=e612]: En stock
+                - link "Lot de 2 chaises de bar Veronika Velours Taupe" [ref=e614] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/lot-de-2-chaises-de-bar-veronika-velours-taupe.html
+                - generic [ref=e615]:
+                  - generic [ref=e616]:
+                    - generic [ref=e617]: 119 €
+                    - generic [ref=e618]: "-6%"
+                    - generic [ref=e619]: 115 €
+                  - generic [ref=e620]: PRIX DOUX
+            - listitem [ref=e627]:
+              - generic [ref=e630]:
+                - generic [ref=e634]:
+                  - link "image" [ref=e636] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-de-bar-dossier-arrondi-style-maillage-xenox-velours-gris-et-metal-noir.html
+                    - img "image" [ref=e638]
+                  - link [ref=e640] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-de-bar-dossier-arrondi-style-maillage-xenox-velours-gris-et-metal-noir.html
+                    - img [ref=e642]
+                  - link [ref=e644] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-de-bar-dossier-arrondi-style-maillage-xenox-velours-gris-et-metal-noir.html
+                    - img [ref=e646]
+                  - link [ref=e648] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-de-bar-dossier-arrondi-style-maillage-xenox-velours-gris-et-metal-noir.html
+                    - img [ref=e650]
+                  - link [ref=e652] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-de-bar-dossier-arrondi-style-maillage-xenox-velours-gris-et-metal-noir.html
+                    - img [ref=e654]
+                  - link [ref=e656] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-de-bar-dossier-arrondi-style-maillage-xenox-velours-gris-et-metal-noir.html
+                    - img [ref=e658]
+                - strong [ref=e661]: En stock
+                - link "Lot de 2 chaises de bar dossier arrondi style maillage Xenox Velours Gris et Métal Noir" [ref=e663] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/lot-de-2-chaises-de-bar-dossier-arrondi-style-maillage-xenox-velours-gris-et-metal-noir.html
+                - generic [ref=e664]:
+                  - generic [ref=e665]:
+                    - generic [ref=e666]: 89 €
+                    - generic [ref=e667]: "-8%"
+                    - generic [ref=e668]: 82 €
+                  - generic [ref=e669]: PRIX DOUX
+            - listitem [ref=e678]:
+              - generic [ref=e681]:
+                - generic [ref=e685]:
+                  - link "image" [ref=e687] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/chaise-de-salle-a-manger-style-intemporel-tuboli-bois-clair-et-tissu-bouclette-beige.html
+                    - img "image" [ref=e689]
+                  - link [ref=e691] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/chaise-de-salle-a-manger-style-intemporel-tuboli-bois-clair-et-tissu-bouclette-beige.html
+                    - img [ref=e693]
+                  - link [ref=e695] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/chaise-de-salle-a-manger-style-intemporel-tuboli-bois-clair-et-tissu-bouclette-beige.html
+                    - img [ref=e697]
+                  - link [ref=e699] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/chaise-de-salle-a-manger-style-intemporel-tuboli-bois-clair-et-tissu-bouclette-beige.html
+                    - img [ref=e701]
+                  - link [ref=e703] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/chaise-de-salle-a-manger-style-intemporel-tuboli-bois-clair-et-tissu-bouclette-beige.html
+                    - img [ref=e705]
+                  - link [ref=e707] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/chaise-de-salle-a-manger-style-intemporel-tuboli-bois-clair-et-tissu-bouclette-beige.html
+                    - img [ref=e709]
+                - strong [ref=e712]: Livré sous plus d’un mois
+                - link "Chaise de salle à manger style intemporel Tuboli Bois clair et Tissu bouclette Beige" [ref=e714] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/chaise-de-salle-a-manger-style-intemporel-tuboli-bois-clair-et-tissu-bouclette-beige.html
+                - generic [ref=e717]: 76 €
+            - listitem [ref=e728]:
+              - generic [ref=e731]:
+                - generic [ref=e735]:
+                  - link "image" [ref=e737] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-de-bureau-moderne-a-haut-dossier-florelo-velours-noir.html
+                    - img "image" [ref=e739]
+                  - link [ref=e741] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-de-bureau-moderne-a-haut-dossier-florelo-velours-noir.html
+                    - img [ref=e743]
+                  - link [ref=e745] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-de-bureau-moderne-a-haut-dossier-florelo-velours-noir.html
+                    - img [ref=e747]
+                  - link [ref=e749] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-de-bureau-moderne-a-haut-dossier-florelo-velours-noir.html
+                    - img [ref=e751]
+                  - link [ref=e753] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/fauteuil-de-bureau-moderne-a-haut-dossier-florelo-velours-noir.html
+                    - img [ref=e755]
+                - strong [ref=e758]: Livré sous plus d’un mois
+                - link "Fauteuil de bureau moderne à haut dossier Florelo Velours Noir" [ref=e760] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/fauteuil-de-bureau-moderne-a-haut-dossier-florelo-velours-noir.html
+                - generic [ref=e761]:
+                  - generic [ref=e762]:
+                    - generic [ref=e763]: 101 €
+                    - generic [ref=e764]: "-9%"
+                    - generic [ref=e765]: 92 €
+                  - generic [ref=e766]: PRIX DOUX
+            - listitem [ref=e779]:
+              - generic [ref=e782]:
+                - generic [ref=e786]:
+                  - link "image" [ref=e788] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/chaise-style-vintage-moderne-vladmir-lin-beige-et-bois-massif-chene-clair.html
+                    - img "image" [ref=e790]
+                  - link [ref=e792] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/chaise-style-vintage-moderne-vladmir-lin-beige-et-bois-massif-chene-clair.html
+                    - img [ref=e794]
+                  - link [ref=e796] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/chaise-style-vintage-moderne-vladmir-lin-beige-et-bois-massif-chene-clair.html
+                    - img [ref=e798]
+                  - link [ref=e800] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/chaise-style-vintage-moderne-vladmir-lin-beige-et-bois-massif-chene-clair.html
+                    - img [ref=e802]
+                - strong [ref=e805]: En stock
+                - link "Chaise style vintage moderne Vladmir Lin Crème et Bois massif Chêne clair" [ref=e807] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/chaise-style-vintage-moderne-vladmir-lin-beige-et-bois-massif-chene-clair.html
+                - generic [ref=e810]: 201 €
+                - generic [ref=e812]:
+                  - generic [ref=e813]: ⚠️
+                  - generic [ref=e814]: Derniers exemplaires avant retrait du catalogue !
+            - listitem [ref=e815]:
+              - generic [ref=e818]:
+                - generic [ref=e822]:
+                  - link "image" [ref=e824] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-modernes-arkitek-metal-et-cuir-noir.html
+                    - img "image" [ref=e826]
+                  - link [ref=e828] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-modernes-arkitek-metal-et-cuir-noir.html
+                    - img [ref=e830]
+                  - link [ref=e832] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-modernes-arkitek-metal-et-cuir-noir.html
+                    - img [ref=e834]
+                  - link [ref=e836] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-modernes-arkitek-metal-et-cuir-noir.html
+                    - img [ref=e838]
+                - strong [ref=e841]: En stock
+                - link "Lot de 2 chaises modernes Arkitek Métal et Cuir de vachette Noir" [ref=e843] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/lot-de-2-chaises-modernes-arkitek-metal-et-cuir-noir.html
+                - generic [ref=e846]: 170 €
+                - generic [ref=e848]:
+                  - generic [ref=e849]: ⚠️
+                  - generic [ref=e850]: Derniers exemplaires avant retrait du catalogue !
+            - listitem [ref=e851]:
+              - generic [ref=e854]:
+                - generic [ref=e858]:
+                  - link "image" [ref=e860] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/chaise-style-vintage-moderne-vladmir-velours-anthracite-et-bois-massif-noir.html
+                    - img "image" [ref=e862]
+                  - link [ref=e864] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/chaise-style-vintage-moderne-vladmir-velours-anthracite-et-bois-massif-noir.html
+                    - img [ref=e866]
+                  - link [ref=e868] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/chaise-style-vintage-moderne-vladmir-velours-anthracite-et-bois-massif-noir.html
+                    - img [ref=e870]
+                  - link [ref=e872] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/chaise-style-vintage-moderne-vladmir-velours-anthracite-et-bois-massif-noir.html
+                    - img [ref=e874]
+                - strong [ref=e877]: En stock
+                - link "Chaise style vintage moderne Vladmir Velours Anthracite et Bois massif Noir" [ref=e879] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/chaise-style-vintage-moderne-vladmir-velours-anthracite-et-bois-massif-noir.html
+                - generic [ref=e882]: 201 €
+                - generic [ref=e884]:
+                  - generic [ref=e885]: ⚠️
+                  - generic [ref=e886]: Derniers exemplaires avant retrait du catalogue !
+            - listitem [ref=e887]:
+              - generic [ref=e890]:
+                - generic [ref=e894]:
+                  - link "image" [ref=e896] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-6-chaises-de-bar-nairis-velours-creme-et-metal-or.html
+                    - img "image" [ref=e898]
+                  - link [ref=e900] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-6-chaises-de-bar-nairis-velours-creme-et-metal-or.html
+                    - img [ref=e902]
+                - strong [ref=e905]: En stock
+                - link "Lot de 2 chaises de bar Nairis Velours Crème et Métal Or" [ref=e907] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/lot-de-6-chaises-de-bar-nairis-velours-creme-et-metal-or.html
+                - generic [ref=e910]: 415 €
+                - generic [ref=e912]:
+                  - generic [ref=e913]: ⚠️
+                  - generic [ref=e914]: Derniers exemplaires avant retrait du catalogue !
+            - listitem [ref=e915]:
+              - generic [ref=e918]:
+                - link "image" [ref=e924] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/lot-de-4-chaises-gino-metal-et-velours-noir.html
+                  - img "image" [ref=e926]
+                - strong [ref=e929]: En stock
+                - link "Lot de 4 chaises Gino Métal et Velours Noir" [ref=e931] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/lot-de-4-chaises-gino-metal-et-velours-noir.html
+                - generic [ref=e934]: 240 €
+                - generic [ref=e936]:
+                  - generic [ref=e937]: ⚠️
+                  - generic [ref=e938]: Derniers exemplaires avant retrait du catalogue !
+            - listitem [ref=e939]:
+              - generic [ref=e942]:
+                - generic [ref=e946]:
+                  - link "image" [ref=e948] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-de-bar-yoggi-bois-fonce-et-tissu-bouclette-creme.html
+                    - img "image" [ref=e950]
+                  - link [ref=e952] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-de-bar-yoggi-bois-fonce-et-tissu-bouclette-creme.html
+                    - img [ref=e954]
+                  - link [ref=e956] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-de-bar-yoggi-bois-fonce-et-tissu-bouclette-creme.html
+                    - img [ref=e958]
+                  - link [ref=e960] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-de-bar-yoggi-bois-fonce-et-tissu-bouclette-creme.html
+                    - img [ref=e962]
+                  - link [ref=e964] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-de-bar-yoggi-bois-fonce-et-tissu-bouclette-creme.html
+                    - img [ref=e966]
+                  - link [ref=e968] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-2-chaises-de-bar-yoggi-bois-fonce-et-tissu-bouclette-creme.html
+                    - img [ref=e970]
+                - strong [ref=e973]: En stock
+                - link "Lot de 2 chaises de bar Yoggi Bois foncé et Tissu bouclette Crème" [ref=e975] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/lot-de-2-chaises-de-bar-yoggi-bois-fonce-et-tissu-bouclette-creme.html
+                - generic [ref=e976]:
+                  - generic [ref=e977]:
+                    - generic [ref=e978]: 69 €
+                    - generic [ref=e979]: "-6%"
+                    - generic [ref=e980]: 65 €
+                  - generic [ref=e981]: PRIX DOUX
+                - generic [ref=e983]:
+                  - generic [ref=e984]: ⚠️
+                  - generic [ref=e985]: Derniers exemplaires avant retrait du catalogue !
+            - listitem [ref=e986]:
+              - generic [ref=e989]:
+                - generic [ref=e993]:
+                  - link "image" [ref=e995] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/chaise-de-bar-noellie-simili-p-u-noir-pieds-or-8315-8315.html
+                    - img "image" [ref=e997]
+                  - link [ref=e999] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/chaise-de-bar-noellie-simili-p-u-noir-pieds-or-8315-8315.html
+                    - img [ref=e1001]
+                  - link [ref=e1003] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/chaise-de-bar-noellie-simili-p-u-noir-pieds-or-8315-8315.html
+                    - img [ref=e1005]
+                  - link [ref=e1007] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/chaise-de-bar-noellie-simili-p-u-noir-pieds-or-8315-8315.html
+                    - img [ref=e1009]
+                  - link [ref=e1011] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/chaise-de-bar-noellie-simili-p-u-noir-pieds-or-8315-8315.html
+                    - img [ref=e1013]
+                  - link [ref=e1015] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/chaise-de-bar-noellie-simili-p-u-noir-pieds-or-8315-8315.html
+                    - img [ref=e1017]
+                - strong [ref=e1020]: En stock
+                - link "Chaise de bar Noellie Simili P.U. Noir Pieds Or" [ref=e1022] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/chaise-de-bar-noellie-simili-p-u-noir-pieds-or-8315-8315.html
+                - generic [ref=e1023]:
+                  - generic [ref=e1024]:
+                    - generic [ref=e1025]: 79 €
+                    - generic [ref=e1026]: "-8%"
+                    - generic [ref=e1027]: 73 €
+                  - generic [ref=e1028]: PRIX DOUX
+            - listitem [ref=e1035]:
+              - generic [ref=e1038]:
+                - generic [ref=e1042]:
+                  - link "image" [ref=e1044] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-4-chaises-matelassees-norway-velours-vert-8094-8094.html
+                    - img "image" [ref=e1046]
+                  - link [ref=e1048] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-4-chaises-matelassees-norway-velours-vert-8094-8094.html
+                    - img [ref=e1050]
+                  - link [ref=e1052] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-4-chaises-matelassees-norway-velours-vert-8094-8094.html
+                    - img [ref=e1054]
+                  - link [ref=e1056] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-4-chaises-matelassees-norway-velours-vert-8094-8094.html
+                    - img [ref=e1058]
+                  - link [ref=e1060] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-4-chaises-matelassees-norway-velours-vert-8094-8094.html
+                    - img [ref=e1062]
+                  - link [ref=e1064] [cursor=pointer]:
+                    - /url: https://www.menzzo.fr/lot-de-4-chaises-matelassees-norway-velours-vert-8094-8094.html
+                    - img [ref=e1066]
+                - strong [ref=e1069]: En stock
+                - link "Lot de 4 chaises matelassées Norway Velours Vert" [ref=e1071] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/lot-de-4-chaises-matelassees-norway-velours-vert-8094-8094.html
+                - generic [ref=e1072]:
+                  - generic [ref=e1074]: 125 €
+                  - generic [ref=e1075]: PRIX DOUX
+          - button "Voir plus de produits" [ref=e1086] [cursor=pointer]
+  - contentinfo [ref=e1087]:
+    - generic [ref=e1089]:
+      - generic [ref=e1091]:
+        - generic [ref=e1092]:
+          - generic [ref=e1093]: Tous les codes promo
+          - generic [ref=e1094]: En cliquant sur "Je m'inscris", j'accepte de recevoir la newsletter par email et j'accepte la politique de confidentialité de Menzzo.
+          - generic [ref=e1097]:
+            - generic [ref=e1100]:
+              - generic [ref=e1101]: "Inscription à notre lettre d’information :"
+              - textbox "Inscription à notre lettre d’information :" [ref=e1102]:
+                - /placeholder: Votre e-mail
+            - button "Je m'inscris !" [ref=e1103] [cursor=pointer]
+            - generic [ref=e1105]:
+              - checkbox "J'accepte la politique de confidentialité et je consens au traitement de mes données à des fins marketing par Menzzo" [ref=e1106]
+              - text: J'accepte la
+              - link "politique de confidentialité" [ref=e1107] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/rgpd
+              - text: et je consens au traitement de mes données à des fins marketing par Menzzo
+        - img "img" [ref=e1109]
+      - generic [ref=e1111]:
+        - generic [ref=e1113]:
+          - generic [ref=e1114]:
+            - img [ref=e1115]
+            - heading "SERVICE CLIENT" [level=3] [ref=e1117]
+            - paragraph [ref=e1118]: Vous avez passé commande et souhaitez nous joindre ?
+          - generic [ref=e1119]:
+            - generic [ref=e1120]:
+              - heading "Un seul endroit pour répondre à toutes vos demandes" [level=4] [ref=e1122]
+              - generic [ref=e1124]:
+                - img [ref=e1125]
+                - link "sav.menzzo.fr" [ref=e1127] [cursor=pointer]:
+                  - /url: https://sav.menzzo.fr/
+              - paragraph [ref=e1128]:
+                - text: Complétez le formulaire sur la plateforme
+                - link "sav.menzzo.fr" [ref=e1129] [cursor=pointer]:
+                  - /url: https://sav.menzzo.fr/
+                - text: et accédez directement aux informations que vous recherchez concernant votre commande.
+              - paragraph [ref=e1130]: Une réponse vous sera apportée en ligne ou vous aurez accès à un planning pour prendre un rdv téléphonique avec un de nos agents.
+            - generic [ref=e1131]:
+              - heading "Foire Aux Questions" [level=4] [ref=e1133]
+              - generic [ref=e1135]:
+                - img [ref=e1136]
+                - link "Consultez notre FAQ" [ref=e1138] [cursor=pointer]:
+                  - /url: /faq
+              - paragraph [ref=e1139]: Vos questions les plus courantes sont répertoriées dans notre FAQ pour que vous trouviez encore plus rapidement des réponses pertinentes à toutes vos interrogations.
+          - link "En savoir plus" [ref=e1140] [cursor=pointer]:
+            - /url: /sav-menzzo-fr
+        - generic [ref=e1142]:
+          - generic [ref=e1143]:
+            - img [ref=e1144]
+            - heading "Vendeurs conseil" [level=3] [ref=e1146]
+            - paragraph [ref=e1147]: Vous avez une question sur un produit ou un service ?
+          - generic [ref=e1148]:
+            - generic [ref=e1149]:
+              - heading "Contactez nos vendeurs conseil" [level=4] [ref=e1151]
+              - generic [ref=e1153]:
+                - img [ref=e1154]
+                - generic [ref=e1156]:
+                  - link "01 43 75 11 18" [ref=e1157] [cursor=pointer]:
+                    - /url: tel:0143751118
+                  - text: "Du lundi au jeudi : 10h-17h"
+                  - text: "Vendredi : 10h-15h"
+            - generic [ref=e1158]:
+              - heading "Outlet Menzzo" [level=4] [ref=e1160]
+              - generic [ref=e1162]:
+                - img [ref=e1163]
+                - generic [ref=e1165]:
+                  - text: 221 Rue Paul Vaillant Couturier
+                  - text: 94140 Alfortville
+                  - text: "Du lundi au jeudi : 9h30-15h"
+                  - generic [ref=e1166]:
+                    - text: Fermeture exceptionnelle
+                    - text: Aucune à prévoir...
+              - paragraph [ref=e1167]: Des articles juste déballés, retournés par les clients et soigneusement vérifiés, ou des fins de collection, fins de stock pour des coloris spécifiques... Nos meubles à prix cassé, c'est ça l'Outlet Menzzo !
+          - link "En savoir plus" [ref=e1168] [cursor=pointer]:
+            - /url: /showroom/
+        - generic [ref=e1170]:
+          - generic [ref=e1171]:
+            - img [ref=e1172]
+            - heading "PAIEMENT SÉCURISÉ" [level=3] [ref=e1174]
+            - paragraph [ref=e1175]: Achetez en toute sérénité grâce à nos différents modes de paiement en ligne.
+          - generic [ref=e1176]:
+            - generic [ref=e1177]:
+              - heading "Par carte bancaire :" [level=4] [ref=e1179]
+              - generic [ref=e1180]:
+                - img "cb" [ref=e1182]
+                - img "visa" [ref=e1184]
+                - img "master" [ref=e1186]
+                - img "american-express" [ref=e1188]
+              - paragraph [ref=e1189]: Les paiements en ligne sont sécurisés par le système 3D Secure. Menzzo n’a pas accès et ne sauvegarde pas vos données de carte bancaire.
+            - generic [ref=e1190]:
+              - heading "En plusieurs fois :" [level=4] [ref=e1192]
+              - paragraph [ref=e1197]:
+                - text: Divisez votre paiement en 3 versements égaux et sans frais ou en 6, 9 ou 12 fois. Simple et pratique.
+                - text: Un paiement par mois, immédiat et sans formalités.
+            - generic [ref=e1198]:
+              - heading "Par virement :" [level=4] [ref=e1200]
+              - paragraph [ref=e1201]: Plus besoin de carte bancaire ! Payez vos achats en un clic grâce à votre appli bancaire. Aucune saisie d’IBAN nécessaire et sécurisé par votre banque sans coût supplémentaire.
+          - link "En savoir plus" [ref=e1202] [cursor=pointer]:
+            - /url: /financement
+        - generic [ref=e1204]:
+          - generic [ref=e1205]:
+            - img [ref=e1206]
+            - heading "Livraison" [level=3] [ref=e1208]
+            - paragraph [ref=e1209]: Les tarifs des livraisons sont indiqués sur chaque fiche produit.
+          - generic [ref=e1210]:
+            - generic [ref=e1211]:
+              - heading "Livraison classique" [level=4] [ref=e1213]
+              - paragraph [ref=e1216]:
+                - text: Vous êtes livrés à l'extérieur, en bas de chez vous.
+                - text: Selon le type d’article, le transporteur vous contacte par mail, SMS ou téléphone pour vous communiquer une date de livraison.
+            - generic [ref=e1217]:
+              - heading "Livraison Étage" [level=4] [ref=e1219]
+              - paragraph [ref=e1222]:
+                - text: Vous êtes livrés dans la pièce de votre choix, même à l’étage.
+                - text: Selon le type d’article, le transporteur vous contacte par mail, SMS ou téléphone pour vous communiquer une date de livraison.
+          - link "En savoir plus" [ref=e1223] [cursor=pointer]:
+            - /url: /livraison
+      - generic [ref=e1225]:
+        - generic [ref=e1226]:
+          - heading "BESOIN D'AIDE?" [level=3] [ref=e1227]
+          - list [ref=e1228]:
+            - listitem [ref=e1229]:
+              - link "Blog" [ref=e1230] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/blog.html
+            - listitem [ref=e1231]:
+              - link "Livraison" [ref=e1232] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/livraison/
+            - listitem [ref=e1233]:
+              - link "Politique de retour" [ref=e1234] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/politique-de-retour/
+            - listitem [ref=e1235]:
+              - link "Financement" [ref=e1236] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/financement/
+            - listitem [ref=e1237]:
+              - link "Service client" [ref=e1238] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/sav-menzzo-fr/
+            - listitem [ref=e1239]:
+              - link "Glossaire des matières" [ref=e1240] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/materials/
+        - generic [ref=e1241]:
+          - heading "MIEUX NOUS CONNAÎTRE" [level=3] [ref=e1242]
+          - list [ref=e1243]:
+            - listitem [ref=e1244]:
+              - link "Outlet Menzzo" [ref=e1245] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/showroom
+            - listitem [ref=e1246]:
+              - link "À propos de menzzo" [ref=e1247] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/a-propos-de-menzzo/
+            - listitem [ref=e1248]:
+              - link "Conditions Générales de Vente" [ref=e1249] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/conditions-generales-de-vente/
+            - listitem [ref=e1250]:
+              - link "Données personnelles" [ref=e1251] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/rgpd
+            - listitem [ref=e1252]:
+              - link "Revue de presse" [ref=e1253] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/revue-de-presse
+        - generic [ref=e1254]:
+          - heading "RETROUVEZ-NOUS!" [level=3] [ref=e1255]
+          - generic [ref=e1256]:
+            - link "Facebook" [ref=e1257] [cursor=pointer]:
+              - /url: http://www.facebook.com/MenzzoFrance
+              - img [ref=e1258]
+            - link "Instagram" [ref=e1260] [cursor=pointer]:
+              - /url: https://www.instagram.com/menzzofr/
+              - img [ref=e1261]
+            - link "Pinterest" [ref=e1263] [cursor=pointer]:
+              - /url: http://www.pinterest.com/menzzo
+              - img [ref=e1264]
+      - list [ref=e1268]:
+        - listitem [ref=e1269]
+        - listitem [ref=e1271]
+        - listitem [ref=e1273]
+        - listitem [ref=e1275]
+        - listitem [ref=e1277]:
+          - img "Monext" [ref=e1279]
+        - listitem [ref=e1280]
+        - listitem [ref=e1282]:
+          - img "klarna" [ref=e1284]
+        - listitem [ref=e1285]:
+          - img "scalapay" [ref=e1287]
+      - generic [ref=e1288]:
+        - text: "Retrouvez Menzzo dans d'autres pays:"
+        - link "menzzo.fr" [ref=e1289] [cursor=pointer]:
+          - /url: https://menzzo.fr
+          - img [ref=e1290]
+        - link "menzzo.de" [ref=e1292] [cursor=pointer]:
+          - /url: https://menzzo.de
+          - img [ref=e1293]
+        - link "menzzo.it" [ref=e1295] [cursor=pointer]:
+          - /url: https://menzzo.it
+          - img [ref=e1296]
+        - link "menzzo.nl" [ref=e1298] [cursor=pointer]:
+          - /url: https://menzzo.nl
+          - img [ref=e1299]
+        - link "menzzo.at" [ref=e1301] [cursor=pointer]:
+          - /url: https://menzzo.at
+          - img [ref=e1302]
+        - link "menzzo.be" [ref=e1304] [cursor=pointer]:
+          - /url: https://menzzo.be
+          - img [ref=e1305]
+        - link "menzzo.es" [ref=e1307] [cursor=pointer]:
+          - /url: https://www.menzzo.es/
+          - img [ref=e1308]
+        - link "menzzo.pt" [ref=e1310] [cursor=pointer]:
+          - /url: https://www.menzzo.pt/
+          - img [ref=e1311]
+      - generic [ref=e1313]: © 2025 Menzzo - Tous droits réservés
+  - button "Chat Menzzo" [ref=e1314] [cursor=pointer]:
+    - img "Chat Menzzo"
+```
