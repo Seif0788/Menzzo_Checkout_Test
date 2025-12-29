@@ -1,9 +1,0 @@
-❌ Test failed with error: Error: [2mexpect([22m[31mpage[39m[2m).[22mtoHaveURL[2m([22m[32mexpected[39m[2m)[22m failed
-
-Expected pattern: [32m/stripe\.com/[39m
-Received string:  [31m"https://www.menzzo.nl/onestepcheckout/"[39m
-Timeout: 60000ms
-
-Call log:
-[2m  - Expect "toHaveURL" with timeout 60000ms[22m
-[2m    64 × unexpected value "https://www.menzzo.nl/onestepcheckout/"[22m
