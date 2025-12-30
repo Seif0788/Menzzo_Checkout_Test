@@ -1,0 +1,1 @@
+⚠️ Error during checkout readiness check: ❌ Unable to recover from page closure.
