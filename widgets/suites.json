@@ -1,1 +1,1 @@
-{"total":1,"items":[{"uid":"e9dd9807e211e88a6f34926acbcbf9db","name":"Global_Checkoutsuite","statistic":{"failed":1,"broken":1,"skipped":0,"passed":19,"unknown":0,"total":21}}]}
+{"total":1,"items":[{"uid":"e9dd9807e211e88a6f34926acbcbf9db","name":"Global_Checkoutsuite","statistic":{"failed":1,"broken":0,"skipped":0,"passed":20,"unknown":0,"total":21}}]}
