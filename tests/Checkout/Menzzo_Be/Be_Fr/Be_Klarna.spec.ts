@@ -2,6 +2,7 @@ import { test, expect, Page } from '@playwright/test';
 import { attachment } from 'allure-js-commons';
 import { clickElementByText, search, ClickRandomProduct, clickElementByTextWithPopUp, waitForCheckoutReady, clickAndWaitForNavigation } from '../../../../helpers/utils';
 import { performCheckout, CheckoutData } from '../../../../helpers/Checkout/General_Checkout';
+import { Klanra_Payment } from '../../../../helpers/Checkout/Payment_menthod';
 
 test('Klarna_Be_Fr', async ({ page }) => {
     test.setTimeout(180000);
@@ -88,51 +89,9 @@ test('Klarna_Be_Fr', async ({ page }) => {
         paymentMethod: 'Klarna'
     };
 
-    // 1️⃣ Retry filling checkout 5 times
-    for (let attempt = 1; attempt <= 5; attempt++) {
-        try {
-            await performCheckout(checkoutPage, checkoutData);
-            attachment('Console Log', `✅ Checkout performed successfully on attempt ${attempt}`, 'text/plain');
+    await performCheckout(checkoutPage, checkoutData);
+    attachment('Console Log', '✅ Checkout performed successfully.', 'text/plain');
 
-            // 2️⃣ Wait for Klarna popup or redirect INSIDE the loop
-            attachment('Console Log', '⏳ Waiting for Klarna popup or redirect...', 'text/plain');
-
-            const popupOrRedirect = await Promise.race([
-                page.waitForEvent('popup', { timeout: 60000 }).then(p => ({ type: 'popup', page: p })),
-                page.waitForURL(/klarna\.com/, { timeout: 60000, waitUntil: 'domcontentloaded' }).then(() => ({ type: 'redirect', page: page }))
-            ]);
-
-            if (popupOrRedirect.type === 'popup') {
-                const popup = popupOrRedirect.page as Page;
-                await popup.waitForLoadState();
-                await expect(popup).toHaveURL(/klarna\.com/);
-                attachment('Console Log', "✅ Klarna popup detected!", 'text/plain');
-            } else {
-                attachment('Console Log', "✅ Klarna redirect detected!", 'text/plain');
-            }
-
-            // If successful, break the loop
-            break;
-
-        } catch (err) {
-            attachment('Console Warn', `⚠️ Attempt ${attempt} failed: ${err}`, 'text/plain');
-            attachment('Console Warn', `⚠️ Current URL: ${page.url()}`, 'text/plain');
-
-            if (attempt === 5) throw err;
-
-            attachment('Console Log', "🔄 Reloading page and retrying...", 'text/plain');
-            await page.reload();
-            await page.waitForLoadState('networkidle');
-
-            // Re-detect checkout page if needed (in case reload redirects elsewhere)
-            const allPages = page.context().pages();
-            for (const p of allPages) {
-                if (/onestepcheckout/i.test(p.url())) {
-                    checkoutPage = p;
-                    break;
-                }
-            }
-        }
-    }
+    await Klanra_Payment(page);
 
 });

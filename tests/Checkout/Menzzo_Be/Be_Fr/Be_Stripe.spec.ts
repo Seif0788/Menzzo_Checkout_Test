@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 import { attachment } from 'allure-js-commons';
 import { clickElementByText, search, ClickRandomProduct, clickElementByTextWithPopUp, waitForCheckoutReady, clickAndWaitForNavigation } from '../../../../helpers/utils';
 import { performCheckout, CheckoutData } from '../../../../helpers/Checkout/General_Checkout';
+import { Stripe_Payment } from '../../../../helpers/Checkout/Payment_menthod';
 
 test('Strip_Be_Fr', async ({ page }) => {
     test.setTimeout(180000);
@@ -77,13 +78,6 @@ test('Strip_Be_Fr', async ({ page }) => {
     await performCheckout(checkoutPage, checkoutData);
     attachment('Console Log', '✅ Checkout performed successfully.', 'text/plain');
 
-    // 9️⃣ Confirm navigation to payment method page
-    attachment('Console Log', '⏳ Verifying navigation to Stripe...', 'text/plain');
-    try {
-        await expect(checkoutPage).toHaveURL(/stripe\.com/, { timeout: 60000 });
-        attachment('Console Log', '✅ Successfully navigated to Stripe.', 'text/plain');
-    } catch (e) {
-        attachment('Console Log', `❌ Failed to navigate to Stripe. Current URL: ${checkoutPage.url()}`, 'text/plain');
-        throw e;
-    }
+    // 11️⃣ Confirm navigation to payment method page
+    await Stripe_Payment(page);
 })

@@ -8,6 +8,7 @@ import {
     waitForCheckoutReady,
 } from '../../../helpers/utils';
 import { performCheckout, CheckoutData } from '../../../helpers/Checkout/General_Checkout';
+import { Stripe_Payment } from '../../../helpers/Checkout/Payment_menthod';
 
 test('At_Stripe', async ({ page }) => {
     // 1️⃣ Open Menzzo.de
@@ -92,13 +93,6 @@ test('At_Stripe', async ({ page }) => {
     await performCheckout(checkoutPage, checkoutData);
     attachment('Console Log', '✅ Checkout performed successfully.', 'text/plain');
 
-    // 9️⃣ Confirm navigation to payment method page
-    attachment('Console Log', '⏳ Verifying navigation to Stripe...', 'text/plain');
-    try {
-        await expect(checkoutPage).toHaveURL(/stripe\.com/, { timeout: 60000 });
-        attachment('Console Log', '✅ Successfully navigated to Stripe.', 'text/plain');
-    } catch (e) {
-        attachment('Console Error', `❌ Failed to navigate to Stripe. Current URL: ${checkoutPage.url()}`, 'text/plain');
-        throw e;
-    }
+    // 1️⃣1️⃣ Confirm navigation to payment method page
+    await Stripe_Payment(page);
 });

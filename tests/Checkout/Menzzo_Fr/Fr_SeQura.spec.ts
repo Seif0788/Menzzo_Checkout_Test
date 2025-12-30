@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 import { attachment } from 'allure-js-commons';
 import { clickElementByText, search, ClickRandomProduct, clickElementByTextWithPopUp, waitForCheckoutReady, clickAndWaitForNavigation } from '../../../helpers/utils';
 import { performCheckout, CheckoutData } from '../../../helpers/Checkout/General_Checkout';
+import { SeQura_Payment } from '../../../helpers/Checkout/Payment_menthod';
 
 test('SeQura_Fr', async ({ page }) => {
   test.setTimeout(180000);
@@ -77,20 +78,5 @@ test('SeQura_Fr', async ({ page }) => {
   await performCheckout(checkoutPage, checkoutData);
   attachment('Console Log', '✅ Checkout performed successfully.', 'text/plain');
 
-  // 9️⃣ Confirm navigation to payment method page
-  // Refine the locator for the payment method page title
-  attachment('Console Log', '⏳ Verifying navigation to payment method page...', 'text/plain');
-  await checkoutPage.waitForSelector('h1.page-title', { state: 'visible', timeout: 60000 });
-  const pageTitle = await checkoutPage.locator('h1.page-title').innerText();
-  expect(pageTitle).toMatch(/Finaliser la commande/i);
-  attachment('Console Log', '✅ Successfully navigated to payment method page.', 'text/plain');
-
-  // Wait for SeQura payment page to load
-  attachment('Console Log', '⏳ Wait for SeQura Widget to load...', 'text/plain');
-
-  // Wait for any navigation or page changes after clicking pay
-  await checkoutPage.waitForLoadState('networkidle', { timeout: 60000 });
-  attachment('Console Log', '✅ Page loaded after payment selection.', 'text/plain');
-
-
+  await SeQura_Payment(checkoutPage);
 });

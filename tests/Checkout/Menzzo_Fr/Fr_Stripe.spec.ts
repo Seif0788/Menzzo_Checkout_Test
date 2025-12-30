@@ -2,31 +2,32 @@ import { test, expect } from '@playwright/test';
 import { attachment } from 'allure-js-commons';
 import { clickElementByText, search, ClickRandomProduct, clickElementByTextWithPopUp, waitForCheckoutReady, clickAndWaitForNavigation } from '../../../helpers/utils';
 import { performCheckout, CheckoutData } from '../../../helpers/Checkout/General_Checkout';
+import { Stripe_Payment } from '../../../helpers/Checkout/Payment_menthod';
 
 test('Strip_Fr', async ({ page }) => {
   test.setTimeout(180000);
 
-  //Open Menzzo.fr
+  // 1️⃣ Open Menzzo.fr
   await page.goto('https://www.menzzo.fr');
 
-  //Close cookies popup;
+  // 2️⃣ Close cookies popup;
   await clickElementByText(page, "Accepter et continuer");
 
-  //Wright "Table" in the search bar
+  // 3️⃣ Wright "Table" in the search bar
   await search(page, "Table");
 
-  //Click in the rundem product
+  // 4️⃣ Click in the rundem product
   await ClickRandomProduct(page);
 
-  // Wait for product page to load
+  // 5️⃣ Wait for product page to load
   attachment('Console Log', '⏳ Waiting for product page to load...', 'text/plain');
   await page.waitForLoadState('networkidle', { timeout: 60000 });
   attachment('Console Log', '✅ Product page loaded.', 'text/plain');
 
-  //Click in "Ajouter au panier"
+  // 6️⃣ Click in "Ajouter au panier"
   await clickElementByText(page, "Ajouter au panier");
 
-  //Click in "Voir le panier & commander"
+  // 7️⃣ Click in "Voir le panier & commander"
   await clickElementByTextWithPopUp(page, "Voir le panier & commander");
 
   // Use robust navigation helper
@@ -36,7 +37,7 @@ test('Strip_Fr', async ({ page }) => {
 
   attachment('Console Log', '✅ Checkout page detected.', 'text/plain');
 
-  // 6️⃣ Wait for checkout form readiness
+  // 8️⃣ Wait for checkout form readiness
   let checkoutPage = page;
 
   try {
@@ -61,7 +62,7 @@ test('Strip_Fr', async ({ page }) => {
     }
   }
 
-  // 7️⃣ Fill checkout data
+  // 9 Fill checkout data
   const checkoutData: CheckoutData = {
     firstName: 'Seif',
     lastName: 'Taj',
@@ -74,16 +75,10 @@ test('Strip_Fr', async ({ page }) => {
     paymentMethod: 'Stripe'
   };
 
+  // 10 Perform checkout
   await performCheckout(checkoutPage, checkoutData);
   attachment('Console Log', '✅ Checkout performed successfully.', 'text/plain');
 
-  // 9️⃣ Confirm navigation to payment method page
-  attachment('Console Log', '⏳ Verifying navigation to Stripe...', 'text/plain');
-  try {
-    await expect(checkoutPage).toHaveURL(/stripe\.com/, { timeout: 60000 });
-    attachment('Console Log', '✅ Successfully navigated to Stripe.', 'text/plain');
-  } catch (e) {
-    attachment('Console Error', `❌ Failed to navigate to Stripe. Current URL: ${checkoutPage.url()}`, 'text/plain');
-    throw e;
-  }
+  // 11 Confirm navigation to payment method page
+  await Stripe_Payment(page);
 })

@@ -6,6 +6,7 @@ import fs from 'fs';
 import Papa from 'papaparse';
 import path from 'path';
 import { selectRandomCategory } from '../../../helpers/Category_page/Global_Checking';
+import { Stripe_Payment } from '../../../helpers/Checkout/Payment_menthod';
 
 //---- 1. Load categories from CSV -----
 function loadCategoriesFromCSV(filePath: string): string[] {
@@ -102,16 +103,7 @@ test('Login_Checkout_fr', async ({ page }) => {
     await performCheckout(checkoutPage, checkoutData);
     attachment('Console Log', '✅ Checkout performed successfully.', 'text/plain');
 
-    // 9️⃣ Confirm navigation to payment method page
-    attachment('Console Log', '⏳ Verifying navigation to Stripe...', 'text/plain');
-    try {
-        await expect(checkoutPage).toHaveURL(/stripe\.com/, { timeout: 60000 });
-        attachment('Console Log', '✅ Successfully navigated to Stripe.', 'text/plain');
-    } catch (e) {
-        attachment('Console Error', `❌ Failed to navigate to Stripe. Current URL: ${checkoutPage.url()}`, 'text/plain');
-        // Optional: take screenshot on failure
-        // await checkoutPage.screenshot({ path: 'stripe-nav-failed.png' });
-        throw e;
-    }
+    // 1️⃣1️⃣ Confirm navigation to payment method page
+    await Stripe_Payment(page);
 
 })

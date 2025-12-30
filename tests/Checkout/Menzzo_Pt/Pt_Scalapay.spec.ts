@@ -8,6 +8,7 @@ import {
     waitForCheckoutReady,
 } from '../../../helpers/utils';
 import { performCheckout, CheckoutData } from '../../../helpers/Checkout/General_Checkout';
+import { Scalapay_Payment } from '../../../helpers/Checkout/Payment_menthod';
 
 test('Pt_Scalapay', async ({ page }) => {
     // 1️⃣ Open Menzzo.de
@@ -91,35 +92,5 @@ test('Pt_Scalapay', async ({ page }) => {
     await performCheckout(checkoutPage, checkoutData);
     attachment('Console Log', '✅ Checkout performed successfully.', 'text/plain');
 
-    // 9️⃣ Confirm navigation to payment method page
-    // Refine the locator for the payment method page title
-    attachment('Console Log', '⏳ Verifying navigation to payment method page...', 'text/plain');
-    await checkoutPage.waitForSelector('h1.page-title', { state: 'visible', timeout: 60000 });
-    const pageTitle = await checkoutPage.locator('h1.page-title').innerText();
-    expect(pageTitle).toMatch(/Finalizar o pedido/i);
-    attachment('Console Log', '✅ Successfully navigated to payment method page.', 'text/plain');
-
-    //Validate Scalapay login page opened
-    try {
-        attachment('Console Log', "⏳ Waiting for Scalapay popup or redirect...", 'text/plain');
-
-        const popupOrRedirect = await Promise.race([
-            page.waitForEvent('popup', { timeout: 60000 }).then(p => ({ type: 'popup', page: p })),
-            page.waitForURL(/portal\.scalapay\.com/, { timeout: 60000, waitUntil: 'domcontentloaded' }).then(() => ({ type: 'redirect', page: page }))
-        ]);
-
-        if (popupOrRedirect.type === 'popup') {
-            const popup = popupOrRedirect.page as Page;
-            await popup.waitForLoadState();
-            await expect(popup).toHaveURL(/portal\.scalapay\.com/);
-            attachment('Console Log', "✅ Scalapay popup detected!", 'text/plain');
-        } else {
-            attachment('Console Log', "✅ Scalapay redirect successful!", 'text/plain');
-        }
-    } catch (err) {
-        attachment('Console Error', "❌ Scalapay redirect/popup FAILED!", 'text/plain');
-        attachment('Console Error', `⚠️ Current URL: ${page.url()}`, 'text/plain');
-        attachment('Console Error', `⚠️ Error: ${err}`, 'text/plain');
-        throw err;
-    }
+    await Scalapay_Payment(checkoutPage);
 })

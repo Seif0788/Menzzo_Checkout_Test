@@ -2,6 +2,7 @@ import { test, expect, Page } from '@playwright/test';
 import { attachment } from 'allure-js-commons';
 import { clickElementByText, search, ClickRandomProduct, clickElementByTextWithPopUp, waitForCheckoutReady } from '../../../helpers/utils';
 import { performCheckout, CheckoutData } from '../../../helpers/Checkout/General_Checkout';
+import { Scalapay_Payment } from '../../../helpers/Checkout/Payment_menthod';
 
 test('At_Scalapay', async ({ page }) => {
     // 1️⃣ Open Menzzo.at
@@ -85,47 +86,6 @@ test('At_Scalapay', async ({ page }) => {
     await performCheckout(checkoutPage, checkoutData);
     attachment('Console Log', '✅ Checkout performed successfully.', 'text/plain');
 
-    // 9️⃣ Confirm navigation to payment method page
-    // Refine the locator for the payment method page title
-    attachment('Console Log', '⏳ Verifying navigation to payment method page...', 'text/plain');
-    await checkoutPage.waitForSelector('h1.page-title', { state: 'visible', timeout: 60000 });
-    const pageTitle = await checkoutPage.locator('h1.page-title').innerText();
-    expect(pageTitle).toMatch(/Bestellung abschließen/i);
-    attachment('Console Log', '✅ Successfully navigated to payment method page.', 'text/plain');
-
-    attachment('Console Log', "⏳ Waiting for Scalapay redirect...", 'text/plain');
-
-    // Use checkoutPage reference
-    const timeout = 60000;
-    let redirected = false;
-
-    // 1️⃣ Check for URL change to Scalapay
-    try {
-        await checkoutPage.waitForURL(/portal\.integration\.scalapay\.com\/login/, { timeout });
-        attachment('Console Log', "✅ Scalapay redirect detected in same tab!", 'text/plain');
-        redirected = true;
-    } catch (err) {
-        attachment('Console Warn', "⚠️ No redirect in same tab detected within timeout.", 'text/plain');
-    }
-
-    // 2️⃣ Check for popup windows
-    if (!redirected) {
-        const [popup] = await Promise.all([
-            checkoutPage.context().waitForEvent('page', { timeout }),
-            checkoutPage.waitForTimeout(1000) // give time for popup to open
-        ]);
-
-        if (popup) {
-            await popup.waitForLoadState();
-            await expect(popup).toHaveURL(/portal\.integration\.scalapay\.com\/login/);
-            attachment('Console Log', "✅ Scalapay popup detected!", 'text/plain');
-            redirected = true;
-        }
-    }
-
-    // 3️⃣ Fail if neither detected
-    if (!redirected) {
-        throw new Error("❌ Scalapay redirect/popup FAILED!");
-    }
+    await Scalapay_Payment(checkoutPage);
 
 });
