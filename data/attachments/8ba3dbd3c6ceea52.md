@@ -1,0 +1,406 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - text: 
+      - link "store logo" [ref=e5] [cursor=pointer]:
+        - /url: https://www.menzzo.fr/
+        - img "Menzzo.fr" [ref=e7]
+      - generic [ref=e8]:
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - search:
+                  - generic:
+                    - searchbox "Que cherchez-vous ?" [ref=e9]
+                    - generic [ref=e10]:
+                      - text: 
+                      - generic [ref=e11]: Rechercher
+                      - generic [ref=e12]: Rechercher
+                  - button "Search" [ref=e13] [cursor=pointer]:
+                    - text: 
+                    - generic [ref=e14]: Rechercher
+      - generic [ref=e15]:
+        - list [ref=e16]:
+          - listitem [ref=e17]:
+            - link "Mes Favoris" [ref=e18] [cursor=pointer]:
+              - /url: https://www.menzzo.fr/wish-list/
+              - img [ref=e19]
+              - generic [ref=e21]: Mes Favoris
+          - listitem [ref=e22]:
+            - link "Blog" [ref=e23] [cursor=pointer]:
+              - /url: https://www.menzzo.fr/blog.html
+              - img [ref=e24]
+              - generic [ref=e26]: Blog
+          - listitem [ref=e27]:
+            - link "Showroom" [ref=e28] [cursor=pointer]:
+              - /url: https://www.menzzo.fr/showroom/
+              - img [ref=e29]
+              - generic [ref=e31]: Showroom
+          - listitem [ref=e32] [cursor=pointer]:
+            - generic [ref=e33]:
+              - img [ref=e34]
+              - generic [ref=e36]: Contact
+          - listitem [ref=e37]:
+            - link "Me connecter" [ref=e38] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e39]
+              - generic [ref=e41]: Me connecter
+        - link "Mon panier 1 1items Panier" [ref=e44] [cursor=pointer]:
+          - /url: https://www.menzzo.fr/checkout/cart/
+          - img [ref=e45]
+          - generic [ref=e47]: Mon panier
+          - generic [ref=e48]:
+            - generic [ref=e49]: "1"
+            - generic [ref=e50]: 1items
+          - generic [ref=e51]: Panier
+  - tablist [ref=e53]:
+    - tabpanel [ref=e54]:
+      - navigation [ref=e55]:
+        - menu [ref=e56]:
+          - menuitem
+          - menuitem "Prix Doux" [ref=e57] [cursor=pointer]
+          - menuitem
+          - menuitem "Tables, tables Basses" [ref=e58] [cursor=pointer]:
+            - generic [ref=e59]:
+              - generic [ref=e60]: Tables,
+              - text: tables Basses
+          - menuitem
+          - menuitem "Chaises, tabourets" [ref=e61] [cursor=pointer]:
+            - generic [ref=e62]:
+              - generic [ref=e63]: Chaises,
+              - text: tabourets
+          - menuitem
+          - menuitem "Canapés, fauteuils" [ref=e64] [cursor=pointer]:
+            - generic [ref=e65]:
+              - generic [ref=e66]: Canapés,
+              - text: fauteuils
+          - menuitem
+          - menuitem "Lits, têtes de lit" [ref=e67] [cursor=pointer]:
+            - generic [ref=e68]:
+              - generic [ref=e69]: Lits,
+              - text: têtes de lit
+          - menuitem
+          - menuitem "Meubles, rangements" [ref=e70] [cursor=pointer]:
+            - generic [ref=e71]:
+              - generic [ref=e72]: Meubles,
+              - text: rangements
+          - menuitem
+          - menuitem "Déco" [ref=e73] [cursor=pointer]
+          - menuitem
+          - menuitem "Déstockage" [ref=e74] [cursor=pointer]
+  - main [ref=e75]:
+    - generic [ref=e77]:
+      - generic [ref=e79]:
+        - generic [ref=e80]:
+          - img [ref=e81]
+          - text: "Fin de l'offre dans :"
+        - text: 02j 09h 22min 53s
+      - generic [ref=e84]:
+        - generic [ref=e86]: "-10% sur tout le site - code : 10WINTER"
+        - generic [ref=e88]: "ou -13% dès 2 produits dans le panier - code : 13YEAR2"
+    - heading "Mon panier" [level=1] [ref=e90]
+    - generic [ref=e93]:
+      - generic [ref=e94]:
+        - strong [ref=e95]: Récapitulatif
+        - tablist [ref=e96]:
+          - table "Total" [ref=e100]:
+            - caption [ref=e101]: Total
+            - rowgroup [ref=e102]:
+              - row "Total des articles 27,00 €" [ref=e103]:
+                - rowheader "Total des articles" [ref=e104]
+                - cell "27,00 €" [ref=e105]
+          - table "Total" [ref=e108]:
+            - caption [ref=e109]: Total
+            - rowgroup [ref=e110]:
+              - row "TOTAL TTC 27,00 €" [ref=e111]:
+                - rowheader "TOTAL TTC" [ref=e112]:
+                  - strong [ref=e113]: TOTAL TTC
+                - cell "27,00 €" [ref=e114]:
+                  - strong [ref=e115]: 27,00 €
+          - tab [ref=e116]
+        - list [ref=e117]:
+          - listitem [ref=e118]:
+            - button "Valider mon panier" [active] [ref=e119] [cursor=pointer]
+        - generic [ref=e121]:
+          - generic [ref=e122]:
+            - text: Des clients satisfaits
+            - generic [ref=e125] [cursor=pointer]: Voir tous les avis
+          - generic [ref=e126]:
+            - generic [ref=e127]:
+              - img [ref=e129]
+              - text: 15 jours pour changer d’avis
+            - generic [ref=e130]:
+              - img [ref=e132]
+              - text: Paiement 100% sécurisé
+        - generic [ref=e133]:
+          - generic [ref=e134]: Paiement en 1 fois
+          - generic [ref=e139]: ou en plusieurs fois SANS FRAIS
+      - generic [ref=e146]:
+        - generic [ref=e147]:
+          - generic [ref=e148]: Article
+          - generic [ref=e149]:
+            - generic [ref=e150]: Qté
+            - generic [ref=e151]: Prix
+        - generic [ref=e152]:
+          - generic [ref=e154]:
+            - link "Table de chevet Catana 2 tiroirs Noir Carbone" [ref=e156] [cursor=pointer]:
+              - /url: https://www.menzzo.fr/table-de-chevet-catana-2-tiroirs-noir-carbone.html
+              - img "Table de chevet Catana 2 tiroirs Noir Carbone" [ref=e160]
+            - generic [ref=e162]:
+              - link "Table de chevet Catana 2 tiroirs Noir Carbone" [ref=e163] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/table-de-chevet-catana-2-tiroirs-noir-carbone.html
+              - generic [ref=e164]:
+                - generic [ref=e165]: "Réf : maroc2tiroirsnoircarbon"
+                - strong [ref=e167]: En stock
+              - strong [ref=e169]: Livraison entre le 01 et 08 janvier
+          - generic [ref=e171]:
+            - generic [ref=e172]:
+              - generic [ref=e176]:
+                - generic [ref=e177]: Qté
+                - generic [ref=e178]:
+                  - generic [ref=e179] [cursor=pointer]: "-"
+                  - spinbutton "Qté - +" [ref=e181]: "1"
+                  - generic [ref=e182] [cursor=pointer]: +
+              - link "Supprimer l’élément" [ref=e184] [cursor=pointer]:
+                - /url: "#"
+                - generic [ref=e185]: Supprimer l’élément
+            - generic [ref=e186]:
+              - generic [ref=e187]:
+                - generic [ref=e188]: 29,00 €
+                - generic [ref=e189]:
+                  - generic [ref=e190]: "-7%"
+                  - generic [ref=e191]: 27,00 €
+              - generic [ref=e192]: Dont 0,82 € d'éco-part
+      - generic [ref=e197]:
+        - textbox "Codes de remises" [ref=e200]:
+          - /placeholder: Code promo
+        - button "OK" [ref=e203] [cursor=pointer]
+      - generic [ref=e205]:
+        - generic [ref=e209]:
+          - strong [ref=e210]: Livraison au plus tôt
+          - paragraph [ref=e211]:
+            - text: Plusieurs livraisons par commande pour recevoir tous vos articles au plus tôt, avec un
+            - strong [ref=e212]: maximum de 259€ de frais de port en tout
+            - text: ", profitez-en pour grouper vos achats !"
+        - generic [ref=e216]:
+          - strong [ref=e217]: Une question ?
+          - paragraph [ref=e218]:
+            - strong [ref=e219]: 01 43 75 11 18
+            - text: "Du lundi au jeudi : 10h-17h"
+            - text: "Vendredi : 10h-15h"
+  - contentinfo [ref=e220]:
+    - generic [ref=e222]:
+      - generic [ref=e224]:
+        - generic [ref=e225]:
+          - generic [ref=e226]: Tous les codes promo
+          - generic [ref=e227]: En cliquant sur "Je m'inscris", j'accepte de recevoir la newsletter par email et j'accepte la politique de confidentialité de Menzzo.
+          - generic [ref=e230]:
+            - generic [ref=e233]:
+              - generic [ref=e234]: "Inscription à notre lettre d’information :"
+              - textbox "Inscription à notre lettre d’information :" [ref=e235]:
+                - /placeholder: Votre e-mail
+            - button "Je m'inscris !" [ref=e236] [cursor=pointer]
+            - generic [ref=e238]:
+              - checkbox "J'accepte la politique de confidentialité et je consens au traitement de mes données à des fins marketing par Menzzo" [ref=e239]
+              - text: J'accepte la
+              - link "politique de confidentialité" [ref=e240] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/rgpd
+              - text: et je consens au traitement de mes données à des fins marketing par Menzzo
+        - img "img" [ref=e242]
+      - generic [ref=e244]:
+        - generic [ref=e246]:
+          - generic [ref=e247]:
+            - img [ref=e248]
+            - heading "SERVICE CLIENT" [level=3] [ref=e250]
+            - paragraph [ref=e251]: Vous avez passé commande et souhaitez nous joindre ?
+          - generic [ref=e252]:
+            - generic [ref=e253]:
+              - heading "Un seul endroit pour répondre à toutes vos demandes" [level=4] [ref=e255]
+              - generic [ref=e257]:
+                - img [ref=e258]
+                - link "sav.menzzo.fr" [ref=e260] [cursor=pointer]:
+                  - /url: https://sav.menzzo.fr/
+              - paragraph [ref=e261]:
+                - text: Complétez le formulaire sur la plateforme
+                - link "sav.menzzo.fr" [ref=e262] [cursor=pointer]:
+                  - /url: https://sav.menzzo.fr/
+                - text: et accédez directement aux informations que vous recherchez concernant votre commande.
+              - paragraph [ref=e263]: Une réponse vous sera apportée en ligne ou vous aurez accès à un planning pour prendre un rdv téléphonique avec un de nos agents.
+            - generic [ref=e264]:
+              - heading "Foire Aux Questions" [level=4] [ref=e266]
+              - generic [ref=e268]:
+                - img [ref=e269]
+                - link "Consultez notre FAQ" [ref=e271] [cursor=pointer]:
+                  - /url: /faq
+              - paragraph [ref=e272]: Vos questions les plus courantes sont répertoriées dans notre FAQ pour que vous trouviez encore plus rapidement des réponses pertinentes à toutes vos interrogations.
+          - link "En savoir plus" [ref=e273] [cursor=pointer]:
+            - /url: /sav-menzzo-fr
+        - generic [ref=e275]:
+          - generic [ref=e276]:
+            - img [ref=e277]
+            - heading "Vendeurs conseil" [level=3] [ref=e279]
+            - paragraph [ref=e280]: Vous avez une question sur un produit ou un service ?
+          - generic [ref=e281]:
+            - generic [ref=e282]:
+              - heading "Contactez nos vendeurs conseil" [level=4] [ref=e284]
+              - generic [ref=e286]:
+                - img [ref=e287]
+                - generic [ref=e289]:
+                  - link "01 43 75 11 18" [ref=e290] [cursor=pointer]:
+                    - /url: tel:0143751118
+                  - text: "Du lundi au jeudi : 10h-17h"
+                  - text: "Vendredi : 10h-15h"
+            - generic [ref=e291]:
+              - heading "Outlet Menzzo" [level=4] [ref=e293]
+              - generic [ref=e295]:
+                - img [ref=e296]
+                - generic [ref=e298]:
+                  - text: 221 Rue Paul Vaillant Couturier
+                  - text: 94140 Alfortville
+                  - text: "Du lundi au jeudi : 9h30-15h"
+                  - generic [ref=e299]:
+                    - text: Fermeture exceptionnelle
+                    - text: Aucune à prévoir...
+              - paragraph [ref=e300]: Des articles juste déballés, retournés par les clients et soigneusement vérifiés, ou des fins de collection, fins de stock pour des coloris spécifiques... Nos meubles à prix cassé, c'est ça l'Outlet Menzzo !
+          - link "En savoir plus" [ref=e301] [cursor=pointer]:
+            - /url: /showroom/
+        - generic [ref=e303]:
+          - generic [ref=e304]:
+            - img [ref=e305]
+            - heading "PAIEMENT SÉCURISÉ" [level=3] [ref=e307]
+            - paragraph [ref=e308]: Achetez en toute sérénité grâce à nos différents modes de paiement en ligne.
+          - generic [ref=e309]:
+            - generic [ref=e310]:
+              - heading "Par carte bancaire :" [level=4] [ref=e312]
+              - generic [ref=e313]:
+                - img "cb" [ref=e315]
+                - img "visa" [ref=e317]
+                - img "master" [ref=e319]
+                - img "american-express" [ref=e321]
+              - paragraph [ref=e322]: Les paiements en ligne sont sécurisés par le système 3D Secure. Menzzo n’a pas accès et ne sauvegarde pas vos données de carte bancaire.
+            - generic [ref=e323]:
+              - heading "En plusieurs fois :" [level=4] [ref=e325]
+              - paragraph [ref=e330]:
+                - text: Divisez votre paiement en 3 versements égaux et sans frais ou en 6, 9 ou 12 fois. Simple et pratique.
+                - text: Un paiement par mois, immédiat et sans formalités.
+            - generic [ref=e331]:
+              - heading "Par virement :" [level=4] [ref=e333]
+              - paragraph [ref=e334]: Plus besoin de carte bancaire ! Payez vos achats en un clic grâce à votre appli bancaire. Aucune saisie d’IBAN nécessaire et sécurisé par votre banque sans coût supplémentaire.
+          - link "En savoir plus" [ref=e335] [cursor=pointer]:
+            - /url: /financement
+        - generic [ref=e337]:
+          - generic [ref=e338]:
+            - img [ref=e339]
+            - heading "Livraison" [level=3] [ref=e341]
+            - paragraph [ref=e342]: Les tarifs des livraisons sont indiqués sur chaque fiche produit.
+          - generic [ref=e343]:
+            - generic [ref=e344]:
+              - heading "Livraison classique" [level=4] [ref=e346]
+              - paragraph [ref=e349]:
+                - text: Vous êtes livrés à l'extérieur, en bas de chez vous.
+                - text: Selon le type d’article, le transporteur vous contacte par mail, SMS ou téléphone pour vous communiquer une date de livraison.
+            - generic [ref=e350]:
+              - heading "Livraison Étage" [level=4] [ref=e352]
+              - paragraph [ref=e355]:
+                - text: Vous êtes livrés dans la pièce de votre choix, même à l’étage.
+                - text: Selon le type d’article, le transporteur vous contacte par mail, SMS ou téléphone pour vous communiquer une date de livraison.
+          - link "En savoir plus" [ref=e356] [cursor=pointer]:
+            - /url: /livraison
+      - generic [ref=e358]:
+        - generic [ref=e359]:
+          - heading "BESOIN D'AIDE?" [level=3] [ref=e360]
+          - list [ref=e361]:
+            - listitem [ref=e362]:
+              - link "Blog" [ref=e363] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/blog.html
+            - listitem [ref=e364]:
+              - link "Livraison" [ref=e365] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/livraison/
+            - listitem [ref=e366]:
+              - link "Politique de retour" [ref=e367] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/politique-de-retour/
+            - listitem [ref=e368]:
+              - link "Financement" [ref=e369] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/financement/
+            - listitem [ref=e370]:
+              - link "Service client" [ref=e371] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/sav-menzzo-fr/
+            - listitem [ref=e372]:
+              - link "Glossaire des matières" [ref=e373] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/materials/
+        - generic [ref=e374]:
+          - heading "MIEUX NOUS CONNAÎTRE" [level=3] [ref=e375]
+          - list [ref=e376]:
+            - listitem [ref=e377]:
+              - link "Outlet Menzzo" [ref=e378] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/showroom
+            - listitem [ref=e379]:
+              - link "À propos de menzzo" [ref=e380] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/a-propos-de-menzzo/
+            - listitem [ref=e381]:
+              - link "Conditions Générales de Vente" [ref=e382] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/conditions-generales-de-vente/
+            - listitem [ref=e383]:
+              - link "Données personnelles" [ref=e384] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/rgpd
+            - listitem [ref=e385]:
+              - link "Revue de presse" [ref=e386] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/revue-de-presse
+        - generic [ref=e387]:
+          - heading "RETROUVEZ-NOUS!" [level=3] [ref=e388]
+          - generic [ref=e389]:
+            - link "Facebook" [ref=e390] [cursor=pointer]:
+              - /url: http://www.facebook.com/MenzzoFrance
+              - img [ref=e391]
+            - link "Instagram" [ref=e393] [cursor=pointer]:
+              - /url: https://www.instagram.com/menzzofr/
+              - img [ref=e394]
+            - link "Pinterest" [ref=e396] [cursor=pointer]:
+              - /url: http://www.pinterest.com/menzzo
+              - img [ref=e397]
+      - list [ref=e401]:
+        - listitem [ref=e402]
+        - listitem [ref=e404]
+        - listitem [ref=e406]
+        - listitem [ref=e408]
+        - listitem [ref=e410]:
+          - img "Monext" [ref=e412]
+        - listitem [ref=e413]
+        - listitem [ref=e415]:
+          - img "klarna" [ref=e417]
+        - listitem [ref=e418]:
+          - img "scalapay" [ref=e420]
+      - generic [ref=e421]:
+        - text: "Retrouvez Menzzo dans d'autres pays:"
+        - link "menzzo.fr" [ref=e422] [cursor=pointer]:
+          - /url: https://menzzo.fr
+          - img [ref=e423]
+        - link "menzzo.de" [ref=e425] [cursor=pointer]:
+          - /url: https://menzzo.de
+          - img [ref=e426]
+        - link "menzzo.it" [ref=e428] [cursor=pointer]:
+          - /url: https://menzzo.it
+          - img [ref=e429]
+        - link "menzzo.nl" [ref=e431] [cursor=pointer]:
+          - /url: https://menzzo.nl
+          - img [ref=e432]
+        - link "menzzo.at" [ref=e434] [cursor=pointer]:
+          - /url: https://menzzo.at
+          - img [ref=e435]
+        - link "menzzo.be" [ref=e437] [cursor=pointer]:
+          - /url: https://menzzo.be
+          - img [ref=e438]
+        - link "menzzo.es" [ref=e440] [cursor=pointer]:
+          - /url: https://www.menzzo.es/
+          - img [ref=e441]
+        - link "menzzo.pt" [ref=e443] [cursor=pointer]:
+          - /url: https://www.menzzo.pt/
+          - img [ref=e444]
+      - generic [ref=e446]: © 2025 Menzzo - Tous droits réservés
+  - button "Chat Menzzo" [ref=e447] [cursor=pointer]:
+    - img "Chat Menzzo"
+```
