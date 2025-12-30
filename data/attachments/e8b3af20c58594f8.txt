@@ -1,0 +1,1 @@
+✅ clickElementByText: clicked in main page context: Warenkorb bestätigen

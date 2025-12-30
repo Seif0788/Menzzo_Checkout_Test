@@ -1,0 +1,3 @@
+⚠️ Error during checkout readiness check: locator.isVisible: Test timeout of 120000ms exceeded.
+Call log:
+[2m    - checking visibility of locator('#checkout')[22m
