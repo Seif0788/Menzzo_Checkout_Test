@@ -1,0 +1,230 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - text: 
+      - link "store logo" [ref=e5] [cursor=pointer]:
+        - /url: https://www.menzzo.at/
+        - img "Menzzo.at" [ref=e6]
+  - main [ref=e7]:
+    - heading "Bestellung abschließen" [level=1] [ref=e9]
+    - generic [ref=e11]:
+      - generic [ref=e14] [cursor=pointer]:
+        - text: Sie haben bereits ein Konto?
+        - strong [ref=e15]: Klicken Sie hier
+        - text: ", um sich anzumelden"
+        - strong [ref=e16]: oder ein Menzzo-Konto zu erstellen
+      - generic [ref=e18]:
+        - generic [ref=e19]: Melden Sie sich schnell mit Ihrem Facebook- oder Google-Konto an
+        - generic [ref=e20]:
+          - link "Verbinden mit Google" [ref=e22] [cursor=pointer]:
+            - /url: https://www.menzzo.at/amsociallogin/social/login/?type=google
+            - generic [ref=e24]: Verbinden mit Google
+          - link "Verbinden mit Facebook" [ref=e26] [cursor=pointer]:
+            - /url: https://www.menzzo.at/amsociallogin/social/login/?type=facebook
+            - generic [ref=e28]: Verbinden mit Facebook
+      - generic [ref=e31]:
+        - generic [ref=e33]:
+          - generic [ref=e35]:
+            - generic [ref=e37]:
+              - generic [ref=e38]:
+                - text: 
+                - generic [ref=e39]:
+                  - generic [ref=e40] [cursor=pointer]: 
+                  - strong [ref=e41]: "1"
+                - text: Lieferadresse
+              - generic [ref=e42]:
+                - group [ref=e44]:
+                  - generic [ref=e46]:
+                    - generic [ref=e47]:
+                      - generic [ref=e48]: E-Mail-Adresse*
+                      - textbox "E-Mail-Adresse*" [ref=e49]: seif@axelites.com
+                    - text: 
+                - generic [ref=e51]:
+                  - generic [ref=e54]:
+                    - generic [ref=e55]: Vorname*
+                    - textbox "Vorname*" [ref=e56]: Seif
+                  - generic [ref=e59]:
+                    - generic [ref=e60]: Nachname*
+                    - textbox "Nachname*" [ref=e61]: Taj
+                  - group [ref=e62]:
+                    - generic [ref=e65]:
+                      - generic [ref=e66]: Straße*
+                      - textbox "Straße*" [ref=e67]: Mariahilfer Str. 95
+                      - text: 
+                  - generic [ref=e70]:
+                    - generic [ref=e71]: Postleitzahl*
+                    - spinbutton "Postleitzahl*" [ref=e72]: "8020"
+                  - generic [ref=e75]:
+                    - generic [ref=e76]: Stadt*
+                    - textbox "Stadt*" [ref=e77]: Graz
+                  - combobox "Land" [ref=e79]:
+                    - option "Österreich" [selected]
+                    - option "──────────" [disabled]
+                  - generic [ref=e81]:
+                    - generic [ref=e82]:
+                      - generic [ref=e83]: Telefonnummer*
+                      - spinbutton "Telefonnummer*" [ref=e84]: "123456"
+                    - text: 
+                  - generic [ref=e87]:
+                    - generic [ref=e88]: Firma
+                    - textbox "Firma" [ref=e89]
+                - generic [ref=e90]: "*Pflichtfeld"
+                - generic [ref=e91]:
+                  - checkbox "Rechnung an Lieferadresse schicken" [ref=e92]
+                  - generic [ref=e93] [cursor=pointer]: Rechnung an Lieferadresse schicken
+            - generic [ref=e95]:
+              - generic [ref=e96]:  Rechnungsadresse
+              - group [ref=e100]:
+                - generic [ref=e102]:
+                  - generic [ref=e103]:
+                    - generic [ref=e104]: Vorname*
+                    - textbox "Vorname*" [active] [ref=e105]
+                  - generic [ref=e106]: Vervollständigen Sie bitte die notwendigen Angaben.
+                - generic [ref=e108]:
+                  - generic [ref=e109]:
+                    - generic [ref=e110]: Nachname*
+                    - textbox "Nachname*" [ref=e111]
+                  - generic [ref=e112]: Vervollständigen Sie bitte die notwendigen Angaben.
+                - group [ref=e113]:
+                  - generic [ref=e115]:
+                    - generic [ref=e116]:
+                      - generic [ref=e117]: Straße*
+                      - textbox "Straße*" [ref=e118]:
+                        - /placeholder: ""
+                      - text: 
+                    - generic [ref=e119]: Vervollständigen Sie bitte die notwendigen Angaben.
+                - generic [ref=e121]:
+                  - generic [ref=e122]:
+                    - generic [ref=e123]: Postleitzahl*
+                    - textbox "Postleitzahl*" [ref=e124]
+                  - generic [ref=e125]: Vervollständigen Sie bitte die notwendigen Angaben.
+                - generic [ref=e127]:
+                  - generic [ref=e128]:
+                    - generic [ref=e129]: Stadt*
+                    - textbox "Stadt*" [ref=e130]
+                  - generic [ref=e131]: Vervollständigen Sie bitte die notwendigen Angaben.
+                - combobox "Land" [ref=e133]:
+                  - option "Österreich" [selected]
+                  - option "──────────" [disabled]
+                - generic [ref=e135]:
+                  - generic [ref=e136]:
+                    - generic [ref=e137]: Telefonnummer*
+                    - spinbutton "Telefonnummer*" [ref=e138]
+                  - text: 
+                  - generic [ref=e139]: Vervollständigen Sie bitte die notwendigen Angaben.
+                - generic [ref=e142]:
+                  - generic [ref=e143]: Firma
+                  - textbox "Firma" [ref=e144]
+          - generic [ref=e146]:
+            - generic [ref=e147]:
+              - text: 
+              - generic [ref=e148]:
+                - generic [ref=e149] [cursor=pointer]: 
+                - strong [ref=e150]: "2"
+              - text: Versandarten
+            - generic [ref=e152]:
+              - generic [ref=e153]: + Infos zu den Lieferarten
+              - generic [ref=e154]:
+                - generic [ref=e158]:
+                  - generic [ref=e160]:
+                    - img [ref=e162]
+                    - generic [ref=e163]:
+                      - strong [ref=e164]: Antoni Ausziehbares Ecksofa mit hochklappbaren Kopfstützen, Kunstleder Schwarz
+                      - generic [ref=e165]:
+                        - strong [ref=e166]: "Anz :"
+                        - text: "1"
+                  - generic [ref=e167]:
+                    - list [ref=e168]:
+                      - listitem [ref=e169]:
+                        - text: "-"
+                        - strong [ref=e170]: Lieferung zwischen 05 und 12 Jänner
+                    - generic [ref=e171]:
+                      - generic [ref=e172]:
+                        - generic [ref=e174]:
+                          - radio "Standardlieferung" [checked] [ref=e175] [cursor=pointer]
+                          - text: Standardlieferung
+                        - strong [ref=e177]: € 119,00
+                      - generic [ref=e182]:
+                        - img [ref=e183]
+                        - generic [ref=e185]: Am Fuß des Lastwagens
+                - generic [ref=e187]:
+                  - generic [ref=e188]: "Gesamtlieferung :"
+                  - text: 
+                  - generic [ref=e189]: 119€
+          - generic [ref=e190]:
+            - generic [ref=e191]:
+              - text: 
+              - generic [ref=e192]:
+                - generic [ref=e193] [cursor=pointer]: 
+                - strong [ref=e194]: "3"
+              - text: Zahlungsmethoden
+            - tabpanel [ref=e195]:
+              - group "Zahlungsinformation" [ref=e197]:
+                - generic [ref=e198]: Zahlungsinformation
+                - text: "*"
+                - generic [ref=e201]:
+                  - generic [ref=e203]:
+                    - img "Image" [ref=e205]
+                    - radio [ref=e206]
+                    - generic [ref=e207] [cursor=pointer]: Zahlung per Debitkarte gesichert
+                  - generic [ref=e208]:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                        - generic:
+                          - radio "Später bezahlen" [checked]
+                        - generic: Später bezahlen
+                  - generic [ref=e210]:
+                    - radio "Zahle in 3 oder 4 Raten" [ref=e213]
+                    - generic [ref=e214] [cursor=pointer]: Zahle in 3 oder 4 Raten
+        - generic [ref=e218]:
+          - generic [ref=e219]:
+            - generic [ref=e220]:
+              - text: 
+              - generic [ref=e221] [cursor=pointer]: 
+              - text: Zusammenfassung meiner Bestellung
+            - generic [ref=e222]:
+              - tablist [ref=e223]:
+                - text: 
+                - tabpanel [ref=e224]:
+                  - generic [ref=e225]:
+                    - generic [ref=e226]: In meinen Warenkorb
+                    - table [ref=e227]:
+                      - rowgroup [ref=e228]:
+                        - 'row "Antoni Ausziehbares Ecksofa mit hochklappbaren Kopfstützen, Kunstleder Schwarz Antoni Ausziehbares Ecksofa mit hochklappbaren Kopfstützen, Kunstleder Schwarz Anz. : 1 € 685,00" [ref=e229]':
+                          - cell "Antoni Ausziehbares Ecksofa mit hochklappbaren Kopfstützen, Kunstleder Schwarz" [ref=e230]:
+                            - img "Antoni Ausziehbares Ecksofa mit hochklappbaren Kopfstützen, Kunstleder Schwarz" [ref=e233]
+                          - 'cell "Antoni Ausziehbares Ecksofa mit hochklappbaren Kopfstützen, Kunstleder Schwarz Anz. : 1 € 685,00" [ref=e234]':
+                            - generic [ref=e235]:
+                              - link "Antoni Ausziehbares Ecksofa mit hochklappbaren Kopfstützen, Kunstleder Schwarz" [ref=e239] [cursor=pointer]:
+                                - /url: https://www.menzzo.at/antoni-ausziehbares-ecksofa-mit-hochklappbaren-kopfstutzen-kunstleder-schwarz-5264.html
+                                - strong [ref=e240]: Antoni Ausziehbares Ecksofa mit hochklappbaren Kopfstützen, Kunstleder Schwarz
+                              - generic [ref=e241]:
+                                - generic [ref=e242]: "Anz. :"
+                                - text: "1"
+                            - generic [ref=e245]: € 685,00
+              - table "Zusammenfassung meiner Bestellung" [ref=e246]:
+                - rowgroup [ref=e247]:
+                  - row "Summe der Artikel inkl. MwSt. € 685,00" [ref=e248]:
+                    - rowheader "Summe der Artikel inkl. MwSt." [ref=e249]
+                    - cell "€ 685,00" [ref=e250]
+                  - row "Versand € 119,00" [ref=e251]:
+                    - rowheader "Versand" [ref=e252]: Versand
+                    - cell "€ 119,00" [ref=e253]
+                  - row "Zu zahlender Gesamtbetrag € 804,00 TTC" [ref=e254]:
+                    - rowheader "Zu zahlender Gesamtbetrag" [ref=e255]:
+                      - strong [ref=e256]: Zu zahlender Gesamtbetrag
+                    - cell "€ 804,00 TTC" [ref=e257]:
+                      - strong [ref=e258]: € 804,00 TTC
+          - generic [ref=e260]:
+            - generic [ref=e265]:
+              - checkbox [checked] [ref=e266]
+              - button "Ich stimme den AGBs zu. *" [ref=e268] [cursor=pointer]
+            - button "Bezahlen" [ref=e271] [cursor=pointer]: Bezahlen
+  - button "Chat Menzzo" [ref=e272] [cursor=pointer]:
+    - img "Chat Menzzo"
+```
