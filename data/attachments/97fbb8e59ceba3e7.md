@@ -1,0 +1,538 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - text: 
+      - link "store logo" [ref=e5] [cursor=pointer]:
+        - /url: https://www.menzzo.de/
+        - img "Menzzo.de" [ref=e7]
+      - generic [ref=e8]:
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - search:
+                  - generic:
+                    - searchbox "Gesamten Shop hier durchsuchen..." [ref=e9]
+                    - generic [ref=e10]:
+                      - text: 
+                      - generic [ref=e11]: Suche
+                      - generic [ref=e12]: Suche
+                  - button "Search" [ref=e13] [cursor=pointer]:
+                    - text: 
+                    - generic [ref=e14]: Suche
+      - generic [ref=e15]:
+        - list [ref=e16]:
+          - listitem [ref=e17]:
+            - link "Favoriten" [ref=e18] [cursor=pointer]:
+              - /url: https://www.menzzo.de/wish-list/
+              - img [ref=e19]
+              - generic [ref=e21]: Favoriten
+          - listitem [ref=e22]:
+            - link "Blog" [ref=e23] [cursor=pointer]:
+              - /url: https://www.menzzo.de/blog.html
+              - img [ref=e24]
+              - generic [ref=e26]: Blog
+          - listitem [ref=e27]:
+            - link "Anmelden" [ref=e28] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e29]
+              - generic [ref=e31]: Anmelden
+        - link "Mein Warenkorb Warenkorb" [ref=e34] [cursor=pointer]:
+          - /url: https://www.menzzo.de/checkout/cart/
+          - img [ref=e35]
+          - generic [ref=e37]: Mein Warenkorb
+          - generic [ref=e38]: Warenkorb
+  - tablist [ref=e40]:
+    - tabpanel [ref=e41]:
+      - navigation [ref=e42]:
+        - menu [ref=e43]:
+          - menuitem
+          - menuitem "Sanfte preise" [ref=e44] [cursor=pointer]
+          - menuitem
+          - menuitem "Tische, Couchtische" [ref=e45] [cursor=pointer]:
+            - generic [ref=e46]:
+              - generic [ref=e47]: Tische,
+              - text: Couchtische
+          - menuitem
+          - menuitem "Stühle, Hocker" [ref=e48] [cursor=pointer]:
+            - generic [ref=e49]:
+              - generic [ref=e50]: Stühle,
+              - text: Hocker
+          - menuitem
+          - menuitem "Sofas, Sessel" [ref=e51] [cursor=pointer]:
+            - generic [ref=e52]:
+              - generic [ref=e53]: Sofas,
+              - text: Sessel
+          - menuitem
+          - menuitem "Betten, Kopfteile" [ref=e54] [cursor=pointer]:
+            - generic [ref=e55]:
+              - generic [ref=e56]: Betten,
+              - text: Kopfteile
+          - menuitem
+          - menuitem "Möbel, Aufbewahrung" [ref=e57] [cursor=pointer]:
+            - generic [ref=e58]:
+              - generic [ref=e59]: Möbel,
+              - text: Aufbewahrung
+          - menuitem
+          - menuitem "Dekoration" [ref=e60] [cursor=pointer]
+          - menuitem
+          - menuitem "Räumungsverkauf" [ref=e61] [cursor=pointer]
+  - list [ref=e63]:
+    - listitem [ref=e64]:
+      - link "Startseite" [ref=e65] [cursor=pointer]:
+        - /url: https://www.menzzo.de/
+      - text: /
+    - listitem [ref=e66]:
+      - strong [ref=e67]: 2-Sitzer-Sofa Horizan Muscheldesign Stoff Bouclé Creme
+  - main [ref=e68]:
+    - generic [ref=e70]:
+      - generic [ref=e72]:
+        - generic [ref=e74]:
+          - generic [ref=e75]:
+            - img [ref=e76]
+            - text: "Angebot endet in:"
+          - text: 01Tg 01h 36min 57s
+        - generic [ref=e81]: "-12% auf alles- Code : 12NYEAR"
+      - generic [ref=e82]:
+        - generic [ref=e83]:
+          - link "Zum Ende der Bildgalerie springen" [ref=e84] [cursor=pointer]:
+            - /url: "#gallery-next-area"
+          - button "Favoriten Hinzufügen" [ref=e87] [cursor=pointer]:
+            - img [ref=e88]
+          - link "Zum Anfang der Bildgalerie springen" [ref=e90] [cursor=pointer]:
+            - /url: "#gallery-prev-area"
+          - generic [ref=e91]:
+            - generic [ref=e93]:
+              - img "Canapé 2 Places design coquillage Horizan Tissu bouclette Crème" [ref=e96]
+              - img [ref=e99]
+              - img [ref=e102]
+              - img [ref=e105]
+              - img [ref=e108]
+              - img [ref=e111]
+              - img [ref=e114]
+              - img [ref=e117]
+              - img [ref=e120]
+              - img [ref=e123]
+              - img [ref=e126]
+              - img [ref=e129]
+            - button "Next" [ref=e130] [cursor=pointer]:
+              - img [ref=e131]
+          - generic [ref=e135]:
+            - img [ref=e138]
+            - img [ref=e141]
+            - img [ref=e144]
+            - img [ref=e147]
+            - img [ref=e150]
+            - img [ref=e153]
+            - img [ref=e156]
+            - img [ref=e159]
+            - img [ref=e162]
+            - img [ref=e165]
+            - img [ref=e168]
+            - img [ref=e171]
+        - generic [ref=e172]:
+          - heading "2-Sitzer-Sofa Horizan Muscheldesign Stoff Bouclé Creme" [level=1] [ref=e173]
+          - generic [ref=e174]:
+            - generic [ref=e175]: SANFTE PREISE
+            - generic [ref=e176]:
+              - generic [ref=e177]:
+                - generic [ref=e178]:
+                  - generic [ref=e179]: 3X
+                  - generic [ref=e180]:
+                    - text: mit
+                    - img "scalapay" [ref=e182]
+                - generic [ref=e183]: 96,34 €
+              - generic [ref=e185]: 289,00 €
+          - generic [ref=e190]:
+            - combobox "Anz." [ref=e193]:
+              - option "1" [selected]
+              - option "2"
+              - option "3"
+              - option "4"
+              - option "5"
+              - option "6"
+              - option "7"
+              - option "8"
+              - option "9"
+              - option "10"
+            - button "In den Warenkorb" [ref=e195] [cursor=pointer]
+          - generic [ref=e196]:
+            - generic [ref=e197]:
+              - img [ref=e198]
+              - generic [ref=e201] [cursor=pointer]:
+                - strong [ref=e202]:
+                  - strong [ref=e203]: Lieferung in mehr als einem Monat
+                - img [ref=e204]
+                - text: 
+            - generic [ref=e206]:
+              - strong [ref=e207]: Lieferung zwischen 03 und 10 März
+              - text: ab
+              - strong [ref=e208]: 41,00 €
+              - generic [ref=e209] [cursor=pointer]: Andere Liefermethoden >
+          - generic [ref=e210]:
+            - generic [ref=e211]:
+              - generic [ref=e212]:
+                - img [ref=e214]
+                - text: 15 Tage, um Ihre Meinung zu ändern
+              - generic [ref=e215]:
+                - img [ref=e217]
+                - text: 100 % sichere Zahlung
+            - generic [ref=e218]:
+              - text: Zufriedene Kunden
+              - generic [ref=e219]: Alle Bewertungen anzeigen
+          - generic [ref=e222]:
+            - generic [ref=e223]: "Andere Größe(n) :"
+            - generic [ref=e224]:
+              - link "1 Platz" [ref=e225] [cursor=pointer]:
+                - /url: https://www.menzzo.de/sessel-design-quilting-horizan-stoff-bouclette-creme.html
+              - link "2 Plätze" [ref=e226] [cursor=pointer]:
+                - /url: https://www.menzzo.de/2-sitzer-sofa-horizan-muscheldesign-stoff-boucle-creme.html
+          - generic [ref=e227]: Video(s)
+          - generic [ref=e230]:
+            - button "Play video 1" [ref=e231]:
+              - iframe [ref=e233]:
+                
+              - iframe [ref=e234]:
+                - generic [ref=f12e4]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                    - generic:
+                      - img
+                      - generic: Playing in picture-in-picture
+                  - generic:
+                    - generic:
+                      - link "Link to video owner's profile":
+                        - /url: https://vimeo.com/user251632862?fl=pl&fe=po
+                        - img "Link to video owner's profile"
+                    - generic:
+                      - generic:
+                        - link "horizan_QH83822_bouclette-beige_decor":
+                          - /url: https://vimeo.com/1148891600?fl=pl&fe=ti
+                        - generic: horizan_QH83822_bouclette-beige_decor
+                      - link "Barouk Cohen":
+                        - /url: https://vimeo.com/user251632862?fl=pl&fe=by
+                        - generic: Barouk Cohen
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: More options
+                          - button "More options" [ref=f12e11] [cursor=pointer]:
+                            - img
+                    - generic:
+                      - button "Play" [ref=f12e13] [cursor=pointer]:
+                        - img [ref=f12e14]
+                        - generic:
+                          - generic: Play
+                          - img [ref=f12e17]
+                      - generic [ref=f12e19]:
+                        - generic [ref=f12e20]:
+                          - slider "Progress Bar" [ref=f12e21] [cursor=pointer]
+                          - generic:
+                            - generic:
+                              - generic: 00:00
+                          - generic [ref=f12e26]: 00:08
+                        - generic [ref=f12e27]:
+                          - generic [ref=f12e28]:
+                            - button:
+                              - img
+                            - slider
+                          - button:
+                            - img
+                            - generic: Settings
+                          - button:
+                            - img
+                            - generic: Picture-in-Picture
+                          - button:
+                            - img
+                            - generic: Fullscreen
+                          - button "Show controls" [ref=f12e29] [cursor=pointer]:
+                            - img [ref=f12e30]
+                            - generic:
+                              - generic: Show controls
+                          - link "Watch on Vimeo" [ref=f12e32] [cursor=pointer]:
+                            - /url: https://vimeo.com/1148891600?fl=pl&fe=vl
+                            - img [ref=f12e33]
+            - button "Play video 2" [ref=e235]:
+              - iframe [ref=e237]:
+                
+              - iframe [ref=e238]:
+                - generic [ref=f10e4]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                    - generic:
+                      - img
+                      - generic: Playing in picture-in-picture
+                  - generic:
+                    - generic:
+                      - link "Link to video owner's profile":
+                        - /url: https://vimeo.com/user251632862?fl=pl&fe=po
+                        - img "Link to video owner's profile"
+                    - generic:
+                      - generic:
+                        - link "horizan_QH83822_bouclette-beige_decor2":
+                          - /url: https://vimeo.com/1148889952?fl=pl&fe=ti
+                        - generic: horizan_QH83822_bouclette-beige_decor2
+                      - link "Barouk Cohen":
+                        - /url: https://vimeo.com/user251632862?fl=pl&fe=by
+                        - generic: Barouk Cohen
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: More options
+                          - button "More options" [ref=f10e11] [cursor=pointer]:
+                            - img
+                    - generic:
+                      - button "Play" [ref=f10e13] [cursor=pointer]:
+                        - img [ref=f10e14]
+                        - generic:
+                          - generic: Play
+                          - img [ref=f10e17]
+                      - generic [ref=f10e19]:
+                        - generic [ref=f10e20]:
+                          - slider "Progress Bar" [ref=f10e21] [cursor=pointer]
+                          - generic:
+                            - generic:
+                              - generic: 00:00
+                          - generic [ref=f10e26]: 00:08
+                        - generic [ref=f10e27]:
+                          - generic [ref=f10e28]:
+                            - button:
+                              - img
+                            - slider
+                          - button:
+                            - img
+                            - generic: Settings
+                          - button:
+                            - img
+                            - generic: Picture-in-Picture
+                          - button:
+                            - img
+                            - generic: Fullscreen
+                          - button "Show controls" [ref=f10e29] [cursor=pointer]:
+                            - img [ref=f10e30]
+                            - generic:
+                              - generic: Show controls
+                          - link "Watch on Vimeo" [ref=f10e32] [cursor=pointer]:
+                            - /url: https://vimeo.com/1148889952?fl=pl&fe=vl
+                            - img [ref=f10e33]
+      - tablist [ref=e240]:
+        - tab "Beschreibung" [expanded] [ref=e241]:
+          - link "Beschreibung" [ref=e242] [cursor=pointer]:
+            - /url: "#tab-description"
+        - tabpanel [ref=e243]:
+          - paragraph [ref=e246]:
+            - strong [ref=e247]:
+              - text: DER Komfort- und Deko-Touch für Ihr Wohnzimmer!
+              - text: Farbe CREME
+            - text: Wir präsentieren Ihnen das Sofa HORIZAN, ein 2-sitziges Sofa mit einer originellen Form, das Sie mit seinem Volumen, seinen Maßen und seiner Weichheit begeistern wird...
+            - text: Dieses Sofa mit seiner leicht abgerundeten Form und dem Aussehen, das an eine Muschel erinnert, ist das Traumaccessoire echter moderner Meerjungfrauen! Hier können Sie sich nach Herzenslust einkuscheln, wie in einem prächtigen Schmuckkästchen, und auf dem ultramodernen Bezug aus Bouclé-Stoff sanfte Momente genießen.
+            - text: Zögern Sie nicht und gönnen Sie sich dieses Sofa als Geschenk, für Ihren Komfort und das Flair, das es Ihrem Zuhause verleihen wird!
+        - tab "Mehr Informationen" [expanded] [ref=e248]:
+          - link "Mehr Informationen" [ref=e249] [cursor=pointer]:
+            - /url: "#tab-infos"
+        - tabpanel [ref=e250]:
+          - table "Weitere Informationen" [ref=e252]:
+            - rowgroup [ref=e253]:
+              - row "Farbe Beige" [ref=e254]:
+                - rowheader "Farbe" [ref=e255]
+                - cell "Beige" [ref=e256]
+              - row "Material-Detail Bouclé-Stoff " [ref=e257]:
+                - rowheader "Material-Detail" [ref=e258]
+                - cell "Bouclé-Stoff " [ref=e259]:
+                  - text: Bouclé-Stoff
+                  - generic [ref=e260] [cursor=pointer]: 
+              - row "Anzahl der Plätze 2 Plätze" [ref=e261]:
+                - rowheader "Anzahl der Plätze" [ref=e262]
+                - cell "2 Plätze" [ref=e263]
+              - row "Form des Sofas Gerades Sofa" [ref=e264]:
+                - rowheader "Form des Sofas" [ref=e265]
+                - cell "Gerades Sofa" [ref=e266]
+              - row "Maße L148 x B92 x H62" [ref=e267]:
+                - rowheader "Maße" [ref=e268]
+                - cell "L148 x B92 x H62" [ref=e269]: L148 x B92 x H62
+              - row "Nettogewicht (Kg) 26" [ref=e270]:
+                - rowheader "Nettogewicht (Kg)" [ref=e271]
+                - cell "26" [ref=e272]
+              - 'row "Paket-Maße Colis 1/1: 149 x 65 x 93 cm" [ref=e273]':
+                - rowheader "Paket-Maße" [ref=e274]
+                - 'cell "Colis 1/1: 149 x 65 x 93 cm" [ref=e275]': "Colis 1/1: 149 x 65 x 93 cm"
+        - tab "Praktische Informationen" [expanded] [ref=e276]:
+          - link "Praktische Informationen" [ref=e277] [cursor=pointer]:
+            - /url: "#tab-ino-practical"
+        - tabpanel [ref=e278]:
+          - list [ref=e279]:
+            - listitem [ref=e280] [cursor=pointer]:
+              - img [ref=e283]
+      - heading "Das könnte Ihnen auch gefallen" [level=3] [ref=e285]
+      - generic [ref=e290]:
+        - heading "Günstige Sofas und Sitzbänke mit 2 Plätzen" [level=1] [ref=e291]
+        - paragraph [ref=e292]: Ein Sofa oder eine Sitzbank mit zwei Plätzen ist die ideale Lösung, um all Ihren Gästen Platz und Raum zu bieten. Unsere 2-Sitzer Ledersofas sind ideal für eine gemütliche Einrichtung kleiner Räume. Die zweisitzer Sofas von Menzzo.de im zeitgenössischem Design, die auch in Samt oder Stoff erhältlich sind, fügen sich dank ihrer Farbenvielfalt, die von schwarz über weiß bis hin zu rot oder taupe reicht, problemlos in jedes Wohnzimmer ein.
+        - paragraph [ref=e293]
+        - heading "Das Designer 2-Sitzer Sofa" [level=2] [ref=e294]
+        - paragraph [ref=e295]:
+          - text: Perfekt an die kleinsten Ecken Ihres Hauses oder Ihrer Wohnung anpassbar, lassen Sie sich von einem unserer Design-2-Sitzer Sofas überzeugen. Sie werden mit Leichtigkeit einen Hauch Modernität und Klasse in Ihr Zuhause bringen, der Sie nicht kalt lassen wird. Sie haben die Qual der Wahl! Sind Sie auf der Suche nach etwas Größerem? Entdecken Sie ohne länger zu warten unsere
+          - link "3-Sitzer Sofas" [ref=e296] [cursor=pointer]:
+            - /url: https://www.menzzo.de/sofas/3-sitzer-sofas.html
+          - text: .
+      - generic [ref=e297]:
+        - heading "Glückliche und zufriedene Kundinnen und Kunden" [level=3] [ref=e298]:
+          - strong [ref=e299]: Glückliche und zufriedene
+          - text: Kundinnen und Kunden
+        - img [ref=e303]
+  - contentinfo [ref=e307]:
+    - generic [ref=e309]:
+      - generic [ref=e311]:
+        - generic [ref=e312]:
+          - generic [ref=e313]: Alle Gutscheincodes
+          - generic [ref=e314]: Durch Anklicken von "Anmelden" akzeptiere ich den Erhalt des Newsletters per E-Mail und ich akzeptiere die Datenschutzrichtlinie von Menzzo.
+          - generic [ref=e317]:
+            - generic [ref=e320]:
+              - generic [ref=e321]: "Melden Sie sich für unseren Newsletter an:"
+              - textbox "Melden Sie sich für unseren Newsletter an:" [ref=e322]:
+                - /placeholder: Ihre E-Mail
+            - button "Anmelden" [ref=e323] [cursor=pointer]
+            - generic [ref=e325]:
+              - checkbox "Ich akzeptiere die Datenschutzbestimmungen und stimme der Verarbeitung meiner Daten zu Marketingzwecken durch Menzzo zu" [ref=e326]
+              - text: Ich akzeptiere die
+              - link "Datenschutzbestimmungen" [ref=e327] [cursor=pointer]:
+                - /url: https://www.menzzo.de/rgpd
+              - text: und stimme der Verarbeitung meiner Daten zu Marketingzwecken durch Menzzo zu
+        - img "img" [ref=e329]
+      - generic [ref=e331]:
+        - generic [ref=e333]:
+          - heading "KUNDENSERVICE" [level=3] [ref=e334]:
+            - img [ref=e335]
+            - text: KUNDENSERVICE
+          - generic [ref=e337]:
+            - generic [ref=e338]:
+              - img [ref=e339]
+              - link "kontakt@menzzo.de" [ref=e341] [cursor=pointer]:
+                - /url: mailto:kontakt@menzzo.de
+                - generic [ref=e342]: kontakt@menzzo.de
+            - generic [ref=e343]:
+              - img [ref=e344]
+              - generic [ref=e346]:
+                - strong [ref=e347]: "Montag bis Donnerstag :"
+                - text: 10-13 Uhr / 14-18 Uhr
+                - strong [ref=e348]: "Freitag :"
+                - text: 10 - 14 Uhr
+                - strong [ref=e349]: "Samstag - Sonntag :"
+                - text: Geschlossen
+                - strong
+          - link "Mehr anzeigen" [ref=e350] [cursor=pointer]:
+            - /url: https://www.menzzo.de/sav-menzzo-fr/
+        - generic [ref=e352]:
+          - heading "SICHERES BEZAHLEN" [level=3] [ref=e353]:
+            - img [ref=e354]
+            - text: SICHERES BEZAHLEN
+          - generic [ref=e357]:
+            - strong [ref=e358]: "Per Kreditkarte:"
+            - paragraph [ref=e365]: Online-Zahlungen sind durch das 3D-Secure-System gesichert. Menzzo hat keinen Zugriff auf Ihre Kreditkartendaten und speichert diese nicht.
+          - strong [ref=e366]: "Banküberweisung:"
+          - strong [ref=e367]: "Ratenzahlung:"
+          - paragraph [ref=e371]: Flexible Zahlungen oder in 3/4 Raten mit unseren Partnern.
+          - link "Mehr anzeigen" [ref=e372] [cursor=pointer]:
+            - /url: https://www.menzzo.de/financement
+        - generic [ref=e374]:
+          - heading "LIEFERUNG" [level=3] [ref=e375]:
+            - img [ref=e376]
+            - text: LIEFERUNG
+          - generic [ref=e378]:
+            - generic [ref=e381]: Die Lieferzeiten variieren je nach Produkt und sind auf jeder Produktseite separat angegeben
+            - generic [ref=e382]:
+              - paragraph [ref=e383]:
+                - strong [ref=e384]: Standardlieferung
+              - paragraph [ref=e387]: Die Ware wird am LKW abgeladen. Je nach Art des Artikels wird der Transporteur Sie per E-Mail, SMS oder Telefon kontaktieren, um Ihnen ein Lieferdatum mitzuteilen.
+            - link "Mehr anzeigen" [ref=e388] [cursor=pointer]:
+              - /url: https://www.menzzo.de/livraison/
+      - generic [ref=e390]:
+        - generic [ref=e391]:
+          - heading "BRAUCHEN SIE HILFE ?" [level=3] [ref=e392]
+          - generic [ref=e393]:
+            - list [ref=e394]:
+              - listitem [ref=e395]:
+                - link "Lieferung" [ref=e396] [cursor=pointer]:
+                  - /url: https://www.menzzo.de/livraison/
+              - listitem [ref=e397]:
+                - link "Rückgaberichtlinien" [ref=e398] [cursor=pointer]:
+                  - /url: https://www.menzzo.de/politique-de-retour
+              - listitem [ref=e399]:
+                - link "Materialglossar" [ref=e400] [cursor=pointer]:
+                  - /url: https://www.menzzo.de/materials
+            - list [ref=e401]:
+              - listitem [ref=e402]:
+                - link "Finanzierung" [ref=e403] [cursor=pointer]:
+                  - /url: https://www.menzzo.de/financement
+              - listitem [ref=e404]:
+                - link "Kundenservice" [ref=e405] [cursor=pointer]:
+                  - /url: https://www.menzzo.de/sav-menzzo-fr/
+        - generic [ref=e406]:
+          - heading "UNS BESSER KENNENLERNEN" [level=3] [ref=e407]
+          - generic [ref=e408]:
+            - list [ref=e409]:
+              - listitem [ref=e410]:
+                - link "Über Menzzo" [ref=e411] [cursor=pointer]:
+                  - /url: https://www.menzzo.de/a-propos-de-menzzo
+              - listitem [ref=e412]:
+                - link "Persönliche Daten" [ref=e413] [cursor=pointer]:
+                  - /url: https://www.menzzo.de/rgpd
+            - list [ref=e414]:
+              - listitem [ref=e415]:
+                - link "AGBs" [ref=e416] [cursor=pointer]:
+                  - /url: https://www.menzzo.de/conditions-generales-de-vente
+      - list [ref=e419]:
+        - listitem [ref=e420]
+        - listitem [ref=e422]
+        - listitem [ref=e424]
+        - listitem [ref=e426]
+        - listitem [ref=e428]:
+          - img "Monext" [ref=e430]
+        - listitem [ref=e431]:
+          - img "scalapay" [ref=e433]
+      - generic [ref=e434]:
+        - text: "Entdecken Sie Menzzo auch in anderen Ländern :"
+        - link "menzzo.fr" [ref=e435] [cursor=pointer]:
+          - /url: https://menzzo.fr
+          - img [ref=e436]
+        - link "menzzo.de" [ref=e438] [cursor=pointer]:
+          - /url: https://menzzo.de
+          - img [ref=e439]
+        - link "menzzo.it" [ref=e441] [cursor=pointer]:
+          - /url: https://menzzo.it
+          - img [ref=e442]
+        - link "menzzo.nl" [ref=e444] [cursor=pointer]:
+          - /url: https://menzzo.nl
+          - img [ref=e445]
+        - link "menzzo.at" [ref=e447] [cursor=pointer]:
+          - /url: https://menzzo.at
+          - img [ref=e448]
+        - link "menzzo.be" [ref=e450] [cursor=pointer]:
+          - /url: https://menzzo.be
+          - img [ref=e451]
+        - link "menzzo.es" [ref=e453] [cursor=pointer]:
+          - /url: https://menzzo.es/
+          - img [ref=e454]
+        - link "menzzo.pt" [ref=e456] [cursor=pointer]:
+          - /url: https://www.menzzo.pt/
+          - img [ref=e457]
+      - generic [ref=e460]: © 2026 Menzzo - Alle Rechte vorbehalten
+  - button "Chat Menzzo" [ref=e461] [cursor=pointer]:
+    - img "Chat Menzzo"
+```
