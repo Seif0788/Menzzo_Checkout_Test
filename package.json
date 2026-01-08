@@ -31,6 +31,7 @@
     "allure-js-commons": "^3.4.3",
     "allure-playwright": "^3.4.3",
     "cpx": "^1.5.0",
+    "playwright-core": "1.57.0",
     "rimraf": "^6.0.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.2"
