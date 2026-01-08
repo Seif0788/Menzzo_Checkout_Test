@@ -31,13 +31,6 @@ jobs:
       - name: Install Allure reporter
         run: npm install --save-dev allure-playwright
 
-      - name: Download previous allure-results
-        uses: actions/download-artifact@v4
-        with:
-          name: allure-results
-          path: previous-allure-results
-        continue-on-error: true  # so first run doesn’t fail
-
       # -----------------------------
       # Download previous allure-results (for trend)
       # -----------------------------
@@ -55,15 +48,13 @@ jobs:
         run: |
           rm -rf allure-results allure-report test-results
 
-      # -----------------------------
-      # Upload allure-results for trend
-      # -----------------------------
-      - name: Upload allure-results for trend
-        uses: actions/upload-artifact@v4
-        with:
-          name: allure-results
-          path: allure-results
-          retention-days: 30
+      # Merge history for trend
+      - name: Merge previous history
+        run: |
+          if [ -d previous-allure-results/history ]; then
+            mkdir -p allure-results/history
+            cp -r previous-allure-results/history/* allure-results/history/
+          fi
 
       # -----------------------------
       # Run Playwright tests
@@ -74,9 +65,9 @@ jobs:
         run: |
           npx playwright test --project=ES_Checkoutsuite
 
-          # -----------------------------
-# Upload allure-results AFTER tests (for future trends)
-# -----------------------------
+      # -----------------------------
+      # Upload allure-results AFTER tests (for future trends)
+      # -----------------------------
       - name: Upload allure-results for trend
         uses: actions/upload-artifact@v4
         with:
