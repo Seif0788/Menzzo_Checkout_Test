@@ -31,6 +31,20 @@ jobs:
       - name: Install Allure reporter
         run: npm install --save-dev allure-playwright
 
+      - name: Download previous allure-results
+        uses: actions/download-artifact@v4
+        with:
+          name: allure-results
+          path: previous-allure-results
+        continue-on-error: true  # so first run doesn’t fail
+
+      - name: Upload allure-results for trend
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results
+          path: allure-results
+          retention-days: 30
+
       # -----------------------------
       # Clean previous Allure data
       # -----------------------------
@@ -47,6 +61,14 @@ jobs:
         run: |
           npx playwright test --project=ES_Checkoutsuite
 
+
+      - name: Upload allure-results for trend
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results
+          path: allure-results
+          retention-days: 30
+
       # -----------------------------
       # Debug Allure raw results
       # -----------------------------
@@ -60,7 +82,6 @@ jobs:
       # Generate Allure report
       # -----------------------------
       - name: Generate Allure report
-        if: always()
         run: npm run allure:generate
 
       # -----------------------------
