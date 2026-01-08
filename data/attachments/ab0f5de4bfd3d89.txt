@@ -1,1 +1,0 @@
-✅ clickElementByText: clicked in main page context: Validar
