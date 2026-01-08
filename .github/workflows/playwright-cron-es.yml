@@ -7,7 +7,6 @@ on:
 
 jobs:
   test:
-    if: github.event_name == 'workflow_dispatch'
     name: Run Playwright Tests (Menzzo.es)
     runs-on: ubuntu-latest
     permissions:
