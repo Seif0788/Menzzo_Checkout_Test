@@ -38,12 +38,15 @@ jobs:
           path: previous-allure-results
         continue-on-error: true  # so first run doesn’t fail
 
-      - name: Upload allure-results for trend
-        uses: actions/upload-artifact@v4
+      # -----------------------------
+      # Download previous allure-results (for trend)
+      # -----------------------------
+      - name: Download previous allure-results
+        uses: actions/download-artifact@v4
         with:
           name: allure-results
-          path: allure-results
-          retention-days: 30
+          path: previous-allure-results
+        continue-on-error: true
 
       # -----------------------------
       # Clean previous Allure data
@@ -51,6 +54,16 @@ jobs:
       - name: Clean previous Allure data
         run: |
           rm -rf allure-results allure-report test-results
+
+      # -----------------------------
+      # Upload allure-results for trend
+      # -----------------------------
+      - name: Upload allure-results for trend
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results
+          path: allure-results
+          retention-days: 30
 
       # -----------------------------
       # Run Playwright tests
@@ -61,7 +74,9 @@ jobs:
         run: |
           npx playwright test --project=ES_Checkoutsuite
 
-
+          # -----------------------------
+# Upload allure-results AFTER tests (for future trends)
+# -----------------------------
       - name: Upload allure-results for trend
         uses: actions/upload-artifact@v4
         with:
