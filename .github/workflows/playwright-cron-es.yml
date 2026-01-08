@@ -50,7 +50,7 @@ jobs:
       # Install Playwright browsers
       # -----------------------------
       - name: Install Playwright browsers
-        run: npx playwright install --with-deps
+        run: ./node_modules/.bin/playwright install --with-deps
 
       # -----------------------------
       # Install Allure reporter
@@ -90,7 +90,8 @@ jobs:
       - name: Run Playwright tests (ES)
         id: playwright
         continue-on-error: true
-        run: npx playwright test --project=ES_Checkoutsuite --reporter=list,json
+        run: ./node_modules/.bin/playwright test --project=ES_Checkoutsuite --reporter=list,json
+
 
       # -----------------------------
       # Debug allure-results
@@ -176,7 +177,7 @@ jobs:
       # -----------------------------
       # Email notification
       # -----------------------------
-      - name: Send email notification (Menzzo.es)
+      - name: Send email notification (ES_Checkoutsuite)
         if: always()
         uses: dawidd6/action-send-mail@v4
         with:
@@ -184,16 +185,23 @@ jobs:
           server_port: 465
           secure: true
           username: seif.t.axelites@gmail.com
-          password: ${{ secrets.EMAIL_PASSWORD }}
+          password: cjrgskmlwmsdhuhn
+
           to: seifeddine.t.axelites@gmail.com
           from: '"GitHub Actions" <seif.t.axelites@gmail.com>'
-          subject: "${{ env.STATUS_EMOJI }} Playwright Cron – Menzzo.es"
+          subject: "${{ env.STATUS_EMOJI }} Playwright Cron – ES_Checkoutsuite"
           body: |
-            Playwright cron run finished for Menzzo.es
+            Playwright cron run finished for ES_Checkoutsuite
+
             Status: ${{ env.STATUS_EMOJI }}
+
             Results:
             - Total:  ${{ env.TOTAL }}
             - Passed: ${{ env.PASSED }}
             - Failed: ${{ env.FAILED }}
-            Allure Report: ${{ env.PAGES_URL }}
-            Artifacts: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}#artifacts
+
+            Allure Report:
+            ${{ env.PAGES_URL }}
+
+            Artifacts:
+            ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}#artifacts
