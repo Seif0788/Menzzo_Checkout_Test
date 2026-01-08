@@ -34,9 +34,6 @@ jobs:
       - name: Install Playwright browsers
         run: node node_modules/@playwright/test/cli.js install --with-deps
 
-      - name: Prepare report directories
-        run: mkdir -p allure-results test-results
-
       # -----------------------------
       # Fetch Allure history from gh-pages
       # -----------------------------
@@ -75,6 +72,9 @@ jobs:
           # Keep allure-results/history if it exists
           find allure-results -mindepth 1 -maxdepth 1 ! -name 'history' -exec rm -rf {} + || true
 
+      - name: Prepare report directories
+        run: mkdir -p allure-results test-results
+
       # -----------------------------
       # Run Playwright tests
       # -----------------------------
@@ -93,12 +93,15 @@ jobs:
           echo "Listing allure-results:"
           ls -la allure-results || echo "❌ allure-results not found"
 
+      - name: Make Allure CLI executable
+        run: chmod +x node_modules/allure-commandline/dist/bin/allure
+
       # -----------------------------
       # Generate Allure report
       # -----------------------------
       - name: Generate Allure report
         if: always()
-        run: node node_modules/allure-commandline/bin/allure generate ./allure-results --clean -o ./allure-report
+        run: node node_modules/allure-commandline/dist/bin/allure generate ./allure-results --clean -o ./allure-report
 
       # -----------------------------
       # Remove heavy attachments (GitHub Pages limit)
