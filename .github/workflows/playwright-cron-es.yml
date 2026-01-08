@@ -25,11 +25,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Fix permissions for executables
+        run: chmod -R +x node_modules/.bin/
+
+      - name: Verify Playwright installation
+        run: npx playwright --version
+
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
-
-      - name: Install Allure reporter
-        run: npm install --save-dev allure-playwright
 
       # -----------------------------
       # Fetch Allure history from gh-pages
