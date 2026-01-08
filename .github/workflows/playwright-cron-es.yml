@@ -1,4 +1,4 @@
-name: Playwright Cron – Menzzo.es
+name: Playwright – Menzzo.es (Allure Trends)
 
 on:
   workflow_dispatch:
@@ -11,106 +11,85 @@ jobs:
       contents: write
 
     steps:
-      # -----------------------------
-      # Checkout & Setup
-      # -----------------------------
+      # ---------------------------------
+      # Checkout
+      # ---------------------------------
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # ---------------------------------
+      # Node.js
+      # ---------------------------------
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
           node-version: 20
 
+      # ---------------------------------
+      # Install dependencies (deterministic)
+      # ---------------------------------
       - name: Install dependencies
-        run: |
-          rm -f package-lock.json
-          npm install
+        run: npm ci
 
-      - name: Fix permissions for executables
-        run: chmod -R +x node_modules/.bin/
-
+      # ---------------------------------
+      # Install Playwright browsers
+      # ---------------------------------
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
-      - name: Install Allure reporter
-        run: npm install --save-dev allure-playwright
-
-      # -----------------------------
-      # Fetch Allure history from gh-pages
-      # -----------------------------
-      - name: Fetch Allure history from gh-pages
+      # ---------------------------------
+      # Restore Allure history from gh-pages
+      # ---------------------------------
+      - name: Restore Allure history
         continue-on-error: true
         run: |
-          echo "Fetching Allure history from gh-pages branch..."
-          git fetch origin gh-pages --depth=1 || echo "No gh-pages branch found"
-          
-          if git rev-parse origin/gh-pages >/dev/null 2>&1; then
-            echo "Checking out gh-pages to temp directory..."
-            git checkout origin/gh-pages -- . || echo "Failed to checkout gh-pages"
-            
-            if [ -d "history" ]; then
-              echo "Copying history to allure-results..."
-              mkdir -p allure-results/history
-              cp -r history/* allure-results/history/ || echo "No history to copy"
-              echo "✅ Allure history restored"
-            else
-              echo "No history directory found in gh-pages"
-            fi
-            
-            # Clean up checked out files except allure-results
-            git reset --hard HEAD
-            git checkout ${{ github.ref_name }}
-          else
-            echo "No previous gh-pages deployment found - this is the first run"
-          fi
+          git fetch origin gh-pages --depth=1 || exit 0
+          mkdir -p tmp-history
+          git show origin/gh-pages:history | tar -x -C tmp-history 2>/dev/null || exit 0
+          mkdir -p allure-results/history
+          cp -r tmp-history/* allure-results/history/ || true
 
-      # -----------------------------
-      # Clean previous Allure data
-      # -----------------------------
-      - name: Clean previous Allure data
+      # ---------------------------------
+      # Clean Allure outputs (keep history)
+      # ---------------------------------
+      - name: Clean Allure output
         run: |
           rm -rf allure-report test-results
-          # Keep allure-results/history if it exists
-          find allure-results -mindepth 1 -maxdepth 1 ! -name 'history' -exec rm -rf {} + || true
+          find allure-results -mindepth 1 -maxdepth 1 ! -name history -exec rm -rf {} + || true
 
-      # -----------------------------
+      # ---------------------------------
       # Run Playwright tests
-      # -----------------------------
+      # ---------------------------------
       - name: Run Playwright tests (ES)
-        id: playwright
         continue-on-error: true
-        run: |
-          npx playwright test --project=ES_Checkoutsuite
+        run: npx playwright test --project=ES_Checkoutsuite
 
-
-      # -----------------------------
+      # ---------------------------------
       # Debug Allure raw results
-      # -----------------------------
+      # ---------------------------------
       - name: Debug allure-results
         if: always()
         run: |
-          echo "Listing allure-results:"
-          ls -la allure-results || echo "❌ allure-results not found"
+          echo "Allure results:"
+          ls -la allure-results || echo "No allure-results"
 
-      # -----------------------------
+      # ---------------------------------
       # Generate Allure report
-      # -----------------------------
+      # ---------------------------------
       - name: Generate Allure report
         run: npm run allure:generate
 
-      # -----------------------------
-      # Remove heavy attachments (GitHub Pages limit)
-      # -----------------------------
-      - name: Remove large Allure attachments
+      # ---------------------------------
+      # Remove heavy attachments
+      # ---------------------------------
+      - name: Cleanup Allure attachments
         if: always()
         run: |
-          echo "Removing large Allure attachments..."
-          find allure-report/data/attachments -type f ! -name "*.txt" -delete || echo "No heavy attachments found"
+          find allure-report/data/attachments -type f ! -name "*.txt" -delete || true
 
-      # -----------------------------
-      # Upload Allure as artifact (optional but useful)
-      # -----------------------------
+      # ---------------------------------
+      # Upload Allure report artifact
+      # ---------------------------------
       - name: Upload Allure report artifact
         if: always()
         uses: actions/upload-artifact@v4
@@ -119,9 +98,9 @@ jobs:
           path: allure-report
           retention-days: 7
 
-      # -----------------------------
+      # ---------------------------------
       # Deploy to GitHub Pages
-      # -----------------------------
+      # ---------------------------------
       - name: Deploy Allure to GitHub Pages
         if: always()
         uses: peaceiris/actions-gh-pages@v3
@@ -130,27 +109,25 @@ jobs:
           publish_dir: ./allure-report
           publish_branch: gh-pages
 
-      # -----------------------------
-      # Install jq (for JSON parsing)
-      # -----------------------------
+      # ---------------------------------
+      # Install jq
+      # ---------------------------------
       - name: Install jq
         if: always()
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y jq
+        run: sudo apt-get update && sudo apt-get install -y jq
 
-      # -----------------------------
+      # ---------------------------------
       # Extract test statistics
-      # -----------------------------
+      # ---------------------------------
       - name: Extract test results
         if: always()
         run: |
-          RESULT_FILE="$GITHUB_WORKSPACE/test-results/results.json"
+          RESULT_FILE="test-results/results.json"
 
-          if [ -f "$RESULT_FILE" ] && [ -s "$RESULT_FILE" ]; then
-            PASSED=$(jq '[.. | objects | select(.status=="passed")] | length' "$RESULT_FILE" || echo 0)
-            FAILED=$(jq '[.. | objects | select(.status=="failed")] | length' "$RESULT_FILE" || echo 0)
-            TOTAL=$(jq '[.. | objects | .status? // empty] | length' "$RESULT_FILE" || echo 0)
+          if [ -f "$RESULT_FILE" ]; then
+            PASSED=$(jq '[..|objects|select(.status=="passed")]|length' "$RESULT_FILE")
+            FAILED=$(jq '[..|objects|select(.status=="failed")]|length' "$RESULT_FILE")
+            TOTAL=$(jq '[..|objects|.status?]|length' "$RESULT_FILE")
           else
             PASSED=0
             FAILED=0
@@ -163,46 +140,35 @@ jobs:
 
           if [ "$FAILED" -gt 0 ]; then
             echo "STATUS_EMOJI=🔴 Failure" >> $GITHUB_ENV
-          elif [ "$TOTAL" -eq 0 ]; then
-            echo "STATUS_EMOJI=🔴 Failure (No Results)" >> $GITHUB_ENV
           else
             echo "STATUS_EMOJI=🟢 Success" >> $GITHUB_ENV
           fi
 
-          REPO_NAME=${GITHUB_REPOSITORY#*/}
           OWNER=${GITHUB_REPOSITORY%/*}
-          echo "PAGES_URL=https://$OWNER.github.io/$REPO_NAME" >> $GITHUB_ENV
+          REPO=${GITHUB_REPOSITORY#*/}
+          echo "PAGES_URL=https://$OWNER.github.io/$REPO" >> $GITHUB_ENV
 
-          echo "RESULT_FILE_PATH=$RESULT_FILE" >> $GITHUB_ENV
-
-      # -----------------------------
+      # ---------------------------------
       # Email notification
-      # -----------------------------
-      - name: Send email notification (Menzzo.es)
+      # ---------------------------------
+      - name: Send email notification
         if: always()
         uses: dawidd6/action-send-mail@v4
         with:
           server_address: smtp.gmail.com
           server_port: 465
           secure: true
-          username: seif.t.axelites@gmail.com
-          password: cjrgskmlwmsdhuhn
-
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
           to: seifeddine.t.axelites@gmail.com
-          from: '"GitHub Actions" <seif.t.axelites@gmail.com>'
-          subject: "${{ env.STATUS_EMOJI }} Playwright Cron – Menzzo.es"
+          from: '"GitHub Actions" <${{ secrets.MAIL_USERNAME }}>'
+          subject: "${{ env.STATUS_EMOJI }} Playwright – Menzzo.es"
           body: |
-            Playwright cron run finished for Menzzo.es
-
             Status: ${{ env.STATUS_EMOJI }}
 
-            Results:
-            - Total:  ${{ env.TOTAL }}
-            - Passed: ${{ env.PASSED }}
-            - Failed: ${{ env.FAILED }}
+            Total:  ${{ env.TOTAL }}
+            Passed: ${{ env.PASSED }}
+            Failed: ${{ env.FAILED }}
 
             Allure Report:
             ${{ env.PAGES_URL }}
-
-            Artifacts:
-            ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}#artifacts
