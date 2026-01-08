@@ -29,10 +29,13 @@ jobs:
         run: npm ci
 
       - name: Verify Playwright installation
-        run: npx playwright --version
+        run: node node_modules/@playwright/test/cli.js --version
 
       - name: Install Playwright browsers
-        run: npx playwright install --with-deps
+        run: node node_modules/@playwright/test/cli.js install --with-deps
+
+      - name: Prepare report directories
+        run: mkdir -p allure-results test-results
 
       # -----------------------------
       # Fetch Allure history from gh-pages
@@ -78,9 +81,8 @@ jobs:
       - name: Run Playwright tests (ES)
         id: playwright
         continue-on-error: true
-        shell: bash
         run: |
-          npx --no-install playwright test --project=ES_Checkoutsuite
+          node node_modules/@playwright/test/cli.js test --project=ES_Checkoutsuite
 
       # -----------------------------
       # Debug Allure raw results
@@ -185,7 +187,7 @@ jobs:
           server_port: 465
           secure: true
           username: seif.t.axelites@gmail.com
-          password: cjrgskmlwmsdhuhn
+          password: ${{ secrets.GMAIL_APP_PASSWORD }}
 
           to: seifeddine.t.axelites@gmail.com
           from: '"GitHub Actions" <seif.t.axelites@gmail.com>'
