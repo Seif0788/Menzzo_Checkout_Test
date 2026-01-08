@@ -22,11 +22,11 @@ jobs:
         with:
           node-version: 20
 
+      - name: Enable Corepack
+        run: corepack enable
+
       - name: Install dependencies
         run: npm ci
-
-      - name: Fix permissions for executables
-        run: chmod -R +x node_modules/.bin/
 
       - name: Verify Playwright installation
         run: npx playwright --version
@@ -78,8 +78,9 @@ jobs:
       - name: Run Playwright tests (ES)
         id: playwright
         continue-on-error: true
+        shell: bash
         run: |
-          npx playwright test --project=ES_Checkoutsuite
+          npx --no-install playwright test --project=ES_Checkoutsuite
 
       # -----------------------------
       # Debug Allure raw results
