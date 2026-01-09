@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v4
         with:
           node-version: 20
 
@@ -30,9 +30,6 @@ jobs:
 
       - name: Verify Playwright installation
         run: node node_modules/@playwright/test/cli.js --version
-
-      - name: Install Playwright browsers
-        run: node node_modules/@playwright/test/cli.js install --with-deps
 
       # -----------------------------
       # Fetch Allure history from gh-pages
@@ -60,7 +57,7 @@ jobs:
             git reset --hard HEAD
             git checkout ${{ github.ref_name }}
           else
-            echo "No previous gh-pages deployment found - this is the first run"
+            echo "No previous gh-pages deployment found"
           fi
 
       # -----------------------------
@@ -71,9 +68,6 @@ jobs:
           rm -rf allure-report test-results
           # Keep allure-results/history if it exists
           find allure-results -mindepth 1 -maxdepth 1 ! -name 'history' -exec rm -rf {} + || true
-
-      - name: Prepare report directories
-        run: mkdir -p allure-results test-results
 
       # -----------------------------
       # Run Playwright tests
