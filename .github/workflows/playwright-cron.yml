@@ -77,7 +77,7 @@ jobs:
         id: playwright
         continue-on-error: true
         run: |
-          npm exec playwright test --project=Global_Checkoutsuite
+          npx playwright test --project=Global_Checkoutsuite
 
       # -----------------------------
       # Debug Allure raw results
