@@ -1,4 +1,4 @@
-name: Playwright Cron – Global_Checkoutsuite
+name: Playwright Cron – Global_Checkoutsuite_test
 
 on:
   schedule:
@@ -140,6 +140,16 @@ jobs:
       - name: Extract test results
         if: always()
         run: |
+          # Set default values
+          echo "STATUS_EMOJI=⚪ Unknown" >> $GITHUB_ENV
+          echo "PASSED=0" >> $GITHUB_ENV
+          echo "FAILED=0" >> $GITHUB_ENV
+          echo "TOTAL=0" >> $GITHUB_ENV
+          
+          REPO_NAME=${GITHUB_REPOSITORY#*/}
+          OWNER=${GITHUB_REPOSITORY%/*}
+          echo "PAGES_URL=https://$OWNER.github.io/$REPO_NAME" >> $GITHUB_ENV
+          
           RESULT_FILE="$GITHUB_WORKSPACE/test-results/results.json"
 
           if [ -f "$RESULT_FILE" ] && [ -s "$RESULT_FILE" ]; then
@@ -166,11 +176,8 @@ jobs:
             echo "STATUS_EMOJI=🟢 Success" >> $GITHUB_ENV
           fi
 
-          REPO_NAME=${GITHUB_REPOSITORY#*/}
-          OWNER=${GITHUB_REPOSITORY%/*}
-          echo "PAGES_URL=https://$OWNER.github.io/$REPO_NAME" >> $GITHUB_ENV
-
           echo "RESULT_FILE_PATH=$RESULT_FILE" >> $GITHUB_ENV
+
 
       # -----------------------------
       # Email notification
