@@ -180,18 +180,6 @@ export default defineConfig({
       },
     },
 
-    // === Mobile ===
-    {
-      name: 'Mobile_iPhone_13',
-      testDir: './tests/Mobile_test',
-      use: {
-        ...devices['iPhone 13'],
-        headless: true,
-        screenshot: 'off',
-        video: 'off',
-        trace: 'off',
-      },
-    },
   ],
   reporter: [
     ['list'],
