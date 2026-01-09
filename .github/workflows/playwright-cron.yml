@@ -30,8 +30,7 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install chromium --with-deps
 
-      - name: Install Allure reporter
-        run: npm install --save-dev allure-playwright
+      # Redundant install removed (already in package.json)
 
       # -----------------------------
       # Fetch Allure history from gh-pages
@@ -43,23 +42,16 @@ jobs:
           git fetch origin gh-pages --depth=1 || echo "No gh-pages branch found"
           
           if git rev-parse origin/gh-pages >/dev/null 2>&1; then
-            echo "Checking out gh-pages to temp directory..."
-            git checkout origin/gh-pages -- . || echo "Failed to checkout gh-pages"
-            
-            if [ -d "history" ]; then
-              echo "Copying history to allure-results..."
+            mkdir -p temp-gh-pages
+            git --work-tree=temp-gh-pages checkout origin/gh-pages -- .
+            if [ -d "temp-gh-pages/history" ]; then
               mkdir -p allure-results/history
-              cp -r history/* allure-results/history/ || echo "No history to copy"
+              cp -r temp-gh-pages/history/* allure-results/history/
               echo "✅ Allure history restored"
-            else
-              echo "No history directory found in gh-pages"
             fi
-            
-            # Clean up checked out files except allure-results
-            git reset --hard HEAD
-            git checkout ${{ github.ref_name }}
+            rm -rf temp-gh-pages
           else
-            echo "No previous gh-pages deployment found - this is the first run"
+            echo "No previous gh-pages deployment found"
           fi
 
       # -----------------------------
@@ -69,7 +61,14 @@ jobs:
         run: |
           rm -rf allure-report test-results
           # Keep allure-results/history if it exists
-          find allure-results -mindepth 1 -maxdepth 1 ! -name 'history' -exec rm -rf {} + || true
+          if [ -d "allure-results" ]; then
+            find allure-results -mindepth 1 -maxdepth 1 ! -name 'history' -exec rm -rf {} + || true
+          fi
+
+      - name: Fix Playwright Permissions
+        run: |
+          chmod +x node_modules/.bin/playwright || echo "Could not set permissions"
+
 
       # -----------------------------
       # Run Playwright tests
@@ -78,7 +77,7 @@ jobs:
         id: playwright
         continue-on-error: true
         run: |
-          npx playwright test --project=Global_Checkoutsuite
+          npm exec playwright test --project=Global_Checkoutsuite
 
       # -----------------------------
       # Debug Allure raw results
