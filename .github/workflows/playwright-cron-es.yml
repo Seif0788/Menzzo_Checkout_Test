@@ -151,8 +151,8 @@ jobs:
           server_address: smtp.gmail.com
           server_port: 465
           secure: true
-          username: seif.t.axelites@gmail.com
-          password: cjrgskmlwmsdhuhn
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
 
           to: seifeddine.t.axelites@gmail.com
           from: '"GitHub Actions" <seif.t.axelites@gmail.com>'
