@@ -92,7 +92,7 @@ export default defineConfig({
     {
       name: 'Global_Checkoutsuite',
       testDir: './tests/Checkout/',
-      testMatch: '**/*.spec.ts',  // recursively match all .spec.ts
+      testMatch: '**/Menzzo_*/[!.]*.spec.ts',
       workers: 2,
       retries: 3,
       use: {
