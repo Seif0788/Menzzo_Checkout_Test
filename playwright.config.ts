@@ -101,9 +101,32 @@ export default defineConfig({
         video: 'off',
         trace: 'on'
       },
-
     },
-
+    {
+      name: 'SeQura',
+      testDir: './tests/Checkout/',
+      testMatch: '**/*_SeQura*.spec.ts',
+      workers: 3,
+      retries: 3,
+      use: {
+        ...checkoutUseOptions,
+        screenshot: 'only-on-failure',
+        video: 'off',
+        trace: 'on'
+      },
+    },
+    {
+      name: 'Pre_test',
+      testDir: './tests/Pre_test/',
+      workers: 1,
+      use: {
+        ...checkoutUseOptions,
+        screenshot: 'only-on-failure',
+        video: 'off',
+        trace: 'on',
+        headless: false,
+      },
+    },
     // === Feature Tests ===
     {
       name: 'Delivery_Methods',
@@ -136,6 +159,29 @@ export default defineConfig({
       },
     },
     {
+      name: 'Solde_Hiver_2026',
+      testDir: './tests/Price/Solde_07012026',
+      workers: 6,
+      use: {
+        headless: true,
+        screenshot: 'only-on-failure',
+        video: 'off',
+        trace: 'retain-on-failure',
+      },
+    },
+    {
+      name: 'Maouro_Product_Tests',
+      workers: 4,
+      testDir: './tests/Product_Page',
+      testMatch: '**/Maouro_*.spec.ts',
+      use: {
+        headless: true,
+        screenshot: 'only-on-failure',
+        video: 'retain-on-failure',
+        trace: 'retain-on-failure',
+      },
+    },
+    {
       name: 'Search_Tests',
       testDir: './tests',
       testMatch: /Search_.*\.spec\.ts/,
@@ -153,7 +199,7 @@ export default defineConfig({
       testMatch: /Category_.*\.spec\.ts/,
       use: {
         ...checkoutUseOptions,
-        headless: true,
+        headless: false,
       },
     },
     {
