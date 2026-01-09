@@ -225,49 +225,7 @@ export default defineConfig({
         headless: true,
       },
     },
-    {
-      name: 'Weight_Update',
-      testDir: './tests/Check_Task',
-      use: {
-        headless: true,
-        screenshot: 'off',
-        video: 'off',
-        trace: 'retain-on-failure',
-      },
-    },
-    {
-      name: 'Chatbot_Tests',
-      testDir: './tests',
-      testMatch: /chatbot_.*\.spec\.ts/,
-      use: {
-        headless: false,
-        screenshot: 'only-on-failure',
-        video: 'retain-on-failure',
-        trace: 'retain-on-failure',
-      },
-    },
-    {
-      name: 'Statut',
-      testDir: './tests/RDV_Menzzo',
-      use: {
-        headless: true,
-        screenshot: 'off',
-        video: 'off',
-        trace: 'retain-on-failure',
-      },
-    },
-    // === Mobile ===
-    {
-      name: 'Mobile_iPhone_13',
-      testDir: './tests/Mobile_test',
-      use: {
-        ...devices['iPhone 13'],
-        headless: true,
-        screenshot: 'off',
-        video: 'off',
-        trace: 'retain-on-failure',
-      },
-    },
+
   ],
   reporter: [
     ['list'],

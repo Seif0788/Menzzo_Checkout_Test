@@ -24,11 +24,8 @@
     "test:statut": "npm run allure:clean && npm run allure:history && (npx playwright test --project=Statut && npm run allure:generate || npm run allure:generate) && npm run allure:open"
   },
   "devDependencies": {
-    "@playwright/test": "1.57.0",
-    "@types/langdetect": "^0.2.2",
-    "@types/papaparse": "^5.5.0",
+    "@playwright/test": "^1.57.0",
     "allure-commandline": "^2.34.1",
-    "allure-js-commons": "^3.4.3",
     "allure-playwright": "^3.4.3",
     "cpx": "^1.5.0",
     "playwright": "1.57.0",

@@ -25,7 +25,7 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
@@ -34,11 +34,42 @@ jobs:
         run: npm install --save-dev allure-playwright
 
       # -----------------------------
+      # Fetch Allure history from gh-pages
+      # -----------------------------
+      - name: Fetch Allure history from gh-pages
+        continue-on-error: true
+        run: |
+          echo "Fetching Allure history from gh-pages branch..."
+          git fetch origin gh-pages --depth=1 || echo "No gh-pages branch found"
+          
+          if git rev-parse origin/gh-pages >/dev/null 2>&1; then
+            echo "Checking out gh-pages to temp directory..."
+            git checkout origin/gh-pages -- . || echo "Failed to checkout gh-pages"
+            
+            if [ -d "history" ]; then
+              echo "Copying history to allure-results..."
+              mkdir -p allure-results/history
+              cp -r history/* allure-results/history/ || echo "No history to copy"
+              echo "✅ Allure history restored"
+            else
+              echo "No history directory found in gh-pages"
+            fi
+            
+            # Clean up checked out files except allure-results
+            git reset --hard HEAD
+            git checkout ${{ github.ref_name }}
+          else
+            echo "No previous gh-pages deployment found - this is the first run"
+          fi
+
+      # -----------------------------
       # Clean previous Allure data
       # -----------------------------
       - name: Clean previous Allure data
         run: |
-          rm -rf allure-results allure-report test-results
+          rm -rf allure-report test-results
+          # Keep allure-results/history if it exists
+          find allure-results -mindepth 1 -maxdepth 1 ! -name 'history' -exec rm -rf {} + || true
 
       # -----------------------------
       # Run Playwright tests
@@ -151,11 +182,11 @@ jobs:
           server_address: smtp.gmail.com
           server_port: 465
           secure: true
-          username: seif.t.axelites@gmail.com
-          password: cjrgskmlwmsdhuhn
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
 
           to: seifeddine.t.axelites@gmail.com
-          from: '"GitHub Actions" <seif.t.axelites@gmail.com>'
+          from: '"GitHub Actions" <${{ secrets.MAIL_USERNAME }}>'
           subject: "${{ env.STATUS_EMOJI }} Playwright Cron – Global_Checkoutsuite"
           body: |
             Playwright cron run finished for Global_Checkoutsuite
