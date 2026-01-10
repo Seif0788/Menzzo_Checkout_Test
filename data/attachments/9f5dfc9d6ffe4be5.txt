@@ -1,1 +1,0 @@
-🟢 Checkout meta detected → Treating as successful navigation.
