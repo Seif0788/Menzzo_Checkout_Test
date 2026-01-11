@@ -1,0 +1,179 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - button "Preferências de Consentimento" [ref=e3] [cursor=pointer]:
+    - img "Revisit consent button" [ref=e4]
+  - generic [ref=e5]:
+    - banner [ref=e6]:
+      - generic [ref=e7]:
+        - text: 
+        - link "store logo" [ref=e8] [cursor=pointer]:
+          - /url: https://www.menzzo.pt/
+          - img "Menzzo.pt" [ref=e9]
+    - main [ref=e10]:
+      - heading "Finalizar o pedido" [level=1] [ref=e12]
+      - generic [ref=e14]:
+        - generic [ref=e17] [cursor=pointer]:
+          - text: Já tem uma conta?
+          - strong [ref=e18]: Clique aqui
+          - text: para fazer login
+          - strong [ref=e19]: ou criar uma conta Menzzo
+        - generic [ref=e21]:
+          - generic [ref=e22]: Inicie sessão rapidamente usando a sua conta Facebook ou Google.
+          - generic [ref=e23]:
+            - link "Conectar com Google" [ref=e25] [cursor=pointer]:
+              - /url: https://www.menzzo.pt/amsociallogin/social/login/?type=google
+              - generic [ref=e27]: Conectar com Google
+            - link "Conectar com Facebook" [ref=e29] [cursor=pointer]:
+              - /url: https://www.menzzo.pt/amsociallogin/social/login/?type=facebook
+              - generic [ref=e31]: Conectar com Facebook
+        - generic [ref=e34]:
+          - generic [ref=e36]:
+            - generic [ref=e38]:
+              - generic [ref=e40]:
+                - generic [ref=e41]:
+                  - text: 
+                  - generic [ref=e42]:
+                    - generic [ref=e43] [cursor=pointer]: 
+                    - strong [ref=e44]: "1"
+                  - text: Morada de Envio
+                - generic [ref=e45]:
+                  - group [ref=e47]:
+                    - generic [ref=e49]:
+                      - generic [ref=e50]:
+                        - generic [ref=e51]: Endereço de Email*
+                        - textbox "Endereço de Email*" [ref=e52]: seif@axelites.com
+                      - text: 
+                  - generic [ref=e54]:
+                    - generic [ref=e57]:
+                      - generic [ref=e58]: Nome*
+                      - textbox "Nome*" [ref=e59]: Seif
+                    - generic [ref=e62]:
+                      - generic [ref=e63]: Sobrenome*
+                      - textbox "Sobrenome*" [ref=e64]: Taj
+                    - group [ref=e65]:
+                      - generic [ref=e68]:
+                        - generic [ref=e69]: Rua*
+                        - textbox "Rua*" [ref=e70]: Av. Vasco da Gama 774
+                        - text: 
+                    - generic [ref=e73]:
+                      - generic [ref=e74]: Código Postal*
+                      - textbox "Código Postal*" [ref=e75]: 4410-338
+                    - generic [ref=e78]:
+                      - generic [ref=e79]: Cidade*
+                      - textbox "Cidade*" [ref=e80]: Arcozelo
+                    - combobox "País" [ref=e82]:
+                      - option "Portugal" [selected]
+                      - option "──────────" [disabled]
+                    - generic [ref=e84]:
+                      - generic [ref=e85]:
+                        - generic [ref=e86]: Número de Telefone*
+                        - spinbutton "Número de Telefone*" [active] [ref=e87]: "123456"
+                      - text: 
+                    - generic [ref=e90]:
+                      - generic [ref=e91]: Empresa
+                      - textbox "Empresa" [ref=e92]
+                  - generic [ref=e93]: "*Campo obrigatório"
+                  - generic [ref=e94]:
+                    - checkbox "O meu endereço de faturação e entrega são os mesmos" [checked] [ref=e95]
+                    - generic [ref=e96] [cursor=pointer]: O meu endereço de faturação e entrega são os mesmos
+              - generic:  * * *  * * * 
+            - generic [ref=e98]:
+              - generic [ref=e99]:
+                - text: 
+                - generic [ref=e100]:
+                  - generic [ref=e101] [cursor=pointer]: 
+                  - strong [ref=e102]: "2"
+                - text: Métodos de Envio
+              - generic [ref=e104]:
+                - generic [ref=e105]: + Mais informações sobre os métodos de entrega
+                - generic [ref=e106]:
+                  - generic [ref=e110]:
+                    - generic [ref=e112]:
+                      - img [ref=e114]
+                      - generic [ref=e115]:
+                        - strong [ref=e116]: Conjunto de 2 cadeiras de bar com encosto arredondado estilo treliça Xenox Veludo Taupe e Metal Dourado
+                        - generic [ref=e117]:
+                          - strong [ref=e118]: "Qtd:"
+                          - text: "1"
+                    - generic [ref=e119]:
+                      - list [ref=e120]:
+                        - listitem [ref=e121]:
+                          - text: "-"
+                          - strong [ref=e122]: Entrega entre o 30 abril e 07 maio
+                      - generic [ref=e123]:
+                        - generic [ref=e124]:
+                          - generic [ref=e126]:
+                            - radio "Entrega clássica" [checked] [ref=e127] [cursor=pointer]
+                            - text: Entrega clássica
+                          - strong [ref=e129]: 20,00 €
+                        - generic [ref=e134]:
+                          - img [ref=e135]
+                          - generic [ref=e137]: Ao pé do caminhão
+                  - generic [ref=e139]:
+                    - generic [ref=e140]: "Total da entrega :"
+                    - text: 
+                    - generic [ref=e141]: 20€
+            - generic [ref=e142]:
+              - generic [ref=e143]:
+                - text: 
+                - generic [ref=e144]:
+                  - generic [ref=e145] [cursor=pointer]: 
+                  - strong [ref=e146]: "3"
+                - text: Métodos de pagamento
+              - tabpanel [ref=e147]:
+                - group "Informação do Pagamento" [ref=e149]:
+                  - generic [ref=e150]: Informação do Pagamento
+                  - text: "*"
+                  - generic [ref=e155]:
+                    - img "Image" [ref=e157]
+                    - radio [ref=e158]
+                    - generic [ref=e159] [cursor=pointer]: Pagamento seguro com cartão de crédito
+          - generic [ref=e163]:
+            - generic [ref=e164]:
+              - generic [ref=e165]:
+                - text: 
+                - generic [ref=e166] [cursor=pointer]: 
+                - text: Resumo da encomenda
+              - generic [ref=e167]:
+                - tablist [ref=e168]:
+                  - text: 
+                  - tabpanel [ref=e169]:
+                    - generic [ref=e170]:
+                      - generic [ref=e171]: No meu carrinho
+                      - table [ref=e172]:
+                        - rowgroup [ref=e173]:
+                          - 'row "Conjunto de 2 cadeiras de bar com encosto arredondado estilo treliça Xenox Veludo Taupe e Metal Dourado Conjunto de 2 cadeiras de bar com encosto arredondado estilo treliça Xenox Veludo Taupe e Metal Dourado Qtd : 1 127,00 €" [ref=e174]':
+                            - cell "Conjunto de 2 cadeiras de bar com encosto arredondado estilo treliça Xenox Veludo Taupe e Metal Dourado" [ref=e175]:
+                              - img "Conjunto de 2 cadeiras de bar com encosto arredondado estilo treliça Xenox Veludo Taupe e Metal Dourado" [ref=e178]
+                            - 'cell "Conjunto de 2 cadeiras de bar com encosto arredondado estilo treliça Xenox Veludo Taupe e Metal Dourado Qtd : 1 127,00 €" [ref=e179]':
+                              - generic [ref=e180]:
+                                - link "Conjunto de 2 cadeiras de bar com encosto arredondado estilo treliça Xenox Veludo Taupe e Metal Dourado" [ref=e184] [cursor=pointer]:
+                                  - /url: https://www.menzzo.pt/lot-de-2-chaises-de-bar-dossier-arrondi-style-maillage-xenox-velours-taupe-et-metal-or.html
+                                  - strong [ref=e185]: Conjunto de 2 cadeiras de bar com encosto arredondado estilo treliça Xenox Veludo Taupe e Metal Dourado
+                                - generic [ref=e186]:
+                                  - generic [ref=e187]: "Qtd :"
+                                  - text: "1"
+                              - generic [ref=e190]: 127,00 €
+                - table "Resumo da encomenda" [ref=e191]:
+                  - rowgroup [ref=e192]:
+                    - row "Subtotal dos artigos com IVA 127,00 €" [ref=e193]:
+                      - rowheader "Subtotal dos artigos com IVA" [ref=e194]
+                      - cell "127,00 €" [ref=e195]
+                    - row "Envio 20,00 €" [ref=e196]:
+                      - rowheader "Envio" [ref=e197]: Envio
+                      - cell "20,00 €" [ref=e198]
+                    - row "Montante total a pagar 147,00 € TTC" [ref=e199]:
+                      - rowheader "Montante total a pagar" [ref=e200]:
+                        - strong [ref=e201]: Montante total a pagar
+                      - cell "147,00 € TTC" [ref=e202]:
+                        - strong [ref=e203]: 147,00 € TTC
+            - generic [ref=e205]:
+              - generic [ref=e210]:
+                - checkbox [ref=e211]
+                - button "Aceito os termos e condições de venda. *" [ref=e213] [cursor=pointer]
+              - button "Confirmar encomenda" [ref=e216] [cursor=pointer]
+    - button "Chat Menzzo" [ref=e217] [cursor=pointer]:
+      - img "Chat Menzzo"
+```
