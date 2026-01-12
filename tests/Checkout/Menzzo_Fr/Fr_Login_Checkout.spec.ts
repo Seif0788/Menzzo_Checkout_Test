@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { attachment } from 'allure-js-commons';
+import { attachment, severity } from 'allure-js-commons';
 import { clickElementByText, ClickRandomProduct, clickElementByTextWithPopUp, waitForCheckoutReady, clickAndWaitForNavigation, login, selectCategory } from '../../../helpers/utils';
 import { performCheckout, CheckoutData } from '../../../helpers/Checkout/General_Checkout';
 import fs from 'fs';
@@ -22,6 +22,8 @@ function loadCategoriesFromCSV(filePath: string): string[] {
 
 test('Login_Checkout_fr', async ({ page }) => {
     test.setTimeout(300000); // Increased timeout to 5 minutes
+
+    severity('critical');
 
     //Open Menzzo.fr
     await page.goto('https://www.menzzo.fr');

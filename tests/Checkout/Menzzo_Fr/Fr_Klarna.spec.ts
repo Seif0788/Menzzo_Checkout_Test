@@ -1,11 +1,13 @@
 import { test, expect, Page } from '@playwright/test';
-import { attachment } from 'allure-js-commons';
+import { attachment, severity } from 'allure-js-commons';
 import { clickElementByText, search, ClickRandomProduct, clickElementByTextWithPopUp, waitForCheckoutReady, clickAndWaitForNavigation } from '../../../helpers/utils';
 import { performCheckout, CheckoutData } from '../../../helpers/Checkout/General_Checkout';
 import { Klanra_Payment } from '../../../helpers/Checkout/Payment_menthod';
 
 test('Klarna_Fr', async ({ page }) => {
   test.setTimeout(180000);
+
+  severity('critical');
 
   // Capture console messages and errors
   page.on('console', msg => {

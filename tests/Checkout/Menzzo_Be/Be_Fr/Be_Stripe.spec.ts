@@ -1,10 +1,11 @@
 import { test, expect } from '@playwright/test';
-import { attachment } from 'allure-js-commons';
+import { attachment, severity } from 'allure-js-commons';
 import { clickElementByText, search, ClickRandomProduct, clickElementByTextWithPopUp, waitForCheckoutReady, clickAndWaitForNavigation } from '../../../../helpers/utils';
 import { performCheckout, CheckoutData } from '../../../../helpers/Checkout/General_Checkout';
 import { Stripe_Payment } from '../../../../helpers/Checkout/Payment_menthod';
 
 test('Strip_Be_Fr', async ({ page }) => {
+    severity('blocker');
     test.setTimeout(180000);
 
     //Open Menzzo.be
