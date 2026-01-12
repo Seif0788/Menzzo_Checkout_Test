@@ -32,6 +32,9 @@ jobs:
       - name: Install Allure reporter
         run: npm install --save-dev allure-playwright
 
+      - name: Install Allure Command-Line Tool
+        run: npm install -g allure-commandline
+
       # -----------------------------
       # Clean previous Allure data
       # -----------------------------
@@ -171,3 +174,15 @@ jobs:
 
             Artifacts:
             ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}#artifacts
+
+      # -----------------------------
+      # Debug Allure JSON Files
+      # -----------------------------
+      - name: Debug Allure JSON Files
+        if: always()
+        run: |
+          echo "Inspecting Allure JSON files:"
+          for file in allure-results/*.json; do
+            echo "File: $file"
+            head -20 "$file" | jq '.'
+          done
