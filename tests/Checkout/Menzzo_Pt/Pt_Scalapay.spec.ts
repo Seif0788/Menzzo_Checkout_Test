@@ -1,5 +1,5 @@
 import { test, expect, Page } from '@playwright/test';
-import { attachment } from 'allure-js-commons';
+import { attachment, severity } from 'allure-js-commons';
 import {
     clickElementByText,
     search,
@@ -11,6 +11,7 @@ import { performCheckout, CheckoutData } from '../../../helpers/Checkout/General
 import { Scalapay_Payment } from '../../../helpers/Checkout/Payment_menthod';
 
 test('Pt_Scalapay', async ({ page }) => {
+    severity('critical');
     // 1️⃣ Open Menzzo.de
     await page.goto('https://www.menzzo.pt');
 

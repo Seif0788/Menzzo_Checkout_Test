@@ -1,5 +1,5 @@
 import { test, expect, Page } from '@playwright/test';
-import { attachment } from 'allure-js-commons';
+import { attachment, severity } from 'allure-js-commons';
 import {
     clickElementByText,
     search_nl,
@@ -12,6 +12,7 @@ import { performCheckout, CheckoutData } from '../../../helpers/Checkout/General
 import { Klanra_Payment } from '../../../helpers/Checkout/Payment_menthod';
 
 test('Nl_Klarna', async ({ page }) => {
+    severity('critical');
     test.setTimeout(180000);
     try {
         // 1️⃣ Open Menzzo.nl

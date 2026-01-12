@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { attachment } from 'allure-js-commons';
+import { attachment, severity } from 'allure-js-commons';
 import {
   clickElementByText,
   search,
@@ -11,6 +11,7 @@ import { performCheckout, CheckoutData } from '../../../helpers/Checkout/General
 import { Stripe_Payment } from '../../../helpers/Checkout/Payment_menthod';
 
 test('De_Stripe', async ({ page }) => {
+  severity('blocker');
   // 1️⃣ Open Menzzo.de
   await page.goto('https://www.menzzo.de');
 

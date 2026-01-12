@@ -1,11 +1,13 @@
-import { test, expect } from '@playwright/test';
-import { attachment } from 'allure-js-commons';
+import { test } from '@playwright/test';
+import { attachment, severity } from 'allure-js-commons';
 import { clickElementByText, search, ClickRandomProduct, clickElementByTextWithPopUp, waitForCheckoutReady, clickAndWaitForNavigation } from '../../../helpers/utils';
 import { performCheckout, CheckoutData } from '../../../helpers/Checkout/General_Checkout';
 import { Stripe_Payment } from '../../../helpers/Checkout/Payment_menthod';
 
 test('Strip_Fr', async ({ page }) => {
   test.setTimeout(180000);
+
+  severity('blocker');
 
   // 1️⃣ Open Menzzo.fr
   await page.goto('https://www.menzzo.fr');

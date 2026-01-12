@@ -1,10 +1,11 @@
 import { test, expect, Page } from '@playwright/test';
-import { attachment } from 'allure-js-commons';
+import { attachment, severity } from 'allure-js-commons';
 import { clickElementByText, search, ClickRandomProduct, clickElementByTextWithPopUp, waitForCheckoutReady } from '../../../../helpers/utils';
 import { performCheckout, CheckoutData } from '../../../../helpers/Checkout/General_Checkout';
 import { Scalapay_Payment } from '../../../../helpers/Checkout/Payment_menthod';
 
 test('Scalapay_Be_Fr', async ({ page }) => {
+    severity('critical');
     test.setTimeout(180000);
 
     //Open Menzzo.fr
