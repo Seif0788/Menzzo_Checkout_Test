@@ -1,12 +1,11 @@
-name: Playwright Clean Card Tests
+name: Playwright Clean Card
 
 on:
   workflow_run:
     workflows:
       - Playwright Cron – Global_Checkoutsuite_test
-      types:
-      - completed
-      
+    types:
+      - completed  
   workflow_dispatch:
 
 jobs:
