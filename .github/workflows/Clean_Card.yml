@@ -6,6 +6,7 @@ on:
       - Playwright Cron – Global_Checkoutsuite_test
       types:
       - completed
+      
   workflow_dispatch:
 
 jobs:
