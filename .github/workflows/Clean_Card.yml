@@ -1,0 +1,33 @@
+name: Playwright Clean Card Tests
+
+on:
+  workflow_run:
+    workflows:
+      - Playwright Cron – Global_Checkoutsuite_test
+      types:
+      - completed
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Run Playwright Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4 # Updated to v4 (standard)
+        with:
+          node-version: 20
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+      - name: Prepare result directories
+        run: mkdir -p test-results
+      - name: Run Playwright Tests
+        run: npx playwright test --project=Clean_FR_Cart
