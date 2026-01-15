@@ -1,2 +1,4 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","54363","Es_Scalapay","ES_Checkoutsuite","2026-01-15","passed","2026-01-15","","Checkout/Menzzo_Es/Es_Scalapay.spec.ts","",""
+"","37292","Es_Scalapay","ES_Checkoutsuite","2026-01-15","passed","2026-01-15","","Checkout/Menzzo_Es/Es_Scalapay.spec.ts","",""
+"","56470","Es_Stripe","ES_Checkoutsuite","2026-01-15","passed","2026-01-15","","Checkout/Menzzo_Es/Es_Stripe.spec.ts","",""
+"","54084","Es_SeQura","ES_Checkoutsuite","2026-01-15","passed","2026-01-15","","Checkout/Menzzo_Es/Es_SeQura.spec.ts","",""
