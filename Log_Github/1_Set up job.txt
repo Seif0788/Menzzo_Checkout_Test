@@ -1,0 +1,33 @@
+﻿2025-12-16T11:14:57.9654487Z Current runner version: '2.329.0'
+2025-12-16T11:14:57.9690453Z ##[group]Runner Image Provisioner
+2025-12-16T11:14:57.9691697Z Hosted Compute Agent
+2025-12-16T11:14:57.9692683Z Version: 20251202.455
+2025-12-16T11:14:57.9693804Z Commit: 6c10caca4910e198df60de23adf20ad317c474e3
+2025-12-16T11:14:57.9695008Z Build Date: 2025-12-02T15:56:59Z
+2025-12-16T11:14:57.9696278Z Worker ID: {ed856aab-6ddf-47da-a08b-1cba7c89276a}
+2025-12-16T11:14:57.9697595Z ##[endgroup]
+2025-12-16T11:14:57.9698877Z ##[group]Operating System
+2025-12-16T11:14:57.9699854Z Ubuntu
+2025-12-16T11:14:57.9700746Z 24.04.3
+2025-12-16T11:14:57.9701564Z LTS
+2025-12-16T11:14:57.9702367Z ##[endgroup]
+2025-12-16T11:14:57.9703396Z ##[group]Runner Image
+2025-12-16T11:14:57.9704353Z Image: ubuntu-24.04
+2025-12-16T11:14:57.9705288Z Version: 20251208.163.1
+2025-12-16T11:14:57.9707798Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20251208.163/images/ubuntu/Ubuntu2404-Readme.md
+2025-12-16T11:14:57.9710573Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20251208.163
+2025-12-16T11:14:57.9712872Z ##[endgroup]
+2025-12-16T11:14:57.9714618Z ##[group]GITHUB_TOKEN Permissions
+2025-12-16T11:14:57.9717646Z Contents: write
+2025-12-16T11:14:57.9718789Z Metadata: read
+2025-12-16T11:14:57.9719716Z ##[endgroup]
+2025-12-16T11:14:57.9723137Z Secret source: Actions
+2025-12-16T11:14:57.9724543Z Prepare workflow directory
+2025-12-16T11:14:58.0203113Z Prepare all required actions
+2025-12-16T11:14:58.0263059Z Getting action download info
+2025-12-16T11:14:58.3974736Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+2025-12-16T11:14:58.5309051Z Download action repository 'actions/setup-node@v6' (SHA:395ad3262231945c25e8478fd5baf05154b1d79f)
+2025-12-16T11:14:58.7334409Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2025-12-16T11:14:58.9662844Z Download action repository 'peaceiris/actions-gh-pages@v3' (SHA:373f7f263a76c20808c831209c920827a82a2847)
+2025-12-16T11:14:59.1720565Z Download action repository 'dawidd6/action-send-mail@v4' (SHA:611879133a9569642c41be66f4a323286e9b8a3b)
+2025-12-16T11:14:59.5395170Z Complete job name: Run Playwright Tests

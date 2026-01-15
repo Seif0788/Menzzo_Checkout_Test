@@ -1,0 +1,36 @@
+﻿2025-12-16T11:42:22.1576485Z ##[group]Run dawidd6/action-send-mail@v4
+2025-12-16T11:42:22.1576829Z with:
+2025-12-16T11:42:22.1577053Z   server_address: smtp.gmail.com
+2025-12-16T11:42:22.1577326Z   server_port: 465
+2025-12-16T11:42:22.1577551Z   secure: true
+2025-12-16T11:42:22.1577787Z   username: seif.t.axelites@gmail.com
+2025-12-16T11:42:22.1578094Z   password: cjrgskmlwmsdhuhn
+2025-12-16T11:42:22.1578385Z   to: seifeddine.t.axelites@gmail.com
+2025-12-16T11:42:22.1578936Z   from: "GitHub Actions" <seif.t.axelites@gmail.com>
+2025-12-16T11:42:22.1579405Z   subject: 🔴 Failure (No Results): Playwright Scheduled Run Finished-test
+2025-12-16T11:42:22.1581209Z   body: Playwright Scheduled Run Finished
+Status: 🔴 Failure (No Results)
+
+Test Statistics:
+- Total: 0
+- Passed: 0
+- Failed: 0
+
+Allure Report:
+https://Seif0788.github.io/Menzzo_Checkout_Test
+
+Artifacts:
+https://github.com/Seif0788/Menzzo_Checkout_Test/actions/runs/20265993004#artifacts
+
+Test Notes:
+- If Total = 0, review the Playwright run output (possible project name mismatch or tests not discovered).
+
+2025-12-16T11:42:22.1583147Z   attachments: /home/runner/work/Menzzo_Checkout_Test/Menzzo_Checkout_Test/test-results/results.json
+2025-12-16T11:42:22.1583670Z env:
+2025-12-16T11:42:22.1583871Z   PASSED: 0
+2025-12-16T11:42:22.1584078Z   FAILED: 0
+2025-12-16T11:42:22.1584272Z   TOTAL: 0
+2025-12-16T11:42:22.1584493Z   STATUS_EMOJI: 🔴 Failure (No Results)
+2025-12-16T11:42:22.1584879Z   PAGES_URL: https://Seif0788.github.io/Menzzo_Checkout_Test
+2025-12-16T11:42:22.1585494Z   RESULT_FILE_PATH: /home/runner/work/Menzzo_Checkout_Test/Menzzo_Checkout_Test/test-results/results.json
+2025-12-16T11:42:22.1586035Z ##[endgroup]

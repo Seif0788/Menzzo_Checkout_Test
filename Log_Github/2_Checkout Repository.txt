@@ -1,0 +1,72 @@
+﻿2025-12-16T11:14:59.6256052Z ##[group]Run actions/checkout@v4
+2025-12-16T11:14:59.6257364Z with:
+2025-12-16T11:14:59.6258175Z   repository: Seif0788/Menzzo_Checkout_Test
+2025-12-16T11:14:59.6259640Z   token: ***
+2025-12-16T11:14:59.6260385Z   ssh-strict: true
+2025-12-16T11:14:59.6261167Z   ssh-user: git
+2025-12-16T11:14:59.6261955Z   persist-credentials: true
+2025-12-16T11:14:59.6262832Z   clean: true
+2025-12-16T11:14:59.6263640Z   sparse-checkout-cone-mode: true
+2025-12-16T11:14:59.6264614Z   fetch-depth: 1
+2025-12-16T11:14:59.6265389Z   fetch-tags: false
+2025-12-16T11:14:59.6266181Z   show-progress: true
+2025-12-16T11:14:59.6266989Z   lfs: false
+2025-12-16T11:14:59.6267714Z   submodules: false
+2025-12-16T11:14:59.6268645Z   set-safe-directory: true
+2025-12-16T11:14:59.6269767Z ##[endgroup]
+2025-12-16T11:14:59.7435092Z Syncing repository: Seif0788/Menzzo_Checkout_Test
+2025-12-16T11:14:59.7437770Z ##[group]Getting Git version info
+2025-12-16T11:14:59.7439637Z Working directory is '/home/runner/work/Menzzo_Checkout_Test/Menzzo_Checkout_Test'
+2025-12-16T11:14:59.7441896Z [command]/usr/bin/git version
+2025-12-16T11:14:59.7509457Z git version 2.52.0
+2025-12-16T11:14:59.7539461Z ##[endgroup]
+2025-12-16T11:14:59.7554930Z Temporarily overriding HOME='/home/runner/work/_temp/4c15297f-6db5-464d-b7ed-8ecd6e82bd97' before making global git config changes
+2025-12-16T11:14:59.7560061Z Adding repository directory to the temporary git global config as a safe directory
+2025-12-16T11:14:59.7571912Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Menzzo_Checkout_Test/Menzzo_Checkout_Test
+2025-12-16T11:14:59.7616298Z Deleting the contents of '/home/runner/work/Menzzo_Checkout_Test/Menzzo_Checkout_Test'
+2025-12-16T11:14:59.7619917Z ##[group]Initializing the repository
+2025-12-16T11:14:59.7624521Z [command]/usr/bin/git init /home/runner/work/Menzzo_Checkout_Test/Menzzo_Checkout_Test
+2025-12-16T11:14:59.7745008Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-12-16T11:14:59.7751430Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2025-12-16T11:14:59.7756124Z hint: to use in all of your new repositories, which will suppress this warning,
+2025-12-16T11:14:59.7759067Z hint: call:
+2025-12-16T11:14:59.7760786Z hint:
+2025-12-16T11:14:59.7762021Z hint: 	git config --global init.defaultBranch <name>
+2025-12-16T11:14:59.7763655Z hint:
+2025-12-16T11:14:59.7765224Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-12-16T11:14:59.7768287Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-12-16T11:14:59.7770471Z hint:
+2025-12-16T11:14:59.7771471Z hint: 	git branch -m <name>
+2025-12-16T11:14:59.7772555Z hint:
+2025-12-16T11:14:59.7774016Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2025-12-16T11:14:59.7776884Z Initialized empty Git repository in /home/runner/work/Menzzo_Checkout_Test/Menzzo_Checkout_Test/.git/
+2025-12-16T11:14:59.7781259Z [command]/usr/bin/git remote add origin https://github.com/Seif0788/Menzzo_Checkout_Test
+2025-12-16T11:14:59.7804678Z ##[endgroup]
+2025-12-16T11:14:59.7806391Z ##[group]Disabling automatic garbage collection
+2025-12-16T11:14:59.7808391Z [command]/usr/bin/git config --local gc.auto 0
+2025-12-16T11:14:59.7837680Z ##[endgroup]
+2025-12-16T11:14:59.7839526Z ##[group]Setting up auth
+2025-12-16T11:14:59.7843708Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-12-16T11:14:59.7877405Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-12-16T11:14:59.8257014Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-12-16T11:14:59.8292631Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-12-16T11:14:59.8518315Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2025-12-16T11:14:59.8553512Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2025-12-16T11:14:59.8796258Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-12-16T11:14:59.8833456Z ##[endgroup]
+2025-12-16T11:14:59.8836226Z ##[group]Fetching the repository
+2025-12-16T11:14:59.8845634Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +5a4090bcafea73742605be04c4deaed8101492f7:refs/remotes/origin/main
+2025-12-16T11:15:04.2325631Z From https://github.com/Seif0788/Menzzo_Checkout_Test
+2025-12-16T11:15:04.2326881Z  * [new ref]         5a4090bcafea73742605be04c4deaed8101492f7 -> origin/main
+2025-12-16T11:15:04.2359219Z ##[endgroup]
+2025-12-16T11:15:04.2360011Z ##[group]Determining the checkout info
+2025-12-16T11:15:04.2361527Z ##[endgroup]
+2025-12-16T11:15:04.2366912Z [command]/usr/bin/git sparse-checkout disable
+2025-12-16T11:15:04.2412295Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-12-16T11:15:04.2439886Z ##[group]Checking out the ref
+2025-12-16T11:15:04.2444165Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2025-12-16T11:15:05.1551387Z Switched to a new branch 'main'
+2025-12-16T11:15:05.1552357Z branch 'main' set up to track 'origin/main'.
+2025-12-16T11:15:05.1650610Z ##[endgroup]
+2025-12-16T11:15:05.1696845Z [command]/usr/bin/git log -1 --format=%H
+2025-12-16T11:15:05.1721298Z 5a4090bcafea73742605be04c4deaed8101492f7

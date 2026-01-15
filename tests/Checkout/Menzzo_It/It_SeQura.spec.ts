@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { attachment, severity } from 'allure-js-commons';
 import {
   clickElementByText,
   search,
@@ -7,8 +8,10 @@ import {
   waitForCheckoutReady,
 } from '../../../helpers/utils';
 import { performCheckout, CheckoutData } from '../../../helpers/Checkout/General_Checkout';
+import { SeQura_Payment } from '../../../helpers/Checkout/Payment_menthod';
 
 test('It_SeQura', async ({ page }) => {
+  severity('critical');
   // 1️⃣ Open Menzzo.de
   await page.goto('https://www.menzzo.it');
 
@@ -22,9 +25,9 @@ test('It_SeQura', async ({ page }) => {
   await ClickRandomProduct(page);
 
   // 5️⃣ Wait for product page to load
-  console.log('⏳ Waiting for product page to load...');
+  attachment('Console Log', '⏳ Waiting for product page to load...', 'text/plain');
   await page.waitForLoadState('networkidle', { timeout: 60000 });
-  console.log('✅ Product page loaded.');
+  attachment('Console Log', '✅ Product page loaded.', 'text/plain');
 
   // 6️⃣ Click "Aggiungi al Carrello"
   await clickElementByText(page, 'Aggiungi al Carrello');
@@ -39,18 +42,18 @@ test('It_SeQura', async ({ page }) => {
       clickElementByText(page, 'Conferma il tuo carrello', 5000, { debug: true }),
     ]);
   } catch (e) {
-    console.log("⚠️ 'Conferma il tuo carrello' click failed or timed out.");
+    attachment('Console Warn', "⚠️ 'Conferma il tuo carrello' click failed or timed out.", 'text/plain');
   }
 
   // Fallback: if not on checkout, try "Zur Kasse" (standard button)
   if (!page.url().includes('onestepcheckout')) {
-    console.log("ℹ️ Not on checkout page yet. Trying 'ordine'...");
+    attachment('Console Log', "ℹ️ Not on checkout page yet. Trying 'ordine'...", 'text/plain');
     await Promise.all([
       page.waitForNavigation({ waitUntil: 'networkidle', timeout: 30000 }).catch(() => { }),
-      clickElementByText(page, 'ordine', 10000).catch(() => console.log("⚠️ 'ordine' also failed.")),
+      clickElementByText(page, 'ordine', 10000).catch(() => attachment('Console Warn', "⚠️ 'ordine' also failed.", 'text/plain')),
     ]);
   }
-  console.log('✅ Navigation to checkout complete. Waiting for OneStepCheckout...');
+  attachment('Console Log', '✅ Navigation to checkout complete. Waiting for OneStepCheckout...', 'text/plain');
 
   let checkoutPage = page;
 
@@ -59,12 +62,12 @@ test('It_SeQura', async ({ page }) => {
     await waitForCheckoutReady(page);
   } catch (err) {
     if (String(err).includes('Target page') || String(err).includes('closed')) {
-      console.warn('⚠️ Detected checkout reload or new tab — recovering...');
+      attachment('Console Warn', '⚠️ Detected checkout reload or new tab — recovering...', 'text/plain');
       const allPages = page.context().pages();
       for (const p of allPages) {
         if (/onestepcheckout/i.test(p.url())) {
           checkoutPage = p;
-          console.log(`🔄 Switched to new checkout page: ${checkoutPage.url()}`);
+          attachment('Console Log', `🔄 Switched to new checkout page: ${checkoutPage.url()}`, 'text/plain');
           break;
         }
       }
@@ -88,20 +91,7 @@ test('It_SeQura', async ({ page }) => {
   };
 
   await performCheckout(checkoutPage, checkoutData);
-  console.log('✅ Checkout performed successfully.');
+  attachment('Console Log', '✅ Checkout performed successfully.', 'text/plain');
 
-  // 9️⃣ Confirm navigation to payment method page
-  // Refine the locator for the payment method page title
-  console.log('⏳ Verifying navigation to payment method page...');
-  await checkoutPage.waitForSelector('h1.page-title', { state: 'visible', timeout: 60000 });
-  const pageTitle = await checkoutPage.locator('h1.page-title').innerText();
-  expect(pageTitle).toMatch(/Completa l'ordine online/i);
-  console.log('✅ Successfully navigated to payment method page.');
-
-  // Wait for SeQura payment page to load
-  console.log('⏳ Wait for SeQura Widget to load...');
-
-  // Wait for any navigation or page changes after clicking pay
-  await checkoutPage.waitForLoadState('networkidle', { timeout: 60000 });
-  console.log('✅ Page loaded after payment selection.');
+  await SeQura_Payment(checkoutPage);
 })

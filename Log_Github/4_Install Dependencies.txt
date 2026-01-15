@@ -1,0 +1,17 @@
+﻿2025-12-16T11:15:07.9089436Z ##[group]Run npm ci
+2025-12-16T11:15:07.9089831Z [36;1mnpm ci[0m
+2025-12-16T11:15:07.9134333Z shell: /usr/bin/bash -e {0}
+2025-12-16T11:15:07.9134686Z ##[endgroup]
+2025-12-16T11:15:13.0987158Z npm warn deprecated unicode-9.0.0@0.7.0: Use @unicode/unicode-9.0.0 instead.
+2025-12-16T11:15:13.1216262Z 
+2025-12-16T11:15:13.1217032Z added 81 packages, and audited 82 packages in 5s
+2025-12-16T11:15:13.1217556Z 
+2025-12-16T11:15:13.1217888Z 19 packages are looking for funding
+2025-12-16T11:15:13.1218680Z   run `npm fund` for details
+2025-12-16T11:15:13.1240397Z 
+2025-12-16T11:15:13.1240932Z 1 high severity vulnerability
+2025-12-16T11:15:13.1241278Z 
+2025-12-16T11:15:13.1241516Z To address all issues, run:
+2025-12-16T11:15:13.1241995Z   npm audit fix
+2025-12-16T11:15:13.1242231Z 
+2025-12-16T11:15:13.1242471Z Run `npm audit` for details.

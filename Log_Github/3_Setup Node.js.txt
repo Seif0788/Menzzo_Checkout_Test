@@ -1,0 +1,15 @@
+﻿2025-12-16T11:15:05.2041267Z ##[group]Run actions/setup-node@v6
+2025-12-16T11:15:05.2041832Z with:
+2025-12-16T11:15:05.2042030Z   node-version: 20
+2025-12-16T11:15:05.2042272Z   check-latest: false
+2025-12-16T11:15:05.2042629Z   token: ***
+2025-12-16T11:15:05.2042861Z   package-manager-cache: true
+2025-12-16T11:15:05.2043164Z ##[endgroup]
+2025-12-16T11:15:05.3797416Z Found in cache @ /opt/hostedtoolcache/node/20.19.6/x64
+2025-12-16T11:15:05.3802753Z (node:2127) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2025-12-16T11:15:05.3804484Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2025-12-16T11:15:05.3806425Z ##[group]Environment details
+2025-12-16T11:15:07.8956752Z node: v20.19.6
+2025-12-16T11:15:07.8957497Z npm: 10.8.2
+2025-12-16T11:15:07.8958024Z yarn: 1.22.22
+2025-12-16T11:15:07.8960176Z ##[endgroup]

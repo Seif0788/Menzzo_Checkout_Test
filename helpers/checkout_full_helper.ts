@@ -1,5 +1,6 @@
 import { Page, expect } from '@playwright/test';
 import { dismissOverlays } from './utils';
+import { attachment } from 'allure-js-commons';
 
 const paymentMethodMap: Record<string, string> = {
   Stripe: '#stripe_payments_checkout',
@@ -46,27 +47,27 @@ async function retryAction(action: () => Promise<boolean>, retries = 10, delay =
 // Wait for checkout ready
 // -------------------------
 export async function waitForCheckoutReady(page: Page, timeout = 120000) {
-  console.log('⏳ Waiting for OneStepCheckout to initialize...');
+  attachment('Console Log', '⏳ Waiting for OneStepCheckout to initialize...', 'text/plain');
   const start = Date.now();
   const retryInterval = 500;
 
   while (Date.now() - start < timeout) {
     try {
-      await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => {});
+      await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => { });
       let checkoutElement = page.locator('#checkout');
 
       // Check in frames if needed
       let frameWithCheckout = null;
-      for(const frame of page.frames()){
+      for (const frame of page.frames()) {
         const count = await frame.locator('#checkout').count();
-        if (count > 0){
+        if (count > 0) {
           frameWithCheckout = frame;
           break;
         }
       }
-      if (frameWithCheckout){
+      if (frameWithCheckout) {
         checkoutElement = frameWithCheckout.locator('#checkout');
-      } 
+      }
       // Check key fields and methods
       const emailVisible = await checkoutElement.locator('#customer-email').isVisible().catch(() => false);
       const nameVisible = await checkoutElement.locator('input[data-placeholder="Prénom"], input[name="lastname"]').first().isVisible().catch(() => false);
@@ -75,11 +76,11 @@ export async function waitForCheckoutReady(page: Page, timeout = 120000) {
       const paymentReady = await checkoutElement.locator('input[name^="payment[method]"]').count().catch(() => 0);
 
       if ((emailVisible || nameVisible) && shippingReady > 0 && paymentReady > 0) {
-        console.log('✅ Checkout is ready for interaction.');
+        attachment('Console Log', '✅ Checkout is ready for interaction.', 'text/plain');
         return;
       }
       await sleep(retryInterval);
-    } catch (e) {}
+    } catch (e) { }
     await sleep(retryInterval);
   }
 
@@ -92,12 +93,12 @@ export async function waitForCheckoutReady(page: Page, timeout = 120000) {
 export async function performCheckout(page: Page, data: CheckoutData) {
   // Ensure the language property is set at the start of the function
   if (!data.language) {
-    console.warn('⚠️ Language not provided. Defaulting to Italian (IT).');
+    attachment('Console Warn', '⚠️ Language not provided. Defaulting to Italian (IT).', 'text/plain');
     data.language = 'IT';
   }
 
   // Debugging: Log the language being used
-  console.log(`🌍 Using language: ${data.language}`);
+  attachment('Console Log', `🌍 Using language: ${data.language}`, 'text/plain');
 
   await page.waitForSelector('#checkout', { state: 'visible', timeout: 20000 });
 
@@ -107,13 +108,13 @@ export async function performCheckout(page: Page, data: CheckoutData) {
   const firstNameLocator = data.language === 'DE'
     ? 'input[data-placeholder="Vorname"]:visible' // German placeholder
     : data.language === 'FR'
-    ? 'textbox[aria-label="Prénom*"]:visible' // French placeholder
-    : data.language === 'IT'
-    ? 'input[data-placeholder="Nome"]:visible' // Italian placeholder
-    : 'input[data-placeholder="Nome"]:visible,input[data-placeholder="Vorname"]:visible,input[data-placeholder="Prénom"]:visible'; // Default to Italian
+      ? 'textbox[aria-label="Prénom*"]:visible' // French placeholder
+      : data.language === 'IT'
+        ? 'input[data-placeholder="Nome"]:visible' // Italian placeholder
+        : 'input[data-placeholder="Nome"]:visible,input[data-placeholder="Vorname"]:visible,input[data-placeholder="Prénom"]:visible'; // Default to Italian
 
   // Debugging: Log the updated locator
-  console.log(`Updated firstNameLocator: ${firstNameLocator}`);
+  attachment('Console Log', `Updated firstNameLocator: ${firstNameLocator}`, 'text/plain');
 
   // Retry logic to handle dynamic content delays
   const maxRetries = 15; // Increased retries
@@ -121,15 +122,15 @@ export async function performCheckout(page: Page, data: CheckoutData) {
 
   const success = await retryAction(async () => {
     const isVisible = await page.locator(firstNameLocator).isVisible();
-    console.log(`Retrying visibility check for ${firstNameLocator}. Visible: ${isVisible}`);
+    attachment('Console Log', `Retrying visibility check for ${firstNameLocator}. Visible: ${isVisible}`, 'text/plain');
 
     // Check for blocking elements
     const boundingBox = await page.locator(firstNameLocator).boundingBox();
     if (boundingBox) {
       const overlays = await page.locator('div[style*="z-index"]:visible').count();
-      console.log(`Bounding box: ${JSON.stringify(boundingBox)}, Overlays count: ${overlays}`);
+      attachment('Console Log', `Bounding box: ${JSON.stringify(boundingBox)}, Overlays count: ${overlays}`, 'text/plain');
     } else {
-      console.log(`Bounding box not available for ${firstNameLocator}`);
+      attachment('Console Log', `Bounding box not available for ${firstNameLocator}`, 'text/plain');
     }
 
     return isVisible;
@@ -139,11 +140,11 @@ export async function performCheckout(page: Page, data: CheckoutData) {
     throw new Error(`Field ${firstNameLocator} did not become visible after ${maxRetries} retries.`);
   }
 
-  console.log('✅ First name field is visible.');
+  attachment('Console Log', '✅ First name field is visible.', 'text/plain');
 
   // Debugging: Log the language and locator being used
-  console.log(`Language: ${data.language}`);
-  console.log(`Using firstNameLocator: ${firstNameLocator}`);
+  attachment('Console Log', `Language: ${data.language}`, 'text/plain');
+  attachment('Console Log', `Using firstNameLocator: ${firstNameLocator}`, 'text/plain');
 
   // Dismiss overlays before interacting with the first name field
   await dismissOverlays(page);
@@ -161,8 +162,8 @@ export async function performCheckout(page: Page, data: CheckoutData) {
   const cityLocator = data.language === 'DE'
     ? 'input[data-placeholder="Stadt"]' // German placeholder
     : data.language === 'FR'
-    ? 'input[data-placeholder="Ville"]' // French placeholder
-    : 'input[data-placeholder="Città"]'; // Default to Italian
+      ? 'input[data-placeholder="Ville"]' // French placeholder
+      : 'input[data-placeholder="Città"]'; // Default to Italian
 
   await page.locator(cityLocator).first().fill(data.city);
   await page.fill('input[name="telephone"]', data.phone);
@@ -180,7 +181,7 @@ export async function performCheckout(page: Page, data: CheckoutData) {
         return false;
       }, 15, 300);
       if (!success) throw new Error(`❌ Failed to select the single available delivery method for ${data.language}`);
-      console.log(`✅ Automatically selected the single available delivery method for ${data.language}`);
+      attachment('Console Log', `✅ Automatically selected the single available delivery method for ${data.language}`, 'text/plain');
     } else {
       // Determine the correct suffix for the delivery method based on language
       const deliverySuffixMap = {
@@ -190,7 +191,7 @@ export async function performCheckout(page: Page, data: CheckoutData) {
       };
 
       // Debugging: Log the refined suffix mapping
-      console.log('🚧 Refined deliverySuffixMap:', deliverySuffixMap);
+      attachment('Console Log', `🚧 Refined deliverySuffixMap: ${JSON.stringify(deliverySuffixMap)}`, 'text/plain');
 
       // Ensure the language is defined and valid before accessing the map
       if (!data.language || !Object.keys(deliverySuffixMap).includes(data.language)) {
@@ -232,7 +233,7 @@ export async function performCheckout(page: Page, data: CheckoutData) {
     if (!success) throw new Error(`❌ Failed to select payment "${data.paymentMethod}"`);
   }
 
- // -------------------------------
+  // -------------------------------
   // Accept terms
   // -------------------------------
 
@@ -240,65 +241,65 @@ export async function performCheckout(page: Page, data: CheckoutData) {
   const isDeStore = CurrentUrl.includes('.de')
   const isItStore = CurrentUrl.includes('.it')
 
-  if(!isDeStore && !isItStore){
-  // Only accept terms on non-DE stores (e.g., .fr, .es, etc.)
-  const termsCheckbox = page.locator('#co-place-order-agreement input[name="agreement[1]"]');
-  if (!(await termsCheckbox.isChecked().catch(() => false))) {
-    await termsCheckbox.click({ force: true }).catch(() => {});
-  } else {
-    if (isDeStore) {
-        console.log('✅ Terms accepted successfully (DE store).');
-    } else if (isItStore) {
-          console.log('✅ Terms accepted successfully (IT store).');
+  if (!isDeStore && !isItStore) {
+    // Only accept terms on non-DE stores (e.g., .fr, .es, etc.)
+    const termsCheckbox = page.locator('#co-place-order-agreement input[name="agreement[1]"]');
+    if (!(await termsCheckbox.isChecked().catch(() => false))) {
+      await termsCheckbox.click({ force: true }).catch(() => { });
     } else {
-    console.log('⚠️ Skipped terms acceptance for non-DE/IT store.');
+      if (isDeStore) {
+        attachment('Console Log', '✅ Terms accepted successfully (DE store).', 'text/plain');
+      } else if (isItStore) {
+        attachment('Console Log', '✅ Terms accepted successfully (IT store).', 'text/plain');
+      } else {
+        attachment('Console Log', '⚠️ Skipped terms acceptance for non-DE/IT store.', 'text/plain');
+      }
     }
-  }
-  // Confirm order
-  console.log('🔍 Looking for pay button...');
+    // Confirm order
+    attachment('Console Log', '🔍 Looking for pay button...', 'text/plain');
 
-  await sleep(20000); // Wait for 2 seconds to ensure button is loaded
+    await sleep(20000); // Wait for 2 seconds to ensure button is loaded
 
-  // === Map language to pay button text ===
-const payButtonTextMap: Record<string, RegExp> = {
-  FR: /Payer ma commande/i,
-  DE: /Bestellung abschließen/i,
-  IT: /Paga il mio ordine/i,
-};
+    // === Map language to pay button text ===
+    const payButtonTextMap: Record<string, RegExp> = {
+      FR: /Payer ma commande/i,
+      DE: /Bestellung abschließen/i,
+      IT: /Paga il mio ordine/i,
+    };
 
-// Pick the right regex (fallback to /pay/i if not found)
-const buttonLabel =
-  data.language && payButtonTextMap[data.language]
-    ? payButtonTextMap[data.language]
-    : /pay/i;
+    // Pick the right regex (fallback to /pay/i if not found)
+    const buttonLabel =
+      data.language && payButtonTextMap[data.language]
+        ? payButtonTextMap[data.language]
+        : /pay/i;
 
-console.log(`🔍 Looking for visible pay button for language: ${data.language}...`);
+    attachment('Console Log', `🔍 Looking for visible pay button for language: ${data.language}...`, 'text/plain');
 
-const payButtons = page.getByRole('button', { name: buttonLabel });
+    const payButtons = page.getByRole('button', { name: buttonLabel });
 
-const clickedPay = await retryAction(async () => {
-  const count = await payButtons.count();
-  console.log(`🧩 Found ${count} matching pay buttons`);
+    const clickedPay = await retryAction(async () => {
+      const count = await payButtons.count();
+      attachment('Console Log', `🧩 Found ${count} matching pay buttons`, 'text/plain');
 
-  for (let i = 0; i < count; i++) {
-    const btn = payButtons.nth(i);
-    const isVisible = await btn.isVisible().catch(() => false);
-    const isEnabled = await btn.isEnabled().catch(() => false);
+      for (let i = 0; i < count; i++) {
+        const btn = payButtons.nth(i);
+        const isVisible = await btn.isVisible().catch(() => false);
+        const isEnabled = await btn.isEnabled().catch(() => false);
 
-    if (isVisible && isEnabled) {
-      console.log(`✅ Found visible pay button [${i}] — clicking it...`);
-      await btn.scrollIntoViewIfNeeded();
-      await btn.click({ force: true });
-      return true;
-    }
-  }
+        if (isVisible && isEnabled) {
+          attachment('Console Log', `✅ Found visible pay button [${i}] — clicking it...`, 'text/plain');
+          await btn.scrollIntoViewIfNeeded();
+          await btn.click({ force: true });
+          return true;
+        }
+      }
 
-  console.log('⏳ No visible pay button yet, retrying...');
-  return false;
-}, 15, 1000);
+      attachment('Console Log', '⏳ No visible pay button yet, retrying...', 'text/plain');
+      return false;
+    }, 15, 1000);
 
-if (!clickedPay) throw new Error('❌ No visible pay button found or clickable');
+    if (!clickedPay) throw new Error('❌ No visible pay button found or clickable');
 
-console.log(`✅ Clicked pay button, waiting for ${data.paymentMethod} redirect...`);
+    attachment('Console Log', `✅ Clicked pay button, waiting for ${data.paymentMethod} redirect...`, 'text/plain');
   }
 }

@@ -1,0 +1,10 @@
+﻿2025-12-16T11:42:14.7659823Z ##[group]Run npm run allure:generate
+2025-12-16T11:42:14.7659991Z [36;1mnpm run allure:generate[0m
+2025-12-16T11:42:14.7688623Z shell: /usr/bin/bash -e {0}
+2025-12-16T11:42:14.7688754Z ##[endgroup]
+2025-12-16T11:42:14.8858296Z 
+2025-12-16T11:42:14.8859196Z > for_test@1.0.0 allure:generate
+2025-12-16T11:42:14.8859763Z > npx allure generate ./allure-results --clean -o ./allure-report
+2025-12-16T11:42:14.8859781Z 
+2025-12-16T11:42:17.0904544Z ./allure-results does not exist
+2025-12-16T11:42:18.7377744Z Report successfully generated to ./allure-report

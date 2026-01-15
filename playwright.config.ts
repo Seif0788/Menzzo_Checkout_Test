@@ -10,15 +10,16 @@ const checkoutUseOptions = {
   trace: 'retain-on-failure' as const,
 };
 
+
 export default defineConfig({
   testDir: './tests',
   testMatch: /.*\.(spec|test)\.ts$/,
   timeout: 120000,
-  ],
+
   use: {
-    trace: 'on-first-retry',
+    trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
-    video: 'retain-on-failure',
+    video: 'off',
     userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
   },
   fullyParallel: false,
@@ -30,9 +31,14 @@ export default defineConfig({
       testDir: './tests/Checkout/Menzzo_Fr',
       workers: 1,
       //retries: 3,
-      use: {
-        headless: false,
-      }
+      use: { ...checkoutUseOptions, headless: true },
+    },
+    {
+      name: 'Clean_FR_Cart',
+      testDir: './tests/Card_Page/Menzzo_Fr',
+      workers: 1,
+      //retries: 3,
+      use: { ...checkoutUseOptions, headless: true },
     },
     {
       name: 'DE_Checkoutsuite',
@@ -87,11 +93,40 @@ export default defineConfig({
       name: 'Global_Checkoutsuite',
       testDir: './tests/Checkout/',
       testMatch: '**/Menzzo_*/[!.]*.spec.ts',
-      workers: 4,
+      workers: 2,
       retries: 3,
-      use: checkoutUseOptions,
+      use: {
+        ...checkoutUseOptions,
+        screenshot: 'only-on-failure',
+        video: 'off',
+        trace: 'on'
+      },
     },
-
+    {
+      name: 'SeQura',
+      testDir: './tests/Checkout/',
+      testMatch: '**/*_SeQura*.spec.ts',
+      workers: 3,
+      retries: 3,
+      use: {
+        ...checkoutUseOptions,
+        screenshot: 'only-on-failure',
+        video: 'off',
+        trace: 'on'
+      },
+    },
+    {
+      name: 'Pre_test',
+      testDir: './tests/Pre_test/',
+      workers: 1,
+      use: {
+        ...checkoutUseOptions,
+        screenshot: 'only-on-failure',
+        video: 'off',
+        trace: 'on',
+        headless: false,
+      },
+    },
     // === Feature Tests ===
     {
       name: 'Delivery_Methods',
@@ -101,7 +136,7 @@ export default defineConfig({
     {
       name: 'Homepage',
       testMatch: /Homepage_.*\.spec\.ts/,
-      use: { ...checkoutUseOptions, headless: false },
+      use: { ...checkoutUseOptions, headless: true },
     },
     {
       name: 'Product_Page',
@@ -116,6 +151,29 @@ export default defineConfig({
     {
       name: 'Product_Price',
       testDir: './tests/Price/Price_01122025',
+      use: {
+        headless: true,
+        screenshot: 'only-on-failure',
+        video: 'retain-on-failure',
+        trace: 'retain-on-failure',
+      },
+    },
+    {
+      name: 'Solde_Hiver_2026',
+      testDir: './tests/Price/Solde_07012026',
+      workers: 6,
+      use: {
+        headless: true,
+        screenshot: 'only-on-failure',
+        video: 'off',
+        trace: 'retain-on-failure',
+      },
+    },
+    {
+      name: 'Maouro_Product_Tests',
+      workers: 4,
+      testDir: './tests/Product_Page',
+      testMatch: '**/Maouro_*.spec.ts',
       use: {
         headless: true,
         screenshot: 'only-on-failure',
@@ -141,7 +199,7 @@ export default defineConfig({
       testMatch: /Category_.*\.spec\.ts/,
       use: {
         ...checkoutUseOptions,
-        headless: true,
+        headless: false,
       },
     },
     {
@@ -154,23 +212,24 @@ export default defineConfig({
       testDir: './tests/Login',
       use: {
         headless: false,
-        screenshot: 'only-on-failure',
-        video: 'retain-on-failure',
-        trace: 'retain-on-failure',
+        screenshot: 'off',
+        video: 'off',
+        trace: 'off',
       },
     },
 
-    // === Mobile ===
     {
-      name: 'Mobile_iPhone_13',
-      testDir: './tests/Mobile_test',
+      name: 'Menzzo2test',
+      testDir: './tests/Menzzo2test',
       use: {
-        ...devices['iPhone 13'],
         headless: true,
-        screenshot: 'only-on-failure',
-        video: 'retain-on-failure',
-        trace: 'retain-on-failure',
       },
     },
+
+  ],
+  reporter: [
+    ['list'],
+    ['json', { outputFile: 'test-results/results.json' }],
+    ['allure-playwright'],
   ],
 });

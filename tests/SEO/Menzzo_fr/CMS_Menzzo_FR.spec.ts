@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { attachment } from 'allure-js-commons';
 import { clickElementByText } from '../../../helpers/utils';
 import fs from 'fs';
 import Papa from 'papaparse';
@@ -49,7 +50,7 @@ test.describe(`SEO check on ALL CMS pages (${CMS_PAGES.length} pages)`, () => {
         test(`SEO Test CMS: ${row.CMS}`, async ({ page }) => {
 
             const url = `https://www.menzzo.fr/${row.CMS}`;
-            console.log(`Testing CMS page: ${url}`);
+            attachment('Console Log', `Testing CMS page: ${url}`, 'text/plain');
 
             await page.goto(url);
 
@@ -64,21 +65,21 @@ test.describe(`SEO check on ALL CMS pages (${CMS_PAGES.length} pages)`, () => {
             const descLang = detectLanguage(description || '');
 
             // --- Log results ---
-            console.log('🌐 SEO Language Check:');
-            console.log('─────────────────────────────');
-            console.log(`📌 H1 text        : "${h1}"`);
-            console.log(`📌 Page Title     : "${title}"`);
-            console.log(`📌 Meta Description: "${description}"`);
-            console.log(`🌍 H1 language    : ${h1Lang}`);
-            console.log(`🌍 Title language : ${titleLang}`);
-            console.log(`🌍 Description lang : ${descLang}`);
-            console.log('─────────────────────────────');
+            attachment('Console Log', '🌐 SEO Language Check:', 'text/plain');
+            attachment('Console Log', '─────────────────────────────', 'text/plain');
+            attachment('Console Log', `📌 H1 text        : "${h1}"`, 'text/plain');
+            attachment('Console Log', `📌 Page Title     : "${title}"`, 'text/plain');
+            attachment('Console Log', `📌 Meta Description: "${description}"`, 'text/plain');
+            attachment('Console Log', `🌍 H1 language    : ${h1Lang}`, 'text/plain');
+            attachment('Console Log', `🌍 Title language : ${titleLang}`, 'text/plain');
+            attachment('Console Log', `🌍 Description lang : ${descLang}`, 'text/plain');
+            attachment('Console Log', '─────────────────────────────', 'text/plain');
 
             // Optional: Assert that all languages match
             if (h1Lang !== descLang || titleLang !== descLang) {
-                console.warn('❌ Language mismatch detected!');
+                attachment('Console Warn', '❌ Language mismatch detected!', 'text/plain');
             } else {
-                console.log('✅ Language match detected.');
+                attachment('Console Log', '✅ Language match detected.', 'text/plain');
             }
         });
     }

@@ -1,5 +1,5 @@
 import { Locator, Page, expect } from '@playwright/test';
-import { allure } from 'allure-playwright';
+import { attachment } from 'allure-js-commons';
 
 import { Button_Next, Button_Previous } from '../../helpers/utils';
 import { detectLanguage } from '../detect_language';
@@ -28,13 +28,8 @@ export async function verifyH1MatchesTitle(page: Page) {
   const match = h1Text.toLowerCase() === pageTitle.toLowerCase();
 
   if (match) {
-    console.log(`✅ SUCCESS: Page title matches H1 text`);
-    console.log(`   H1: "${h1Text}"`);
-    console.log(`   pageTitle: "${pageTitle}"`);
   } else {
-    console.log(`❌ FAILED: Page title does not match H1 text`);
-    console.log(`   H1: "${h1Text}"`);
-    console.log(`   pageTitle: "${pageTitle}"`);
+    attachment('Console Log', `❌ FAILED: Page title does not match H1 text`, 'text/plain');
   }
 }
 
@@ -67,13 +62,8 @@ export async function breadcrumb(page: Page) {
   const match2 = breadcrumbText.toLowerCase() === h1Text.toLowerCase();
 
   if (match2) {
-    console.log(`✅ SUCCESS: Breadcrumb matches H1 text`);
-    console.log(`   H1: "${h1Text}"`);
-    console.log(`   Breadcrumb: "${breadcrumbText}"`);
   } else {
-    console.log(`❌ FAILED: Breadcrumb does not match H1 text`);
-    console.log(`   H1: "${h1Text}"`);
-    console.log(`   pageTitle: "${breadcrumbText}"`);
+    attachment('Console Log', `❌ FAILED: Breadcrumb does not match H1 text`, 'text/plain');
   }
 }
 
@@ -88,7 +78,6 @@ export async function CheckProductAvailability(page: Page) {
     const availabilityText = (await availability.textContent())?.trim() || '';
 
     // Log it
-    console.log(`📦 Product availability text: "${availabilityText}"`);
 
     // Ensure text is not empty
     expect.soft(availabilityText.length, 'Availability text should not be empty').toBeGreaterThan(0);
@@ -109,7 +98,6 @@ export async function CheckProductAvailability(page: Page) {
       language = 'nl';
     }
 
-    console.log(`🌍 Detected language: ${language.toUpperCase()}`);
 
     // Define acceptable stock statuses per language
     const validStatusesByLanguage: Record<string, string[]> = {
@@ -129,23 +117,20 @@ export async function CheckProductAvailability(page: Page) {
     );
 
     if (isValid) {
-      console.log(`✅ Product availability status is valid (${availabilityText})`);
     } else {
-      console.log(`❌ Invalid availability status detected: "${availabilityText}"`);
-      console.log(`   Expected one of: ${validStatuses.join(', ')}`);
+      attachment('Console Log', `❌ Invalid availability status detected: "${availabilityText}"`, 'text/plain');
     }
 
     // Assert it is valid for the report
     expect.soft(isValid, 'Availability status should be a valid known label').toBeTruthy();
   } catch (error) {
-    console.error('❌ Error in CheckProductAvailability:', error)
+    attachment('Console Error', `❌ Error in CheckProductAvailability: ${error}`, 'text/plain');
   }
 }
 
 // Check text in popup
 export async function CheckTextPopup(page: Page) {
 
-  console.log('🟡 Checking popup text Stock statut');
 
   const availability = page.locator('//div[contains(@class, "product-availability")]/strong[normalize-space()]');
   await expect.soft(availability, 'Availability label should be visible').toBeVisible();
@@ -159,7 +144,6 @@ export async function CheckTextPopup(page: Page) {
 
   // Check in it
   await StockButton.click();
-  console.log('✅ Clicked on stock info button.');
 
   //Wait for the popuo/modal to appear
   const popup = page.locator('//div[@class = "dispo-infos show"]');
@@ -167,7 +151,6 @@ export async function CheckTextPopup(page: Page) {
 
   //Locate poppup text
   const popupText = ((await popup.textContent())?.trim() || '').trim().replace(/\s+/g, ' ');
-  console.log(`📄 Popup text content: "${popupText}"`);
 
   //Define expected text based on stock status
   const expectedTexts: Record<string, string> = {
@@ -186,16 +169,13 @@ export async function CheckTextPopup(page: Page) {
     const matches = normalize(popupText).includes(normalize(expectedText));
 
     if (matches) {
-      console.log(`✅ Popup text matches expected message for status "${availabilityText}".`);
     } else {
-      console.log(`❌ Popup text does NOT match expected message for status "${availabilityText}".`);
-      console.log(`   Expected: "${expectedText}"`);
-      console.log(`   Found: "${popupText}"`);
+      attachment('Console Log', `❌ Popup text does NOT match expected message for status "${availabilityText}".`, 'text/plain');
     }
 
     expect.soft(matches, `Popup text should match expected message for status "${availabilityText}"`).toBeTruthy();
   } else {
-    console.log(`⚠️ No expected text configured for status "${availabilityText}".`);
+    attachment('Console Log', `⚠️ No expected text configured for status "${availabilityText}".`, 'text/plain');
   }
 
   // 5️⃣ Close the stock info popup by clicking inside it
@@ -206,7 +186,6 @@ export async function CheckTextPopup(page: Page) {
     const box = await Closepopup.boundingBox();
     if (box) {
       await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
-      console.log('✅ Popup closed by clicking inside it.');
     }
 
     // Optional: Wait for it to disappear
@@ -217,7 +196,6 @@ export async function CheckTextPopup(page: Page) {
 
 // Check product shipping amount
 export async function ShippingText(page: Page) {
-  console.log('🟡 Checking Shipping product text');
 
   // Initialize return values
   let FromDay: string | undefined;
@@ -229,7 +207,6 @@ export async function ShippingText(page: Page) {
 
   // Get shipping amount text
   const TextDelivery = ((await DeliveryText.textContent())?.trim()) || '';
-  console.log(`📄 The delivery text is : "${TextDelivery}"`);
 
   // Identifay the From and to shippmend
   const match = TextDelivery.match(/(\d{1,2})\s*et\s*(\d{1,2})/);
@@ -240,21 +217,18 @@ export async function ShippingText(page: Page) {
     FromDay = match[1];
     DayTo = match[2];
     ShippingPrice = priceMatch[1];
-    console.log(`FromDay: ${FromDay}, DayTo: ${DayTo}`);
-    console.log(`Delivery price: ${ShippingPrice}`);
   }
   return { FromDay, DayTo, ShippingPrice };
 }
 
 export async function CheckStockAndShipping(page: Page) {
-  console.log('🟢 Starting combined check: Stock popup + Shipping text');
 
   // Step 1️⃣ — Run the popup check first (handles availability + logs everything)
   const stockStatus = await CheckTextPopup(page);
 
   // Step 2️⃣ — Continue only if stock is "En stock"
   if (stockStatus !== 'En stock') {
-    console.log(`⚠️ Product is not "En stock" (it's "${stockStatus}"). Skipping shipping check.`);
+    attachment('Console Log', `⚠️ Product is not "En stock" (it's "${stockStatus}"). Skipping shipping check.`, 'text/plain');
     return;
   }
 
@@ -264,11 +238,10 @@ export async function CheckStockAndShipping(page: Page) {
   const shippingInfo = await ShippingText(page);
 
   if (!shippingInfo.FromDay || !shippingInfo.DayTo || !shippingInfo.ShippingPrice) {
-    console.warn('⚠️ Could not extract full shipping information.');
+    attachment('Console Warn', '⚠️ Could not extract full shipping information.', 'text/plain');
     return;
   }
 
-  console.log(`✅ Shipping info extracted: FromDay: ${shippingInfo.FromDay}, DayTo: ${shippingInfo.DayTo}, Price: ${shippingInfo.ShippingPrice}`);
 
   // Step 4️⃣ — Validate FromDay and DayTo for "En stock"
   const today = new Date();
@@ -279,16 +252,14 @@ export async function CheckStockAndShipping(page: Page) {
   const DayToActual = parseInt(shippingInfo.DayTo, 10);
 
   if (fromDayActual === fromDateExpected) {
-    console.log(`✅ FromDay is correct: ${fromDayActual} (expected: ${fromDateExpected})`);
   } else {
-    console.warn(`❌ FromDay is incorrect: ${fromDayActual} (expected: ${fromDateExpected})`);
+    attachment('Console Warn', `❌ FromDay is incorrect: ${fromDayActual} (expected: ${fromDateExpected})`, 'text/plain');
   }
 
 
   if (dayToExpected === DayToActual) {
-    console.log(`✅ FromDay is correct: ${dayToExpected} (expected: ${DayToActual})`);
   } else {
-    console.warn(`❌ FromDay is incorrect: ${dayToExpected} (expected: ${DayToActual})`);
+    attachment('Console Warn', `❌ FromDay is incorrect: ${dayToExpected} (expected: ${DayToActual})`, 'text/plain');
   }
 
   // Step 5️⃣ — Return structured info for further assertions
@@ -301,7 +272,6 @@ export async function CheckStockAndShipping(page: Page) {
 }
 
 export async function DeliveryPricePopup(page: Page) {
-  console.log('🟢 Starting check the delivery prices popup');
 
   const Delivery = page.locator('//div[@class="product-shipping-amount"]');
   const DeliveryPopup = Delivery.locator('.link-delivery.trusk-zone');
@@ -312,13 +282,12 @@ export async function DeliveryPricePopup(page: Page) {
     await DeliveryPopup.click();
 
     const screenshotBuffer = await page.screenshot();
-    allure.attachment('Delivery popup screenshot', screenshotBuffer, 'image/png');
-    console.log('✅ The delivery popup was clicked');
+    attachment('Delivery popup screenshot', screenshotBuffer, 'image/png');
 
   } catch (e) {
-    console.log('⚠️ Delivery popup is not visible after waiting, could not click it');
+    attachment('Console Log', '⚠️ Delivery popup is not visible after waiting, could not click it', 'text/plain');
     const screenshotBuffer = await page.screenshot();
-    allure.attachment('Delivery popup screenshot', screenshotBuffer, 'image/png');
+    attachment('Delivery popup screenshot', screenshotBuffer, 'image/png');
   }
 
   //Check delivery popup text
@@ -330,9 +299,8 @@ export async function DeliveryPricePopup(page: Page) {
 
   expectedOptions.forEach(option => {
     if (PopupText.includes(option)) {
-      console.log(`✅ Option found: "${option}"`);
     } else {
-      console.warn(`❌ Option NOT found: "${option}"`);
+      attachment('Console Warn', `❌ Option NOT found: "${option}"`, 'text/plain');
     }
   });
 
@@ -341,14 +309,12 @@ export async function DeliveryPricePopup(page: Page) {
 
   if (await Exitpopup.isVisible()) {
     await Exitpopup.click();
-    console.log('✅ Popup closed');
   } else {
-    console.log('❌ Close popup faild');
+    attachment('Console Log', '❌ Close popup faild', 'text/plain');
   }
 }
 
 export async function FreereturnPopUp(page: Page) {
-  console.log('🟢 Starting check the free return popup display');
 
   const FreeReturn_expected = "Retour gratuit  *";
 
@@ -356,7 +322,6 @@ export async function FreereturnPopUp(page: Page) {
   const ReturnDisplay = page.locator('//div[@class="d-flex mb-2 review-popup-free-return"]');
   const TextReturnDisplay = ((await ReturnDisplay.textContent()) || ' ').trim();
 
-  console.log(`📄 the return display is "${TextReturnDisplay}"`);
   expect(TextReturnDisplay.toLowerCase()).toBe(FreeReturn_expected.toLowerCase());
 
   // Click to open the popup
@@ -378,9 +343,8 @@ export async function FreereturnPopUp(page: Page) {
   const normalizedExpected = EXPECTED_POPUP_TEXT.replace(/\s+/g, ' ').trim();
 
   if (actualText === normalizedExpected) {
-    console.log("✅ Free delivery popup text matches!");
   } else {
-    console.log("❌ Free delivery popup text does not match!");
+    attachment('Console Log', "❌ Free delivery popup text does not match!", 'text/plain');
   }
 
   // Close the popup
@@ -391,9 +355,8 @@ export async function FreereturnPopUp(page: Page) {
   try {
     await CloseBtn.waitFor({ state: 'visible', timeout: 3000 });
     await CloseBtn.click();
-    console.log('✅ Popup closed');
   } catch {
-    console.log('❌ Close popup failed — button not found');
+    attachment('Console Log', '❌ Close popup failed — button not found', 'text/plain');
   }
 }
 
@@ -405,23 +368,19 @@ export async function FreereturnDisplay(page: Page) {
   // --- 15 jours pour changer d’avis ---
   await expect(freeReturn_review).toBeVisible(); // ✔ This now works
   const changeAvisText = (await freeReturn_review.textContent() || '').trim();
-  console.log(`📄 Change Avis text: "${changeAvisText}"`);
 
   if (changeAvisText === expected_AvisText) {
-    console.log("✅ Free delivery text matches!");
   } else {
-    console.log("❌ Free delivery text does not match!");
+    attachment('Console Log', "❌ Free delivery text does not match!", 'text/plain');
   }
   //---Paiement 100% sécurisé---
   const SecurityPayment = page.locator('//div[@class="d-flex"]')
   const SecurityPaymentText = (await SecurityPayment.textContent() || '').trim();
 
-  console.log(`📄 Security payment text: "${SecurityPaymentText}"`)
 
   if (SecurityPaymentText === expected_SecurityPayment) {
-    console.log("✅ Security payement text matches!");
   } else {
-    console.log("❌ Free delivery text does not match!");
+    attachment('Console Log', "❌ Free delivery text does not match!", 'text/plain');
   }
 }
 
@@ -432,24 +391,17 @@ export async function review_report(page: Page) {
 
   //--Check review message--
   const review_message = (await review_text.textContent() || '').trim();
-  console.log(`📄 the review message is: "${review_message}"`);
   if (review_message === suspected_review_message) {
-    console.log("✅ review message is matches!");
   } else {
-    console.log("❌ review message does not match!");
+    attachment('Console Log', "❌ review message does not match!", 'text/plain');
   }
   //--Check the review popup--
   const review_popup = review_text.locator('div.review-click:has(a.link-reviews)');
 
-  console.log("🔍 Count:", await review_popup.count());
-  console.log("🔍 Visible:", await review_popup.first().isVisible());
-  console.log("🔍 Text:", await review_popup.first().textContent());
 
-  console.log("🟢 Clicking review link...");
   await page.locator('a.link-reviews').scrollIntoViewIfNeeded();
   await page.locator('a.link-reviews').click();
 
-  console.log("🟢 Waiting for review popup...");
 
   //--Find the modal that contains the review wrapper
   // Wait for the visible popup wrapper
@@ -461,21 +413,17 @@ export async function review_report(page: Page) {
   const popup_text = popupWrapper.locator('h3.text-center');
   const popup_text2 = popupWrapper.locator('.review-info')
   const popupTexts = (await popup_text.textContent() || '').trim();
-  console.log(`📄 the popup text is: "${popupTexts}"`);
 
   await expect(popup_text).toContainText('Des clients satisfaits');
-  console.log("✅ 'Des clients satisfaits' exists in the popup");
 
   await expect(popup_text2).toContainText(
     'Les avis présentés sur cette page constituent une sélection'
   );
-  console.log("✅ the long message exists in the popup");
 
   // Close button
   const shippingPopup = page.locator('aside.ax-product-reviews-popup-modal');
   await shippingPopup.waitFor({ state: 'visible', timeout: 10000 });
   await shippingPopup.locator('button.action-close[data-role="closeBtn"]').click();
-  console.log("✅ Popup closed by aria-describedby");
 }
 
 // Check Description
@@ -494,7 +442,6 @@ export async function Description(page: Page) {
   else if (currentUrl.includes('menzzo.at')) lang = 'de';
   else if (currentUrl.includes('nl.menzzo.be')) lang = 'nl';
 
-  console.log(`🌍 Description: Detected language "${lang.toUpperCase()}"`);
 
   // 2. i18n dictionary (title text per language)
   const i18n: Record<string, { title: string }> = {
@@ -514,19 +461,18 @@ export async function Description(page: Page) {
   try {
     await descTitleLocator.waitFor({ state: 'visible', timeout: 5000 });
   } catch {
-    console.log("⚠️ Description title is NOT visible — may depend on layout or accordion state.");
+    attachment('Description title is NOT visible', "⚠️ Description title is NOT visible — may depend on layout or accordion state.", 'text/plain');
+    console.log(descTitleLocator);
   }
 
   const descTitleText = (await descTitleLocator.textContent() || '').trim();
 
-  console.log(`📄 Found description title: "${descTitleText}"`);
 
   if (descTitleText === data.title) {
-    console.log(`✅ Description title matches expected "${data.title}"`);
   } else {
-    console.log(`❌ Description title does NOT match`);
-    console.log(`   Expected: "${data.title}"`);
-    console.log(`   Found:    "${descTitleText}"`);
+    attachment('Description title does NOT match', `❌ Description title does NOT match`, 'text/plain');
+    console.log(descTitleText);
+    console.log(data.title);
   }
 
   // 4. Check description text content
@@ -536,10 +482,9 @@ export async function Description(page: Page) {
   const descText = (await descTextLocator.textContent() || '').trim();
 
   if (descText.length > 0) {
-    console.log("✅ Description text is NOT empty.");
-    console.log(`   Preview: "${descText.substring(0, 80)}..."`);
   } else {
-    console.log("❌ Description text is EMPTY!");
+    attachment('Description text is EMPTY', "❌ Description text is EMPTY!", 'text/plain');
+    console.log(descText);
   }
 }
 
@@ -558,7 +503,9 @@ export async function InfoTable(page: Page) {
 
   // 1. Detect language from URL
   const currentUrl = page.url();
+  const isNlBe = currentUrl.includes('nl.menzzo.be');
   let lang = 'fr'; // default
+  console.log(`Current URL: ${currentUrl}`);
 
   if (currentUrl.includes('menzzo.de')) {
     lang = 'de';
@@ -578,7 +525,6 @@ export async function InfoTable(page: Page) {
     lang = 'de';
   }
 
-  console.log(`🌍 InfoTable: Detected language "${lang.toUpperCase()}"`);
 
   // 2. Define translations
   // Note: These need to be matched exactly against the site's text.
@@ -593,7 +539,7 @@ export async function InfoTable(page: Page) {
     },
     nl: {
       title: "Meer informatie",
-      rows: ['Kleur', 'Retail materiaal', 'Afmetingen', 'Netto gewicht / kg', 'Nettogewicht (kg)', 'Afmetingen van het pakket'] // adjust if needed
+      rows: isNlBe ? ['Kleur', 'Materiaal detail', 'Afmetingen', 'Nettogewicht (kg)', 'Afmetingen van het pakket'] : ['Kleur', 'Retail materiaal', 'Afmetingen', 'Netto gewicht / kg', 'Afmetingen van het pakket'] // adjust if needed
     },
     it: {
       title: "Informazioni complementari", // check specific site wording
@@ -618,16 +564,15 @@ export async function InfoTable(page: Page) {
   try {
     await InfoTabTitle.waitFor({ state: 'visible', timeout: 5000 });
   } catch {
+    attachment('Console Log', "⚠️ Info tab title not visible - might be a layout difference.", 'text/plain');
     console.log("⚠️ Info tab title not visible - might be a layout difference.");
   }
 
   const InfoTabTitle_text = (await InfoTabTitle.textContent() || '').trim();
   if (normalizeText(InfoTabTitle_text) === normalizeText(data.title)) {
-    console.log(`✅ The info table title matches! ("${data.title}")`);
   } else {
+    attachment('Console Log', `❌ The info table title does not match!`, 'text/plain');
     console.log(`❌ The info table title does not match!`);
-    console.log(`   Expected: "${data.title}"`);
-    console.log(`   Found:    "${InfoTabTitle_text}"`);
   }
   // 4️⃣ Info table rows
   const Table = page.locator('//div[@class="additional-attributes-wrapper table-wrapper"]//table');
@@ -636,7 +581,6 @@ export async function InfoTable(page: Page) {
   const allRows = await Table.locator('tr').all();
 
   for (const rowLabel of data.rows) {
-    console.log(`🔍 Checking row "${rowLabel}"...`);
 
     let matchedRow: Locator | null = null;
 
@@ -649,26 +593,24 @@ export async function InfoTable(page: Page) {
     }
 
     if (!matchedRow) {
+      attachment('Console Log', `❌ Row "${rowLabel}" NOT found!`, 'text/plain');
       console.log(`❌ Row "${rowLabel}" NOT found!`);
       const allHeaders = await Table.locator('th').allTextContents();
-      console.log(`   Available headers: ${allHeaders.map(t => t.trim()).join(', ')}`);
       continue;
     }
 
-    console.log(`✅ Row "${rowLabel}" exists`);
 
     const valueTd = matchedRow.locator('td.col.data');
     const valueText = (await valueTd.textContent() || '').trim();
 
     if (valueText.length > 0) {
-      console.log(`✅ Row "${rowLabel}" value is not empty: "${valueText}"`);
     } else {
+      attachment('Console Log', `❌ Row "${rowLabel}" value is empty!`, 'text/plain');
       console.log(`❌ Row "${rowLabel}" value is empty!`);
     }
 
     await expect.soft(valueTd, `Row "${rowLabel}" value should not be empty`).not.toBeEmpty();
   }
-
 }
 
 // Check MenzzoHome
@@ -690,7 +632,6 @@ export async function upsell(page: Page) {
   const expectedUpsel_Title = "Vous aimerez aussi :";
 
   if (upsell_titleText === expectedUpsel_Title) {
-    console.log("✅ Upsell title is correct:", upsell_titleText);
   } else {
     throw new Error(
       `❌ Wrong upsell title. Expected "${expectedUpsel_Title}" but got "${upsell_titleText}"`
@@ -708,17 +649,18 @@ export async function upsell(page: Page) {
     // Wait up to 5 seconds for at least one item to be visible
     await upsell_Product.first().waitFor({ state: 'visible', timeout: 5000 });
   } catch (e) {
-    console.warn("⚠️ Upsell products did not appear within timeout.");
+    attachment('Console Warn', "⚠️ Upsell products did not appear within timeout.", 'text/plain');
+    console.log("⚠️ Upsell products did not appear within timeout.");
   }
 
   const count_upsell = await upsell_Product.count();
 
   if (count_upsell === 0) {
-    console.warn("⚠️ No upsell products found. Skipping upsell check.");
+    attachment('Console Warn', "⚠️ No upsell products found. Skipping upsell check.", 'text/plain');
+    console.log("⚠️ No upsell products found. Skipping upsell check.");
     return;
   }
 
-  console.log(`✅ Found ${count_upsell} upsell products.`);
   // expect(count_upsell).toBeGreaterThan(0); // Removed strict assertion to avoid failure on empty upsell
 
   for (let i = 0; i < count_upsell; i++) {
@@ -731,7 +673,6 @@ export async function upsell(page: Page) {
     const rawText = await priceDiv.innerText();
     const text = rawText.trim().replace(/\s+/g, " ");
 
-    console.log(`🟦 Item ${i}: "${text}"`);
 
     if (!text || text.length === 0) {
       throw new Error(`❌ price-and-disponibility is EMPTY in item ${i}`);
@@ -741,7 +682,6 @@ export async function upsell(page: Page) {
     expect(text.length).toBeGreaterThan(3); // avoid empty/glitch cases
   }
 
-  console.log("✅ All price-and-disponibility blocks are filled.");
 }
 
 //--Client views--//
@@ -762,10 +702,9 @@ export async function ClientViews(page: Page) {
   //console.log(`📄 The client views title : "${ClienTitle_text}"`);
 
   if (ClienTitle_text === expected_title) {
-    console.log("✅ The clients view title matches!");
   } else {
+    attachment('Console Log', "❌ The clients view title does not match!", 'text/plain');
     console.log("❌ The clients view title does not match!");
-    console.log(`The display title is: "${ClienTitle_text}"`);
   }
 
   //Check client views text
@@ -781,10 +720,9 @@ export async function ClientViews(page: Page) {
   //console.log(`📄 The client views text : "${ClientViewstext}"`);
 
   if (ClientViewstext === expect_clientsViews_Text) {
-    console.log("✅ The clients view text matches!");
   } else {
+    attachment('Console Log', "❌ The clients view text does not match!", 'text/plain');
     console.log("❌ The clients view text does not match!");
-    console.log(`The display title is: "${ClientViewstext}"`);
   }
 
   //Check the clients reviews text
@@ -793,20 +731,17 @@ export async function ClientViews(page: Page) {
 
   // Wait for at least one review to appear
   try {
-    console.log("⏳ Waiting for reviews to load...");
     await Reviews.first().waitFor({ state: 'visible', timeout: 30000 });
   } catch (e) {
     console.warn("⚠️ No reviews appeared within timeout.");
   }
 
   const totalReviews = await Reviews.count();
-  console.log(`📝 Total loaded reviews in DOM: ${totalReviews}`);
 
   // We want to check at least 11 reviews (or fewer if fewer exist)
   const countToCheck = Math.min(totalReviews, 11);
 
   if (countToCheck > 0) {
-    console.log(`🔍 Checking first ${countToCheck} reviews...`);
 
     for (let i = 0; i < countToCheck; i++) {
       const review = Reviews.nth(i);
@@ -815,21 +750,21 @@ export async function ClientViews(page: Page) {
       // Example: Check if review has some text
       const reviewText = (await review.textContent())?.trim() || '';
       if (reviewText.length > 0) {
-        console.log(`   ✅ Review ${i + 1} exists and has text.`);
         //console.log(`📝 The constrmer text review : ${reviewText}`);
       } else {
-        console.warn(`   ⚠️ Review ${i + 1} is empty.`);
+        attachment('Console Warn', `   ⚠️ Review ${i + 1} is empty.`, 'text/plain');
+        console.log(`   ⚠️ Review ${i + 1} is empty.`);
       }
     }
   } else {
-    console.warn("⚠️ No reviews found to check.");
+    attachment('Console Warn', "⚠️ No reviews found to check.", 'text/plain');
+    console.log("⚠️ No reviews found to check.");
   }
 }
 
 //--Check photos--//
 export async function Photo_product(page: Page) {
 
-  console.log("🖼 Checking main product image…");
 
   //--Check the big product photo--//
   const Principal_picture = page.locator('.carousel.carousel-product-top');
@@ -844,12 +779,11 @@ export async function Photo_product(page: Page) {
 
   // Check if empty
   if (!imgSrc || imgSrc.trim() === "") {
+    attachment('Console Log', "❌ Picture is EMPTY — no image URL found", 'text/plain');
     console.log("❌ Picture is EMPTY — no image URL found");
     return;
   }
 
-  console.log("✅ Picture contains an image");
-  console.log("🔗 Real image URL:", imgSrc);
 
   // Function to clean filename
   const cleanImageName = (src: string) => {
@@ -860,7 +794,6 @@ export async function Photo_product(page: Page) {
   // Extract filename
   const fileName = cleanImageName(imgSrc);
 
-  console.log("📄 Extracted big image:", fileName);
 
   //--Check the small images--//
   const Smallphoto = page.locator('.carousel-nav');
@@ -875,19 +808,17 @@ export async function Photo_product(page: Page) {
 
   //Check if empty
   if (!Smallimg || Smallimg.trim() === "") {
+    attachment('Console Log', "❌ Small picture is EMPTY — no image URL found", 'text/plain');
     console.log("❌ Small picture is EMPTY — no image URL found");
     return;
   }
-  console.log("✅ Small picture contains an image");
-  console.log("🔗 Real image URL:", Smallimg);
 
   const SmalPicture = cleanImageName(Smallimg);
-  console.log("📄 Extracted small image:", SmalPicture);
 
   //Compare images name
   if (fileName === SmalPicture) {
-    console.log("✅ The photos matches!");
   } else {
+    attachment('Console Log', "❌ The photos does not match!", 'text/plain');
     console.log("❌ The photos does not match!");
   }
 }
@@ -897,7 +828,6 @@ export async function CountPhoto(page: Page) {
   const images = page.locator('[data-fancybox="gallery"]');
   const count = await images.count();
 
-  console.log("Real number of images:", count);
 
   return count;
 }
@@ -919,7 +849,6 @@ export async function getProductPrice(page: Page): Promise<number> {
   const cleanPrice = priceText.replace(/[^0-9,.]/g, '').replace(',', '.');
   const price = parseFloat(cleanPrice);
 
-  console.log(`The product price (from text): ${price}`);
 
   return price;
 }
@@ -950,7 +879,6 @@ export async function getLowPrice(page: Page): Promise<number> {
     throw new Error(`Could not parse low price: "${priceText}"`);
   }
 
-  console.log(`The product low price: ${lowPrice}`);
 
   return lowPrice;
 }
@@ -963,7 +891,6 @@ export async function Check_Image(page: Page) {
   // Loop through each photo
   for (let i = 0; i < totalPhotos; i++) {
 
-    console.log(`🖼 Checking photo ${i + 1} / ${totalPhotos}`);
 
     // Check the big photo
     await Photo_product(page);
@@ -993,11 +920,9 @@ export async function OtherColor(page: Page) {
   const count = await colorItems.count();
 
   if (count === 0) {
-    console.log("There are no color associations for this product");
     return { count: 0, urls: [] };
   }
 
-  console.log(`Found ${count} color association(s).`);
 
   // Array to store all color product URLs
   const allUrls: string[] = [];
@@ -1011,7 +936,6 @@ export async function OtherColor(page: Page) {
     }
   }
 
-  console.log("All color URLs:", allUrls);
 
   // Return without clicking
   return { count, urls: allUrls };
@@ -1041,22 +965,13 @@ export async function SEO_Title(page: Page) {
   // -------------------------------
   // 📝 LOG OUTPUT
   // -------------------------------
-  console.log("🌐 SEO Language Check:");
-  console.log("─────────────────────────────");
-  console.log(`📌 H1 text        : "${h1Text}"`);
-  console.log(`📌 Page Title     : "${pageTitle}"`);
-  console.log(`🌍 H1 language    : ${h1Lang}`);
-  console.log(`🌍 Title language : ${titleLang}`);
-  console.log("─────────────────────────────");
 
   const sameLanguage = h1Lang === titleLang;
 
   if (sameLanguage) {
-    console.log(`✅ Language match: Both are in "${h1Lang}"`);
   } else {
+    attachment('Console Log', `❌ Language mismatch detected!`, 'text/plain');
     console.log(`❌ Language mismatch detected!`);
-    console.log(`   → H1 is in: ${h1Lang}`);
-    console.log(`   → Title is in: ${titleLang}`);
   }
 
   // -------------------------------
@@ -1091,25 +1006,13 @@ export async function SEO_Description(page: Page) {
   // -------------------------------
   // 📝 LOG OUTPUT
   // -------------------------------
-  console.log("🌐 SEO Language Check:");
-  console.log("─────────────────────────────");
-  console.log(`📌 H1 text            : "${h1Text}"`);
-  console.log(`📌 Page Title         : "${pageTitle}"`);
-  console.log(`📌 Meta Description   : "${description}"`);
-  console.log(`🌍 H1 language        : ${h1Lang}`);
-  console.log(`🌍 Title language     : ${titleLang}`);
-  console.log(`🌍 Description lang   : ${descLang}`);
-  console.log("─────────────────────────────");
 
   const allMatch = h1Lang === titleLang && titleLang === descLang;
 
   if (allMatch) {
-    console.log(`✅ Language match: All are in "${h1Lang}"`);
   } else {
+    attachment('Console Log', `❌ Language mismatch detected!`, 'text/plain');
     console.log(`❌ Language mismatch detected!`);
-    console.log(`   → H1 is: ${h1Lang}`);
-    console.log(`   → Title is: ${titleLang}`);
-    console.log(`   → Description is: ${descLang}`);
   }
 
   // -------------------------------
@@ -1124,6 +1027,84 @@ export async function SEO_Description(page: Page) {
 export async function CheckTitleLanguage(page: Page) {
   const title: string = await page.title();
   const detectedLanguage = detectLanguage(title);
-  console.log(`📌 Title: ${title}`);
-  console.log(`📌 Title language: ${detectedLanguage}`);
+}
+
+export async function getProductWeight(page: Page): Promise<string | null> {
+
+  // Detect language from URL
+  const currentUrl = page.url();
+  let lang = 'fr';
+
+  if (currentUrl.includes('menzzo.de')) lang = 'de';
+  else if (currentUrl.includes('menzzo.nl')) lang = 'nl';
+  else if (currentUrl.includes('menzzo.it')) lang = 'it';
+  else if (currentUrl.includes('menzzo.es')) lang = 'es';
+  else if (currentUrl.includes('menzzo.pt')) lang = 'pt';
+  else if (currentUrl.includes('nl.menzzo.be')) lang = 'nl';
+  else if (currentUrl.includes('menzzo.be')) lang = 'fr';
+  else if (currentUrl.includes('menzzo.at')) lang = 'de';
+
+  // 1. Define tab titles to open the section
+  const tabTitles: Record<string, string> = {
+    fr: "Informations complémentaires",
+    de: "Mehr Informationen",
+    nl: "Meer informatie",
+    it: "Informazioni complementari",
+    es: "Informaciones complementarias",
+    pt: "Mais informações"
+  };
+  const tabTitleStr = tabTitles[lang] || tabTitles['fr'];
+
+  // 2. Weight row labels per language
+  const weightLabels: Record<string, string[]> = {
+    fr: ['Poids net'],
+    de: ['Nettogewicht'],
+    nl: ['Netto gewicht', 'Nettogewicht'],
+    it: ['Peso netto'],
+    es: ['Peso neto'],
+    pt: ['Peso líquido']
+  };
+  const labels = weightLabels[lang] || weightLabels['fr'];
+
+  // 3. Try to open the tab if the table isn't visible
+  const table = page.locator('//div[@class="additional-attributes-wrapper table-wrapper"]//table');
+
+  if (!await table.isVisible()) {
+    // Try multiple specific selectors for the tab title
+    const tabSelector = page.locator(`//div[contains(@class, "data item title")]//a[contains(text(), "${tabTitleStr}")]`).first();
+    const tabSelectorAlt = page.locator(`a#tab-label-additional-title`); // Common Magento ID
+
+    if (await tabSelector.isVisible()) {
+      await tabSelector.click();
+    } else if (await tabSelectorAlt.isVisible()) {
+      await tabSelectorAlt.click();
+    } else {
+      // Fallback: try clicking by text directly
+      const textTab = page.locator(`text=${tabTitleStr}`);
+      if (await textTab.count() > 0) {
+        await textTab.first().click();
+      }
+    }
+
+    // Give it a moment to expand
+    await page.waitForTimeout(1000);
+  }
+
+  // 4. Assert table visibility
+  await expect.soft(table).toBeVisible({ timeout: 5000 });
+
+  const rows = await table.locator('tr').all();
+
+  for (const row of rows) {
+    const thText = (await row.locator('th').textContent() || '').trim();
+
+    for (const label of labels) {
+      if (normalizeText(thText).includes(normalizeText(label))) {
+        const value = (await row.locator('td.col.data').textContent() || '').trim();
+        return value;
+      }
+    }
+  }
+
+  return null;
 }

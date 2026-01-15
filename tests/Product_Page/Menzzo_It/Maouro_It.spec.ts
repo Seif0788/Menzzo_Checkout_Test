@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { attachment } from 'allure-js-commons';
 import { clickElementByText, ensurePageIsOpen } from '../../../helpers/utils';
 import { Description, InfoTable, CheckTitleLanguage } from '../../../helpers/Product_page_helpers/Elementer_Page';
 import { detectLanguage } from '../../../helpers/detect_language';
@@ -33,19 +34,19 @@ test('Check_Maouro_It_product_page', async ({ page }) => {
 
     // --- Open menzzo.it ---
     await page.goto('https://www.menzzo.it');
-    console.log("🚪 Menzzo.it was opened");
+    attachment('Console Log', "🚪 Menzzo.it was opened", 'text/plain');
 
     // --- Close Cookies popup ---
     try {
         await clickElementByText(page, "Accettare tutto");
-        console.log("✅ Cookies was closed");
+        attachment('Console Log', "✅ Cookies was closed", 'text/plain');
     } catch (error) {
-        console.log("⚠️ Cookie banner not found or already closed");
+        attachment('Console Warn', "⚠️ Cookie banner not found or already closed", 'text/plain');
     }
 
     // --- Load categories from CSV ---
     const products = loadProductsFromCSV('data/Maouro_Product.csv');
-    console.log(`ℹ️ Loaded ${products.length} products from CSV`);
+    attachment('Console Log', `ℹ️ Loaded ${products.length} products from CSV`, 'text/plain');
 
     if (products.length === 0) {
         throw new Error("❌ No products loaded! Check the CSV file path and headers (expected 'entity_id', 'sku').");
@@ -54,7 +55,7 @@ test('Check_Maouro_It_product_page', async ({ page }) => {
     // --- Limit the number of iterations ---
     const MAX_ITERATIONS = 3;
     const productsToProcess = products.slice(0, MAX_ITERATIONS);
-    console.log(`ℹ️ limiting loop to ${MAX_ITERATIONS} items (Total in CSV: ${products.length})`);
+    attachment('Console Log', `ℹ️ limiting loop to ${MAX_ITERATIONS} items (Total in CSV: ${products.length})`, 'text/plain');
 
     // --- Loop through all categories ---
     for (const product of productsToProcess) {
@@ -64,7 +65,7 @@ test('Check_Maouro_It_product_page', async ({ page }) => {
         try {
             // Construct URL using entity_id
             const url = `https://www.menzzo.it/catalog/product/view/id/${product.entity_id}`;
-            console.log(`🔹 Navigating to product: ${product.sku} (ID: ${product.entity_id}) -> ${url}`);
+            attachment('Console Log', `🔹 Navigating to product: ${product.sku} (ID: ${product.entity_id}) -> ${url}`, 'text/plain');
 
             await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
 
@@ -79,11 +80,11 @@ test('Check_Maouro_It_product_page', async ({ page }) => {
             }
 
             if (pageSKU.toLowerCase() !== product.sku.toLowerCase()) {
-                console.log(`❌ SKU mismatch! CSV SKU = ${product.sku}, Page SKU = ${pageSKU}. Skipping...`);
+                attachment('Console Warn', `❌ SKU mismatch! CSV SKU = ${product.sku}, Page SKU = ${pageSKU}. Skipping...`, 'text/plain');
                 continue;
             }
 
-            console.log(`✅ SKU verified: ${pageSKU}`);
+            attachment('Console Log', `✅ SKU verified: ${pageSKU}`, 'text/plain');
 
             // --- Validate Language with detectLanguage helper ---
             const h1Element = page.locator('h1.ax-page-title');
@@ -93,11 +94,12 @@ test('Check_Maouro_It_product_page', async ({ page }) => {
             const h1Lang = detectLanguage(h1Text);
             const titleLang = detectLanguage(pageTitle);
 
-            console.log(`🌍 Language Detection Results:`);
-            console.log(`   → H1 text: "${h1Text.substring(0, 50)}..."`);
-            console.log(`   → H1 detected language: ${h1Lang}`);
-            console.log(`   → Title detected language: ${titleLang}`);
-            console.log(`   → Expected language: ${EXPECTED_LANGUAGE}`);
+            let langResults = `🌍 Language Detection Results:\n`;
+            langResults += `   → H1 text: "${h1Text.substring(0, 50)}..."\n`;
+            langResults += `   → H1 detected language: ${h1Lang}\n`;
+            langResults += `   → Title detected language: ${titleLang}\n`;
+            langResults += `   → Expected language: ${EXPECTED_LANGUAGE}\n`;
+            attachment('Console Log', langResults, 'text/plain');
 
             // Soft assertion for H1 language
             expect.soft(
@@ -112,11 +114,11 @@ test('Check_Maouro_It_product_page', async ({ page }) => {
             ).toBeTruthy();
 
             if (h1Lang === EXPECTED_LANGUAGE && titleLang === EXPECTED_LANGUAGE) {
-                console.log(`✅ Language validation passed for ${EXPECTED_LANGUAGE.toUpperCase()}`);
+                attachment('Console Log', `✅ Language validation passed for ${EXPECTED_LANGUAGE.toUpperCase()}`, 'text/plain');
             } else if (h1Lang === 'unknown' || titleLang === 'unknown') {
-                console.log(`⚠️ Some language detection was inconclusive`);
+                attachment('Console Warn', `⚠️ Some language detection was inconclusive`, 'text/plain');
             } else {
-                console.log(`❌ Language mismatch detected!`);
+                attachment('Console Error', `❌ Language mismatch detected!`, 'text/plain');
             }
 
             // Check the title language (legacy function)
@@ -129,18 +131,19 @@ test('Check_Maouro_It_product_page', async ({ page }) => {
             await InfoTable(page);
 
         } catch (error) {
-            console.error(`❌ Error processing SKU ${product.sku}:`, error);
+            attachment('Console Error', `❌ Error processing SKU ${product.sku}: ${error}`, 'text/plain');
 
             try {
                 if (!page.isClosed()) {
                     const screenshotPath = `screenshots/error_${product.sku}.png`;
-                    await page.screenshot({ path: screenshotPath, fullPage: true });
-                    console.log(`📸 Screenshot saved to ${screenshotPath}`);
+                    const screenshot = await page.screenshot({ path: screenshotPath, fullPage: true });
+                    attachment(`Screenshot Error ${product.sku}`, screenshot, 'image/png');
+                    attachment('Console Log', `📸 Screenshot saved to ${screenshotPath}`, 'text/plain');
                 } else {
-                    console.log("⚠️ Could not take screenshot: Page is closed.");
+                    attachment('Console Warn', "⚠️ Could not take screenshot: Page is closed.", 'text/plain');
                 }
             } catch (screenshotError) {
-                console.log("⚠️ Failed to take screenshot:", screenshotError);
+                attachment('Console Warn', `⚠️ Failed to take screenshot: ${screenshotError}`, 'text/plain');
             }
         }
     }

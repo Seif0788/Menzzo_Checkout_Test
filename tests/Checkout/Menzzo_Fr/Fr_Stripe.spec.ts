@@ -1,55 +1,59 @@
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
+import { attachment, severity } from 'allure-js-commons';
 import { clickElementByText, search, ClickRandomProduct, clickElementByTextWithPopUp, waitForCheckoutReady, clickAndWaitForNavigation } from '../../../helpers/utils';
 import { performCheckout, CheckoutData } from '../../../helpers/Checkout/General_Checkout';
+import { Stripe_Payment } from '../../../helpers/Checkout/Payment_menthod';
 
 test('Strip_Fr', async ({ page }) => {
   test.setTimeout(180000);
 
-  //Open Menzzo.fr
+  severity('blocker');
+
+  // 1️⃣ Open Menzzo.fr
   await page.goto('https://www.menzzo.fr');
 
-  //Close cookies popup;
+  // 2️⃣ Close cookies popup;
   await clickElementByText(page, "Accepter et continuer");
 
-  //Wright "Table" in the search bar
+  // 3️⃣ Wright "Table" in the search bar
   await search(page, "Table");
 
-  //Click in the rundem product
+  // 4️⃣ Click in the rundem product
   await ClickRandomProduct(page);
 
-  // Wait for product page to load
-  console.log('⏳ Waiting for product page to load...');
+  // 5️⃣ Wait for product page to load
+  attachment('Console Log', '⏳ Waiting for product page to load...', 'text/plain');
   await page.waitForLoadState('networkidle', { timeout: 60000 });
-  console.log('✅ Product page loaded.');
+  attachment('Console Log', '✅ Product page loaded.', 'text/plain');
 
-  //Click in "Ajouter au panier"
+  // 6️⃣ Click in "Ajouter au panier"
   await clickElementByText(page, "Ajouter au panier");
 
-  //Click in "Voir le panier & commander"
+  // 7️⃣ Click in "Voir le panier & commander"
   await clickElementByTextWithPopUp(page, "Voir le panier & commander");
 
   // Use robust navigation helper
   await clickAndWaitForNavigation(page, "Valider mon panier", /onestepcheckout/);
 
-  console.log('✅ Navigation to checkout complete. Waiting for OneStepCheckout...');
+  attachment('Console Log', '✅ Navigation to checkout complete. Waiting for OneStepCheckout...', 'text/plain');
 
-  console.log('✅ Checkout page detected.');
+  attachment('Console Log', '✅ Checkout page detected.', 'text/plain');
 
-  // 6️⃣ Wait for checkout form readiness
+  // 8️⃣ Wait for checkout form readiness
   let checkoutPage = page;
 
   try {
     await waitForCheckoutReady(page);
   } catch (err) {
     if (String(err).includes('Target page') || String(err).includes('closed')) {
-      console.warn('⚠️ Detected checkout reload or new tab — recovering...');
+      attachment('Console Warn', '⚠️ Detected checkout reload or new tab — recovering...', 'text/plain');
       // Look for a new checkout page in the context
       const allPages = page.context().pages();
       for (const p of allPages) {
         const url = p.url();
         if (/onestepcheckout/i.test(url)) {
           checkoutPage = p;
-          //  console.log(`🔄 Switched to new checkout page: ${url}`);
+          //  attachment('Console Log', `🔄 Switched to new checkout page: ${url}`, 'text/plain');
           break;
         }
       }
@@ -60,7 +64,7 @@ test('Strip_Fr', async ({ page }) => {
     }
   }
 
-  // 7️⃣ Fill checkout data
+  // 9 Fill checkout data
   const checkoutData: CheckoutData = {
     firstName: 'Seif',
     lastName: 'Taj',
@@ -73,16 +77,10 @@ test('Strip_Fr', async ({ page }) => {
     paymentMethod: 'Stripe'
   };
 
+  // 10 Perform checkout
   await performCheckout(checkoutPage, checkoutData);
-  console.log('✅ Checkout performed successfully.');
+  attachment('Console Log', '✅ Checkout performed successfully.', 'text/plain');
 
-  // 9️⃣ Confirm navigation to payment method page
-  console.log('⏳ Verifying navigation to Stripe...');
-  try {
-    await expect(checkoutPage).toHaveURL(/stripe\.com/, { timeout: 60000 });
-    console.log('✅ Successfully navigated to Stripe.');
-  } catch (e) {
-    console.log(`❌ Failed to navigate to Stripe. Current URL: ${checkoutPage.url()}`);
-    throw e;
-  }
+  // 11 Confirm navigation to payment method page
+  await Stripe_Payment(page);
 })

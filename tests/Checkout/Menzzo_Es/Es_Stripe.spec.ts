@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { attachment, severity } from 'allure-js-commons';
 import {
     clickElementByText,
     search,
@@ -7,8 +8,10 @@ import {
     waitForCheckoutReady,
 } from '../../../helpers/utils';
 import { performCheckout, CheckoutData } from '../../../helpers/Checkout/General_Checkout';
+import { Stripe_Payment } from '../../../helpers/Checkout/Payment_menthod';
 
 test('Es_Stripe', async ({ page }) => {
+    severity('blocker');
     // 1️⃣ Open Menzzo.de
     await page.goto('https://www.menzzo.es');
 
@@ -22,9 +25,9 @@ test('Es_Stripe', async ({ page }) => {
     await ClickRandomProduct(page);
 
     // 5️⃣ Wait for product page to load
-    console.log('⏳ Waiting for product page to load...');
+    attachment('Console Log', '⏳ Waiting for product page to load...', 'text/plain');
     await page.waitForLoadState('networkidle', { timeout: 60000 });
-    console.log('✅ Product page loaded.');
+    attachment('Console Log', '✅ Product page loaded.', 'text/plain');
 
     // 6️⃣ Click "Añadir al carrito"
     await clickElementByText(page, 'Añadir al carrito');
@@ -39,18 +42,18 @@ test('Es_Stripe', async ({ page }) => {
             clickElementByText(page, 'Validar', 5000, { debug: true }),
         ]);
     } catch (e) {
-        console.log("⚠️ 'Validar' click failed or timed out.");
+        attachment('Console Warn', "⚠️ 'Validar' click failed or timed out.", 'text/plain');
     }
 
     // Fallback: if not on checkout, try "Zur Kasse" (standard button)
     if (!page.url().includes('onestepcheckout')) {
-        console.log("ℹ️ Not on checkout page yet. Trying 'Comprar'...");
+        attachment('Console Log', "ℹ️ Not on checkout page yet. Trying 'Comprar'...", 'text/plain');
         await Promise.all([
             page.waitForNavigation({ waitUntil: 'networkidle', timeout: 30000 }).catch(() => { }),
-            clickElementByText(page, 'Comprar', 10000).catch(() => console.log("⚠️ 'Comprar' also failed.")),
+            clickElementByText(page, 'Comprar', 10000).catch(() => attachment('Console Warn', "⚠️ 'Comprar' also failed.", 'text/plain')),
         ]);
     }
-    console.log('✅ Navigation to checkout complete. Waiting for OneStepCheckout...');
+    attachment('Console Log', '✅ Navigation to checkout complete. Waiting for OneStepCheckout...', 'text/plain');
 
     let checkoutPage = page;
 
@@ -59,12 +62,12 @@ test('Es_Stripe', async ({ page }) => {
         await waitForCheckoutReady(page);
     } catch (err) {
         if (String(err).includes('Target page') || String(err).includes('closed')) {
-            console.warn('⚠️ Detected checkout reload or new tab — recovering...');
+            attachment('Console Warn', '⚠️ Detected checkout reload or new tab — recovering...', 'text/plain');
             const allPages = page.context().pages();
             for (const p of allPages) {
                 if (/onestepcheckout/i.test(p.url())) {
                     checkoutPage = p;
-                    console.log(`🔄 Switched to new checkout page: ${checkoutPage.url()}`);
+                    attachment('Console Log', `🔄 Switched to new checkout page: ${checkoutPage.url()}`, 'text/plain');
                     break;
                 }
             }
@@ -83,20 +86,13 @@ test('Es_Stripe', async ({ page }) => {
         address: ['Carrer de la Ciutat de Granada, 53'],
         postalCode: '08005',
         city: 'Barcelona',
-        deliveryMethod: 'Home Delivery - At Room',
+        deliveryMethod: 'Home Delivery - Classic',
         paymentMethod: 'Stripe'
     };
 
     await performCheckout(checkoutPage, checkoutData);
-    console.log('✅ Checkout performed successfully.');
+    attachment('Console Log', '✅ Checkout performed successfully.', 'text/plain');
 
-    // 9️⃣ Confirm navigation to payment method page
-    console.log('⏳ Verifying navigation to Stripe...');
-    try {
-        await expect(checkoutPage).toHaveURL(/stripe\.com/, { timeout: 60000 });
-        console.log('✅ Successfully navigated to Stripe.');
-    } catch (e) {
-        console.log(`❌ Failed to navigate to Stripe. Current URL: ${checkoutPage.url()}`);
-        throw e;
-    }
+    // 11️⃣ Confirm navigation to payment method page
+    await Stripe_Payment(page);
 })

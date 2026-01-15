@@ -1,0 +1,6 @@
+﻿2025-12-16T11:16:06.3443574Z ##[group]Run mkdir -p test-results
+2025-12-16T11:16:06.3444222Z [36;1mmkdir -p test-results[0m
+2025-12-16T11:16:06.3444776Z [36;1mmkdir -p playwright-report[0m
+2025-12-16T11:16:06.3445373Z [36;1mmkdir -p allure-report[0m
+2025-12-16T11:16:06.3484643Z shell: /usr/bin/bash -e {0}
+2025-12-16T11:16:06.3484944Z ##[endgroup]

@@ -1,9 +1,13 @@
-import { test, expect, Page } from '@playwright/test';
+import { test } from '@playwright/test';
+import { attachment, severity } from 'allure-js-commons';
 import { clickElementByText, search, ClickRandomProduct, clickElementByTextWithPopUp, waitForCheckoutReady } from '../../../helpers/utils';
 import { performCheckout, CheckoutData } from '../../../helpers/Checkout/General_Checkout';
+import { Scalapay_Payment } from '../../../helpers/Checkout/Payment_menthod';
 
 test('Scalapay_Fr', async ({ page }) => {
   test.setTimeout(180000);
+
+  severity('critical');
 
   //Open Menzzo.fr
   await page.goto('https://www.menzzo.fr');
@@ -18,9 +22,9 @@ test('Scalapay_Fr', async ({ page }) => {
   await ClickRandomProduct(page);
 
   // Wait for product page to load
-  console.log('⏳ Waiting for product page to load...');
+  attachment('Console Log', '⏳ Waiting for product page to load...', 'text/plain');
   await page.waitForLoadState('networkidle', { timeout: 60000 });
-  console.log('✅ Product page loaded.');
+  attachment('Console Log', '✅ Product page loaded.', 'text/plain');
 
   //Click in "Ajouter au panier"
   await clickElementByText(page, "Ajouter au panier");
@@ -32,9 +36,9 @@ test('Scalapay_Fr', async ({ page }) => {
     page.waitForNavigation({ waitUntil: 'networkidle', timeout: 60000 }).catch(() => { }),
     clickElementByText(page, "Valider mon panier", 10000, { debug: true })
   ]);
-  console.log('✅ Navigation to checkout complete. Waiting for OneStepCheckout...');
+  attachment('Console Log', '✅ Navigation to checkout complete. Waiting for OneStepCheckout...', 'text/plain');
 
-  console.log('✅ Checkout page detected.');
+  attachment('Console Log', '✅ Checkout page detected.', 'text/plain');
 
   // 6️⃣ Wait for checkout form readiness
   let checkoutPage = page;
@@ -43,14 +47,14 @@ test('Scalapay_Fr', async ({ page }) => {
     await waitForCheckoutReady(page);
   } catch (err) {
     if (String(err).includes('Target page') || String(err).includes('closed')) {
-      console.warn('⚠️ Detected checkout reload or new tab — recovering...');
+      attachment('Console Warn', '⚠️ Detected checkout reload or new tab — recovering...', 'text/plain');
       // Look for a new checkout page in the context
       const allPages = page.context().pages();
       for (const p of allPages) {
         const url = p.url();
         if (/onestepcheckout/i.test(url)) {
           checkoutPage = p;
-          //  console.log(`🔄 Switched to new checkout page: ${url}`);
+          //  attachment('Console Log', `🔄 Switched to new checkout page: ${url}`, 'text/plain');
           break;
         }
       }
@@ -75,38 +79,7 @@ test('Scalapay_Fr', async ({ page }) => {
   };
 
   await performCheckout(checkoutPage, checkoutData);
-  console.log('✅ Checkout performed successfully.');
+  attachment('Console Log', '✅ Checkout performed successfully.', 'text/plain');
 
-  // 9️⃣ Confirm navigation to payment method page
-  // Refine the locator for the payment method page title
-  console.log('⏳ Verifying navigation to payment method page...');
-  await checkoutPage.waitForSelector('h1.page-title', { state: 'visible', timeout: 60000 });
-  const pageTitle = await checkoutPage.locator('h1.page-title').innerText();
-  expect(pageTitle).toMatch(/Finaliser la commande/i);
-  console.log('✅ Successfully navigated to payment method page.');
-
-  //Validate Scalapay login page opened
-  try {
-    console.log("⏳ Waiting for Scalapay popup or redirect...");
-
-    const popupOrRedirect = await Promise.race([
-      page.waitForEvent('popup', { timeout: 60000 }).then(p => ({ type: 'popup', page: p })),
-      page.waitForURL(/portal\.scalapay\.com/, { timeout: 60000, waitUntil: 'domcontentloaded' }).then(() => ({ type: 'redirect', page: page }))
-    ]);
-
-    if (popupOrRedirect.type === 'popup') {
-      const popup = popupOrRedirect.page as Page;
-      await popup.waitForLoadState();
-      await expect(popup).toHaveURL(/portal\.scalapay\.com/);
-      console.log("✅ Scalapay popup detected!");
-    } else {
-      console.log("✅ Scalapay redirect successful!");
-    }
-  } catch (err) {
-    console.error("❌ Scalapay redirect/popup FAILED!");
-    console.error("⚠️ Current URL:", page.url());
-    console.error("⚠️ Error:", err);
-    throw err;
-  }
-
+  await Scalapay_Payment(checkoutPage);
 })

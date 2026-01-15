@@ -1,4 +1,5 @@
 import { ElementHandle, Page, expect } from '@playwright/test';
+import { attachment } from 'allure-js-commons';
 
 const paymentMethodMap: Record<string, string> = {
   Stripe: '#stripe_payments_checkout',
@@ -69,14 +70,14 @@ export async function performCheckout(page: Page, data: CheckoutData) {
 
     // Capture visible delivery options for debugging
     const visibleOptions = await page.locator('input[type="radio"][name*="shipping_method"]').evaluateAll((els) =>
-    els
+      els
         .filter((el): el is HTMLInputElement => el instanceof HTMLInputElement && el.offsetParent !== null)
         .map((el) => ({
           value: el.getAttribute('value'),
           checked: (el as HTMLInputElement).checked,
         }))
     );
-    console.log('🔍 Visible delivery options:', visibleOptions);
+    attachment('Console Log', `🔍 Visible delivery options: ${JSON.stringify(visibleOptions)}`, 'text/plain');
 
     const success = await retryAction(async () => {
       const element = await radioLocator.first();
@@ -89,7 +90,7 @@ export async function performCheckout(page: Page, data: CheckoutData) {
     }, 15, 300);
 
     if (!success) throw new Error(`❌ Failed to select delivery method "${data.deliveryMethod}"`);
-    console.log(`✅ Selected delivery method: ${data.deliveryMethod}`);
+    attachment('Console Log', `✅ Selected delivery method: ${data.deliveryMethod}`, 'text/plain');
   }
 
   // -------------------------------
@@ -109,7 +110,7 @@ export async function performCheckout(page: Page, data: CheckoutData) {
     }, 15, 300);
 
     if (!success) throw new Error(`❌ Failed to select payment method "${data.paymentMethod}"`);
-    console.log(`✅ Selected payment method: ${data.paymentMethod}`);
+    attachment('Console Log', `✅ Selected payment method: ${data.paymentMethod}`, 'text/plain');
   }
 
   // -------------------------------
@@ -127,66 +128,66 @@ export async function performCheckout(page: Page, data: CheckoutData) {
   }
 
   // -------------------------------
-// Accept terms and verify checkbox
-// -------------------------------
-console.log('🔍 Checking and accepting terms...');
+  // Accept terms and verify checkbox
+  // -------------------------------
+  attachment('Console Log', '🔍 Checking and accepting terms...', 'text/plain');
 
-const agreementLocator = 'input[name="agreement[1]"]';
+  const agreementLocator = 'input[name="agreement[1]"]';
 
-// Wait for any checkbox element to appear
-await page.waitForSelector(agreementLocator, { state: 'attached', timeout: 20000 });
+  // Wait for any checkbox element to appear
+  await page.waitForSelector(agreementLocator, { state: 'attached', timeout: 20000 });
 
-// Find visible & enabled checkbox with retry loop (returns element)
-let agreementCheckbox: ElementHandle<HTMLInputElement> | null = null;
+  // Find visible & enabled checkbox with retry loop (returns element)
+  let agreementCheckbox: ElementHandle<HTMLInputElement> | null = null;
 
-for (let i = 0; i < 30; i++) {
-  const checkboxes = await page.$$(agreementLocator);
-  for (const cb of checkboxes) {
-    const isVisible = await cb.isVisible();
-    const isDisabled = await cb.isDisabled();
-    if (isVisible && !isDisabled) {
-      agreementCheckbox = cb as ElementHandle<HTMLInputElement>;
-      console.log(`✅ Found visible & enabled checkbox (attempt ${i + 1})`);
-      break;
+  for (let i = 0; i < 30; i++) {
+    const checkboxes = await page.$$(agreementLocator);
+    for (const cb of checkboxes) {
+      const isVisible = await cb.isVisible();
+      const isDisabled = await cb.isDisabled();
+      if (isVisible && !isDisabled) {
+        agreementCheckbox = cb as ElementHandle<HTMLInputElement>;
+        attachment('Console Log', `✅ Found visible & enabled checkbox (attempt ${i + 1})`, 'text/plain');
+        break;
+      }
     }
+    if (agreementCheckbox) break;
+    await sleep(1000);
   }
-  if (agreementCheckbox) break;
-  await sleep(1000);
-}
 
-if (!agreementCheckbox) {
-  const allStates = await page.$$eval(agreementLocator, (els) =>
-    els.map(el => ({
-      id: el.id,
-      visible: (el instanceof HTMLElement) ? (el.offsetParent !== null) : false,
-      disabled: (el as HTMLInputElement).disabled,
-    }))
-  );
-  console.error('❌ No visible checkbox found. States:', allStates);
-  throw new Error('Agreement checkbox did not appear visible/enabled.');
-}
-
-// Try to check the checkbox (this uses retryAction because it returns boolean)
-const success = await retryAction(async () => {
-  await agreementCheckbox!.scrollIntoViewIfNeeded();
-  if (!(await agreementCheckbox!.isChecked())) {
-    await agreementCheckbox!.click({ force: true });
-    await sleep(500);
+  if (!agreementCheckbox) {
+    const allStates = await page.$$eval(agreementLocator, (els) =>
+      els.map(el => ({
+        id: el.id,
+        visible: (el instanceof HTMLElement) ? (el.offsetParent !== null) : false,
+        disabled: (el as HTMLInputElement).disabled,
+      }))
+    );
+    attachment('Console Error', `❌ No visible checkbox found. States: ${JSON.stringify(allStates)}`, 'text/plain');
+    throw new Error('Agreement checkbox did not appear visible/enabled.');
   }
-  return await agreementCheckbox!.isChecked();
-}, 15, 1000);
 
-if (!success) {
-  const currentUrl = page.url();
-  throw new Error(`❌ Failed to check the terms checkbox. Current URL: ${currentUrl}`);
-}
+  // Try to check the checkbox (this uses retryAction because it returns boolean)
+  const success = await retryAction(async () => {
+    await agreementCheckbox!.scrollIntoViewIfNeeded();
+    if (!(await agreementCheckbox!.isChecked())) {
+      await agreementCheckbox!.click({ force: true });
+      await sleep(500);
+    }
+    return await agreementCheckbox!.isChecked();
+  }, 15, 1000);
 
-console.log('✅ Terms checkbox checked.');
+  if (!success) {
+    const currentUrl = page.url();
+    throw new Error(`❌ Failed to check the terms checkbox. Current URL: ${currentUrl}`);
+  }
+
+  attachment('Console Log', '✅ Terms checkbox checked.', 'text/plain');
 
   // -------------------------------
   // Confirm order / Pay
   // -------------------------------
-  console.log('🔍 Looking for pay button...');
+  attachment('Console Log', '🔍 Looking for pay button...', 'text/plain');
   const payBtn = page.getByRole('button', { name: /Payer ma commande/i }).first();
 
   const clickedPay = await retryAction(async () => {
@@ -202,6 +203,6 @@ console.log('✅ Terms checkbox checked.');
 
   if (!clickedPay) throw new Error('❌ Pay button not clickable or not found');
 
-  console.log(`✅ Clicked pay button, waiting for ${data.paymentMethod} redirect...`);
+  attachment('Console Log', `✅ Clicked pay button, waiting for ${data.paymentMethod} redirect...`, 'text/plain');
 
 }
