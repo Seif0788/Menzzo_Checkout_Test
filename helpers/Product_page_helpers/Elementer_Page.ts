@@ -844,13 +844,69 @@ export async function getProductPrice(page: Page): Promise<number> {
     throw new Error('Price text not found on the page.');
   }
 
-  // Clean the string: remove "€", spaces, non-breaking spaces, etc.
-  // Example: "1 125,00 €" -> "1125.00"
-  const cleanPrice = priceText.replace(/[^0-9,.]/g, '').replace(',', '.');
-  const price = parseFloat(cleanPrice);
+  return parsePrice(priceText);
+}
 
+export async function Tag(page: Page): Promise<string> {
+  const selectors = [
+    'div.ax-black-fridy-product.mb-2',
+    'div.mz-black-fridy',
+    '.product-badge',
+    '.badge',
+    '.sale-label',
+    '.soldes-label',
+    '.discount-label',
+    '.reduction-percent',
+    '.reduction-amount'
+  ];
 
-  return price;
+  for (const selector of selectors) {
+    const locator = page.locator(selector).first();
+    try {
+      if (await locator.isVisible()) {
+        const text = (await locator.textContent())?.trim() || '';
+        if (text) return text;
+      }
+    } catch {
+      // ignore errors during visibility check
+    }
+  }
+
+  // Fallback to searching for the text in potential badge containers
+  const potentialText = await page.evaluate(() => {
+    const elements = Array.from(document.querySelectorAll('.product-info-main .mb-2, .product-info-main span, .product-info-main div'));
+    const found = elements.find(el => {
+      const t = el.textContent?.trim().toUpperCase();
+      // Check for specific keywords or percentage signs
+      return t === 'SOLDES' || t === 'SALE' || t === 'SALDI' || t === 'PROMO' || /-\d+%/.test(t || '');
+    });
+    return found?.textContent?.trim() || '';
+  });
+
+  return potentialText;
+}
+
+function parsePrice(priceText: string): number {
+  if (!priceText) return 0;
+
+  // Clean string: keep only digits, dots, and commas
+  let cleaned = priceText.replace(/[^\d.,]/g, '');
+
+  const lastComma = cleaned.lastIndexOf(',');
+  const lastDot = cleaned.lastIndexOf('.');
+
+  if (lastComma > lastDot) {
+    // Comma is decimal separator (European style: 1.234,56 or 1 234,56)
+    cleaned = cleaned.replace(/\./g, '').replace(',', '.');
+  } else if (lastDot > lastComma) {
+    // Dot is decimal separator (US style: 1,234.56 or 1 234.56)
+    cleaned = cleaned.replace(/,/g, '');
+  } else {
+    // Only one separator or none
+    cleaned = cleaned.replace(',', '.');
+  }
+
+  return parseFloat(cleaned) || 0;
 }
 
 export async function getLowPrice(page: Page): Promise<number> {
@@ -867,20 +923,7 @@ export async function getLowPrice(page: Page): Promise<number> {
     throw new Error('Low price text not found.');
   }
 
-  // Clean the string: "145,00 €" → "145.00"
-  const numericText = priceText
-    .replace(/\s/g, '')        // remove spaces / NBSP
-    .replace('€', '')          // remove euro sign
-    .replace(',', '.');        // convert comma to dot
-
-  const lowPrice = parseFloat(numericText);
-
-  if (isNaN(lowPrice)) {
-    throw new Error(`Could not parse low price: "${priceText}"`);
-  }
-
-
-  return lowPrice;
+  return parsePrice(priceText);
 }
 
 export async function Check_Image(page: Page) {
