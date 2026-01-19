@@ -30,14 +30,14 @@ export default defineConfig({
       name: 'FR_Checkoutsuite',
       testDir: './tests/Checkout/Menzzo_Fr',
       workers: 1,
-      //retries: 3,
+      retries: 3,
       use: { ...checkoutUseOptions, headless: true },
     },
     {
       name: 'Clean_FR_Cart',
       testDir: './tests/Card_Page/Menzzo_Fr',
       workers: 1,
-      //retries: 3,
+      retries: 3,
       use: { ...checkoutUseOptions, headless: true },
     },
     {
@@ -161,7 +161,7 @@ export default defineConfig({
     {
       name: 'Solde_Hiver_2026',
       testDir: './tests/Price/Solde_07012026',
-      workers: 6,
+      workers: 3,
       use: {
         headless: true,
         screenshot: 'only-on-failure',
