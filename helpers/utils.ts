@@ -399,6 +399,7 @@ export async function waitForCheckoutReady(page: Page, timeout = 180000) {
       attachment('Console Warn', `⚠️ Retry ${retries}: Checkout not ready yet. Retrying...`, 'text/plain');
       await page.waitForTimeout(3000);
     } catch (error: any) {
+      await page.screenshot({ path: 'WaitForCheckoutReady.png' });
       attachment('Console Error', `⚠️ Error during checkout readiness check: ${error.message}`, 'text/plain');
       if (page.isClosed()) {
         throw error;
