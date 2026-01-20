@@ -61,6 +61,7 @@ test('Pt_Stripe', async ({ page }) => {
     try {
         await waitForCheckoutReady(page);
     } catch (err) {
+        await page.screenshot({ path: 'WaitForCheckoutReady.png' }).catch(() => { });
         if (String(err).includes('Target page') || String(err).includes('closed')) {
             attachment('Console Warn', '⚠️ Detected checkout reload or new tab — recovering...', 'text/plain');
             const allPages = page.context().pages();

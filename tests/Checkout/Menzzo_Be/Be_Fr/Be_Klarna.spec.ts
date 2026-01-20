@@ -58,6 +58,7 @@ test('Klarna_Be_Fr', async ({ page }) => {
             success = true;
             break;
         } catch (err) {
+            await page.screenshot({ path: 'WaitForCheckoutReady.png' }).catch(() => { });
             attachment('Console Warn', `⚠️ Attempt ${attempt} failed: ${err}`, 'text/plain');
             // Check for new tab / reload
             const allPages = page.context().pages();
