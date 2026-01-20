@@ -1,0 +1,637 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - text: 
+      - link "store logo" [ref=e5] [cursor=pointer]:
+        - /url: https://www.menzzo.de/
+        - img "Menzzo.de" [ref=e7]
+      - generic [ref=e8]:
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - search:
+                  - generic:
+                    - searchbox "Gesamten Shop hier durchsuchen..." [ref=e9]
+                    - generic [ref=e10]:
+                      - text: 
+                      - generic [ref=e11]: Suche
+                      - generic [ref=e12]: Suche
+                  - button "Search" [ref=e13] [cursor=pointer]:
+                    - text: 
+                    - generic [ref=e14]: Suche
+      - generic [ref=e15]:
+        - list [ref=e16]:
+          - listitem [ref=e17]:
+            - link "Favoriten" [ref=e18] [cursor=pointer]:
+              - /url: https://www.menzzo.de/wish-list/
+              - img [ref=e19]
+              - generic [ref=e21]: Favoriten
+          - listitem [ref=e22]:
+            - link "Blog" [ref=e23] [cursor=pointer]:
+              - /url: https://www.menzzo.de/blog.html
+              - img [ref=e24]
+              - generic [ref=e26]: Blog
+          - listitem [ref=e27]:
+            - link "Anmelden" [ref=e28] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e29]
+              - generic [ref=e31]: Anmelden
+        - link "Mein Warenkorb Warenkorb" [ref=e34] [cursor=pointer]:
+          - /url: https://www.menzzo.de/checkout/cart/
+          - img [ref=e35]
+          - generic [ref=e37]: Mein Warenkorb
+          - generic [ref=e38]: Warenkorb
+  - tablist [ref=e40]:
+    - tabpanel [ref=e41]:
+      - navigation [ref=e42]:
+        - menu [ref=e43]:
+          - menuitem
+          - menuitem "SALE" [ref=e44] [cursor=pointer]
+          - menuitem
+          - menuitem "Tische, Couchtische" [ref=e45] [cursor=pointer]:
+            - generic [ref=e46]:
+              - generic [ref=e47]: Tische,
+              - text: Couchtische
+          - menuitem
+          - menuitem "Stühle, Hocker" [ref=e48] [cursor=pointer]:
+            - generic [ref=e49]:
+              - generic [ref=e50]: Stühle,
+              - text: Hocker
+          - menuitem
+          - menuitem "Sofas, Sessel" [ref=e51] [cursor=pointer]:
+            - generic [ref=e52]:
+              - generic [ref=e53]: Sofas,
+              - text: Sessel
+          - menuitem
+          - menuitem "Betten, Kopfteile" [ref=e54] [cursor=pointer]:
+            - generic [ref=e55]:
+              - generic [ref=e56]: Betten,
+              - text: Kopfteile
+          - menuitem
+          - menuitem "Möbel, Aufbewahrung" [ref=e57] [cursor=pointer]:
+            - generic [ref=e58]:
+              - generic [ref=e59]: Möbel,
+              - text: Aufbewahrung
+          - menuitem
+          - menuitem "Dekoration" [ref=e60] [cursor=pointer]
+          - menuitem
+          - menuitem "Räumungsverkauf" [ref=e61] [cursor=pointer]
+  - list [ref=e63]:
+    - listitem [ref=e64]:
+      - link "Startseite" [ref=e65] [cursor=pointer]:
+        - /url: https://www.menzzo.de/
+      - text: /
+    - listitem [ref=e66]:
+      - strong [ref=e67]: Yazu Skandinavisches Schlafsofa mit Stoffbezug Bunt
+  - main [ref=e68]:
+    - generic [ref=e70]:
+      - generic [ref=e72]:
+        - generic [ref=e74]:
+          - generic [ref=e75]:
+            - img [ref=e76]
+            - text: "Angebot endet in:"
+          - text: 01Tg 17h 22min 22s
+        - generic [ref=e81]: "-20% auf alles- Code : 20WINTER"
+      - generic [ref=e82]:
+        - generic [ref=e83]:
+          - link "Zum Ende der Bildgalerie springen" [ref=e84] [cursor=pointer]:
+            - /url: "#gallery-next-area"
+          - button "Favoriten Hinzufügen" [ref=e87] [cursor=pointer]:
+            - img [ref=e88]
+          - link "Zum Anfang der Bildgalerie springen" [ref=e90] [cursor=pointer]:
+            - /url: "#gallery-prev-area"
+          - generic [ref=e91]:
+            - generic [ref=e93]:
+              - img "Canapé convertible scandinave Yazu Patchwork Multicolore" [ref=e96]
+              - img [ref=e99]
+              - img [ref=e102]
+              - img [ref=e105]
+              - img [ref=e108]
+              - img [ref=e111]
+              - img [ref=e114]
+              - img [ref=e117]
+              - img [ref=e120]
+              - img [ref=e123]
+              - img [ref=e126]
+              - img [ref=e129]
+              - img [ref=e132]
+            - button "Next" [ref=e133] [cursor=pointer]:
+              - img [ref=e134]
+          - generic [ref=e138]:
+            - img [ref=e141]
+            - img [ref=e144]
+            - img [ref=e147]
+            - img [ref=e150]
+            - img [ref=e153]
+            - img [ref=e156]
+            - img [ref=e159]
+            - img [ref=e162]
+            - img [ref=e165]
+            - img [ref=e168]
+            - img [ref=e171]
+            - img [ref=e174]
+            - img [ref=e177]
+        - generic [ref=e178]:
+          - heading "Yazu Skandinavisches Schlafsofa mit Stoffbezug Bunt" [level=1] [ref=e179]
+          - generic [ref=e181]:
+            - generic [ref=e182]:
+              - generic [ref=e183]:
+                - generic [ref=e184]: 3X
+                - generic [ref=e185]:
+                  - text: mit
+                  - img "scalapay" [ref=e187]
+              - generic [ref=e188]: 71,67 €
+            - generic [ref=e190]: 215,00 €
+          - generic [ref=e195]:
+            - combobox "Anz." [ref=e198]:
+              - option "1" [selected]
+              - option "2"
+              - option "3"
+              - option "4"
+              - option "5"
+              - option "6"
+              - option "7"
+              - option "8"
+              - option "9"
+              - option "10"
+            - button "In den Warenkorb" [ref=e200] [cursor=pointer]
+          - generic [ref=e201]:
+            - generic [ref=e202]:
+              - img [ref=e203]
+              - generic [ref=e206] [cursor=pointer]:
+                - strong [ref=e207]:
+                  - strong [ref=e208]: Auf Lager
+                - img [ref=e209]
+                - text: 
+            - generic [ref=e211]:
+              - strong [ref=e212]: Lieferung zwischen 22 und 29 Januar
+              - text: ab
+              - strong [ref=e213]: 50,00 €
+              - generic [ref=e214] [cursor=pointer]: Andere Liefermethoden >
+          - generic [ref=e215]:
+            - generic [ref=e216]:
+              - generic [ref=e217]:
+                - img [ref=e219]
+                - text: 14 Tage, um Ihre Meinung zu ändern
+              - generic [ref=e220]:
+                - img [ref=e222]
+                - text: 100 % sichere Zahlung
+            - generic [ref=e223]:
+              - text: Zufriedene Kunden
+              - generic [ref=e224]: Alle Bewertungen anzeigen
+          - generic [ref=e227]:
+            - generic [ref=e228] [cursor=pointer]:
+              - text: Farben
+              - generic [ref=e229]: + info
+            - generic [ref=e230]:
+              - link "Yazu Skandinavisches Schlafsofa mit Stoffbezug Beige" [ref=e231] [cursor=pointer]:
+                - /url: https://www.menzzo.de/yazu-skandinavisches-schlafsofa-mit-stoffbezug-beige.html
+                - img "Yazu Skandinavisches Schlafsofa mit Stoffbezug Beige" [ref=e233]
+              - link "Yazu Skandinavisches Schlafsofa mit Stoffbezug Bunt" [ref=e234] [cursor=pointer]:
+                - /url: https://www.menzzo.de/yazu-skandinavisches-schlafsofa-mit-stoffbezug-bunt.html
+                - img "Yazu Skandinavisches Schlafsofa mit Stoffbezug Bunt" [ref=e236]
+          - generic [ref=e237]: Video(s)
+          - generic [ref=e240]:
+            - button "Play video 1" [ref=e241]:
+              - iframe [ref=e243]:
+                
+              - iframe [ref=e244]:
+                - generic [ref=f15e4]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                    - generic:
+                      - img
+                      - generic: Playing in picture-in-picture
+                  - generic:
+                    - generic:
+                      - link "Link to video owner's profile":
+                        - /url: https://vimeo.com/user251632862?fl=pl&fe=po
+                        - img "Link to video owner's profile"
+                    - generic:
+                      - generic:
+                        - link "yazu_HM1652PATCHWORK_tissu-patchwork (4)":
+                          - /url: https://vimeo.com/1153539869?fl=pl&fe=ti
+                        - generic: yazu_HM1652PATCHWORK_tissu-patchwork (4)
+                      - link "Barouk Cohen":
+                        - /url: https://vimeo.com/user251632862?fl=pl&fe=by
+                        - generic: Barouk Cohen
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: More options
+                          - button "More options" [ref=f15e11] [cursor=pointer]:
+                            - img
+                    - generic:
+                      - button "Play" [ref=f15e13] [cursor=pointer]:
+                        - img [ref=f15e14]
+                        - generic:
+                          - generic: Play
+                          - img [ref=f15e17]
+                      - generic [ref=f15e19]:
+                        - generic [ref=f15e20]:
+                          - slider "Progress Bar" [ref=f15e21] [cursor=pointer]
+                          - generic:
+                            - generic:
+                              - generic: 00:00
+                          - generic [ref=f15e26]: 00:07
+                        - generic [ref=f15e27]:
+                          - generic [ref=f15e28]:
+                            - button:
+                              - img
+                            - slider
+                          - button:
+                            - img
+                            - generic: Settings
+                          - button:
+                            - img
+                            - generic: Picture-in-Picture
+                          - button:
+                            - img
+                            - generic: Fullscreen
+                          - button "Show controls" [ref=f15e29] [cursor=pointer]:
+                            - img [ref=f15e30]
+                            - generic:
+                              - generic: Show controls
+                          - link "Watch on Vimeo" [ref=f15e32] [cursor=pointer]:
+                            - /url: https://vimeo.com/1153539869?fl=pl&fe=vl
+                            - img [ref=f15e33]
+            - button "Play video 2" [ref=e245]:
+              - iframe [ref=e247]:
+                
+              - iframe [ref=e248]:
+                - generic [ref=f10e4]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                    - generic:
+                      - img
+                      - generic: Playing in picture-in-picture
+                  - generic:
+                    - generic:
+                      - link "Link to video owner's profile":
+                        - /url: https://vimeo.com/user251632862?fl=pl&fe=po
+                        - img "Link to video owner's profile"
+                    - generic:
+                      - generic:
+                        - link "yazu_HM1652PATCHWORK_tissu-patchwork (2)":
+                          - /url: https://vimeo.com/1153539666?fl=pl&fe=ti
+                        - generic: yazu_HM1652PATCHWORK_tissu-patchwork (2)
+                      - link "Barouk Cohen":
+                        - /url: https://vimeo.com/user251632862?fl=pl&fe=by
+                        - generic: Barouk Cohen
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: More options
+                          - button "More options" [ref=f10e11] [cursor=pointer]:
+                            - img
+                    - generic:
+                      - button "Play" [ref=f10e13] [cursor=pointer]:
+                        - img [ref=f10e14]
+                        - generic:
+                          - generic: Play
+                          - img [ref=f10e17]
+                      - generic [ref=f10e19]:
+                        - generic [ref=f10e20]:
+                          - slider "Progress Bar" [ref=f10e21] [cursor=pointer]
+                          - generic:
+                            - generic:
+                              - generic: 00:00
+                          - generic [ref=f10e26]: 00:07
+                        - generic [ref=f10e27]:
+                          - generic [ref=f10e28]:
+                            - button:
+                              - img
+                            - slider
+                          - button:
+                            - img
+                            - generic: Settings
+                          - button:
+                            - img
+                            - generic: Picture-in-Picture
+                          - button:
+                            - img
+                            - generic: Fullscreen
+                          - button "Show controls" [ref=f10e29] [cursor=pointer]:
+                            - img [ref=f10e30]
+                            - generic:
+                              - generic: Show controls
+                          - link "Watch on Vimeo" [ref=f10e32] [cursor=pointer]:
+                            - /url: https://vimeo.com/1153539666?fl=pl&fe=vl
+                            - img [ref=f10e33]
+            - button "Play video 3" [ref=e249]:
+              - iframe [ref=e251]:
+                
+              - iframe [ref=e252]:
+                - generic [ref=f12e4]:
+                  - generic:
+                    - generic:
+                      - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                    - generic:
+                      - img
+                      - generic: Playing in picture-in-picture
+                  - generic:
+                    - generic:
+                      - link "Link to video owner's profile":
+                        - /url: https://vimeo.com/user251632862?fl=pl&fe=po
+                        - img "Link to video owner's profile"
+                    - generic:
+                      - generic:
+                        - link "yazu_HM1652PATCHWORK_tissu-patchwork":
+                          - /url: https://vimeo.com/1153539310?fl=pl&fe=ti
+                        - generic: yazu_HM1652PATCHWORK_tissu-patchwork
+                      - link "Barouk Cohen":
+                        - /url: https://vimeo.com/user251632862?fl=pl&fe=by
+                        - generic: Barouk Cohen
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic: More options
+                          - button "More options" [ref=f12e11] [cursor=pointer]:
+                            - img
+                    - generic:
+                      - button "Play" [ref=f12e13] [cursor=pointer]:
+                        - img [ref=f12e14]
+                        - generic:
+                          - generic: Play
+                          - img [ref=f12e17]
+                      - generic [ref=f12e19]:
+                        - generic [ref=f12e20]:
+                          - slider "Progress Bar" [ref=f12e21] [cursor=pointer]
+                          - generic:
+                            - generic:
+                              - generic: 00:00
+                          - generic [ref=f12e26]: 00:07
+                        - generic [ref=f12e27]:
+                          - generic [ref=f12e28]:
+                            - button:
+                              - img
+                            - slider
+                          - button:
+                            - img
+                            - generic: Settings
+                          - button:
+                            - img
+                            - generic: Picture-in-Picture
+                          - button:
+                            - img
+                            - generic: Fullscreen
+                          - button "Show controls" [ref=f12e29] [cursor=pointer]:
+                            - img [ref=f12e30]
+                            - generic:
+                              - generic: Show controls
+                          - link "Watch on Vimeo" [ref=f12e32] [cursor=pointer]:
+                            - /url: https://vimeo.com/1153539310?fl=pl&fe=vl
+                            - img [ref=f12e33]
+      - tablist [ref=e254]:
+        - tab "Beschreibung" [expanded] [ref=e255]:
+          - link "Beschreibung" [ref=e256] [cursor=pointer]:
+            - /url: "#tab-description"
+        - tabpanel [ref=e257]:
+          - paragraph [ref=e260]:
+            - strong [ref=e262]: Modernes Schlafsofa mit Stoffbezug
+            - strong [ref=e264]: Farbe BUNT
+            - text: Das YAZU Sofa ist eine sehr bequeme Schlafcouch mit einem modernen und raffinierten Look. Der Stoffbezug und die Holzfüße verleihen Ihrem Wohn- oder Schlafzimmer eine gemütliche Note sowie einen hippen “Natur” Touch. Schlafsofas sind praktische und fast unverzichtbare Möbelstücke, wenn Sie regelmäßig Freunde oder Familie zu Besuch haben. Zögern Sie also nicht länger und lassen Sie sich vom Charme und der Eleganz dieses skandinavischen Schlafsofas verzaubern!
+        - tab "Mehr Informationen" [expanded] [ref=e265]:
+          - link "Mehr Informationen" [ref=e266] [cursor=pointer]:
+            - /url: "#tab-infos"
+        - tabpanel [ref=e267]:
+          - table "Weitere Informationen" [ref=e269]:
+            - rowgroup [ref=e270]:
+              - row "Farbe Mehrfarbig" [ref=e271]:
+                - rowheader "Farbe" [ref=e272]
+                - cell "Mehrfarbig" [ref=e273]
+              - row "Material-Detail Stoff " [ref=e274]:
+                - rowheader "Material-Detail" [ref=e275]
+                - cell "Stoff " [ref=e276]:
+                  - text: Stoff
+                  - generic [ref=e277] [cursor=pointer]: 
+              - row "Anzahl der Plätze 3 Plätze" [ref=e278]:
+                - rowheader "Anzahl der Plätze" [ref=e279]
+                - cell "3 Plätze" [ref=e280]
+              - row "Form des Sofas Gerades Sofa" [ref=e281]:
+                - rowheader "Form des Sofas" [ref=e282]
+                - cell "Gerades Sofa" [ref=e283]
+              - 'row "Maße Sofa: L180 x T79 x H76 cm Bett: L180 x T100 x H44 cm" [ref=e284]':
+                - rowheader "Maße" [ref=e285]
+                - 'cell "Sofa: L180 x T79 x H76 cm Bett: L180 x T100 x H44 cm" [ref=e286]'
+              - 'row "Paket-Maße Colis 1/1: 103 x 19 x 182 cm" [ref=e287]':
+                - rowheader "Paket-Maße" [ref=e288]
+                - 'cell "Colis 1/1: 103 x 19 x 182 cm" [ref=e289]': "Colis 1/1: 103 x 19 x 182 cm"
+              - row "Normalpreis 599,00 €" [ref=e290]:
+                - rowheader "Normalpreis" [ref=e291]
+                - cell "599,00 €" [ref=e292]
+        - tab "Praktische Informationen" [expanded] [ref=e293]:
+          - link "Praktische Informationen" [ref=e294] [cursor=pointer]:
+            - /url: "#tab-ino-practical"
+        - tabpanel [ref=e295]:
+          - list [ref=e296]:
+            - listitem [ref=e297] [cursor=pointer]:
+              - img [ref=e300]
+      - generic [ref=e302]:
+        - generic [ref=e303]:
+          - img "menzzohome" [ref=e306]
+          - generic [ref=e307]: Teilen Sie Ihre Fotos mit unserem Hashtag !
+        - generic [ref=e310]:
+          - generic [ref=e312]:
+            - generic [ref=e313]:
+              - generic [ref=e314]:
+                - link:
+                  - /url: "#"
+                  - img [ref=e315] [cursor=pointer]
+              - img "img" [ref=e320]
+            - generic [ref=e321]:
+              - generic [ref=e322]:
+                - link:
+                  - /url: "#"
+                  - img [ref=e323] [cursor=pointer]
+              - img "img" [ref=e328]
+            - generic [ref=e329]:
+              - generic [ref=e330]:
+                - link:
+                  - /url: "#"
+                  - img [ref=e331] [cursor=pointer]
+              - img "img" [ref=e336]
+            - generic [ref=e337]:
+              - img [ref=e339] [cursor=pointer]
+              - img [ref=e344]
+            - generic [ref=e345]:
+              - img [ref=e347] [cursor=pointer]
+              - img [ref=e352]
+            - generic [ref=e353]:
+              - img [ref=e355] [cursor=pointer]
+              - img [ref=e360]
+            - generic [ref=e361]:
+              - img [ref=e363] [cursor=pointer]
+              - img [ref=e368]
+          - button "Next" [ref=e369] [cursor=pointer]:
+            - img [ref=e370]
+      - heading "Das könnte Ihnen auch gefallen" [level=3] [ref=e373]
+      - generic [ref=e378]:
+        - heading "Glückliche und zufriedene Kundinnen und Kunden" [level=3] [ref=e379]:
+          - strong [ref=e380]: Glückliche und zufriedene
+          - text: Kundinnen und Kunden
+        - img [ref=e384]
+  - contentinfo [ref=e388]:
+    - generic [ref=e390]:
+      - generic [ref=e392]:
+        - generic [ref=e393]:
+          - generic [ref=e394]: Alle Gutscheincodes
+          - generic [ref=e395]: Durch Anklicken von "Anmelden" akzeptiere ich den Erhalt des Newsletters per E-Mail und ich akzeptiere die Datenschutzrichtlinie von Menzzo.
+          - generic [ref=e398]:
+            - generic [ref=e401]:
+              - generic [ref=e402]: "Melden Sie sich für unseren Newsletter an:"
+              - textbox "Melden Sie sich für unseren Newsletter an:" [ref=e403]:
+                - /placeholder: Ihre E-Mail
+            - button "Anmelden" [ref=e404] [cursor=pointer]
+            - generic [ref=e406]:
+              - checkbox "Ich akzeptiere die Datenschutzbestimmungen und stimme der Verarbeitung meiner Daten zu Marketingzwecken durch Menzzo zu" [ref=e407]
+              - text: Ich akzeptiere die
+              - link "Datenschutzbestimmungen" [ref=e408] [cursor=pointer]:
+                - /url: https://www.menzzo.de/rgpd
+              - text: und stimme der Verarbeitung meiner Daten zu Marketingzwecken durch Menzzo zu
+        - img "img" [ref=e410]
+      - generic [ref=e412]:
+        - generic [ref=e414]:
+          - heading "KUNDENSERVICE" [level=3] [ref=e415]:
+            - img [ref=e416]
+            - text: KUNDENSERVICE
+          - generic [ref=e418]:
+            - generic [ref=e419]:
+              - img [ref=e420]
+              - link "kontakt@menzzo.de" [ref=e422] [cursor=pointer]:
+                - /url: mailto:kontakt@menzzo.de
+                - generic [ref=e423]: kontakt@menzzo.de
+            - generic [ref=e424]:
+              - img [ref=e425]
+              - generic [ref=e427]:
+                - strong [ref=e428]: "Montag bis Donnerstag :"
+                - text: 10-13 Uhr / 14-18 Uhr
+                - strong [ref=e429]: "Freitag :"
+                - text: 10 - 14 Uhr
+                - strong [ref=e430]: "Samstag - Sonntag :"
+                - text: Geschlossen
+                - strong
+          - link "Mehr anzeigen" [ref=e431] [cursor=pointer]:
+            - /url: https://www.menzzo.de/sav-menzzo-fr/
+        - generic [ref=e433]:
+          - heading "SICHERES BEZAHLEN" [level=3] [ref=e434]:
+            - img [ref=e435]
+            - text: SICHERES BEZAHLEN
+          - generic [ref=e438]:
+            - strong [ref=e439]: "Per Kreditkarte:"
+            - paragraph [ref=e446]: Online-Zahlungen sind durch das 3D-Secure-System gesichert. Menzzo hat keinen Zugriff auf Ihre Kreditkartendaten und speichert diese nicht.
+          - strong [ref=e447]: "Banküberweisung:"
+          - strong [ref=e448]: "Ratenzahlung:"
+          - paragraph [ref=e452]: Flexible Zahlungen oder in 3/4 Raten mit unseren Partnern.
+          - link "Mehr anzeigen" [ref=e453] [cursor=pointer]:
+            - /url: https://www.menzzo.de/financement
+        - generic [ref=e455]:
+          - heading "LIEFERUNG" [level=3] [ref=e456]:
+            - img [ref=e457]
+            - text: LIEFERUNG
+          - generic [ref=e459]:
+            - generic [ref=e462]: Die Lieferzeiten variieren je nach Produkt und sind auf jeder Produktseite separat angegeben
+            - generic [ref=e463]:
+              - paragraph [ref=e464]:
+                - strong [ref=e465]: Standardlieferung
+              - paragraph [ref=e468]: Die Ware wird am LKW abgeladen. Je nach Art des Artikels wird der Transporteur Sie per E-Mail, SMS oder Telefon kontaktieren, um Ihnen ein Lieferdatum mitzuteilen.
+            - link "Mehr anzeigen" [ref=e469] [cursor=pointer]:
+              - /url: https://www.menzzo.de/livraison/
+      - generic [ref=e471]:
+        - generic [ref=e472]:
+          - heading "BRAUCHEN SIE HILFE ?" [level=3] [ref=e473]
+          - generic [ref=e474]:
+            - list [ref=e475]:
+              - listitem [ref=e476]:
+                - link "Lieferung" [ref=e477] [cursor=pointer]:
+                  - /url: https://www.menzzo.de/livraison/
+              - listitem [ref=e478]:
+                - link "Rückgaberichtlinien" [ref=e479] [cursor=pointer]:
+                  - /url: https://www.menzzo.de/politique-de-retour
+              - listitem [ref=e480]:
+                - link "Materialglossar" [ref=e481] [cursor=pointer]:
+                  - /url: https://www.menzzo.de/materials
+            - list [ref=e482]:
+              - listitem [ref=e483]:
+                - link "Finanzierung" [ref=e484] [cursor=pointer]:
+                  - /url: https://www.menzzo.de/financement
+              - listitem [ref=e485]:
+                - link "Kundenservice" [ref=e486] [cursor=pointer]:
+                  - /url: https://www.menzzo.de/sav-menzzo-fr/
+        - generic [ref=e487]:
+          - heading "UNS BESSER KENNENLERNEN" [level=3] [ref=e488]
+          - generic [ref=e489]:
+            - list [ref=e490]:
+              - listitem [ref=e491]:
+                - link "Über Menzzo" [ref=e492] [cursor=pointer]:
+                  - /url: https://www.menzzo.de/a-propos-de-menzzo
+              - listitem [ref=e493]:
+                - link "Persönliche Daten" [ref=e494] [cursor=pointer]:
+                  - /url: https://www.menzzo.de/rgpd
+            - list [ref=e495]:
+              - listitem [ref=e496]:
+                - link "AGBs" [ref=e497] [cursor=pointer]:
+                  - /url: https://www.menzzo.de/conditions-generales-de-vente
+      - list [ref=e500]:
+        - listitem [ref=e501]
+        - listitem [ref=e503]
+        - listitem [ref=e505]
+        - listitem [ref=e507]
+        - listitem [ref=e509]:
+          - img "Monext" [ref=e511]
+        - listitem [ref=e512]:
+          - img "scalapay" [ref=e514]
+      - generic [ref=e515]:
+        - text: "Entdecken Sie Menzzo auch in anderen Ländern :"
+        - link "menzzo.fr" [ref=e516] [cursor=pointer]:
+          - /url: https://menzzo.fr
+          - img [ref=e517]
+        - link "menzzo.de" [ref=e519] [cursor=pointer]:
+          - /url: https://menzzo.de
+          - img [ref=e520]
+        - link "menzzo.it" [ref=e522] [cursor=pointer]:
+          - /url: https://menzzo.it
+          - img [ref=e523]
+        - link "menzzo.nl" [ref=e525] [cursor=pointer]:
+          - /url: https://menzzo.nl
+          - img [ref=e526]
+        - link "menzzo.at" [ref=e528] [cursor=pointer]:
+          - /url: https://menzzo.at
+          - img [ref=e529]
+        - link "menzzo.be" [ref=e531] [cursor=pointer]:
+          - /url: https://menzzo.be
+          - img [ref=e532]
+        - link "menzzo.es" [ref=e534] [cursor=pointer]:
+          - /url: https://menzzo.es/
+          - img [ref=e535]
+        - link "menzzo.pt" [ref=e537] [cursor=pointer]:
+          - /url: https://www.menzzo.pt/
+          - img [ref=e538]
+      - generic [ref=e541]: © 2026 Menzzo - Alle Rechte vorbehalten
+  - button "Chat Menzzo" [ref=e542] [cursor=pointer]:
+    - img "Chat Menzzo"
+```
