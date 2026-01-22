@@ -377,16 +377,6 @@ export async function waitForCheckoutReady(page: Page, timeout = 180000) {
       const checkoutExists = await page.locator('#checkout').count();
       //console.log(`🔍 #checkout container exists: ${checkoutExists > 0}`);
 
-      // Debugging: Log all visible elements on the page
-      const visibleElements = await page.locator('*').evaluateAll(elements =>
-        elements.map(el => el.outerHTML)
-      );
-      //console.log(`🔍 Visible elements on the page during retry ${retries}:`, visibleElements);
-
-      // Temporarily increase timeout for debugging
-      const extendedTimeout = timeout + 60000; // Add 1 minute
-      //console.log(`⏳ Temporarily increased timeout to ${extendedTimeout}ms for debugging.`);
-
       // Check for the presence of the checkout container
       const checkoutContainer = page.locator('#checkout');
       if (await checkoutContainer.isVisible({ timeout: 5000 })) {
@@ -399,7 +389,14 @@ export async function waitForCheckoutReady(page: Page, timeout = 180000) {
       attachment('Console Warn', `⚠️ Retry ${retries}: Checkout not ready yet. Retrying...`, 'text/plain');
       await page.waitForTimeout(3000);
     } catch (error: any) {
-      await page.screenshot({ path: 'WaitForCheckoutReady.png' });
+      if (!page.isClosed()) {
+        try {
+          const screenshot = await page.screenshot();
+          attachment('Checkout Error Screenshot', screenshot, 'image/png');
+        } catch (e: any) {
+          attachment('Console Warn', `⚠️ Could not take/attach screenshot: ${e.message}`, 'text/plain');
+        }
+      }
       attachment('Console Error', `⚠️ Error during checkout readiness check: ${error.message}`, 'text/plain');
       if (page.isClosed()) {
         throw error;
