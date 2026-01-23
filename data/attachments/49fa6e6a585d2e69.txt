@@ -1,0 +1,1 @@
+⚠️ Attempt 1 failed: Error: page.screenshot: Target page, context or browser has been closed
