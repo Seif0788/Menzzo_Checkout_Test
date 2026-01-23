@@ -1,0 +1,4 @@
+tests/SEO/Menzzo_de/CMS_Menzzo_DE.spec.ts(6,24): error TS7016: Could not find a declaration file for module 'langdetect'. 'C:/Users/SeifeddineTajouri/Desktop/Seif/Menzzo/Test/playwright/For_test/node_modules/langdetect/index.js' implicitly has an 'any' type.
+  Try `npm i --save-dev @types/langdetect` if it exists or add a new declaration (.d.ts) file containing `declare module 'langdetect';`
+tests/SEO/Menzzo_fr/CMS_Menzzo_FR.spec.ts(6,24): error TS7016: Could not find a declaration file for module 'langdetect'. 'C:/Users/SeifeddineTajouri/Desktop/Seif/Menzzo/Test/playwright/For_test/node_modules/langdetect/index.js' implicitly has an 'any' type.
+  Try `npm i --save-dev @types/langdetect` if it exists or add a new declaration (.d.ts) file containing `declare module 'langdetect';`

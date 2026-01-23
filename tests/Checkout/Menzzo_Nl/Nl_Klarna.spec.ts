@@ -9,7 +9,7 @@ import {
     clickAndWaitForCheckout_NL,
 } from '../../../helpers/utils';
 import { performCheckout, CheckoutData } from '../../../helpers/Checkout/General_Checkout';
-import { Klanra_Payment } from '../../../helpers/Checkout/Payment_menthod';
+import { Klarna_Payment } from '../../../helpers/Checkout/Payment_menthod';
 
 test('Nl_Klarna', async ({ page }) => {
     severity('critical');
@@ -82,7 +82,7 @@ test('Nl_Klarna', async ({ page }) => {
         await performCheckout(checkoutPage, checkoutData);
         attachment('Console Log', '✅ Checkout performed successfully.', 'text/plain');
 
-        await Klanra_Payment(page);
+        await Klarna_Payment(page);
     } catch (error) {
         attachment('Console Error', `❌ Test failed with error: ${error}`, 'text/plain');
         throw error;

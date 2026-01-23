@@ -49,7 +49,7 @@ export async function Stripe_Payment(page: Page) {
     }
 }
 
-export async function Klanra_Payment(page: Page) {
+export async function Klarna_Payment(page: Page) {
     // 2️⃣ Wait for Klarna popup or redirect INSIDE the loop
     attachment('Console Log', '⏳ Waiting for Klarna popup or redirect...', 'text/plain');
 

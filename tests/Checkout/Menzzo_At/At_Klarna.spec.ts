@@ -2,7 +2,7 @@ import { test } from '@playwright/test';
 import { attachment, severity } from 'allure-js-commons';
 import { clickElementByText, search, ClickRandomProduct, clickElementByTextWithPopUp, waitForCheckoutReady } from '../../../helpers/utils';
 import { performCheckout, CheckoutData } from '../../../helpers/Checkout/General_Checkout';
-import { Klanra_Payment } from '../../../helpers/Checkout/Payment_menthod';
+import { Klarna_Payment } from '../../../helpers/Checkout/Payment_menthod';
 
 test('At_Klarna', async ({ page }) => {
     severity('critical');
@@ -68,6 +68,7 @@ test('At_Klarna', async ({ page }) => {
             }
             await waitForCheckoutReady(checkoutPage);
         } else {
+            await page.screenshot({ path: 'WaitForCheckoutReady.png' }).catch(() => { });
             throw err;
         }
     }
@@ -88,5 +89,5 @@ test('At_Klarna', async ({ page }) => {
     await performCheckout(checkoutPage, checkoutData);
     attachment('Console Log', '✅ Checkout performed successfully.', 'text/plain');
 
-    await Klanra_Payment(page);
+    await Klarna_Payment(page);
 });

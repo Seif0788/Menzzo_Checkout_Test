@@ -2,7 +2,7 @@ import { test, expect, Page } from '@playwright/test';
 import { attachment, severity } from 'allure-js-commons';
 import { clickElementByText, search, ClickRandomProduct, clickElementByTextWithPopUp, waitForCheckoutReady, clickAndWaitForNavigation } from '../../../../helpers/utils';
 import { performCheckout, CheckoutData } from '../../../../helpers/Checkout/General_Checkout';
-import { Klanra_Payment } from '../../../../helpers/Checkout/Payment_menthod';
+import { Klarna_Payment } from '../../../../helpers/Checkout/Payment_menthod';
 
 test('Klarna_Be_Fr', async ({ page }) => {
     severity('critical');
@@ -94,6 +94,6 @@ test('Klarna_Be_Fr', async ({ page }) => {
     await performCheckout(checkoutPage, checkoutData);
     attachment('Console Log', '✅ Checkout performed successfully.', 'text/plain');
 
-    await Klanra_Payment(page);
+    await Klarna_Payment(page);
 
 });

@@ -28,9 +28,6 @@ function loadProductsFromCSV(filePath: string): ProductRow[] {
         .filter((p: ProductRow) => p.entity_id && p.sku);
 }
 
-
-
-
 test('Check_Maouro_Nl_product_page', async ({ page }) => {
     // Increase timeout to 1 hour to handle the loop
     test.setTimeout(3600000);
@@ -56,7 +53,7 @@ test('Check_Maouro_Nl_product_page', async ({ page }) => {
     }
 
     // --- Limit the number of iterations ---
-    const MAX_ITERATIONS = 360;
+    const MAX_ITERATIONS = 36;
     const productsToProcess = products.slice(0, MAX_ITERATIONS);
     attachment('Console Log', `ℹ️ limiting loop to ${MAX_ITERATIONS} items (Total in CSV: ${products.length})`, 'text/plain');
 

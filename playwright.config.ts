@@ -170,6 +170,17 @@ export default defineConfig({
       },
     },
     {
+      name: 'Solde_Hiver_2026_Fr',
+      testDir: './tests/Price/Solde_07012026/Menzzo_Fr',
+      workers: 3,
+      use: {
+        headless: true,
+        screenshot: 'only-on-failure',
+        video: 'off',
+        trace: 'retain-on-failure',
+      },
+    },
+    {
       name: 'Maouro_Product_Tests',
       workers: 4,
       testDir: './tests/Product_Page',
