@@ -1,0 +1,506 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - text: 
+      - link "store logo" [ref=e5] [cursor=pointer]:
+        - /url: https://www.menzzo.fr/
+        - img "Menzzo.fr" [ref=e7]
+      - generic [ref=e8]:
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - search:
+                  - generic:
+                    - searchbox "Que cherchez-vous ?" [ref=e9]
+                    - generic [ref=e10]:
+                      - text: 
+                      - generic [ref=e11]: Rechercher
+                      - generic [ref=e12]: Rechercher
+                  - button "Search" [ref=e13] [cursor=pointer]:
+                    - text: 
+                    - generic [ref=e14]: Rechercher
+      - generic [ref=e15]:
+        - list [ref=e16]:
+          - listitem [ref=e17]:
+            - link "Mes Favoris" [ref=e18] [cursor=pointer]:
+              - /url: https://www.menzzo.fr/wish-list/
+              - img [ref=e19]
+              - generic [ref=e21]: Mes Favoris
+          - listitem [ref=e22]:
+            - link "Blog" [ref=e23] [cursor=pointer]:
+              - /url: https://www.menzzo.fr/blog.html
+              - img [ref=e24]
+              - generic [ref=e26]: Blog
+          - listitem [ref=e27]:
+            - link "Showroom" [ref=e28] [cursor=pointer]:
+              - /url: https://www.menzzo.fr/showroom/
+              - img [ref=e29]
+              - generic [ref=e31]: Showroom
+          - listitem [ref=e32] [cursor=pointer]:
+            - generic [ref=e33]:
+              - img [ref=e34]
+              - generic [ref=e36]: Contact
+          - listitem [ref=e37]:
+            - link "Me connecter" [ref=e38] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e39]
+              - generic [ref=e41]: Me connecter
+        - link "Mon panier Panier" [ref=e44] [cursor=pointer]:
+          - /url: https://www.menzzo.fr/checkout/cart/
+          - img [ref=e45]
+          - generic [ref=e47]: Mon panier
+          - generic [ref=e48]: Panier
+  - tablist [ref=e50]:
+    - tabpanel [ref=e51]:
+      - navigation [ref=e52]:
+        - menu [ref=e53]:
+          - menuitem
+          - menuitem "SOLDES" [ref=e54] [cursor=pointer]
+          - menuitem
+          - menuitem "Tables, tables Basses" [ref=e55] [cursor=pointer]:
+            - generic [ref=e56]:
+              - generic [ref=e57]: Tables,
+              - text: tables Basses
+          - menuitem
+          - menuitem "Chaises, tabourets" [ref=e58] [cursor=pointer]:
+            - generic [ref=e59]:
+              - generic [ref=e60]: Chaises,
+              - text: tabourets
+          - menuitem
+          - menuitem "Canapés, fauteuils" [ref=e61] [cursor=pointer]:
+            - generic [ref=e62]:
+              - generic [ref=e63]: Canapés,
+              - text: fauteuils
+          - menuitem
+          - menuitem "Lits, têtes de lit" [ref=e64] [cursor=pointer]:
+            - generic [ref=e65]:
+              - generic [ref=e66]: Lits,
+              - text: têtes de lit
+          - menuitem
+          - menuitem "Meubles, rangements" [ref=e67] [cursor=pointer]:
+            - generic [ref=e68]:
+              - generic [ref=e69]: Meubles,
+              - text: rangements
+          - menuitem
+          - menuitem "Déco" [ref=e70] [cursor=pointer]
+          - menuitem
+          - menuitem "Déstockage" [ref=e71] [cursor=pointer]
+  - list [ref=e73]:
+    - listitem [ref=e74]:
+      - link "Accueil" [ref=e75] [cursor=pointer]:
+        - /url: https://www.menzzo.fr/
+      - text: /
+    - listitem [ref=e76]:
+      - strong [ref=e77]: Table de chevet 1 tiroir avec cannage Dalgora L40cm Blanc
+  - main [ref=e78]:
+    - generic [ref=e80]:
+      - generic [ref=e82]:
+        - generic [ref=e84]:
+          - generic [ref=e85]:
+            - img [ref=e86]
+            - text: "Fin de l'offre dans :"
+          - text: 00j 09h 23min 48s
+        - generic [ref=e89]:
+          - generic [ref=e91]: "Prolongation : -20% sur tout le site - code : 20WINTER"
+          - generic [ref=e93]: "ou livraison OFFERTE en France métropolitaine, hors Corse - code : GOWINTER"
+      - generic [ref=e94]:
+        - generic [ref=e95]:
+          - link "Skip to the end of the images gallery" [ref=e96] [cursor=pointer]:
+            - /url: "#gallery-next-area"
+          - button "Ajouter aux favoris" [ref=e99] [cursor=pointer]:
+            - img [ref=e100]
+          - link "Skip to the beginning of the images gallery" [ref=e102] [cursor=pointer]:
+            - /url: "#gallery-prev-area"
+          - generic [ref=e103]:
+            - generic [ref=e105]:
+              - img "Table de chevet 1 tiroir avec cannage Dalgora L40cm Blanc" [ref=e108]
+              - img [ref=e111]
+              - img [ref=e114]
+              - img [ref=e117]
+              - img [ref=e120]
+              - img [ref=e123]
+              - img [ref=e126]
+              - img [ref=e129]
+              - img [ref=e132]
+              - img [ref=e135]
+              - img [ref=e138]
+            - button "Next" [ref=e139] [cursor=pointer]:
+              - img [ref=e140]
+          - generic [ref=e144]:
+            - img [ref=e147]
+            - img [ref=e150]
+            - img [ref=e153]
+            - img [ref=e156]
+            - img [ref=e159]
+            - img [ref=e162]
+            - img [ref=e165]
+            - img [ref=e168]
+            - img [ref=e171]
+            - img [ref=e174]
+            - img [ref=e177]
+        - generic [ref=e178]:
+          - heading "Table de chevet 1 tiroir avec cannage Dalgora L40cm Blanc" [level=1] [ref=e179]
+          - generic [ref=e180]:
+            - generic [ref=e181]: SOLDES
+            - generic [ref=e183]:
+              - generic [ref=e184]: 39,00 €
+              - generic [ref=e185]:
+                - generic [ref=e186]: "-26%"
+                - generic [ref=e187]: 29,00 €
+              - generic [ref=e188]:
+                - generic [ref=e189]: Prix le plus bas sur 30j
+                - img [ref=e191]
+              - generic [ref=e193]:
+                - text: Dont
+                - strong [ref=e194]: 1,00 €
+                - text: d’éco-part.
+          - generic [ref=e199]:
+            - combobox "Qté" [ref=e202]:
+              - option "1" [selected]
+              - option "2"
+              - option "3"
+              - option "4"
+              - option "5"
+              - option "6"
+              - option "7"
+              - option "8"
+              - option "9"
+              - option "10"
+            - button "Ajouter au panier" [ref=e204] [cursor=pointer]
+          - generic [ref=e205]:
+            - generic [ref=e206]:
+              - img [ref=e207]
+              - generic [ref=e210] [cursor=pointer]:
+                - strong [ref=e211]:
+                  - strong [ref=e212]: En stock
+                - img [ref=e213]
+                - text: 
+              - generic [ref=e215]:
+                - generic [ref=e216]: ⚠️
+                - generic [ref=e217]: Derniers exemplaires avant retrait du catalogue !
+            - generic [ref=e218]:
+              - strong [ref=e219]: Livraison entre le 27 janvier et 03 février
+              - button "À partir de 12,00 € >" [ref=e220] [cursor=pointer]:
+                - text: À partir de
+                - strong [ref=e221]: 12,00 €
+                - text: ">"
+          - generic [ref=e222]:
+            - generic [ref=e223]:
+              - generic [ref=e224] [cursor=pointer]:
+                - img [ref=e227]
+                - text: Retour gratuit
+                - generic [ref=e228]: "*"
+              - generic [ref=e229]:
+                - img [ref=e231]
+                - text: 14 jours pour changer d’avis
+              - generic [ref=e232]:
+                - img [ref=e234]
+                - text: Paiement 100% sécurisé
+            - generic [ref=e235]:
+              - text: Clients satisfaits
+              - generic [ref=e236]: Voir tous les avis
+          - generic [ref=e239]:
+            - generic [ref=e240] [cursor=pointer]: Modèle
+            - generic [ref=e241]:
+              - generic [ref=e243]:
+                - link "Table basse 2 tiroirs avec cannage Dalgora L120cm Blanc" [ref=e244] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/table-basse-2-tiroirs-avec-cannage-dalgora-l120cm-blanc.html
+                  - img "Table basse 2 tiroirs avec cannage Dalgora L120cm Blanc" [ref=e246]
+                - link "Buffet 3 tiroirs et 2 portes avec cannage Dalgora L120cm Blanc" [ref=e247] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/buffet-3-tiroirs-et-2-portes-avec-cannage-dalgora-l120cm-blanc.html
+                  - img "Buffet 3 tiroirs et 2 portes avec cannage Dalgora L120cm Blanc" [ref=e249]
+                - link [ref=e250] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/commode-6-tiroirs-avec-cannage-dalgora-l120cm-blanc.html
+                  - img [ref=e252]
+                - link [ref=e253] [cursor=pointer]:
+                  - /url: https://www.menzzo.fr/table-de-chevet-1-tiroir-avec-cannage-dalgora-l40cm-blanc.html
+                  - img [ref=e255]
+              - button "Next" [ref=e256] [cursor=pointer]:
+                - img [ref=e257]
+      - generic [ref=e259]:
+        - heading "Vous avez une question ?" [level=3] [ref=e262]
+        - generic [ref=e263]:
+          - button "Quelles sont les dimensions exactes de la table de chevet Dalgora ?" [ref=e264] [cursor=pointer]
+          - button "Est-ce que le tiroir de la table de chevet est facile à ouvrir ?" [ref=e265] [cursor=pointer]
+          - button "Quel type de décor s'harmonise le mieux avec cette table de chevet blanche ?" [ref=e266] [cursor=pointer]
+          - button "Peut-on utiliser cette table de chevet comme meuble d'appoint dans d'autres pièces ?" [ref=e267] [cursor=pointer]
+          - button "Poser une question" [ref=e268] [cursor=pointer]
+      - tablist [ref=e270]:
+        - tab "Descriptifs" [expanded] [ref=e271]:
+          - link "Descriptifs" [ref=e272] [cursor=pointer]:
+            - /url: "#tab-description"
+        - tabpanel [ref=e273]:
+          - generic [ref=e275]:
+            - paragraph [ref=e276]:
+              - strong [ref=e277]:
+                - text: Une table de chevet élégante et moderne
+                - text: Coloris BLANC
+              - text: La table de chevet DALGORA est un petit meuble de rangement pratique et élégant qui conviendra à tous les intérieurs. Placez-le dans une chambre ou pourquoi pas en bout de canapé pour vous en servir de rangement d'appoint.
+            - paragraph [ref=e278]: Cette table de chevet de 40cm de large sur 30cm de profondeur et 60cm de hauteur s'avèrera être un meuble de rangement aussi pratique que polyvalent.
+            - paragraph [ref=e279]: Côté look, son tiroir présente une façade en cannage incrusté dans un cadre de bois blanc et une poignée type bouton coloris or rose.
+            - paragraph [ref=e280]: Ce joli meuble saura embellir votre espace de vie ou chambre à coucher en leur ajoutant une touche décorative chic et naturelle. Succombez à la gamme Dalgora pour meubler vos pièces avec style!
+        - tab "Informations complémentaires" [expanded] [ref=e281]:
+          - link "Informations complémentaires" [ref=e282] [cursor=pointer]:
+            - /url: "#tab-infos"
+        - tabpanel [ref=e283]:
+          - table "Plus d’information" [ref=e285]:
+            - rowgroup [ref=e286]:
+              - row "Couleur Blanc / Chêne" [ref=e287]:
+                - rowheader "Couleur" [ref=e288]
+                - cell "Blanc / Chêne" [ref=e289]
+              - row "Matière détail Melaminé*, Rotin " [ref=e290]:
+                - rowheader "Matière détail" [ref=e291]
+                - cell "Melaminé*, Rotin " [ref=e292]:
+                  - text: Melaminé*, Rotin
+                  - generic [ref=e293] [cursor=pointer]: 
+              - row "Type de rangement Meuble bas" [ref=e294]:
+                - rowheader "Type de rangement" [ref=e295]
+                - cell "Meuble bas" [ref=e296]
+              - row "Pour angle Non" [ref=e297]:
+                - rowheader "Pour angle" [ref=e298]
+                - cell "Non" [ref=e299]
+              - row "Ouverture du rangement Tiroirs" [ref=e300]:
+                - rowheader "Ouverture du rangement" [ref=e301]
+                - cell "Tiroirs" [ref=e302]
+              - row "Dimensions L40 x P30 x H60 cm" [ref=e303]:
+                - rowheader "Dimensions" [ref=e304]
+                - cell "L40 x P30 x H60 cm" [ref=e305]: L40 x P30 x H60 cm
+              - row "Poids net (kg) 6.70" [ref=e306]:
+                - rowheader "Poids net (kg)" [ref=e307]
+                - cell "6.70" [ref=e308]
+              - 'row "Dimensions colis Colis 1/1: 36 x 19 x 48 cm" [ref=e309]':
+                - rowheader "Dimensions colis" [ref=e310]
+                - 'cell "Colis 1/1: 36 x 19 x 48 cm" [ref=e311]': "Colis 1/1: 36 x 19 x 48 cm"
+              - row "Prix généralement constaté 189,00 €" [ref=e312]:
+                - rowheader "Prix généralement constaté" [ref=e313]
+                - cell "189,00 €" [ref=e314]
+        - tab "Infos pratiques" [expanded] [ref=e315]:
+          - link "Infos pratiques" [ref=e316] [cursor=pointer]:
+            - /url: "#tab-ino-practical"
+        - tabpanel [ref=e317]:
+          - list [ref=e318]:
+            - listitem [ref=e319] [cursor=pointer]:
+              - img [ref=e322]
+      - heading "Vous aimerez aussi :" [level=3] [ref=e324]
+      - generic [ref=e329]:
+        - heading "Des clients satisfaits et qui le disent" [level=3] [ref=e330]:
+          - strong [ref=e331]: Des clients satisfaits
+          - text: et qui le disent
+        - paragraph [ref=e332]: Les avis présentés sur cette page constituent une sélection et ne reflètent pas l’intégralité des avis reçus.
+        - img [ref=e336]
+  - contentinfo [ref=e340]:
+    - generic [ref=e342]:
+      - generic [ref=e344]:
+        - generic [ref=e345]:
+          - generic [ref=e346]: Tous les codes promo
+          - generic [ref=e347]: En cliquant sur "Je m'inscris", j'accepte de recevoir la newsletter par email et j'accepte la politique de confidentialité de Menzzo.
+          - generic [ref=e350]:
+            - generic [ref=e353]:
+              - generic [ref=e354]: "Inscription à notre lettre d’information :"
+              - textbox "Inscription à notre lettre d’information :" [ref=e355]:
+                - /placeholder: Votre e-mail
+            - button "Je m'inscris !" [ref=e356] [cursor=pointer]
+            - generic [ref=e358]:
+              - checkbox "J'accepte la politique de confidentialité et je consens au traitement de mes données à des fins marketing par Menzzo" [ref=e359]
+              - text: J'accepte la
+              - link "politique de confidentialité" [ref=e360] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/rgpd
+              - text: et je consens au traitement de mes données à des fins marketing par Menzzo
+        - img "img" [ref=e362]
+      - generic [ref=e364]:
+        - generic [ref=e366]:
+          - generic [ref=e367]:
+            - img [ref=e368]
+            - heading "SERVICE CLIENT" [level=3] [ref=e370]
+            - paragraph [ref=e371]: Vous avez passé commande et souhaitez nous joindre ?
+          - generic [ref=e372]:
+            - generic [ref=e373]:
+              - heading "Un seul endroit pour répondre à toutes vos demandes" [level=4] [ref=e375]
+              - generic [ref=e377]:
+                - img [ref=e378]
+                - link "sav.menzzo.fr" [ref=e380] [cursor=pointer]:
+                  - /url: https://sav.menzzo.fr/
+              - paragraph [ref=e381]:
+                - text: Complétez le formulaire sur la plateforme
+                - link "sav.menzzo.fr" [ref=e382] [cursor=pointer]:
+                  - /url: https://sav.menzzo.fr/
+                - text: et accédez directement aux informations que vous recherchez concernant votre commande.
+              - paragraph [ref=e383]: Une réponse vous sera apportée en ligne ou vous aurez accès à un planning pour prendre un rdv téléphonique avec un de nos agents.
+            - generic [ref=e384]:
+              - heading "Foire Aux Questions" [level=4] [ref=e386]
+              - generic [ref=e388]:
+                - img [ref=e389]
+                - link "Consultez notre FAQ" [ref=e391] [cursor=pointer]:
+                  - /url: /faq
+              - paragraph [ref=e392]: Vos questions les plus courantes sont répertoriées dans notre FAQ pour que vous trouviez encore plus rapidement des réponses pertinentes à toutes vos interrogations.
+          - link "En savoir plus" [ref=e393] [cursor=pointer]:
+            - /url: /sav-menzzo-fr
+        - generic [ref=e395]:
+          - generic [ref=e396]:
+            - img [ref=e397]
+            - heading "Vendeurs conseil" [level=3] [ref=e399]
+            - paragraph [ref=e400]: Vous avez une question sur un produit ou un service ?
+          - generic [ref=e401]:
+            - generic [ref=e402]:
+              - heading "Contactez nos vendeurs conseil" [level=4] [ref=e404]
+              - generic [ref=e406]:
+                - img [ref=e407]
+                - generic [ref=e409]:
+                  - link "01 43 75 11 18" [ref=e410] [cursor=pointer]:
+                    - /url: tel:0143751118
+                  - text: "Du lundi au jeudi : 10h-17h"
+                  - text: "Vendredi : 10h-15h"
+            - generic [ref=e411]:
+              - heading "Outlet Menzzo" [level=4] [ref=e413]
+              - generic [ref=e415]:
+                - img [ref=e416]
+                - generic [ref=e418]:
+                  - text: 221 Rue Paul Vaillant Couturier
+                  - text: 94140 Alfortville
+                  - text: "Du lundi au jeudi : 9h30-15h"
+                  - generic [ref=e419]:
+                    - text: Fermeture exceptionnelle
+                    - text: Aucune à prévoir...
+              - paragraph [ref=e420]: Des articles juste déballés, retournés par les clients et soigneusement vérifiés, ou des fins de collection, fins de stock pour des coloris spécifiques... Nos meubles à prix cassé, c'est ça l'Outlet Menzzo !
+          - link "En savoir plus" [ref=e421] [cursor=pointer]:
+            - /url: /showroom/
+        - generic [ref=e423]:
+          - generic [ref=e424]:
+            - img [ref=e425]
+            - heading "PAIEMENT SÉCURISÉ" [level=3] [ref=e427]
+            - paragraph [ref=e428]: Achetez en toute sérénité grâce à nos différents modes de paiement en ligne.
+          - generic [ref=e429]:
+            - generic [ref=e430]:
+              - heading "Par carte bancaire :" [level=4] [ref=e432]
+              - generic [ref=e433]:
+                - img "cb" [ref=e435]
+                - img "visa" [ref=e437]
+                - img "master" [ref=e439]
+                - img "american-express" [ref=e441]
+              - paragraph [ref=e442]: Les paiements en ligne sont sécurisés par le système 3D Secure. Menzzo n’a pas accès et ne sauvegarde pas vos données de carte bancaire.
+            - generic [ref=e443]:
+              - heading "En plusieurs fois :" [level=4] [ref=e445]
+              - paragraph [ref=e450]:
+                - text: Divisez votre paiement en 3 versements égaux et sans frais ou en 6, 9 ou 12 fois. Simple et pratique.
+                - text: Un paiement par mois, immédiat et sans formalités.
+            - generic [ref=e451]:
+              - heading "Par virement :" [level=4] [ref=e453]
+              - paragraph [ref=e454]: Plus besoin de carte bancaire ! Payez vos achats en un clic grâce à votre appli bancaire. Aucune saisie d’IBAN nécessaire et sécurisé par votre banque sans coût supplémentaire.
+          - link "En savoir plus" [ref=e455] [cursor=pointer]:
+            - /url: /financement
+        - generic [ref=e457]:
+          - generic [ref=e458]:
+            - img [ref=e459]
+            - heading "Livraison" [level=3] [ref=e461]
+            - paragraph [ref=e462]: Les tarifs des livraisons sont indiqués sur chaque fiche produit.
+          - generic [ref=e463]:
+            - generic [ref=e464]:
+              - heading "Livraison classique" [level=4] [ref=e466]
+              - paragraph [ref=e469]:
+                - text: Vous êtes livrés à l'extérieur, en bas de chez vous.
+                - text: Selon le type d’article, le transporteur vous contacte par mail, SMS ou téléphone pour vous communiquer une date de livraison.
+            - generic [ref=e470]:
+              - heading "Livraison Étage" [level=4] [ref=e472]
+              - paragraph [ref=e475]:
+                - text: Vous êtes livrés dans la pièce de votre choix, même à l’étage.
+                - text: Selon le type d’article, le transporteur vous contacte par mail, SMS ou téléphone pour vous communiquer une date de livraison.
+          - link "En savoir plus" [ref=e476] [cursor=pointer]:
+            - /url: /livraison
+      - generic [ref=e478]:
+        - generic [ref=e479]:
+          - heading "BESOIN D'AIDE?" [level=3] [ref=e480]
+          - list [ref=e481]:
+            - listitem [ref=e482]:
+              - link "Blog" [ref=e483] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/blog.html
+            - listitem [ref=e484]:
+              - link "Livraison" [ref=e485] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/livraison/
+            - listitem [ref=e486]:
+              - link "Politique de retour" [ref=e487] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/politique-de-retour/
+            - listitem [ref=e488]:
+              - link "Financement" [ref=e489] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/financement/
+            - listitem [ref=e490]:
+              - link "Service client" [ref=e491] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/sav-menzzo-fr/
+            - listitem [ref=e492]:
+              - link "Glossaire des matières" [ref=e493] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/materials/
+        - generic [ref=e494]:
+          - heading "MIEUX NOUS CONNAÎTRE" [level=3] [ref=e495]
+          - list [ref=e496]:
+            - listitem [ref=e497]:
+              - link "Outlet Menzzo" [ref=e498] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/showroom
+            - listitem [ref=e499]:
+              - link "À propos de menzzo" [ref=e500] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/a-propos-de-menzzo/
+            - listitem [ref=e501]:
+              - link "Conditions Générales de Vente" [ref=e502] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/conditions-generales-de-vente/
+            - listitem [ref=e503]:
+              - link "Données personnelles" [ref=e504] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/rgpd
+            - listitem [ref=e505]:
+              - link "Revue de presse" [ref=e506] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/revue-de-presse
+        - generic [ref=e507]:
+          - heading "RETROUVEZ-NOUS!" [level=3] [ref=e508]
+          - generic [ref=e509]:
+            - link "Facebook" [ref=e510] [cursor=pointer]:
+              - /url: http://www.facebook.com/MenzzoFrance
+              - img [ref=e511]
+            - link "Instagram" [ref=e513] [cursor=pointer]:
+              - /url: https://www.instagram.com/menzzofr/
+              - img [ref=e514]
+            - link "Pinterest" [ref=e516] [cursor=pointer]:
+              - /url: http://www.pinterest.com/menzzo
+              - img [ref=e517]
+      - list [ref=e521]:
+        - listitem [ref=e522]
+        - listitem [ref=e524]
+        - listitem [ref=e526]
+        - listitem [ref=e528]
+        - listitem [ref=e530]:
+          - img "Monext" [ref=e532]
+        - listitem [ref=e533]
+        - listitem [ref=e535]:
+          - img "klarna" [ref=e537]
+        - listitem [ref=e538]:
+          - img "scalapay" [ref=e540]
+      - generic [ref=e541]:
+        - text: "Retrouvez Menzzo dans d'autres pays:"
+        - link "menzzo.fr" [ref=e542] [cursor=pointer]:
+          - /url: https://menzzo.fr
+          - img [ref=e543]
+        - link "menzzo.de" [ref=e545] [cursor=pointer]:
+          - /url: https://menzzo.de
+          - img [ref=e546]
+        - link "menzzo.it" [ref=e548] [cursor=pointer]:
+          - /url: https://menzzo.it
+          - img [ref=e549]
+        - link "menzzo.nl" [ref=e551] [cursor=pointer]:
+          - /url: https://menzzo.nl
+          - img [ref=e552]
+        - link "menzzo.at" [ref=e554] [cursor=pointer]:
+          - /url: https://menzzo.at
+          - img [ref=e555]
+        - link "menzzo.be" [ref=e557] [cursor=pointer]:
+          - /url: https://menzzo.be
+          - img [ref=e558]
+        - link "menzzo.es" [ref=e560] [cursor=pointer]:
+          - /url: https://www.menzzo.es/
+          - img [ref=e561]
+        - link "menzzo.pt" [ref=e563] [cursor=pointer]:
+          - /url: https://www.menzzo.pt/
+          - img [ref=e564]
+      - generic [ref=e566]: © 2026 Menzzo - Tous droits réservés
+  - button "Chat Menzzo" [ref=e567] [cursor=pointer]:
+    - img "Chat Menzzo"
+```
