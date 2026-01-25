@@ -1,0 +1,525 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - text: 
+      - link "store logo" [ref=e5] [cursor=pointer]:
+        - /url: https://www.menzzo.fr/
+        - img "Menzzo.fr" [ref=e7]
+      - generic [ref=e8]:
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - search:
+                  - generic:
+                    - searchbox "Que cherchez-vous ?" [ref=e9]
+                    - generic [ref=e10]:
+                      - text: 
+                      - generic [ref=e11]: Rechercher
+                      - generic [ref=e12]: Rechercher
+                  - button "Search" [ref=e13] [cursor=pointer]:
+                    - text: 
+                    - generic [ref=e14]: Rechercher
+      - generic [ref=e15]:
+        - list [ref=e16]:
+          - listitem [ref=e17]:
+            - link "Mes Favoris" [ref=e18] [cursor=pointer]:
+              - /url: https://www.menzzo.fr/wish-list/
+              - img [ref=e19]
+              - generic [ref=e21]: Mes Favoris
+          - listitem [ref=e22]:
+            - link "Blog" [ref=e23] [cursor=pointer]:
+              - /url: https://www.menzzo.fr/blog.html
+              - img [ref=e24]
+              - generic [ref=e26]: Blog
+          - listitem [ref=e27]:
+            - link "Showroom" [ref=e28] [cursor=pointer]:
+              - /url: https://www.menzzo.fr/showroom/
+              - img [ref=e29]
+              - generic [ref=e31]: Showroom
+          - listitem [ref=e32] [cursor=pointer]:
+            - generic [ref=e33]:
+              - img [ref=e34]
+              - generic [ref=e36]: Contact
+          - listitem [ref=e37]:
+            - link "Me connecter" [ref=e38] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e39]
+              - generic [ref=e41]: Me connecter
+        - link "Mon panier Panier" [ref=e44] [cursor=pointer]:
+          - /url: https://www.menzzo.fr/checkout/cart/
+          - img [ref=e45]
+          - generic [ref=e47]: Mon panier
+          - generic [ref=e48]: Panier
+  - tablist [ref=e50]:
+    - tabpanel [ref=e51]:
+      - navigation [ref=e52]:
+        - menu [ref=e53]:
+          - menuitem
+          - menuitem "SOLDES" [ref=e54] [cursor=pointer]
+          - menuitem
+          - menuitem "Tables, tables Basses" [ref=e55] [cursor=pointer]:
+            - generic [ref=e56]:
+              - generic [ref=e57]: Tables,
+              - text: tables Basses
+          - menuitem
+          - menuitem "Chaises, tabourets" [ref=e58] [cursor=pointer]:
+            - generic [ref=e59]:
+              - generic [ref=e60]: Chaises,
+              - text: tabourets
+          - menuitem
+          - menuitem "Canapés, fauteuils" [ref=e61] [cursor=pointer]:
+            - generic [ref=e62]:
+              - generic [ref=e63]: Canapés,
+              - text: fauteuils
+          - menuitem
+          - menuitem "Lits, têtes de lit" [ref=e64] [cursor=pointer]:
+            - generic [ref=e65]:
+              - generic [ref=e66]: Lits,
+              - text: têtes de lit
+          - menuitem
+          - menuitem "Meubles, rangements" [ref=e67] [cursor=pointer]:
+            - generic [ref=e68]:
+              - generic [ref=e69]: Meubles,
+              - text: rangements
+          - menuitem
+          - menuitem "Déco" [ref=e70] [cursor=pointer]
+          - menuitem
+          - menuitem "Déstockage" [ref=e71] [cursor=pointer]
+  - list [ref=e73]:
+    - listitem [ref=e74]:
+      - link "Accueil" [ref=e75] [cursor=pointer]:
+        - /url: https://www.menzzo.fr/
+      - text: /
+    - listitem [ref=e76]:
+      - strong [ref=e77]: Table ronde Corix Verre effet Marbre Blanc et pieds Or
+  - main [ref=e78]:
+    - generic [ref=e80]:
+      - generic [ref=e82]:
+        - generic [ref=e84]:
+          - generic [ref=e85]:
+            - img [ref=e86]
+            - text: "Fin de l'offre dans :"
+          - text: 00j 10h 57min 38s
+        - generic [ref=e89]:
+          - generic [ref=e91]: "Prolongation : -20% sur tout le site - code : 20WINTER"
+          - generic [ref=e93]: "ou livraison OFFERTE en France métropolitaine, hors Corse - code : GOWINTER"
+      - generic [ref=e94]:
+        - generic [ref=e95]:
+          - link "Skip to the end of the images gallery" [ref=e96] [cursor=pointer]:
+            - /url: "#gallery-next-area"
+          - button "Ajouter aux favoris" [ref=e99] [cursor=pointer]:
+            - img [ref=e100]
+          - link "Skip to the beginning of the images gallery" [ref=e102] [cursor=pointer]:
+            - /url: "#gallery-prev-area"
+          - generic [ref=e103]:
+            - generic [ref=e105]:
+              - img "Table ronde Corix 120cm en Verre effet marbre blanc et Pieds Or" [ref=e108]
+              - img [ref=e111]
+              - img [ref=e114]
+              - img [ref=e117]
+              - img [ref=e120]
+              - img [ref=e123]
+              - img [ref=e126]
+              - img [ref=e129]
+              - img [ref=e132]
+              - img [ref=e135]
+              - img [ref=e138]
+            - button "Next" [ref=e139] [cursor=pointer]:
+              - img [ref=e140]
+          - generic [ref=e144]:
+            - img [ref=e147]
+            - img [ref=e150]
+            - img [ref=e153]
+            - img [ref=e156]
+            - img [ref=e159]
+            - img [ref=e162]
+            - img [ref=e165]
+            - img [ref=e168]
+            - img [ref=e171]
+            - img [ref=e174]
+            - img [ref=e177]
+        - generic [ref=e178]:
+          - heading "Table ronde Corix Verre effet Marbre Blanc et pieds Or" [level=1] [ref=e179]
+          - generic [ref=e181]:
+            - link "Ou payer en 3x 57,00€ SANS FRAIS" [ref=e182] [cursor=pointer]:
+              - /url: "#"
+              - generic [ref=e183]:
+                - strong [ref=e184]: Ou payer en
+                - generic [ref=e185]: 3x
+              - generic [ref=e187]:
+                - text: 57,00€
+                - strong [ref=e188]: SANS FRAIS
+            - generic [ref=e189]:
+              - generic [ref=e190]: 171,00 €
+              - generic [ref=e191]:
+                - text: Dont
+                - strong [ref=e192]: 3,50 €
+                - text: d’éco-part.
+          - generic [ref=e197]:
+            - combobox "Qté" [ref=e200]:
+              - option "1" [selected]
+              - option "2"
+              - option "3"
+              - option "4"
+              - option "5"
+              - option "6"
+              - option "7"
+              - option "8"
+              - option "9"
+              - option "10"
+            - button "Ajouter au panier" [ref=e202] [cursor=pointer]
+          - generic [ref=e203]:
+            - generic [ref=e204]:
+              - img [ref=e205]
+              - generic [ref=e208] [cursor=pointer]:
+                - strong [ref=e209]:
+                  - strong [ref=e210]: En stock
+                - img [ref=e211]
+                - text: 
+            - generic [ref=e213]:
+              - strong [ref=e214]: Livraison entre le 27 janvier et 03 février
+              - button "À partir de 39,00 € >" [ref=e215] [cursor=pointer]:
+                - text: À partir de
+                - strong [ref=e216]: 39,00 €
+                - text: ">"
+          - generic [ref=e217]:
+            - generic [ref=e218]:
+              - generic [ref=e219] [cursor=pointer]:
+                - img [ref=e222]
+                - text: Retour gratuit
+                - generic [ref=e223]: "*"
+              - generic [ref=e224]:
+                - img [ref=e226]
+                - text: 14 jours pour changer d’avis
+              - generic [ref=e227]:
+                - img [ref=e229]
+                - text: Paiement 100% sécurisé
+            - generic [ref=e230]:
+              - text: Clients satisfaits
+              - generic [ref=e231]: Voir tous les avis
+          - generic [ref=e234]:
+            - generic [ref=e235] [cursor=pointer]:
+              - text: Coloris
+              - generic [ref=e236]: + d'infos
+            - generic [ref=e237]:
+              - link "Table ronde en verre Corix pieds Or" [ref=e238] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/table-ronde-en-verre-corix-pieds-or.html
+                - img "Table ronde en verre Corix pieds Or" [ref=e240]
+              - link "Table ronde Corix Verre effet Marbre Blanc et pieds Or" [ref=e241] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/table-ronde-en-verre-effet-marbre-corix-pieds-or.html
+                - img "Table ronde Corix Verre effet Marbre Blanc et pieds Or" [ref=e243]
+      - generic [ref=e244]:
+        - heading "Vous avez une question ?" [level=3] [ref=e247]
+        - generic [ref=e248]:
+          - button "Quels sont les matériaux utilisés pour la table Corix ?" [ref=e249] [cursor=pointer]
+          - button "Quelle est la dimension du plateau de la table ronde ?" [ref=e250] [cursor=pointer]
+          - button "Est-ce que la table Corix est facile à assembler ?" [ref=e251] [cursor=pointer]
+          - button "Comment nettoyer le plateau en verre effet marbre sans l'endommager ?" [ref=e252] [cursor=pointer]
+          - button "Poser une question" [ref=e253] [cursor=pointer]
+      - tablist [ref=e255]:
+        - tab "Descriptifs" [expanded] [ref=e256]:
+          - link "Descriptifs" [ref=e257] [cursor=pointer]:
+            - /url: "#tab-description"
+        - tabpanel [ref=e258]:
+          - paragraph [ref=e261]:
+            - strong [ref=e262]:
+              - generic [ref=e263]:
+                - text: Table de salle à manger ronde avec pieds en métal brossé
+                - text: Coloris VERRE EFFET MARBRE BLANC & PIEDS OR
+            - text: La table CORIX est une table de salle à manger ronde avec plateau en verre effet marbre et pieds design coloris or. Son format rond s'adapte à tous les espaces et ses quatre pieds arqués et croisés lui confèrent une bonne stabilité tout en accentuant son côté moderne et élégamment structuré.
+            - text: Une superbe table ronde pour un effet "waouh" dans votre salle à manger ! N'hésitez plus et offrez-vous du design à prix mini avec cette table résolument contemporaine qui apportera énormément de cachet à votre intérieur.
+        - tab "Informations complémentaires" [expanded] [ref=e264]:
+          - link "Informations complémentaires" [ref=e265] [cursor=pointer]:
+            - /url: "#tab-infos"
+        - tabpanel [ref=e266]:
+          - table "Plus d’information" [ref=e268]:
+            - rowgroup [ref=e269]:
+              - row "Couleur Or" [ref=e270]:
+                - rowheader "Couleur" [ref=e271]
+                - cell "Or" [ref=e272]
+              - row "Matière détail Métal, Verre " [ref=e273]:
+                - rowheader "Matière détail" [ref=e274]
+                - cell "Métal, Verre " [ref=e275]:
+                  - text: Métal, Verre
+                  - generic [ref=e276] [cursor=pointer]: 
+              - row "Forme Ronde" [ref=e277]:
+                - rowheader "Forme" [ref=e278]
+                - cell "Ronde" [ref=e279]
+              - row "Extensible Non" [ref=e280]:
+                - rowheader "Extensible" [ref=e281]
+                - cell "Non" [ref=e282]
+              - row "Espace rangement Non" [ref=e283]:
+                - rowheader "Espace rangement" [ref=e284]
+                - cell "Non" [ref=e285]
+              - row "Nombre de couverts Jusqu'à 6 couverts" [ref=e286]:
+                - rowheader "Nombre de couverts" [ref=e287]
+                - cell "Jusqu'à 6 couverts" [ref=e288]
+              - row "Dimensions L120 x P120 x H75 cm Verre de 8mm d'épaisseur" [ref=e289]:
+                - rowheader "Dimensions" [ref=e290]
+                - cell "L120 x P120 x H75 cm Verre de 8mm d'épaisseur" [ref=e291]:
+                  - text: L120 x P120 x H75 cm
+                  - text: Verre de 8mm d'épaisseur
+              - row "Poids net (kg) 28" [ref=e292]:
+                - rowheader "Poids net (kg)" [ref=e293]
+                - cell "28" [ref=e294]
+              - 'row "Dimensions colis Colis 1/2: 123.5 x 4.5 x 125.5 cm Colis 2/2: 18.5 x 16.5 x 106.5 cm" [ref=e295]':
+                - rowheader "Dimensions colis" [ref=e296]
+                - 'cell "Colis 1/2: 123.5 x 4.5 x 125.5 cm Colis 2/2: 18.5 x 16.5 x 106.5 cm" [ref=e297]':
+                  - text: "Colis 1/2: 123.5 x 4.5 x 125.5 cm"
+                  - text: "Colis 2/2: 18.5 x 16.5 x 106.5 cm"
+              - row "Prix généralement constaté 569,00 €" [ref=e298]:
+                - rowheader "Prix généralement constaté" [ref=e299]
+                - cell "569,00 €" [ref=e300]
+        - tab "Infos pratiques" [expanded] [ref=e301]:
+          - link "Infos pratiques" [ref=e302] [cursor=pointer]:
+            - /url: "#tab-ino-practical"
+        - tabpanel [ref=e303]:
+          - list [ref=e304]:
+            - listitem [ref=e305] [cursor=pointer]:
+              - img [ref=e308]
+            - listitem [ref=e309] [cursor=pointer]:
+              - img [ref=e312]
+      - generic [ref=e314]:
+        - generic [ref=e315]:
+          - img "menzzohome" [ref=e318]
+          - generic [ref=e319]: Partagez vos photos avec notre hashtag !
+        - generic [ref=e324]:
+          - generic [ref=e326]:
+            - link:
+              - /url: "#"
+              - img [ref=e327] [cursor=pointer]
+          - generic [ref=e332]:
+            - generic [ref=e333]:
+              - link:
+                - /url: "#"
+                - img [ref=e334] [cursor=pointer]
+            - img "img" [ref=e339]
+          - generic [ref=e340]:
+            - generic [ref=e341]:
+              - link:
+                - /url: "#"
+                - img [ref=e342] [cursor=pointer]
+            - img "img" [ref=e347]
+      - heading "Vous aimerez aussi :" [level=3] [ref=e349]
+      - generic [ref=e354]:
+        - heading "Des clients satisfaits et qui le disent" [level=3] [ref=e355]:
+          - strong [ref=e356]: Des clients satisfaits
+          - text: et qui le disent
+        - paragraph [ref=e357]: Les avis présentés sur cette page constituent une sélection et ne reflètent pas l’intégralité des avis reçus.
+        - img [ref=e361]
+  - contentinfo [ref=e365]:
+    - generic [ref=e367]:
+      - generic [ref=e369]:
+        - generic [ref=e370]:
+          - generic [ref=e371]: Tous les codes promo
+          - generic [ref=e372]: En cliquant sur "Je m'inscris", j'accepte de recevoir la newsletter par email et j'accepte la politique de confidentialité de Menzzo.
+          - generic [ref=e375]:
+            - generic [ref=e378]:
+              - generic [ref=e379]: "Inscription à notre lettre d’information :"
+              - textbox "Inscription à notre lettre d’information :" [ref=e380]:
+                - /placeholder: Votre e-mail
+            - button "Je m'inscris !" [ref=e381] [cursor=pointer]
+            - generic [ref=e383]:
+              - checkbox "J'accepte la politique de confidentialité et je consens au traitement de mes données à des fins marketing par Menzzo" [ref=e384]
+              - text: J'accepte la
+              - link "politique de confidentialité" [ref=e385] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/rgpd
+              - text: et je consens au traitement de mes données à des fins marketing par Menzzo
+        - img "img" [ref=e387]
+      - generic [ref=e389]:
+        - generic [ref=e391]:
+          - generic [ref=e392]:
+            - img [ref=e393]
+            - heading "SERVICE CLIENT" [level=3] [ref=e395]
+            - paragraph [ref=e396]: Vous avez passé commande et souhaitez nous joindre ?
+          - generic [ref=e397]:
+            - generic [ref=e398]:
+              - heading "Un seul endroit pour répondre à toutes vos demandes" [level=4] [ref=e400]
+              - generic [ref=e402]:
+                - img [ref=e403]
+                - link "sav.menzzo.fr" [ref=e405] [cursor=pointer]:
+                  - /url: https://sav.menzzo.fr/
+              - paragraph [ref=e406]:
+                - text: Complétez le formulaire sur la plateforme
+                - link "sav.menzzo.fr" [ref=e407] [cursor=pointer]:
+                  - /url: https://sav.menzzo.fr/
+                - text: et accédez directement aux informations que vous recherchez concernant votre commande.
+              - paragraph [ref=e408]: Une réponse vous sera apportée en ligne ou vous aurez accès à un planning pour prendre un rdv téléphonique avec un de nos agents.
+            - generic [ref=e409]:
+              - heading "Foire Aux Questions" [level=4] [ref=e411]
+              - generic [ref=e413]:
+                - img [ref=e414]
+                - link "Consultez notre FAQ" [ref=e416] [cursor=pointer]:
+                  - /url: /faq
+              - paragraph [ref=e417]: Vos questions les plus courantes sont répertoriées dans notre FAQ pour que vous trouviez encore plus rapidement des réponses pertinentes à toutes vos interrogations.
+          - link "En savoir plus" [ref=e418] [cursor=pointer]:
+            - /url: /sav-menzzo-fr
+        - generic [ref=e420]:
+          - generic [ref=e421]:
+            - img [ref=e422]
+            - heading "Vendeurs conseil" [level=3] [ref=e424]
+            - paragraph [ref=e425]: Vous avez une question sur un produit ou un service ?
+          - generic [ref=e426]:
+            - generic [ref=e427]:
+              - heading "Contactez nos vendeurs conseil" [level=4] [ref=e429]
+              - generic [ref=e431]:
+                - img [ref=e432]
+                - generic [ref=e434]:
+                  - link "01 43 75 11 18" [ref=e435] [cursor=pointer]:
+                    - /url: tel:0143751118
+                  - text: "Du lundi au jeudi : 10h-17h"
+                  - text: "Vendredi : 10h-15h"
+            - generic [ref=e436]:
+              - heading "Outlet Menzzo" [level=4] [ref=e438]
+              - generic [ref=e440]:
+                - img [ref=e441]
+                - generic [ref=e443]:
+                  - text: 221 Rue Paul Vaillant Couturier
+                  - text: 94140 Alfortville
+                  - text: "Du lundi au jeudi : 9h30-15h"
+                  - generic [ref=e444]:
+                    - text: Fermeture exceptionnelle
+                    - text: Aucune à prévoir...
+              - paragraph [ref=e445]: Des articles juste déballés, retournés par les clients et soigneusement vérifiés, ou des fins de collection, fins de stock pour des coloris spécifiques... Nos meubles à prix cassé, c'est ça l'Outlet Menzzo !
+          - link "En savoir plus" [ref=e446] [cursor=pointer]:
+            - /url: /showroom/
+        - generic [ref=e448]:
+          - generic [ref=e449]:
+            - img [ref=e450]
+            - heading "PAIEMENT SÉCURISÉ" [level=3] [ref=e452]
+            - paragraph [ref=e453]: Achetez en toute sérénité grâce à nos différents modes de paiement en ligne.
+          - generic [ref=e454]:
+            - generic [ref=e455]:
+              - heading "Par carte bancaire :" [level=4] [ref=e457]
+              - generic [ref=e458]:
+                - img "cb" [ref=e460]
+                - img "visa" [ref=e462]
+                - img "master" [ref=e464]
+                - img "american-express" [ref=e466]
+              - paragraph [ref=e467]: Les paiements en ligne sont sécurisés par le système 3D Secure. Menzzo n’a pas accès et ne sauvegarde pas vos données de carte bancaire.
+            - generic [ref=e468]:
+              - heading "En plusieurs fois :" [level=4] [ref=e470]
+              - paragraph [ref=e475]:
+                - text: Divisez votre paiement en 3 versements égaux et sans frais ou en 6, 9 ou 12 fois. Simple et pratique.
+                - text: Un paiement par mois, immédiat et sans formalités.
+            - generic [ref=e476]:
+              - heading "Par virement :" [level=4] [ref=e478]
+              - paragraph [ref=e479]: Plus besoin de carte bancaire ! Payez vos achats en un clic grâce à votre appli bancaire. Aucune saisie d’IBAN nécessaire et sécurisé par votre banque sans coût supplémentaire.
+          - link "En savoir plus" [ref=e480] [cursor=pointer]:
+            - /url: /financement
+        - generic [ref=e482]:
+          - generic [ref=e483]:
+            - img [ref=e484]
+            - heading "Livraison" [level=3] [ref=e486]
+            - paragraph [ref=e487]: Les tarifs des livraisons sont indiqués sur chaque fiche produit.
+          - generic [ref=e488]:
+            - generic [ref=e489]:
+              - heading "Livraison classique" [level=4] [ref=e491]
+              - paragraph [ref=e494]:
+                - text: Vous êtes livrés à l'extérieur, en bas de chez vous.
+                - text: Selon le type d’article, le transporteur vous contacte par mail, SMS ou téléphone pour vous communiquer une date de livraison.
+            - generic [ref=e495]:
+              - heading "Livraison Étage" [level=4] [ref=e497]
+              - paragraph [ref=e500]:
+                - text: Vous êtes livrés dans la pièce de votre choix, même à l’étage.
+                - text: Selon le type d’article, le transporteur vous contacte par mail, SMS ou téléphone pour vous communiquer une date de livraison.
+          - link "En savoir plus" [ref=e501] [cursor=pointer]:
+            - /url: /livraison
+      - generic [ref=e503]:
+        - generic [ref=e504]:
+          - heading "BESOIN D'AIDE?" [level=3] [ref=e505]
+          - list [ref=e506]:
+            - listitem [ref=e507]:
+              - link "Blog" [ref=e508] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/blog.html
+            - listitem [ref=e509]:
+              - link "Livraison" [ref=e510] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/livraison/
+            - listitem [ref=e511]:
+              - link "Politique de retour" [ref=e512] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/politique-de-retour/
+            - listitem [ref=e513]:
+              - link "Financement" [ref=e514] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/financement/
+            - listitem [ref=e515]:
+              - link "Service client" [ref=e516] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/sav-menzzo-fr/
+            - listitem [ref=e517]:
+              - link "Glossaire des matières" [ref=e518] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/materials/
+        - generic [ref=e519]:
+          - heading "MIEUX NOUS CONNAÎTRE" [level=3] [ref=e520]
+          - list [ref=e521]:
+            - listitem [ref=e522]:
+              - link "Outlet Menzzo" [ref=e523] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/showroom
+            - listitem [ref=e524]:
+              - link "À propos de menzzo" [ref=e525] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/a-propos-de-menzzo/
+            - listitem [ref=e526]:
+              - link "Conditions Générales de Vente" [ref=e527] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/conditions-generales-de-vente/
+            - listitem [ref=e528]:
+              - link "Données personnelles" [ref=e529] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/rgpd
+            - listitem [ref=e530]:
+              - link "Revue de presse" [ref=e531] [cursor=pointer]:
+                - /url: https://www.menzzo.fr/revue-de-presse
+        - generic [ref=e532]:
+          - heading "RETROUVEZ-NOUS!" [level=3] [ref=e533]
+          - generic [ref=e534]:
+            - link "Facebook" [ref=e535] [cursor=pointer]:
+              - /url: http://www.facebook.com/MenzzoFrance
+              - img [ref=e536]
+            - link "Instagram" [ref=e538] [cursor=pointer]:
+              - /url: https://www.instagram.com/menzzofr/
+              - img [ref=e539]
+            - link "Pinterest" [ref=e541] [cursor=pointer]:
+              - /url: http://www.pinterest.com/menzzo
+              - img [ref=e542]
+      - list [ref=e546]:
+        - listitem [ref=e547]
+        - listitem [ref=e549]
+        - listitem [ref=e551]
+        - listitem [ref=e553]
+        - listitem [ref=e555]:
+          - img "Monext" [ref=e557]
+        - listitem [ref=e558]
+        - listitem [ref=e560]:
+          - img "klarna" [ref=e562]
+        - listitem [ref=e563]:
+          - img "scalapay" [ref=e565]
+      - generic [ref=e566]:
+        - text: "Retrouvez Menzzo dans d'autres pays:"
+        - link "menzzo.fr" [ref=e567] [cursor=pointer]:
+          - /url: https://menzzo.fr
+          - img [ref=e568]
+        - link "menzzo.de" [ref=e570] [cursor=pointer]:
+          - /url: https://menzzo.de
+          - img [ref=e571]
+        - link "menzzo.it" [ref=e573] [cursor=pointer]:
+          - /url: https://menzzo.it
+          - img [ref=e574]
+        - link "menzzo.nl" [ref=e576] [cursor=pointer]:
+          - /url: https://menzzo.nl
+          - img [ref=e577]
+        - link "menzzo.at" [ref=e579] [cursor=pointer]:
+          - /url: https://menzzo.at
+          - img [ref=e580]
+        - link "menzzo.be" [ref=e582] [cursor=pointer]:
+          - /url: https://menzzo.be
+          - img [ref=e583]
+        - link "menzzo.es" [ref=e585] [cursor=pointer]:
+          - /url: https://www.menzzo.es/
+          - img [ref=e586]
+        - link "menzzo.pt" [ref=e588] [cursor=pointer]:
+          - /url: https://www.menzzo.pt/
+          - img [ref=e589]
+      - generic [ref=e591]: © 2026 Menzzo - Tous droits réservés
+  - button "Chat Menzzo" [ref=e592] [cursor=pointer]:
+    - img "Chat Menzzo"
+```
