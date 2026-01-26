@@ -101,7 +101,7 @@ export async function CheckProductAvailability(page: Page) {
 
     // Define acceptable stock statuses per language
     const validStatusesByLanguage: Record<string, string[]> = {
-      fr: ['En stock', 'Livré sous plus d\'un mois', 'Bientôt en stock'],
+      fr: ['En stock', 'Livré sous plus d’un mois', 'Bientôt en stock'],
       de: ['Auf Lager', 'Lieferung in mehr als einem Monat', 'Bald auf Lager'],
       it: ['Disponibile', 'Consegna in più di un mese', 'Presto disponibile'],
       es: ['En stock', 'Entrega en más de un mes', 'Próximamente en stock'],
@@ -226,6 +226,7 @@ export async function CheckStockAndShipping(page: Page) {
   // Step 1️⃣ — Run the popup check first (handles availability + logs everything)
   const stockStatus = await CheckTextPopup(page);
 
+
   // Step 2️⃣ — Continue only if stock is "En stock"
   if (stockStatus !== 'En stock') {
     attachment('Console Log', `⚠️ Product is not "En stock" (it's "${stockStatus}"). Skipping shipping check.`, 'text/plain');
@@ -236,6 +237,7 @@ export async function CheckStockAndShipping(page: Page) {
   // Step 3️⃣ — Extract shipping info
 
   const shippingInfo = await ShippingText(page);
+
 
   if (!shippingInfo.FromDay || !shippingInfo.DayTo || !shippingInfo.ShippingPrice) {
     attachment('Console Warn', '⚠️ Could not extract full shipping information.', 'text/plain');
