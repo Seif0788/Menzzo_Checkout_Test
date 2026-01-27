@@ -37,7 +37,7 @@ test('Google_SocialLogin_Checkout', async ({ page }) => {
     await clickElementByText(page, "Accepter et continuer");
 
     // --- Load categories from CSV ---
-    const products = loadProductsFromCSV('data/All_Product.csv');
+    const products = loadProductsFromCSV('data/All_product.csv');
 
     if (products.length === 0) {
         throw new Error('No products found');
