@@ -152,8 +152,9 @@ export default defineConfig({
       name: 'Social_Login',
       testDir: './tests/Social_Login',
       workers: 1,
+      retries: 3,
       use: {
-        headless: false,
+        headless: true,
         screenshot: 'only-on-failure',
         video: 'retain-on-failure',
         trace: 'retain-on-failure',
