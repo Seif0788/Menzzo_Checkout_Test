@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import Papa from 'papaparse';
+import { ProductRow } from './utils';
 
 export function loadCategoriesFromCSV(csvPath: string): string[] {
     const absolutePath = path.resolve(csvPath);
@@ -18,4 +19,9 @@ export function loadCategoriesFromCSV(csvPath: string): string[] {
         .map((name: string) => name.trim());
 
     return names;
+}
+
+export function getRandomProduct(products: ProductRow[]): ProductRow {
+    const randomIndex = Math.floor(Math.random() * products.length);
+    return products[randomIndex];
 }
