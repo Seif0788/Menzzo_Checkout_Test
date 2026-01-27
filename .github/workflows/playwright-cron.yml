@@ -1,4 +1,4 @@
-name: Playwright Cron – Global_Checkoutsuite_test
+name: Playwright Cron – Global_Checkoutsuite_Social_Login
 
 on:
   schedule:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   test:
-    name: Run Playwright Tests (Global_Checkoutsuite)
+    name: Run Playwright Tests (Global_Checkoutsuite + Social_Login)
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -73,11 +73,11 @@ jobs:
       # -----------------------------
       # Run Playwright tests
       # -----------------------------
-      - name: Run Playwright tests (Global_Checkoutsuite)
+      - name: Run Playwright tests (Global_Checkoutsuite + Social_Login)
         id: playwright
         continue-on-error: true
         run: |
-          npx playwright test --project=Global_Checkoutsuite
+          npx playwright test --project=Global_Checkoutsuite --project=Social_Login
 
       # -----------------------------
       # Debug Allure raw results
@@ -189,7 +189,7 @@ jobs:
       # -----------------------------
       # Email notification
       # -----------------------------
-      - name: Send email notification (Global_Checkoutsuite)
+      - name: Send email notification (Global_Checkoutsuite + Social_Login)
         if: always()
         uses: dawidd6/action-send-mail@v4
         with:
@@ -201,9 +201,9 @@ jobs:
 
           to: seifeddine.t.axelites@gmail.com
           from: 'GitHub Actions <seif.t.axelites@gmail.com>'
-          subject: "${{ env.STATUS_EMOJI }} Playwright Cron – Global_Checkoutsuite"
+          subject: "${{ env.STATUS_EMOJI }} Playwright Cron – Global_Checkoutsuite + Social_Login"
           body: |
-            Playwright cron run finished for Global_Checkoutsuite
+            Playwright cron run finished for Global_Checkoutsuite + Social_Login
 
             Status: ${{ env.STATUS_EMOJI }}
 
