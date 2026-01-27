@@ -173,7 +173,7 @@ jobs:
           echo "SKIPPED=$SKIPPED" >> $GITHUB_ENV
           echo "TOTAL=$TOTAL" >> $GITHUB_ENV
 
-          if [ "$PASSED" -ge 21 ]; then
+          if [ "$PASSED" -ge 25 ]; then
             echo "STATUS_EMOJI=🟢 Success" >> $GITHUB_ENV
           elif [ "$FAILED" -gt 0 ] || [ "$BROKEN" -gt 0 ]; then
             echo "STATUS_EMOJI=🔴 Failure" >> $GITHUB_ENV
