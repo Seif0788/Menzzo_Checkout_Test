@@ -1,0 +1,1 @@
+[GroupMarkerNotSet(crbug.com/242999)!:A0501800BC1E0000]Automatic fallback to software WebGL has been deprecated. Please use the --enable-unsafe-swiftshader (about:flags#enable-unsafe-swiftshader) flag to opt in to lower security guarantees for trusted content.
