@@ -149,6 +149,17 @@ export default defineConfig({
       },
     },
     {
+      name: 'Social_Login',
+      testDir: './tests/Social_Login',
+      workers: 1,
+      use: {
+        headless: false,
+        screenshot: 'only-on-failure',
+        video: 'retain-on-failure',
+        trace: 'retain-on-failure',
+      },
+    },
+    {
       name: 'Product_Price',
       testDir: './tests/Price/Price_01122025',
       use: {

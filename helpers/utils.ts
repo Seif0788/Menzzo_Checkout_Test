@@ -719,6 +719,11 @@ export interface ProductInfo {
   url: string;
 }
 
+export interface ProductRow {
+  entity_id: string;
+  sku: string;
+}
+
 export async function clickAndReturnProduct(
   page: Page,
   sku: string
@@ -772,4 +777,11 @@ export async function ensurePageIsOpen(page: Page, context: BrowserContext) {
     await page.goto("https://www.menzzo.fr");
   }
   return page;
+}
+
+export function pickOneProduct(products: ProductRow[]): ProductRow {
+  if (products.length === 0) {
+    throw new Error('No products found');
+  }
+  return products[0];
 }
