@@ -1,1 +1,0 @@
-entity_id=47719 | sku=dc5106lot6blackpu
