@@ -1,10 +1,12 @@
-import { test, Page, expect } from '@playwright/test';
+import { test } from '@playwright/test';
 import { attachment } from 'allure-js-commons';
 import { clickElementByText } from '../../../../helpers/utils';
 import { Check_Account_Icon } from '../../../../helpers/Home_page/Header';
 import { Check_Facebook_Login } from '../../../../helpers/Social_Login_Helper/Facebook_Login';
+import { severity } from 'allure-js-commons';
 
 test('Facebook_Social_Login', async ({ page }) => {
+    severity('Normal')
     //---Open menzzo.fr
     await page.goto('https://www.menzzo.fr')
     attachment('Open Website', "menzzo.fr opened successfully", 'text/plain')

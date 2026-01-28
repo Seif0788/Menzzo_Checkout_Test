@@ -3,8 +3,10 @@ import { attachment } from 'allure-js-commons';
 import { clickElementByText } from '../../../../helpers/utils';
 import { Check_Account_Icon } from '../../../../helpers/Home_page/Header';
 import { Check_Google_Login } from '../../../../helpers/Social_Login_Helper/Google_Login';
+import { severity } from 'allure-js-commons';
 
 test('Google_Social_Login', async ({ page }) => {
+    severity('normal')
     //---Open menzzo.fr
     await page.goto('https://www.menzzo.fr')
     attachment('Open Website', "menzzo.fr opened successfully", 'text/plain')
