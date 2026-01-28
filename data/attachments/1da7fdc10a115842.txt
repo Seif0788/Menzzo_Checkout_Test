@@ -1,1 +1,0 @@
-entity_id=47590 | sku=dt1290gold-whitemarble
