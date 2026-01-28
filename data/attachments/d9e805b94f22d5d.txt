@@ -1,0 +1,1 @@
+entity_id=11603 | sku=vk7021putty
