@@ -1,1 +1,0 @@
-entity_id=58321 | sku=LT419160beigefabric
