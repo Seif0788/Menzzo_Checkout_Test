@@ -1,1 +1,0 @@
-entity_id=8172 | sku=lsr151140puttyvelvet16
