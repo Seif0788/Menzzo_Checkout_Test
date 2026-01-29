@@ -1,1 +1,0 @@
-entity_id=5299 | sku=sc2204lot2punoir
