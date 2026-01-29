@@ -162,7 +162,7 @@ export default defineConfig({
     },
     {
       name: 'Product_Price',
-      testDir: './tests/Price/Price_01122025',
+      testDir: './tests/Price/Price_Update',
       use: {
         headless: true,
         screenshot: 'only-on-failure',
