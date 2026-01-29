@@ -1,0 +1,1 @@
+entity_id=2644 | sku=p804taupe
