@@ -1,1 +1,0 @@
-entity_id=5144 | sku=lf233whitepu
