@@ -1,0 +1,1 @@
+entity_id=58781 | sku=maf032589000c
