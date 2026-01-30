@@ -1,1 +1,0 @@
-entity_id=8368 | sku=lsr16051velvetputty
