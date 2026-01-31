@@ -1,1 +1,0 @@
-entity_id=57123 | sku=vkdt50851cheneclair
