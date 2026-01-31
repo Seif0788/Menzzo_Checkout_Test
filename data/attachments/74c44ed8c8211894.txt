@@ -1,1 +1,0 @@
-entity_id=9020 | sku=lsr20181khakivelvet24
