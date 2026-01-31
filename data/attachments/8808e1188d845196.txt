@@ -1,1 +1,0 @@
-entity_id=57424 | sku=maf066135000B
