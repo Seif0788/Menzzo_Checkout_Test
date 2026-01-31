@@ -1,1 +1,0 @@
-entity_id=57291 | sku=LT422160beigevelvet
