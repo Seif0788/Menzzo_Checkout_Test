@@ -1,1 +1,0 @@
-entity_id=57223 | sku=tb50585travertin
