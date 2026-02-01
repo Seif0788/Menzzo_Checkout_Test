@@ -1,0 +1,1 @@
+entity_id=6474 | sku=lsr19143silvervelvet
